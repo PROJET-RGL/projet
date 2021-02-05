@@ -8,12 +8,13 @@
   - Jules Beuvier
   - Thomas André
 
-# v0.0.02
+# v0.0.03
 
 ------- Patch Notes -------
 
-Ajout déplacement diagonale
-Collision améliorer
+Ajout de création d'objet (sans hitbox)
+Deux salles reliées entre elles
+Porte générer entre deux salles
 
 ---------------------------
 
