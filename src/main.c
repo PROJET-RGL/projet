@@ -6,6 +6,7 @@
 #include "salle.h"
 #include "fonction_admin.h"
 #include "perso.h"
+#include "objet.h"
 
 // Fenêtre dimension
 
@@ -38,14 +39,21 @@
 SDL_Window *fen = NULL;
 SDL_Renderer *renderer = NULL;
 SDL_Event event;
-SDL_Rect salle;
+SDL_Rect salle1;
+SDL_Rect salle2;
 SDL_Rect perso;
+SDL_Rect porte1;
+SDL_Rect porte2;
+SDL_Rect tab_obj[N] = {0};
+int perso_salle, passage;
 
-// gcc src/main.c -o bin/main -I include src/salle.c src/fonction_admin.c src/perso.c -L lib -lmingw32 -lSDL2main -lSDL2
+// gcc src/main.c -o bin/main -I include src/salle.c src/fonction_admin.c src/perso.c src/objet.c -L lib -lmingw32 -lSDL2main -lSDL2
 
 int main(int argc, char **argv)
 {
     int touche1 = 0, touche2 = 0;
+
+    perso_salle = 1;
 
     if(creation_fen(&fen, &renderer, FEN_LARGEUR, FEN_HAUTEUR) != TRUE)
     {
@@ -54,10 +62,34 @@ int main(int argc, char **argv)
 
     nettoyage_ecran(renderer);
 
-    salle = init_salle(renderer, salle, FEN_LARGEUR, FEN_HAUTEUR, SALLE_HAUTEUR, SALLE_LARGEUR);
+    // Création des salles aléatoirement !
+
+    salle1 = init_salle(salle1, FEN_LARGEUR, FEN_HAUTEUR, SALLE_HAUTEUR, SALLE_LARGEUR);
+
+    salle2 = init_salle(salle2, FEN_LARGEUR, FEN_HAUTEUR, SALLE_HAUTEUR, SALLE_LARGEUR);
+
+    // Création personnage !
+
+    perso = init_perso(perso, FEN_LARGEUR, FEN_HAUTEUR, PERSO_HAUTEUR, PERSO_LARGEUR);
+
+    // Création porte !
+
+    porte1 = init_porte(porte1, (salle1.x + salle1.w)/2, salle1.y, 'H');
+    porte2 = init_porte(porte2, (salle2.x + salle2.w)/2, (salle2.y + salle2.h), 'H');
+
+    // Création des objets
+
+    int i = 0;
+
+    srand(time(NULL));
+
+    for(i = 0; i < N; i++)
+    {
+        tab_obj[i] = init_obj(tab_obj[i]);
+    }
 
 
-    perso = init_perso(renderer, perso, FEN_LARGEUR, FEN_HAUTEUR, PERSO_HAUTEUR, PERSO_LARGEUR);
+    // Boucle de jeu !
 
     SDL_bool program_lunched = TRUE;
 
@@ -184,8 +216,24 @@ int main(int argc, char **argv)
                 default:
                     break;
             }
-            perso = actualisation_perso(renderer, salle, perso, VITESSE * 2, touche1, touche2);
-            SDL_Delay(20);
+            if(perso_salle == 1){
+                perso = actualisation_perso(renderer, salle1, porte1, perso, tab_obj, VITESSE * 2, touche1, touche2, 0, 255, 0);
+                perso_salle = collision_porte(perso, porte1, 1, 2, VITESSE);
+                if(perso_salle != 1)
+                {
+                    perso.y = (salle2.y + salle2.h ) - porte2.h/2 - perso.h;
+                }
+                SDL_Delay(20);
+            }else if(perso_salle == 2){
+                perso = actualisation_perso(renderer, salle2, porte2, perso, tab_obj, VITESSE * 2, touche1, touche2, 0, 0, 255);
+                perso_salle = collision_porte(perso, porte2, 2, 1, VITESSE);
+                if(perso_salle != 2)
+                {
+                    perso.y = salle1.y + porte1.h/2;
+                }
+                SDL_Delay(20);
+            }
+
         }
 
     }

@@ -23,7 +23,7 @@ int creation_fen(SDL_Window **fen, SDL_Renderer **renderer, int FEN_LARGEUR, int
     return 1;
 }
 
-SDL_Rect init_salle(SDL_Renderer *renderer, SDL_Rect salle, int FEN_LARGEUR, int FEN_HAUTEUR, int SALLE_HAUTEUR, int SALLE_LARGEUR)
+SDL_Rect init_salle(SDL_Rect salle, int FEN_LARGEUR, int FEN_HAUTEUR, int SALLE_HAUTEUR, int SALLE_LARGEUR)
 {
 
     salle.x = (FEN_LARGEUR - SALLE_LARGEUR)/2;
@@ -32,13 +32,26 @@ SDL_Rect init_salle(SDL_Renderer *renderer, SDL_Rect salle, int FEN_LARGEUR, int
     salle.w = SALLE_LARGEUR;
     salle.h = SALLE_HAUTEUR;
 
-    if(affichage(renderer, salle, 180, 155, 146) != 1)
+    return salle;
+}
+
+SDL_Rect init_porte(SDL_Rect porte, int x, int y, int position)
+{
+    if(position == 'V')
     {
-        SDL_ExitWithError("Affichage salle raté");
+        porte.w = 20;
+        porte.h = 150;
+    }else if(position == 'H')
+    {
+        porte.w = 150;
+        porte.h = 20;
     }
 
-    SDL_RenderPresent(renderer);
-    return salle;
+    porte.x = x;
+    porte.y = y - (porte.h/2);
+
+    
+    return porte;
 }
 
 int test_colision(SDL_Rect perso, SDL_Rect salle, int touche1, int touche2, int VITESSE)
@@ -91,3 +104,19 @@ int test_colision(SDL_Rect perso, SDL_Rect salle, int touche1, int touche2, int 
 
     return sortie;
 }
+
+int collision_porte(SDL_Rect perso, SDL_Rect porte, int salle_actuel, int salle_dest, int VITESSE)
+{
+    /*
+        Si perso.x + perso.w > porte.x && perso.x < salleorte.x + porte.w && perso.y + perso.h < porte.y && perso.y < porte.y + porte.h 
+        Alors on est dans le rectangle donc on change le tag de la salle du personnage
+    */
+    printf("On test la porte\n");
+
+    if((perso.x + perso.w + VITESSE) > porte.x && (perso.x + VITESSE) < (porte.x + porte.w) && (perso.y + perso.h + VITESSE) > porte.y && (perso.y + VITESSE) < (porte.y + porte.h))
+    {    // on change de salle qui est entrée en paramètre
+        printf("On change de salle\n");
+        return salle_dest;
+    }else return salle_actuel;
+}
+

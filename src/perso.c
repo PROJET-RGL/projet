@@ -7,7 +7,9 @@
 #include "fonction_admin.h"
 #include "salle.h"
 
-SDL_Rect init_perso(SDL_Renderer *renderer, SDL_Rect perso, int FEN_LARGEUR, int FEN_HAUTEUR, int PERSO_HAUTEUR, int PERSO_LARGEUR)
+
+
+SDL_Rect init_perso(SDL_Rect perso, int FEN_LARGEUR, int FEN_HAUTEUR, int PERSO_HAUTEUR, int PERSO_LARGEUR)
 {
     perso.x = (FEN_LARGEUR - PERSO_LARGEUR) / 2;
     perso.y = (FEN_HAUTEUR - PERSO_HAUTEUR) / 2;
@@ -15,23 +17,23 @@ SDL_Rect init_perso(SDL_Renderer *renderer, SDL_Rect perso, int FEN_LARGEUR, int
     perso.w = PERSO_LARGEUR;
     perso.h = PERSO_HAUTEUR;
 
-
-    if(affichage(renderer, perso, 255, 20, 20) != 1)
-    {
-        SDL_ExitWithError("Affichage perso raté");
-    }
-
-    SDL_RenderPresent(renderer);
     return perso;
 }
 
-SDL_Rect actualisation_perso(SDL_Renderer *renderer, SDL_Rect salle, SDL_Rect perso, int VITESSE, int touche1, int touche2)
+SDL_Rect actualisation_perso(SDL_Renderer *renderer, SDL_Rect salle, SDL_Rect porte, SDL_Rect perso, SDL_Rect tab_obj[N], int VITESSE, int touche1, int touche2, int r, int v, int b)
 {
     nettoyage_ecran(renderer);
 
-    if(affichage(renderer, salle, 180, 155, 146) != 1)
+    if(affichage(renderer, salle, r, v, b) != 1)
     {
         SDL_ExitWithError("Affichage salle raté");
+    }
+
+    int i =0;
+
+    for(i = 0; i < N; i++)
+    {
+        affichage(renderer, tab_obj[i], 0, 255, 255);
     }
 
     /*
@@ -108,6 +110,11 @@ SDL_Rect actualisation_perso(SDL_Renderer *renderer, SDL_Rect salle, SDL_Rect pe
     if(affichage(renderer, perso, 255, 20, 20) != 1)
     {
         SDL_ExitWithError("Affichage perso raté");
+    }
+
+    if(affichage(renderer, porte, 67, 79, 226) != 1)
+    {
+        SDL_ExitWithError("Affichage porte raté");
     }
 
     SDL_RenderPresent(renderer);
