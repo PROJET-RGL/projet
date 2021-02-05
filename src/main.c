@@ -71,6 +71,59 @@ int main(int argc, char **argv)
                     program_lunched = FALSE;
                     break;
 
+                case SDL_KEYUP :
+
+                    switch(event.key.keysym.sym)
+                    {
+                        case SDLK_q:
+                            if(touche1 == 'Q')
+                            {
+                                touche1 = 0;
+                            }
+                            if(touche2 == 'Q')
+                            {
+                                touche2 = 0;
+                            }
+                            continue;
+
+                        case SDLK_d:
+                            if(touche1 == 'D')
+                            {
+                                touche1 = 0;
+                            }
+                            if(touche2 == 'D')
+                            {
+                                touche2 = 0;
+                            }
+                            continue;
+
+                        case SDLK_s:
+                            if(touche1 == 'S')
+                            {
+                                touche1 = 0;
+                            }
+                            if(touche2 == 'S')
+                            {
+                                touche2 = 0;
+                            }
+                            continue;
+
+                        case SDLK_z:
+                            if(touche1 == 'Z')
+                            {
+                                touche1 = 0;
+                            }
+                            if(touche2 == 'Z')
+                            {
+                                touche2 = 0;
+                            }
+                            continue;
+
+                        default :
+                            continue;
+                    }
+                    break;
+
                 case SDL_KEYDOWN :
 
                     switch(event.key.keysym.sym)
@@ -80,60 +133,59 @@ int main(int argc, char **argv)
                             break;
 
                         case SDLK_q:
-                            if(touche1 == 0)
+                            if(touche1 == 0 && touche1 != 'Q')
                             {
                                 touche1 = 'Q';
                             }
-                            else if(touche2 == 0)
+                            else if(touche2 == 0 && touche1 != 'Q')
                             {
                                 touche2 = 'Q';
                             }
-                            break;
+                            continue;
 
                         case SDLK_d:
-                            if(touche1 == 0)
+                            if(touche1 == 0 && touche1 != 'D')
                             {
                                 touche1 = 'D';
                             }
-                            else if(touche2 == 0)
+                            else if(touche2 == 0 && touche1 != 'D')
                             {
                                 touche2 = 'D';
                             }
-                            break;
+                            continue;
 
                         case SDLK_s:
-                            if(touche1 == 0)
+                            if(touche1 == 0 && touche1 != 'S')
                             {
                                 touche1 = 'S';
                             }
-                            else if(touche2 == 0)
+                            else if(touche2 == 0 && touche1 != 'S')
                             {
                                 touche2 = 'S';
                             }
-                            break;
+                            continue;
 
                         case SDLK_z:
-                            if(touche1 == 0)
+                            if(touche1 == 0 && touche1 != 'Z')
                             {
                                 touche1 = 'Z';
                             }
-                            else if(touche2 == 0)
+                            else if(touche2 == 0 && touche1 != 'Z')
                             {
                                 touche2 = 'Z';
                             }
-                            break;
+                            continue;
 
                         default :
-                            break;
+                            continue;
                     }
-                    SDL_Delay(DELAI);
-                    perso = actualisation_perso(renderer, salle, perso, VITESSE + DELAI/2, touche1, touche2);
-                    touche1 = 0;
-                    touche2 = 0;
+                    break;
 
                 default:
-                    continue;
+                    break;
             }
+            perso = actualisation_perso(renderer, salle, perso, VITESSE * 2, touche1, touche2);
+            SDL_Delay(20);
         }
 
     }

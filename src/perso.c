@@ -34,26 +34,71 @@ SDL_Rect actualisation_perso(SDL_Renderer *renderer, SDL_Rect salle, SDL_Rect pe
         SDL_ExitWithError("Affichage salle raté");
     }
 
+    /*
+        G = 1                   // on se déplace vers le gauche
+        D = 5                   // on se déplace vers la droite
+        H = 10                  // on se déplace vers le haut
+        B = 20                  // on se déplace vers le bas
+        G + D = 1 + 5 = 6       // On annule le mouvement
+        G + H = 1 + 10 = 11     // On se déplace en diagonale gauche/haut
+        G + B = 1 + 20 = 21     // On se déplace en diagonale gauche/bas
+        D + H = 5 + 10 = 15     // On se déplace en diagonale droite/haut
+        D + B = 5 + 20 = 25     // on se dépalce en diagonale droite/bas
+        H + B = 10 + 20 = 30    // On annule le mouvement
+    */
 
     switch(test_colision(perso, salle, touche1, touche2, VITESSE))
     {
-        case 0 :
-            break;
-
-        case 1 :
+        case 1 :    // Gauche
             perso.x = perso.x - VITESSE;
             break;
 
-        case 2 :
+        case 5 :    // Droite
             perso.x = perso.x + VITESSE;
             break;
 
-        case 3 :
+        case 10 :   // Haut
             perso.y = perso.y - VITESSE;
             break;
 
-        case 4 :
+        case 20 :   // Bas
             perso.y = perso.y + VITESSE;
+            break;
+
+        case 11 :   // Gauche - haut
+            perso.x = perso.x - VITESSE;
+            perso.y = perso.y - VITESSE;
+            break;
+
+        case 21 :   // Gauche - bas
+            perso.x = perso.x - VITESSE;
+            perso.y = perso.y + VITESSE;
+            break;
+
+        case 15 :   // Haut - droite
+            perso.x = perso.x + VITESSE;
+            perso.y = perso.y - VITESSE;
+            break;
+
+        case 25 :   // Bas - droite
+            perso.x = perso.x + VITESSE;
+            perso.y = perso.y + VITESSE;
+            break;
+
+        case 50 :   // On colle à gauche
+            perso.x = salle.x + 1;
+            break;
+
+        case 51 :   // On colle à droite
+            perso.x = (salle.x + salle.w) - perso.w - 1;
+            break;
+
+        case 52 :   // On colle en haut
+            perso.y = salle.y + 1;
+            break;
+
+        case 53 :   // On colle en bas
+            perso.y = (salle.y + salle.h) - perso.h - 1;
             break;
 
         default : break;

@@ -43,15 +43,8 @@ SDL_Rect init_salle(SDL_Renderer *renderer, SDL_Rect salle, int FEN_LARGEUR, int
 
 int test_colision(SDL_Rect perso, SDL_Rect salle, int touche1, int touche2, int VITESSE)
 {
-    /*
-        Perso.x > salle.x
-        Perso.y > salle.y
-        Perso.y + Perso.h < salle.h
-        Perso.x + Perso.w < salle.w
-    */
-
-
     SDL_Rect persoGHOST;
+    int sortie = 0;
 
     persoGHOST.x = perso.x;
     persoGHOST.y = perso.y;
@@ -59,44 +52,42 @@ int test_colision(SDL_Rect perso, SDL_Rect salle, int touche1, int touche2, int 
     persoGHOST.w = perso.w;
     persoGHOST.h = perso.h;
 
-    if(touche1 == 'Q')
+    if(touche1 == 'Q' || touche2 == 'Q')
     {
         persoGHOST.x = perso.x - VITESSE;
         if(persoGHOST.x < salle.x)
         {
             // Nous sommes en dehors, donc c'est pas bon
-            // on return 0 car on peut pas
-            return 0;
-        }else return 1; // on return 1 car c'est possible de ce déplacer
+            sortie = 50;    // Message d'erreur lié au passage de bordure par la gauche
+        }else sortie += 1;  // on return 1 car c'est possible de ce déplacer
     }
-    if(touche1 == 'D')
+    if(touche1 == 'D' || touche2 == 'D')
     {
         persoGHOST.x = perso.x + VITESSE;
         if(persoGHOST.x + perso.w > salle.x + salle.w)
         {
             // Nous sommes en dehors, donc c'est pas bon
-            // on return 0 car on peut pas
-            return 0;
-        }else return 2; // on return 1 car c'est possible de ce déplacer
+            sortie = 51;    // Message d'erreur lié au passage de bordure par la droite
+        }else sortie += 5;  // on return 1 car c'est possible de ce déplacer
     }
-    if(touche1 == 'Z')
+    if(touche1 == 'Z' || touche2 == 'Z')
     {
         persoGHOST.y = perso.y - VITESSE;
         if(persoGHOST.y < salle.y)
         {
             // Nous sommes en dehors, donc c'est pas bon
-            // on return 0 car on peut pas
-            return 0;
-        }else return 3; // on return 1 car c'est possible de ce déplacer
+            sortie = 52;    // Message d'erreur lié au passage de bordure par le haut
+        }else sortie += 10; // on return 1 car c'est possible de ce déplacer
     }
-    if(touche1 == 'S')
+    if(touche1 == 'S' || touche2 == 'S')
     {
         persoGHOST.y = perso.y + VITESSE;
         if(persoGHOST.y + perso.h > salle.y + salle.h)
         {
-            // Nous sommes en dehors, donc c'est pas bon
-            // on return 0 car on peut pas
-            return 0;
-        }else return 4; // on return 1 car c'est possible de ce déplacer
+            // Nous sommes en dehors par le bas, donc c'est pas bon
+            sortie = 53;    // Message d'erreur lié au passage de bordure par le bas
+        }else sortie += 20; // on ajoute 20 à sortie car c'est possible de ce déplacer
     }
+
+    return sortie;
 }
