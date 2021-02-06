@@ -8,14 +8,14 @@
   - Jules Beuvier
   - Thomas André
 
-# v0.0.03
+# v0.0.04
 
 ------- Patch Notes -------
 
-Ajout de création d'objet (sans hitbox)
-Deux salles reliées entre elles
-Porte générer entre deux salles
+Ajout des structures de données (Salle, Perso, Mob, Porte, Labyrinthe, Objet)
+Modification des init_... pour créer procéduralement les labyrinthe
+Modification de crétion de salle, et du labyrinthe
 
 ---------------------------
 
-# DATE : 05/02/2021
+# DATE : 07/02/2021
