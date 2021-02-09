@@ -18,6 +18,6 @@
 
 perso_t init_perso(perso_t perso, int FEN_LARGEUR, int FEN_HAUTEUR, int PERSO_HAUTEUR, int PERSO_LARGEUR);
 
-SDL_Rect actualisation_perso(SDL_Renderer *renderer, SDL_Rect salle, SDL_Rect porte, SDL_Rect perso, SDL_Rect tab_obj[N], int VITESSE, int touche1, int touche2, int r, int v, int b);
+perso_t actualisation_perso(SDL_Renderer *renderer, salle_t salle, porte_t porte, perso_t perso, objet_t tab_obj[N], int VITESSE, int touche1, int touche2);
 
 #endif

@@ -12,13 +12,13 @@
 
 #define VITESSE 10
 
-perso_t actualisation_salle(labyrinthe_t lab, perso_t perso, SDL_Renderer *renderer, int r, int v, int b, int touche1, int touche2)
+perso_t actualisation_salle(labyrinthe_t lab, perso_t perso, SDL_Renderer *renderer, int touche1, int touche2)
 {
     nettoyage_ecran(renderer);
 
     // Affichage de la map
 
-    if(affichage(renderer, lab.tab_salle[perso.tag].salle , r, v, b) != 1)
+    if(affichage(renderer, lab.tab_salle[perso.tag].salle , lab.tab_salle[perso.tag].couleur.r, lab.tab_salle[perso.tag].couleur.v, lab.tab_salle[perso.tag].couleur.b) != 1)
     {
         SDL_ExitWithError("Affichage salle raté");
     }
@@ -29,7 +29,7 @@ perso_t actualisation_salle(labyrinthe_t lab, perso_t perso, SDL_Renderer *rende
 
     for(i = 0; i < N; i++)
     {
-        affichage(renderer, lab.tab_salle[perso.tag].tab_obj[i].objet, 0, 255, 255);
+        affichage(renderer, lab.tab_salle[perso.tag].tab_obj[i].objet, lab.tab_salle[perso.tag].tab_obj[i].couleur.r, lab.tab_salle[perso.tag].tab_obj[i].couleur.v, lab.tab_salle[perso.tag].tab_obj[i].couleur.b);
     }
 
     /*
@@ -111,7 +111,6 @@ perso_t actualisation_salle(labyrinthe_t lab, perso_t perso, SDL_Renderer *rende
 
     // Affichage des portes
 
-    printf("Affichage de la première porte !\n");
     if(affichage(renderer, lab.tab_salle[perso.tag].porte[0].porte, 67, 79, 226) != 1)
     {
         SDL_ExitWithError("Affichage porte raté");
@@ -119,7 +118,6 @@ perso_t actualisation_salle(labyrinthe_t lab, perso_t perso, SDL_Renderer *rende
 
     if(perso.tag != 0)
     {
-        printf("Affichage de la seconde porte !\n");
         if(affichage(renderer, lab.tab_salle[perso.tag].porte[1].porte, 67, 79, 226) != 1)
         {
             SDL_ExitWithError("Affichage porte raté");

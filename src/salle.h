@@ -14,6 +14,8 @@
 #include "structure.h"
 #include "actualisation.h"
 
+#define TAILLE_LAB 7
+
 int creation_fen(SDL_Window **fen, SDL_Renderer **renderer, int FEN_LARGEUR, int FEN_HAUTEUR);
 
 salle_t init_salle(salle_t salle, int FEN_LARGEUR, int FEN_HAUTEUR, int SALLE_HAUTEUR, int SALLE_LARGEUR, int tag);

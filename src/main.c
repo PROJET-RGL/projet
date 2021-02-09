@@ -13,7 +13,7 @@
 #include "actualisation.h"
 #include "mob.h"
 
-//
+// gcc src/main.c -o bin/main -I include src/salle.c src/fonction_admin.c src/perso.c src/objet.c src/porte.c src/structure.c src/labyrinthe.c src/actualisation.c src/mob.c -L lib -lmingw32 -lSDL2main -lSDL2
 
 // Fenêtre dimension
 
@@ -37,7 +37,6 @@
 // Stat globale
 
 #define DELAI 100
-#define TAILLE_LAB 7
 
 // Booleen
 
@@ -69,7 +68,7 @@ int main(int argc, char **argv)
 
     srand(time(NULL));
 
-    lab = init_lab(lab, TAILLE_LAB, FEN_LARGEUR, FEN_HAUTEUR, SALLE_HAUTEUR, SALLE_LARGEUR);
+    lab = init_lab(lab, TAILLE_LAB + 1, FEN_LARGEUR, FEN_HAUTEUR, SALLE_HAUTEUR, SALLE_LARGEUR);
 
     // Création personnage !
 
@@ -206,29 +205,44 @@ int main(int argc, char **argv)
 
             if(perso1.tag == 0)
             {
-                printf("Salle une !\n");
-                perso1 = actualisation_salle(lab, perso1, renderer, 0, 255, 0, touche1, touche2);
+                printf("Salle %d !\n", perso1.tag);
+                perso1 = actualisation_salle(lab, perso1, renderer, touche1, touche2);
                 // Si on touche la porte du haut, on passe à la salle suivante et on spawn en bas
-                if(collision_porte(perso1, lab.tab_salle[perso1.tag].porte[0], lab.tab_salle[perso1.tag].porte[0].salle_entree, lab.tab_salle[perso1.tag].porte[0].salle_dest, VITESSE) != 0)
+                if(collision_porte(perso1, lab.tab_salle[perso1.tag].porte[0], lab.tab_salle[perso1.tag].porte[0].salle_entree, lab.tab_salle[perso1.tag].porte[0].salle_dest, VITESSE) != lab.tab_salle[perso1.tag].tag_salle)
                 {
-                    perso1.perso.y = (lab.tab_salle[perso1.tag].salle.y + lab.tab_salle[perso1.tag].salle.h ) - (lab.tab_salle[perso1.tag].porte[1].porte.h)/2 - perso1.perso.h - 100;
-                    perso1.tag++;
+                    perso1.perso.y = (lab.tab_salle[perso1.tag].salle.y + lab.tab_salle[perso1.tag].salle.h ) - (lab.tab_salle[perso1.tag].porte[0].porte.h)/2 - perso1.perso.h - 100;
+                    perso1.tag = lab.tab_salle[perso1.tag].tag_salle + 1;
                 }
                 SDL_Delay(20);
                 break;
-            }else if(perso1.tag > 0 && perso1.tag < 7){
-                printf("Salle suivante !\n");
-                perso1 = actualisation_salle(lab, perso1, renderer, 0, 0, 255, touche1, touche2);
+            }else if(perso1.tag < TAILLE_LAB - 1 && perso1.tag > 0){
+                printf("Salle %d !\n", perso1.tag);
+                perso1 = actualisation_salle(lab, perso1, renderer, touche1, touche2);
                 // Si on touche la porte du haut, on passe à la salle suivante et on spawn en bas
-                if(collision_porte(perso1, lab.tab_salle[perso1.tag].porte[0], lab.tab_salle[perso1.tag].porte[0].salle_entree, lab.tab_salle[perso1.tag].porte[0].salle_dest, VITESSE) != 0)
+                if(collision_porte(perso1, lab.tab_salle[perso1.tag].porte[1], lab.tab_salle[perso1.tag].porte[1].salle_entree, lab.tab_salle[perso1.tag].porte[1].salle_dest, VITESSE) != lab.tab_salle[perso1.tag].tag_salle)
                 {
-                    perso1.perso.y = (lab.tab_salle[perso1.tag].salle.y + lab.tab_salle[perso1.tag].salle.h ) - (lab.tab_salle[perso1.tag].porte[0].porte.h)/2 - perso1.perso.h;
-                    perso1.tag++;
+                    printf("Porte du haut touché !\n");
+                    perso1.perso.y = (lab.tab_salle[perso1.tag].salle.y + lab.tab_salle[perso1.tag].salle.h ) - (lab.tab_salle[perso1.tag].porte[1].porte.h)/2 - perso1.perso.h;
+                    if(perso1.tag < 6)
+                        perso1.tag = lab.tab_salle[perso1.tag].tag_salle + 1;
 
-                }else if(collision_porte(perso1, lab.tab_salle[perso1.tag].porte[1], lab.tab_salle[perso1.tag].porte[1].salle_entree, lab.tab_salle[perso1.tag].porte[1].salle_dest, VITESSE) != 0)
+                }else if(collision_porte(perso1, lab.tab_salle[perso1.tag].porte[0], lab.tab_salle[perso1.tag].porte[0].salle_entree, lab.tab_salle[perso1.tag].porte[0].salle_dest, VITESSE) != lab.tab_salle[perso1.tag].tag_salle)
                 {   // Si on touche la porte du bas, on passe à la salle précédente et on spawn en haut
+                    printf("Porte du bas touché !\n");
+                    perso1.perso.y = (lab.tab_salle[perso1.tag].salle.y) + (lab.tab_salle[perso1.tag].porte[0].porte.h)/2;
+                    perso1.tag = lab.tab_salle[perso1.tag].tag_salle - 1;
+                }
+                SDL_Delay(20);
+                break;
+            }else if(perso1.tag == TAILLE_LAB - 1)
+            {
+                printf("Salle %d !\n", perso1.tag);
+                perso1 = actualisation_salle(lab, perso1, renderer, touche1, touche2);
+                // Si on touche la porte du haut, on passe à la salle suivante et on spawn en bas
+                if(collision_porte(perso1, lab.tab_salle[perso1.tag].porte[1], lab.tab_salle[perso1.tag].porte[1].salle_entree, lab.tab_salle[perso1.tag].porte[1].salle_dest, VITESSE) != lab.tab_salle[perso1.tag].tag_salle)
+                {
                     perso1.perso.y = (lab.tab_salle[perso1.tag].salle.y) + (lab.tab_salle[perso1.tag].porte[1].porte.h)/2;
-                    perso1.tag--;
+                    perso1.tag = lab.tab_salle[perso1.tag].tag_salle - 1;
                 }
                 SDL_Delay(20);
                 break;

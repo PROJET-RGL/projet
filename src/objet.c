@@ -13,6 +13,10 @@
 objet_t init_obj(objet_t obj)
 {
 
+    obj.couleur.r = rand() % 255;
+    obj.couleur.v = rand() % 255;
+    obj.couleur.b = rand() % 255;
+
     obj.objet.w = 50;
     obj.objet.h = 50;
 

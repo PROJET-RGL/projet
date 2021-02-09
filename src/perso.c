@@ -29,11 +29,11 @@ perso_t init_perso(perso_t perso, int FEN_LARGEUR, int FEN_HAUTEUR, int PERSO_HA
     return perso;
 }
 
-SDL_Rect actualisation_perso(SDL_Renderer *renderer, SDL_Rect salle, SDL_Rect porte, SDL_Rect perso, SDL_Rect tab_obj[N], int VITESSE, int touche1, int touche2, int r, int v, int b)
+perso_t actualisation_perso(SDL_Renderer *renderer, salle_t salle, porte_t porte, perso_t perso, objet_t tab_obj[N], int VITESSE, int touche1, int touche2)
 {
     nettoyage_ecran(renderer);
 
-    if(affichage(renderer, salle, r, v, b) != 1)
+    if(affichage(renderer, salle.salle , salle.couleur.r, salle.couleur.v, salle.couleur.b) != 1)
     {
         SDL_ExitWithError("Affichage salle raté");
     }
@@ -42,7 +42,7 @@ SDL_Rect actualisation_perso(SDL_Renderer *renderer, SDL_Rect salle, SDL_Rect po
 
     for(i = 0; i < N; i++)
     {
-        affichage(renderer, tab_obj[i], 0, 255, 255);
+        affichage(renderer, salle.tab_obj[i].objet, salle.tab_obj[i].couleur.r, salle.tab_obj[i].couleur.v, salle.tab_obj[i].couleur.b);
     }
 
     /*
@@ -58,72 +58,83 @@ SDL_Rect actualisation_perso(SDL_Renderer *renderer, SDL_Rect salle, SDL_Rect po
         H + B = 10 + 20 = 30    // On annule le mouvement
     */
 
-    switch(test_colision(perso, salle, touche1, touche2, VITESSE))
+    switch(test_colision(perso.perso, salle.salle, touche1, touche2, VITESSE))
     {
         case 1 :    // Gauche
-            perso.x = perso.x - VITESSE;
+            perso.perso.x = perso.perso.x - VITESSE;
             break;
 
         case 5 :    // Droite
-            perso.x = perso.x + VITESSE;
+            perso.perso.x = perso.perso.x + VITESSE;
             break;
 
         case 10 :   // Haut
-            perso.y = perso.y - VITESSE;
+            perso.perso.y = perso.perso.y - VITESSE;
             break;
 
         case 20 :   // Bas
-            perso.y = perso.y + VITESSE;
+            perso.perso.y = perso.perso.y + VITESSE;
             break;
 
         case 11 :   // Gauche - haut
-            perso.x = perso.x - VITESSE;
-            perso.y = perso.y - VITESSE;
+            perso.perso.x = perso.perso.x - VITESSE;
+            perso.perso.y = perso.perso.y - VITESSE;
             break;
 
         case 21 :   // Gauche - bas
-            perso.x = perso.x - VITESSE;
-            perso.y = perso.y + VITESSE;
+            perso.perso.x = perso.perso.x - VITESSE;
+            perso.perso.y = perso.perso.y + VITESSE;
             break;
 
         case 15 :   // Haut - droite
-            perso.x = perso.x + VITESSE;
-            perso.y = perso.y - VITESSE;
+            perso.perso.x = perso.perso.x + VITESSE;
+            perso.perso.y = perso.perso.y - VITESSE;
             break;
 
         case 25 :   // Bas - droite
-            perso.x = perso.x + VITESSE;
-            perso.y = perso.y + VITESSE;
+            perso.perso.x = perso.perso.x + VITESSE;
+            perso.perso.y = perso.perso.y + VITESSE;
             break;
 
         case 50 :   // On colle à gauche
-            perso.x = salle.x + 1;
+            perso.perso.x = salle.salle.x + 1;
             break;
 
         case 51 :   // On colle à droite
-            perso.x = (salle.x + salle.w) - perso.w - 1;
+            perso.perso.x = (salle.salle.x + salle.salle.w) - perso.perso.w - 1;
             break;
 
         case 52 :   // On colle en haut
-            perso.y = salle.y + 1;
+            perso.perso.y = salle.salle.y + 1;
             break;
 
         case 53 :   // On colle en bas
-            perso.y = (salle.y + salle.h) - perso.h - 1;
+            perso.perso.y = (salle.salle.y + salle.salle.h) - perso.perso.h - 1;
             break;
 
         default : break;
     }
 
 
-    if(affichage(renderer, perso, 255, 20, 20) != 1)
+    if(affichage(renderer, perso.perso, 255, 20, 20) != 1)
     {
         SDL_ExitWithError("Affichage perso raté");
     }
 
-    if(affichage(renderer, porte, 67, 79, 226) != 1)
+    if(perso.tag != 0 && perso.tag != 6)
     {
-        SDL_ExitWithError("Affichage porte raté");
+        for(i = 0; i < 2; i++)
+        {
+            if(affichage(renderer, salle.porte[i].porte, 67, 79, 226) != 1)
+            {
+                SDL_ExitWithError("Affichage porte raté");
+            }
+        }
+    }else{
+        if(affichage(renderer, salle.porte[i].porte, 67, 79, 226) != 1)
+        {
+            SDL_ExitWithError("Affichage porte raté");
+        }
     }
 
     SDL_RenderPresent(renderer);

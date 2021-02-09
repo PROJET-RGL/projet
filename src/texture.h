@@ -1,6 +1,3 @@
-#ifndef actualisation_H
-#define actualisation_H
-
 #include <stdio.h>
 #include <SDL.h>
 #include <stdlib.h>
@@ -11,6 +8,4 @@
 #include "salle.h"
 #include "structure.h"
 
-perso_t actualisation_salle(labyrinthe_t lab, perso_t perso, SDL_Renderer *renderer, int touche1, int touche2);
-
-#endif
+SDL_Texture init_texture(SDL_Renderer **renderer, int HAUTEUR, int LARGEUR, SDL_Rect rect, char c[50]);

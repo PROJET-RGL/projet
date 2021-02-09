@@ -30,6 +30,11 @@ int creation_fen(SDL_Window **fen, SDL_Renderer **renderer, int FEN_LARGEUR, int
 
 salle_t init_salle(salle_t salle, int FEN_LARGEUR, int FEN_HAUTEUR, int SALLE_HAUTEUR, int SALLE_LARGEUR, int tag)
 {
+    // Ininitalisation des couleurs
+
+    salle.couleur.r = rand() % 255;
+    salle.couleur.v = rand() % 255;
+    salle.couleur.b = rand() % 255;
 
     // Initialisation des coordonnées
 
@@ -43,7 +48,7 @@ salle_t init_salle(salle_t salle, int FEN_LARGEUR, int FEN_HAUTEUR, int SALLE_HA
 
     int nbre_objt, i;
 
-    nbre_objt = rand() % 3;
+    nbre_objt = 1 + rand() % 3;
 
     for(i = 0; i < nbre_objt; i++)
     {
@@ -67,11 +72,19 @@ salle_t init_salle(salle_t salle, int FEN_LARGEUR, int FEN_HAUTEUR, int SALLE_HA
     {
         salle.porte[0] = init_porte(salle.porte[0], (salle.salle.x + salle.salle.w)/2, salle.salle.y, tag, tag + 1, 'H');
 
-    }else if(tag > 0 && tag < 10)
+    }else if(0 < tag && tag < TAILLE_LAB - 1)
     {
         salle.porte[0] = init_porte(salle.porte[0], (salle.salle.x + salle.salle.w)/2, (salle.salle.y + salle.salle.h), tag, tag - 1, 'H');
+        salle.porte[1] = init_porte(salle.porte[1], (salle.salle.x + salle.salle.w)/2, (salle.salle.y), tag, tag + 1, 'H');
+    }else if(tag == TAILLE_LAB - 1)
+    {
         salle.porte[1] = init_porte(salle.porte[1], (salle.salle.x + salle.salle.w)/2, (salle.salle.y + salle.salle.h), tag, tag + 1, 'H');
+
     }
+
+    // Initialisation du tag salle
+
+    salle.tag_salle = tag;
 
     return salle;
 }
