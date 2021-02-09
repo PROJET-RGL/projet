@@ -49,6 +49,9 @@ SDL_Event event;
 labyrinthe_t lab;
 perso_t perso1;
 objet_t objet1;
+SDL_Rect fenetre;
+SDL_Surface *image = NULL;
+
 int perso_salle, passage;
 
 int main(int argc, char **argv)
@@ -62,6 +65,14 @@ int main(int argc, char **argv)
         SDL_ExitWithError("Création du rendu raté, erreur 404 !");
     }
 
+    // Rectangle de la fenetre
+
+    fenetre.x = 0;
+    fenetre.y = 0;
+
+    fenetre.h = FEN_HAUTEUR;
+    fenetre.w = FEN_LARGEUR;
+
     nettoyage_ecran(renderer);
 
     // Création lab
@@ -73,6 +84,48 @@ int main(int argc, char **argv)
     // Création personnage !
 
     perso1 = init_perso(perso1, FEN_LARGEUR, FEN_HAUTEUR, PERSO_HAUTEUR, PERSO_LARGEUR);
+
+    // Initialisation de la texture des salles !!!
+
+
+
+    image = SDL_LoadBMP("src/Salle.BMP");               // <---- " ", c
+
+    if(image == NULL)
+    {
+        clean_ressources(fen, renderer, NULL);
+        SDL_ExitWithError("Erreur du chargement de l'image");
+    }
+
+    int i = 0;
+
+        lab.texture = SDL_CreateTextureFromSurface(renderer, image);
+
+        if(lab.texture == NULL)
+        {
+            clean_ressources(fen, renderer, lab.texture);
+            SDL_ExitWithError("Erreur de création de la texture");
+        }
+
+        if(SDL_QueryTexture(lab.texture, NULL, NULL, &fenetre.w, &fenetre.h) != 0)
+        {
+            clean_ressources(fen, renderer, lab.texture);
+            SDL_ExitWithError("Erreur de chargement de la texture");
+        }
+
+    SDL_FreeSurface(image);
+
+    if(SDL_RenderCopy(renderer, lab.texture, NULL, &fenetre) != 0)
+    {
+        clean_ressources(fen, renderer, lab.texture);
+        SDL_ExitWithError("Impossible d'afficher la texture !\n");
+    }
+
+    printf("C'est coller !");
+    SDL_RenderPresent(renderer);
+    SDL_Delay(5000);
+
+    // ---------------------------------------------------------------------------------
 
     // Boucle de jeu !
 

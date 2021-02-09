@@ -64,12 +64,14 @@ struct salle_s              // Création de la salle avec ses stats
     mob_t tab_mob[M];       // le tableau de mob de la salle en question
     porte_t porte[P];       // le tableau des portes de la salle en question
     couleur_t couleur;
+    SDL_Texture *texture;
 };
 
 struct labyrinthe_s         // Création du labyrinthe en fonction des salles
 {
     int nb;                 // Nombre de salle
     salle_t tab_salle[S];   // Tableau de salle
+    SDL_Texture *texture;
 };
 
 #endif

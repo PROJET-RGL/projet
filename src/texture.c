@@ -7,10 +7,9 @@
 #include "fonction_admin.h"
 #include "salle.h"
 #include "structure.h"
-#include "texture.h"
 
 /*
-SDL_Texture init_texture(SDL_Renderer **renderer, int HAUTEUR, int LARGEUR, SDL_Rect rect, char c[50]) // char *c *c = "src/salle.BMP"
+SDL_Texture init_texture(SDL_Renderer **renderer, int HAUTEUR, int LARGEUR, SDL_Rect rect, char c[50])
 {
     SDL_Surface *image = NULL;
     SDL_Texture *texture = NULL;
@@ -30,10 +29,11 @@ SDL_Texture init_texture(SDL_Renderer **renderer, int HAUTEUR, int LARGEUR, SDL_
         SDL_ExitWithError("Erreur de création de la texture");
     }
 
-    if(SDL_QueryTexture(texture, NULL, NULL, LARGEUR, HAUTEUR) != 0)
+    if(SDL_QueryTexture(texture, NULL, NULL, &rect.w, &rect.h) != 0)
     {
         SDL_ExitWithError("Erreur de chargement de la texture");
     }
 
+
     return texture;
-} */
+}*/

@@ -48,12 +48,12 @@ void nettoyage_ecran(SDL_Renderer *renderer)
 
 int affichage(SDL_Renderer *renderer, SDL_Rect cible, int r, int v, int b)
 {
-    SDL_SetRenderDrawColor(renderer, r, v, b, SDL_ALPHA_OPAQUE);
+    /*SDL_SetRenderDrawColor(renderer, r, v, b, SDL_ALPHA_OPAQUE);
 
     if(SDL_RenderDrawRect(renderer, &cible) != 0)
     {
         SDL_ExitWithError("Affichage raté pour le rectangle cible !");
-    }
+    }*/
 
     return 1;
 }
