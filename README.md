@@ -8,14 +8,12 @@
   - Jules Beuvier
   - Thomas André
 
-# v0.0.03
+# v0.0.1
 
 ------- Patch Notes -------
 
-Ajout de création d'objet (sans hitbox)
-Deux salles reliées entre elles
-Porte générer entre deux salles
+mini-jeu sortie, contrôle ZQSD, manger les petits mobs et c'est gagner
 
 ---------------------------
 
-# DATE : 05/02/2021
+# DATE : 10/02/2021
