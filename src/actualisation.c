@@ -24,9 +24,9 @@ perso_t actualisation_salle(labyrinthe_t lab, perso_t perso, SDL_Renderer *rende
         SDL_ExitWithError("Impossible d'afficher la texture !\n");
     }
 
-    /*              DEBUG DE LA HITBOX DU SOL
+    /*              DEBUG DE LA HITBOX DU SOL           
 
-    if(affichage(renderer, lab.tab_salle[perso.tag].salle , lab.tab_salle[perso.tag].couleur.r, lab.tab_salle[perso.tag].couleur.v, lab.tab_salle[perso.tag].couleur.b) != 1)
+    if(affichage(renderer, lab.tab_salle[perso.tag].salle , 255, 0, 0) != 1)
     {
         SDL_ExitWithError("Affichage salle raté");
     }
@@ -39,9 +39,9 @@ perso_t actualisation_salle(labyrinthe_t lab, perso_t perso, SDL_Renderer *rende
 
     for(i = 0; i < lab.tab_salle[perso.tag].nb_objt; i++)
     {
-        /*          DEBUG DE LA HITBOX OBJET
+        /*          DEBUG DE LA HITBOX OBJET    
 
-        affichage(renderer, lab.tab_salle[perso.tag].tab_obj[i].objet, lab.tab_salle[perso.tag].tab_obj[i].couleur.r, lab.tab_salle[perso.tag].tab_obj[i].couleur.v, lab.tab_salle[perso.tag].tab_obj[i].couleur.b);
+        affichage(renderer, lab.tab_salle[perso.tag].tab_obj[i].objet, 255, 0, 0);
 
         */
 

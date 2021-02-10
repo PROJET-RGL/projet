@@ -12,6 +12,8 @@
 #include "structure.h"
 #include "actualisation.h"
 #include "mob.h"
+#include "menu.h"
+#include "option.h"
 
 // gcc src/main.c -o bin/main -I include src/salle.c src/fonction_admin.c src/perso.c src/objet.c src/porte.c src/structure.c src/labyrinthe.c src/actualisation.c src/mob.c -L lib -lmingw32 -lSDL2main -lSDL2
 
@@ -56,7 +58,7 @@ int perso_salle, passage;
 
 int main(int argc, char **argv)
 {
-    int touche1 = 0, touche2 = 0, j = 0;
+    int touche1 = 0, touche2 = 0, j = 0, exit_menu;
 
     perso_salle = 1;
 
@@ -75,11 +77,15 @@ int main(int argc, char **argv)
 
     nettoyage_ecran(renderer);
 
+    // Appel du menu
+
+    exit_menu = load_menu(renderer, fen, FEN_LARGEUR, FEN_HAUTEUR);
+
     // Création lab
 
     srand(time(NULL));
 
-    lab = init_lab(lab, TAILLE_LAB + 1, FEN_LARGEUR, FEN_HAUTEUR, SALLE_HAUTEUR, SALLE_LARGEUR);
+    lab = init_lab(lab, TAILLE_LAB, FEN_LARGEUR, FEN_HAUTEUR, SALLE_HAUTEUR, SALLE_LARGEUR);
 
     // Création personnage !
 
@@ -87,7 +93,7 @@ int main(int argc, char **argv)
 
     // Initialisation de la texture des salles !!!
 
-    image = SDL_LoadBMP("src/Salle.BMP");               // <---- " ", c
+    image = SDL_LoadBMP("src/Img/Salle.BMP");               // <---- " ", c
 
     if(image == NULL)
     {
@@ -97,15 +103,15 @@ int main(int argc, char **argv)
 
     int i = 0;
 
-        lab.texture = SDL_CreateTextureFromSurface(renderer, image);
+    lab.texture = SDL_CreateTextureFromSurface(renderer, image);
 
-        if(lab.texture == NULL)
+    if(lab.texture == NULL)
         {
             clean_ressources(fen, renderer, lab.texture);
             SDL_ExitWithError("Erreur de création de la texture");
         }
 
-        if(SDL_QueryTexture(lab.texture, NULL, NULL, &fenetre.w, &fenetre.h) != 0)
+    if(SDL_QueryTexture(lab.texture, NULL, NULL, &fenetre.w, &fenetre.h) != 0)
         {
             clean_ressources(fen, renderer, lab.texture);
             SDL_ExitWithError("Erreur de chargement de la texture");
@@ -113,15 +119,9 @@ int main(int argc, char **argv)
 
     SDL_FreeSurface(image);
 
-    if(SDL_RenderCopy(renderer, lab.texture, NULL, &fenetre) != 0)
-    {
-        clean_ressources(fen, renderer, lab.texture);
-        SDL_ExitWithError("Impossible d'afficher la texture !\n");
-    }
-
     // Initialisation des textures objets !
 
-    image = SDL_LoadBMP("src/Poro.BMP");               // <---- " ", c
+    image = SDL_LoadBMP("src/Img/Poro.BMP");               // <---- " ", c
 
     if(image == NULL)
     {
@@ -158,14 +158,24 @@ int main(int argc, char **argv)
     }
     SDL_FreeSurface(image);
 
-    printf("C'est coller !");
+    nettoyage_ecran(renderer);
+
+    if(SDL_RenderCopy(renderer, lab.texture, NULL, &fenetre) != 0)
+    {
+        clean_ressources(fen, renderer, lab.texture);
+        SDL_ExitWithError("Impossible d'afficher la texture !\n");
+    }
+
     SDL_RenderPresent(renderer);
 
     // ---------------------------------------------------------------------------------
 
-    // Boucle de jeu !
-
     SDL_bool program_lunched = TRUE;
+
+    if(exit_menu == FALSE)
+        program_lunched = FALSE;
+
+    // Boucle de jeu !
 
     while(program_lunched != FALSE)
     {

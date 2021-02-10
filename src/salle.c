@@ -12,6 +12,8 @@
 #include "objet.h"
 #include "mob.h"
 
+#define NB_OBJET 5
+
 
 int creation_fen(SDL_Window **fen, SDL_Renderer **renderer, int FEN_LARGEUR, int FEN_HAUTEUR)
 {
@@ -48,7 +50,7 @@ salle_t init_salle(salle_t salle, int FEN_LARGEUR, int FEN_HAUTEUR, int SALLE_HA
 
     int nbre_objt, i, j;
 
-    nbre_objt = 5;
+    nbre_objt = NB_OBJET;
 
     for(i = 0; i < nbre_objt; i++)
     {
