@@ -8,7 +8,7 @@
   - Jules Beuvier
   - Thomas André
 
-# v0.0.03
+# v0.0.09
 
 ------- Patch Notes -------
 
@@ -16,4 +16,4 @@ Concaténation du menu avec le jeu
 
 ---------------------------
 
-# DATE : 05/02/2021
+# DATE : 10/02/2021
