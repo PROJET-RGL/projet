@@ -12,7 +12,8 @@
 #include "objet.h"
 #include "mob.h"
 
-#define NB_OBJET 5
+#define NB_OBJET 0
+#define NB_MOB 5
 
 
 int creation_fen(SDL_Window **fen, SDL_Renderer **renderer, int FEN_LARGEUR, int FEN_HAUTEUR)
@@ -68,12 +69,15 @@ salle_t init_salle(salle_t salle, int FEN_LARGEUR, int FEN_HAUTEUR, int SALLE_HA
 
     int nbre_mob;
 
-    nbre_mob = rand() % 5;
+    nbre_mob = NB_MOB;
 
     for(i = 0; i < nbre_mob; i++)
     {
         salle.tab_mob[i] = init_mob(salle.tab_mob[i]);
     }
+
+    salle.nb_mob = NB_MOB;
+    salle.nb_mob_mort = 0;
 
     // Initialisation des portes de la salles !
 

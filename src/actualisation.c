@@ -35,20 +35,43 @@ perso_t actualisation_salle(labyrinthe_t lab, perso_t perso, SDL_Renderer *rende
 
     // Affichage des objets
 
+    /*
+
     int i = 0;
 
     for(i = 0; i < lab.tab_salle[perso.tag].nb_objt; i++)
     {
-        /*          DEBUG DE LA HITBOX OBJET    
+                  DEBUG DE LA HITBOX OBJET
 
         affichage(renderer, lab.tab_salle[perso.tag].tab_obj[i].objet, 255, 0, 0);
-
-        */
 
         if(SDL_RenderCopy(renderer, lab.tab_salle[perso.tag].tab_obj[i].text_objet, NULL, &lab.tab_salle[perso.tag].tab_obj[i].objet) != 0)
         {
             clean_ressources(NULL, renderer, lab.tab_salle[perso.tag].tab_obj[i].text_objet);
             SDL_ExitWithError("Impossible d'afficher la texture !\n");
+        }
+    }
+
+    */
+
+    // Affichage des mobs
+
+    int i = 0;
+
+    for(i = 0; i < lab.tab_salle[perso.tag].nb_mob; i++)
+    {
+        /*          DEBUG DE LA HITBOX MOB
+
+        affichage(renderer, lab.tab_salle[perso.tag].tab_mob[i].mob, 255, 0, 0);
+
+        */
+        if(lab.tab_salle[perso.tag].tab_mob[i].pv != 0)
+        {
+            if(SDL_RenderCopy(renderer, lab.tab_salle[perso.tag].tab_mob[i].texture, NULL, &lab.tab_salle[perso.tag].tab_mob[i].mob) != 0)
+            {
+                clean_ressources(NULL, renderer, lab.tab_salle[perso.tag].tab_mob[i].texture);
+                SDL_ExitWithError("Impossible d'afficher la texture !\n");
+            }
         }
     }
 

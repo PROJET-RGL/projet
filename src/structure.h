@@ -46,6 +46,7 @@ struct mob_s                // Création d'un mob
 {
     SDL_Rect mob;           // Coordonées du mob en question
     int pv;                 // PV du mob
+    SDL_Texture *texture;   // Texture du mob
 };
 
 struct objet_s              // Création de l'objet
@@ -61,6 +62,8 @@ struct salle_s              // Création de la salle avec ses stats
     SDL_Rect salle;         // les coordonnées de la salle
     int tag_salle;          // Le tag de la salle en question
     int nb_objt;
+    int nb_mob;
+    int nb_mob_mort;
     objet_t tab_obj[O];     // le tableau d'objet de la salle en question
     mob_t tab_mob[M];       // le tableau de mob de la salle en question
     porte_t porte[P];       // le tableau des portes de la salle en question

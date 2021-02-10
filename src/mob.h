@@ -18,5 +18,6 @@
 
 mob_t init_mob(mob_t mob);
 
+mob_t colision_mob(mob_t mob1, perso_t perso);
 
 #endif

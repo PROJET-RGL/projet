@@ -119,6 +119,8 @@ int main(int argc, char **argv)
 
     SDL_FreeSurface(image);
 
+
+
     // Initialisation des textures objets !
 
     image = SDL_LoadBMP("src/Img/Poro.BMP");               // <---- " ", c
@@ -158,7 +160,51 @@ int main(int argc, char **argv)
     }
     SDL_FreeSurface(image);
 
+
+
+    // Initialisation des textures mobs !
+
+    image = SDL_LoadBMP("src/Img/Poro.BMP");               // <---- " ", c
+
+    if(image == NULL)
+    {
+        clean_ressources(fen, renderer, NULL);
+        SDL_ExitWithError("Erreur du chargement de l'image");
+    }
+
+    SDL_SetColorKey(image, SDL_TRUE, SDL_MapRGB(image->format, 30, 6, 236));
+
+    for(j = 0 ; j < lab.nb ; j++)
+    {
+        for(i = 0; i < lab.tab_salle[j].nb_mob; i++)
+        {
+            lab.tab_salle[j].tab_mob[i].texture = SDL_CreateTextureFromSurface(renderer, image);
+            if( lab.tab_salle[j].tab_mob[i].texture == NULL)
+            {
+                clean_ressources(fen, renderer, lab.tab_salle[j].tab_mob[i].texture);
+                SDL_ExitWithError("Erreur de création de la texture");
+            }
+
+            if(SDL_QueryTexture(lab.tab_salle[j].tab_mob[i].texture, NULL, NULL, &lab.tab_salle[j].tab_mob[i].mob.w, &lab.tab_salle[j].tab_mob[i].mob.h) != 0)
+            {
+                clean_ressources(fen, renderer, lab.tab_salle[j].tab_mob[i].texture);
+                SDL_ExitWithError("Erreur de chargement de la texture");
+            }
+
+            if(SDL_RenderCopy(renderer, lab.tab_salle[j].tab_mob[i].texture, NULL, &lab.tab_salle[j].tab_mob[i].mob) != 0)
+            {
+                clean_ressources(fen, renderer, lab.tab_salle[j].tab_mob[i].texture);
+                SDL_ExitWithError("Impossible d'afficher la texture !\n");
+            }
+        }
+    }
+    SDL_FreeSurface(image);
+
     nettoyage_ecran(renderer);
+
+
+
+    // Affichage du sol de la salle
 
     if(SDL_RenderCopy(renderer, lab.texture, NULL, &fenetre) != 0)
     {
@@ -306,44 +352,84 @@ int main(int argc, char **argv)
             {
                 printf("Salle %d !\n", perso1.tag);
                 perso1 = actualisation_salle(lab, perso1, renderer, fenetre, touche1, touche2);
+
+                for(i = 0; i < lab.tab_salle[perso1.tag].nb_mob; i++)
+                {
+                    if(lab.tab_salle[perso1.tag].tab_mob[i].pv != 0)
+                    {
+                        lab.tab_salle[perso1.tag].tab_mob[i] = colision_mob(lab.tab_salle[perso1.tag].tab_mob[i], perso1);
+                        if(lab.tab_salle[perso1.tag].tab_mob[i].pv == 0)
+                            lab.tab_salle[perso1.tag].nb_mob_mort++;
+                    }
+                }
+
                 // Si on touche la porte du haut, on passe à la salle suivante et on spawn en bas
-                if(collision_porte(perso1, lab.tab_salle[perso1.tag].porte[0], lab.tab_salle[perso1.tag].porte[0].salle_entree, lab.tab_salle[perso1.tag].porte[0].salle_dest, VITESSE) != lab.tab_salle[perso1.tag].tag_salle)
+                if((collision_porte(perso1, lab.tab_salle[perso1.tag].porte[0], lab.tab_salle[perso1.tag].porte[0].salle_entree, lab.tab_salle[perso1.tag].porte[0].salle_dest, VITESSE) != lab.tab_salle[perso1.tag].tag_salle) && (lab.tab_salle[perso1.tag].nb_mob_mort == 5))
                 {
                     perso1.perso.y = (lab.tab_salle[perso1.tag].salle.y + lab.tab_salle[perso1.tag].salle.h ) - (lab.tab_salle[perso1.tag].porte[0].porte.h)/2 - perso1.perso.h - 100;
                     perso1.tag = lab.tab_salle[perso1.tag].tag_salle + 1;
                 }
-                SDL_Delay(0);
+                SDL_Delay(10);
                 break;
+
             }else if(perso1.tag < TAILLE_LAB - 1 && perso1.tag > 0){
                 printf("Salle %d !\n", perso1.tag);
                 perso1 = actualisation_salle(lab, perso1, renderer, fenetre, touche1, touche2);
+
+                for(i = 0; i < lab.tab_salle[perso1.tag].nb_mob; i++)
+                {
+                    printf("%d mobs restants\n", lab.tab_salle[perso1.tag].nb_mob);
+                    if(lab.tab_salle[perso1.tag].tab_mob[i].pv != 0)
+                    {
+                        lab.tab_salle[perso1.tag].tab_mob[i] = colision_mob(lab.tab_salle[perso1.tag].tab_mob[i], perso1);
+                        if(lab.tab_salle[perso1.tag].tab_mob[i].pv == 0)
+                            lab.tab_salle[perso1.tag].nb_mob_mort++;
+                    }
+                }
+
                 // Si on touche la porte du haut, on passe à la salle suivante et on spawn en bas
-                if(collision_porte(perso1, lab.tab_salle[perso1.tag].porte[1], lab.tab_salle[perso1.tag].porte[1].salle_entree, lab.tab_salle[perso1.tag].porte[1].salle_dest, VITESSE) != lab.tab_salle[perso1.tag].tag_salle)
+                if((collision_porte(perso1, lab.tab_salle[perso1.tag].porte[1], lab.tab_salle[perso1.tag].porte[1].salle_entree, lab.tab_salle[perso1.tag].porte[1].salle_dest, VITESSE) != lab.tab_salle[perso1.tag].tag_salle) && (lab.tab_salle[perso1.tag].nb_mob_mort == 5))
                 {
                     printf("Porte du haut touché !\n");
                     perso1.perso.y = (lab.tab_salle[perso1.tag].salle.y + lab.tab_salle[perso1.tag].salle.h ) - (lab.tab_salle[perso1.tag].porte[1].porte.h)/2 - perso1.perso.h;
                     if(perso1.tag < 6)
                         perso1.tag = lab.tab_salle[perso1.tag].tag_salle + 1;
 
-                }else if(collision_porte(perso1, lab.tab_salle[perso1.tag].porte[0], lab.tab_salle[perso1.tag].porte[0].salle_entree, lab.tab_salle[perso1.tag].porte[0].salle_dest, VITESSE) != lab.tab_salle[perso1.tag].tag_salle)
+                }else if((collision_porte(perso1, lab.tab_salle[perso1.tag].porte[0], lab.tab_salle[perso1.tag].porte[0].salle_entree, lab.tab_salle[perso1.tag].porte[0].salle_dest, VITESSE) != lab.tab_salle[perso1.tag].tag_salle) && (lab.tab_salle[perso1.tag].nb_mob_mort == 5))
                 {   // Si on touche la porte du bas, on passe à la salle précédente et on spawn en haut
                     printf("Porte du bas touché !\n");
                     perso1.perso.y = (lab.tab_salle[perso1.tag].salle.y) + (lab.tab_salle[perso1.tag].porte[0].porte.h)/2;
                     perso1.tag = lab.tab_salle[perso1.tag].tag_salle - 1;
                 }
-                SDL_Delay(0);
+                SDL_Delay(10);
                 break;
+
             }else if(perso1.tag == TAILLE_LAB - 1)
             {
                 printf("Salle %d !\n", perso1.tag);
                 perso1 = actualisation_salle(lab, perso1, renderer, fenetre, touche1, touche2);
+
+                for(i = 0; i < lab.tab_salle[perso1.tag].nb_mob; i++)
+                {
+                    printf("%d mobs restants\n", lab.tab_salle[perso1.tag].nb_mob);
+                    if(lab.tab_salle[perso1.tag].tab_mob[i].pv != 0)
+                    {
+                        lab.tab_salle[perso1.tag].tab_mob[i] = colision_mob(lab.tab_salle[perso1.tag].tab_mob[i], perso1);
+                        if(lab.tab_salle[perso1.tag].tab_mob[i].pv == 0)
+                            lab.tab_salle[perso1.tag].nb_mob_mort++;
+                    }
+                }
+
+                if(lab.tab_salle[perso1.tag].nb_mob_mort == 5)
+                    program_lunched = FALSE;
+
                 // Si on touche la porte du haut, on passe à la salle suivante et on spawn en bas
-                if(collision_porte(perso1, lab.tab_salle[perso1.tag].porte[1], lab.tab_salle[perso1.tag].porte[1].salle_entree, lab.tab_salle[perso1.tag].porte[1].salle_dest, VITESSE) != lab.tab_salle[perso1.tag].tag_salle)
+                if((collision_porte(perso1, lab.tab_salle[perso1.tag].porte[1], lab.tab_salle[perso1.tag].porte[1].salle_entree, lab.tab_salle[perso1.tag].porte[1].salle_dest, VITESSE) != lab.tab_salle[perso1.tag].tag_salle) && (lab.tab_salle[perso1.tag].nb_mob_mort == 5))
                 {
                     perso1.perso.y = (lab.tab_salle[perso1.tag].salle.y) + (lab.tab_salle[perso1.tag].porte[1].porte.h)/2;
                     perso1.tag = lab.tab_salle[perso1.tag].tag_salle - 1;
                 }
-                SDL_Delay(0);
+                SDL_Delay(10);
                 break;
             }
         }
