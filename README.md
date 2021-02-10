@@ -12,9 +12,7 @@
 
 ------- Patch Notes -------
 
-Ajout de création d'objet (sans hitbox)
-Deux salles reliées entre elles
-Porte générer entre deux salles
+Concaténation du menu avec le jeu
 
 ---------------------------
 
