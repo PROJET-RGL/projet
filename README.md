@@ -8,14 +8,14 @@
   - Jules Beuvier
   - Thomas André
 
-# v0.0.03
+# v0.0.07
 
 ------- Patch Notes -------
 
-Ajout de création d'objet (sans hitbox)
-Deux salles reliées entre elles
-Porte générer entre deux salles
+Ajout de texture du fond de salle, \n
+Modification des coordonnées de la salle, \n
+Modification des structures de données
 
 ---------------------------
 
-# DATE : 05/02/2021
+# DATE : 09/02/2021
