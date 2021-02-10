@@ -8,14 +8,12 @@
   - Jules Beuvier
   - Thomas André
 
-# v0.0.03
+# v0.0.08
 
 ------- Patch Notes -------
 
-Ajout de création d'objet (sans hitbox)
-Deux salles reliées entre elles
-Porte générer entre deux salles
+ajout des textures objets, et création des anti-collision entre objets tester pour 5, 10, 50 objets, avec max 100
 
 ---------------------------
 
-# DATE : 05/02/2021
+# DATE : 10/02/2021
