@@ -12,8 +12,8 @@ perso_t init_perso(perso_t perso, int FEN_LARGEUR, int FEN_HAUTEUR, int PERSO_HA
 {
     // Coordonnées du personnage
 
-    perso.perso.x = (FEN_LARGEUR - PERSO_LARGEUR) / 2;
-    perso.perso.y = (FEN_HAUTEUR - PERSO_HAUTEUR) / 2;
+    perso.perso.x = (FEN_LARGEUR - PERSO_LARGEUR) / 2 - 20;
+    perso.perso.y = (FEN_HAUTEUR - PERSO_HAUTEUR) / 2 - 20;
 
     perso.perso.w = PERSO_LARGEUR;
     perso.perso.h = PERSO_HAUTEUR;

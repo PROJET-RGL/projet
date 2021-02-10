@@ -46,14 +46,21 @@ salle_t init_salle(salle_t salle, int FEN_LARGEUR, int FEN_HAUTEUR, int SALLE_HA
 
     // Initialisation des objets de la salle
 
-    int nbre_objt, i;
+    int nbre_objt, i, j;
 
-    nbre_objt = 1 + rand() % 3;
+    nbre_objt = 5;
 
     for(i = 0; i < nbre_objt; i++)
     {
         salle.tab_obj[i] = init_obj(salle.tab_obj[i]);
+
+        for(j = 0 ; j < i ; j++)
+        {
+            salle.tab_obj[i] = compare_objet(salle.tab_obj[j], salle.tab_obj[i]);      // Si l'objet 1 rentre dans l'obet 2, alors on réaffecte une valeur de coords.
+        }
     }
+
+    salle.nb_objt = nbre_objt;
 
     // Initialisation des mobs de la map
 
@@ -70,15 +77,15 @@ salle_t init_salle(salle_t salle, int FEN_LARGEUR, int FEN_HAUTEUR, int SALLE_HA
 
     if(tag == 0)
     {
-        salle.porte[0] = init_porte(salle.porte[0], (salle.salle.x + salle.salle.w)/2, salle.salle.y, tag, tag + 1, 'H');
+        salle.porte[0] = init_porte(salle.porte[0], (salle.salle.x + salle.salle.w)/2 - 30, salle.salle.y, tag, tag + 1, 'H');
 
     }else if(0 < tag && tag < TAILLE_LAB - 1)
     {
-        salle.porte[0] = init_porte(salle.porte[0], (salle.salle.x + salle.salle.w)/2, (salle.salle.y + salle.salle.h), tag, tag - 1, 'H');
-        salle.porte[1] = init_porte(salle.porte[1], (salle.salle.x + salle.salle.w)/2, (salle.salle.y), tag, tag + 1, 'H');
+        salle.porte[0] = init_porte(salle.porte[0], (salle.salle.x + salle.salle.w)/2 - 30, (salle.salle.y + salle.salle.h), tag, tag - 1, 'H');
+        salle.porte[1] = init_porte(salle.porte[1], (salle.salle.x + salle.salle.w)/2 - 30, (salle.salle.y), tag, tag + 1, 'H');
     }else if(tag == TAILLE_LAB - 1)
     {
-        salle.porte[1] = init_porte(salle.porte[1], (salle.salle.x + salle.salle.w)/2, (salle.salle.y + salle.salle.h), tag, tag + 1, 'H');
+        salle.porte[1] = init_porte(salle.porte[1], (salle.salle.x + salle.salle.w)/2 - 30, (salle.salle.y + salle.salle.h), tag, tag - 1, 'H');
 
     }
 

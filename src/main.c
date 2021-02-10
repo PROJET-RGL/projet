@@ -22,8 +22,8 @@
 
 // Salle dimension
 
-#define SALLE_LARGEUR (FEN_LARGEUR/10)*8
-#define SALLE_HAUTEUR (FEN_HAUTEUR/10)*8
+#define SALLE_LARGEUR (FEN_LARGEUR/10)*8 + 45
+#define SALLE_HAUTEUR (FEN_HAUTEUR/10)*8 - 80
 
 // Personnage Dimension
 
@@ -56,7 +56,7 @@ int perso_salle, passage;
 
 int main(int argc, char **argv)
 {
-    int touche1 = 0, touche2 = 0;
+    int touche1 = 0, touche2 = 0, j = 0;
 
     perso_salle = 1;
 
@@ -86,8 +86,6 @@ int main(int argc, char **argv)
     perso1 = init_perso(perso1, FEN_LARGEUR, FEN_HAUTEUR, PERSO_HAUTEUR, PERSO_LARGEUR);
 
     // Initialisation de la texture des salles !!!
-
-
 
     image = SDL_LoadBMP("src/Salle.BMP");               // <---- " ", c
 
@@ -121,9 +119,47 @@ int main(int argc, char **argv)
         SDL_ExitWithError("Impossible d'afficher la texture !\n");
     }
 
+    // Initialisation des textures objets !
+
+    image = SDL_LoadBMP("src/Poro.BMP");               // <---- " ", c
+
+    if(image == NULL)
+    {
+        clean_ressources(fen, renderer, NULL);
+        SDL_ExitWithError("Erreur du chargement de l'image");
+    }
+
+    SDL_SetColorKey(image, SDL_TRUE, SDL_MapRGB(image->format, 30, 6, 236));
+
+    for(j = 0 ; j < lab.nb ; j++)
+    {
+        for(i = 0; i < lab.tab_salle[j].nb_objt; i++)
+        {
+            lab.tab_salle[j].tab_obj[i].text_objet = SDL_CreateTextureFromSurface(renderer, image);
+
+            if(lab.tab_salle[j].tab_obj[i].text_objet == NULL)
+            {
+                clean_ressources(fen, renderer, lab.tab_salle[j].tab_obj[i].text_objet);
+                SDL_ExitWithError("Erreur de création de la texture");
+            }
+
+            if(SDL_QueryTexture(lab.tab_salle[j].tab_obj[i].text_objet, NULL, NULL, &lab.tab_salle[j].tab_obj[i].objet.w, &lab.tab_salle[j].tab_obj[i].objet.h) != 0)
+            {
+                clean_ressources(fen, renderer, lab.tab_salle[j].tab_obj[i].text_objet);
+                SDL_ExitWithError("Erreur de chargement de la texture");
+            }
+
+            if(SDL_RenderCopy(renderer, lab.tab_salle[j].tab_obj[i].text_objet, NULL, &lab.tab_salle[j].tab_obj[i].objet) != 0)
+            {
+                clean_ressources(fen, renderer, lab.tab_salle[j].tab_obj[i].text_objet);
+                SDL_ExitWithError("Impossible d'afficher la texture !\n");
+            }
+        }
+    }
+    SDL_FreeSurface(image);
+
     printf("C'est coller !");
     SDL_RenderPresent(renderer);
-    SDL_Delay(5000);
 
     // ---------------------------------------------------------------------------------
 
@@ -259,18 +295,18 @@ int main(int argc, char **argv)
             if(perso1.tag == 0)
             {
                 printf("Salle %d !\n", perso1.tag);
-                perso1 = actualisation_salle(lab, perso1, renderer, touche1, touche2);
+                perso1 = actualisation_salle(lab, perso1, renderer, fenetre, touche1, touche2);
                 // Si on touche la porte du haut, on passe à la salle suivante et on spawn en bas
                 if(collision_porte(perso1, lab.tab_salle[perso1.tag].porte[0], lab.tab_salle[perso1.tag].porte[0].salle_entree, lab.tab_salle[perso1.tag].porte[0].salle_dest, VITESSE) != lab.tab_salle[perso1.tag].tag_salle)
                 {
                     perso1.perso.y = (lab.tab_salle[perso1.tag].salle.y + lab.tab_salle[perso1.tag].salle.h ) - (lab.tab_salle[perso1.tag].porte[0].porte.h)/2 - perso1.perso.h - 100;
                     perso1.tag = lab.tab_salle[perso1.tag].tag_salle + 1;
                 }
-                SDL_Delay(20);
+                SDL_Delay(0);
                 break;
             }else if(perso1.tag < TAILLE_LAB - 1 && perso1.tag > 0){
                 printf("Salle %d !\n", perso1.tag);
-                perso1 = actualisation_salle(lab, perso1, renderer, touche1, touche2);
+                perso1 = actualisation_salle(lab, perso1, renderer, fenetre, touche1, touche2);
                 // Si on touche la porte du haut, on passe à la salle suivante et on spawn en bas
                 if(collision_porte(perso1, lab.tab_salle[perso1.tag].porte[1], lab.tab_salle[perso1.tag].porte[1].salle_entree, lab.tab_salle[perso1.tag].porte[1].salle_dest, VITESSE) != lab.tab_salle[perso1.tag].tag_salle)
                 {
@@ -285,19 +321,19 @@ int main(int argc, char **argv)
                     perso1.perso.y = (lab.tab_salle[perso1.tag].salle.y) + (lab.tab_salle[perso1.tag].porte[0].porte.h)/2;
                     perso1.tag = lab.tab_salle[perso1.tag].tag_salle - 1;
                 }
-                SDL_Delay(20);
+                SDL_Delay(0);
                 break;
             }else if(perso1.tag == TAILLE_LAB - 1)
             {
                 printf("Salle %d !\n", perso1.tag);
-                perso1 = actualisation_salle(lab, perso1, renderer, touche1, touche2);
+                perso1 = actualisation_salle(lab, perso1, renderer, fenetre, touche1, touche2);
                 // Si on touche la porte du haut, on passe à la salle suivante et on spawn en bas
                 if(collision_porte(perso1, lab.tab_salle[perso1.tag].porte[1], lab.tab_salle[perso1.tag].porte[1].salle_entree, lab.tab_salle[perso1.tag].porte[1].salle_dest, VITESSE) != lab.tab_salle[perso1.tag].tag_salle)
                 {
                     perso1.perso.y = (lab.tab_salle[perso1.tag].salle.y) + (lab.tab_salle[perso1.tag].porte[1].porte.h)/2;
                     perso1.tag = lab.tab_salle[perso1.tag].tag_salle - 1;
                 }
-                SDL_Delay(20);
+                SDL_Delay(0);
                 break;
             }
         }

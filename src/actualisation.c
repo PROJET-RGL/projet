@@ -12,24 +12,44 @@
 
 #define VITESSE 10
 
-perso_t actualisation_salle(labyrinthe_t lab, perso_t perso, SDL_Renderer *renderer, int touche1, int touche2)
+perso_t actualisation_salle(labyrinthe_t lab, perso_t perso, SDL_Renderer *renderer, SDL_Rect fenetre, int touche1, int touche2)
 {
     nettoyage_ecran(renderer);
 
     // Affichage de la map
+
+    if(SDL_RenderCopy(renderer, lab.texture, NULL, &fenetre) != 0)
+    {
+        clean_ressources(NULL, renderer, lab.texture);
+        SDL_ExitWithError("Impossible d'afficher la texture !\n");
+    }
+
+    /*              DEBUG DE LA HITBOX DU SOL
 
     if(affichage(renderer, lab.tab_salle[perso.tag].salle , lab.tab_salle[perso.tag].couleur.r, lab.tab_salle[perso.tag].couleur.v, lab.tab_salle[perso.tag].couleur.b) != 1)
     {
         SDL_ExitWithError("Affichage salle raté");
     }
 
+    */
+
     // Affichage des objets
 
     int i = 0;
 
-    for(i = 0; i < N; i++)
+    for(i = 0; i < lab.tab_salle[perso.tag].nb_objt; i++)
     {
+        /*          DEBUG DE LA HITBOX OBJET
+
         affichage(renderer, lab.tab_salle[perso.tag].tab_obj[i].objet, lab.tab_salle[perso.tag].tab_obj[i].couleur.r, lab.tab_salle[perso.tag].tab_obj[i].couleur.v, lab.tab_salle[perso.tag].tab_obj[i].couleur.b);
+
+        */
+
+        if(SDL_RenderCopy(renderer, lab.tab_salle[perso.tag].tab_obj[i].text_objet, NULL, &lab.tab_salle[perso.tag].tab_obj[i].objet) != 0)
+        {
+            clean_ressources(NULL, renderer, lab.tab_salle[perso.tag].tab_obj[i].text_objet);
+            SDL_ExitWithError("Impossible d'afficher la texture !\n");
+        }
     }
 
     /*

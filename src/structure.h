@@ -1,10 +1,10 @@
 #ifndef structure_H
 #define structure_H
 
-#define O 3 // Taille objet
-#define M 5 // Nbre d'objet
-#define P 2 // Nbre de porte max
-#define S 7 // Nbre salle
+#define O 100 // Taille objet
+#define M 100 // Nbre d'objet
+#define P 100 // Nbre de porte max
+#define S 100 // Nbre salle
 
 typedef struct salle_s salle_t;
 
@@ -51,7 +51,7 @@ struct mob_s                // Création d'un mob
 struct objet_s              // Création de l'objet
 {
     SDL_Rect objet;         // Coordonées de l'objets en question
-    SDL_Texture *text_objet;     // Texture de l'objet en question
+    SDL_Texture *text_objet;// Texture de l'objet en question
     int salle;              // Salle dans laquel l'objet est situé
     couleur_t couleur;
 };
@@ -60,11 +60,11 @@ struct salle_s              // Création de la salle avec ses stats
 {
     SDL_Rect salle;         // les coordonnées de la salle
     int tag_salle;          // Le tag de la salle en question
+    int nb_objt;
     objet_t tab_obj[O];     // le tableau d'objet de la salle en question
     mob_t tab_mob[M];       // le tableau de mob de la salle en question
     porte_t porte[P];       // le tableau des portes de la salle en question
     couleur_t couleur;
-    SDL_Texture *texture;
 };
 
 struct labyrinthe_s         // Création du labyrinthe en fonction des salles
