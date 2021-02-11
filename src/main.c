@@ -14,8 +14,9 @@
 #include "mob.h"
 #include "menu.h"
 #include "option.h"
+#include "jeu.h"
 
-// gcc src/main.c -o bin/main -I include src/salle.c src/fonction_admin.c src/perso.c src/objet.c src/porte.c src/structure.c src/labyrinthe.c src/actualisation.c src/mob.c -L lib -lmingw32 -lSDL2main -lSDL2
+// gcc src/main.c -o bin/main.exe -I include src/salle.c src/fonction_admin.c src/perso.c src/objet.c src/porte.c src/structure.c src/labyrinthe.c src/actualisation.c src/mob.c src/menu.c src/option.c src/jeu.c -L lib -lmingw32 -lSDL2main -lSDL2
 
 // Fenêtre dimension
 
@@ -32,13 +33,10 @@
 #define PERSO_LARGEUR 90
 #define PERSO_HAUTEUR 90
 
-// Stat perso
-
-#define VITESSE 5
-
 // Stat globale
 
 #define DELAI 100
+#define VITESSE 5
 
 // Booleen
 
@@ -47,7 +45,7 @@
 
 SDL_Window *fen = NULL;
 SDL_Renderer *renderer = NULL;
-SDL_Event event;
+SDL_Event event, event2;
 labyrinthe_t lab;
 perso_t perso1;
 objet_t objet1;
@@ -60,6 +58,8 @@ int main(int argc, char **argv)
 {
     int touche1 = 0, touche2 = 0, j = 0, exit_menu;
 
+    SDL_Delay(10);
+
     perso_salle = 1;
 
     if(creation_fen(&fen, &renderer, FEN_LARGEUR, FEN_HAUTEUR) != TRUE)
@@ -67,7 +67,7 @@ int main(int argc, char **argv)
         SDL_ExitWithError("Création du rendu raté, erreur 404 !");
     }
 
-    // Rectangle de la fenetre
+    // ------------------------------------------- Rectangle de la fenetre ------------------------------------------- //
 
     fenetre.x = 0;
     fenetre.y = 0;
@@ -77,23 +77,19 @@ int main(int argc, char **argv)
 
     nettoyage_ecran(renderer);
 
-    // Appel du menu
-
-    exit_menu = load_menu(renderer, fen, FEN_LARGEUR, FEN_HAUTEUR);
-
-    // Création lab
+    // ------------------------------------------- Création lab ------------------------------------------- //
 
     srand(time(NULL));
 
     lab = init_lab(lab, TAILLE_LAB, FEN_LARGEUR, FEN_HAUTEUR, SALLE_HAUTEUR, SALLE_LARGEUR);
 
-    // Création personnage !
+    // ------------------------------------------- Création personnage ! ------------------------------------------- //
 
     perso1 = init_perso(perso1, FEN_LARGEUR, FEN_HAUTEUR, PERSO_HAUTEUR, PERSO_LARGEUR);
 
-    // Initialisation de la texture des salles !!!
+    // ------------------------------------------- Initialisation de la texture des salles !!! ------------------------------------------- //
 
-    image = SDL_LoadBMP("src/Img/Salle.BMP");               // <---- " ", c
+    image = SDL_LoadBMP("../src/img/Salle.BMP");
 
     if(image == NULL)
     {
@@ -121,9 +117,9 @@ int main(int argc, char **argv)
 
 
 
-    // Initialisation des textures objets !
+    // ------------------------------------------- Initialisation des textures objets ! ------------------------------------------- //
 
-    image = SDL_LoadBMP("src/Img/Poro.BMP");               // <---- " ", c
+    image = SDL_LoadBMP("../src/img/Poro.BMP");
 
     if(image == NULL)
     {
@@ -162,9 +158,9 @@ int main(int argc, char **argv)
 
 
 
-    // Initialisation des textures mobs !
+    // ------------------------------------------- Initialisation des textures mobs ! ------------------------------------------- //
 
-    image = SDL_LoadBMP("src/Img/Poro.BMP");               // <---- " ", c
+    image = SDL_LoadBMP("../src/img/Poro.BMP");
 
     if(image == NULL)
     {
@@ -203,237 +199,235 @@ int main(int argc, char **argv)
     nettoyage_ecran(renderer);
 
 
+    // ------------------------------------------- BOUCLE PRINCIPALE ------------------------------------------- //
 
-    // Affichage du sol de la salle
-
-    if(SDL_RenderCopy(renderer, lab.texture, NULL, &fenetre) != 0)
-    {
-        clean_ressources(fen, renderer, lab.texture);
-        SDL_ExitWithError("Impossible d'afficher la texture !\n");
-    }
-
-    SDL_RenderPresent(renderer);
-
-    // ---------------------------------------------------------------------------------
-
-    SDL_bool program_lunched = TRUE;
-
-    if(exit_menu == FALSE)
-        program_lunched = FALSE;
+    int program_lunched = TRUE, jeu_lunched = SDL_TRUE;
 
     // Boucle de jeu !
 
     while(program_lunched != FALSE)
     {
-        while(SDL_PollEvent(&event))
+        jeu_lunched = SDL_TRUE;
+        exit_menu = load_menu(renderer, fen, FEN_LARGEUR, FEN_HAUTEUR);
+
+        if(exit_menu == FALSE)
         {
-            switch(event.type)
+            program_lunched = FALSE;
+        }else
+        {
+            while(jeu_lunched != SDL_FALSE)
             {
-                case SDL_QUIT:
-                    program_lunched = FALSE;
-                    break;
-
-                case SDL_KEYUP :
-
-                    switch(event.key.keysym.sym)
+                    while(SDL_PollEvent(&event))
                     {
-                        case SDLK_q:
-                            if(touche1 == 'Q')
-                            {
-                                touche1 = 0;
-                            }
-                            if(touche2 == 'Q')
-                            {
-                                touche2 = 0;
-                            }
-                            continue;
+                        switch(event.type)
+                        {
+                            case SDL_QUIT:
+                                program_lunched = SDL_FALSE;
+                                jeu_lunched = SDL_FALSE;
+                                break;
 
-                        case SDLK_d:
-                            if(touche1 == 'D')
-                            {
-                                touche1 = 0;
-                            }
-                            if(touche2 == 'D')
-                            {
-                                touche2 = 0;
-                            }
-                            continue;
+                            case SDL_KEYUP :
 
-                        case SDLK_s:
-                            if(touche1 == 'S')
-                            {
-                                touche1 = 0;
-                            }
-                            if(touche2 == 'S')
-                            {
-                                touche2 = 0;
-                            }
-                            continue;
+                                switch(event.key.keysym.sym)
+                                {
+                                    case SDLK_q:
+                                        if(touche1 == 'Q')
+                                        {
+                                            touche1 = 0;
+                                        }
+                                        if(touche2 == 'Q')
+                                        {
+                                            touche2 = 0;
+                                        }
+                                        continue;
 
-                        case SDLK_z:
-                            if(touche1 == 'Z')
+                                    case SDLK_d:
+                                        if(touche1 == 'D')
+                                        {
+                                            touche1 = 0;
+                                        }
+                                        if(touche2 == 'D')
+                                        {
+                                            touche2 = 0;
+                                        }
+                                        continue;
+
+                                    case SDLK_s:
+                                        if(touche1 == 'S')
+                                        {
+                                            touche1 = 0;
+                                        }
+                                        if(touche2 == 'S')
+                                        {
+                                            touche2 = 0;
+                                        }
+                                        continue;
+
+                                    case SDLK_z:
+                                        if(touche1 == 'Z')
+                                        {
+                                            touche1 = 0;
+                                        }
+                                        if(touche2 == 'Z')
+                                        {
+                                            touche2 = 0;
+                                        }
+                                        continue;
+
+                                    default :
+                                        continue;
+                                }
+                                break;
+
+                            case SDL_KEYDOWN :
+
+                                switch(event.key.keysym.sym)
+                                {
+                                    case SDLK_ESCAPE:
+                                        jeu_lunched = SDL_FALSE;
+                                        break;
+
+                                    case SDLK_q:
+                                        if(touche1 == 0 && touche1 != 'Q')
+                                        {
+                                            touche1 = 'Q';
+                                        }
+                                        else if(touche2 == 0 && touche1 != 'Q')
+                                        {
+                                            touche2 = 'Q';
+                                        }
+                                        continue;
+
+                                        case SDLK_d:
+                                            if(touche1 == 0 && touche1 != 'D')
+                                            {
+                                                touche1 = 'D';
+                                            }
+                                            else if(touche2 == 0 && touche1 != 'D')
+                                            {
+                                                touche2 = 'D';
+                                            }
+                                            continue;
+
+                                        case SDLK_s:
+                                            if(touche1 == 0 && touche1 != 'S')
+                                            {
+                                                touche1 = 'S';
+                                            }
+                                            else if(touche2 == 0 && touche1 != 'S')
+                                            {
+                                                touche2 = 'S';
+                                            }
+                                            continue;
+
+                                        case SDLK_z:
+                                            if(touche1 == 0 && touche1 != 'Z')
+                                            {
+                                                touche1 = 'Z';
+                                            }
+                                            else if(touche2 == 0 && touche1 != 'Z')
+                                            {
+                                                touche2 = 'Z';
+                                            }
+                                                continue;
+
+                                        default :
+                                            continue;
+                                }
+                                break;
+
+                            default:
+                                break;
+                        }
+
+                        int i = 0;
+
+                        if(perso1.tag == 0)
+                        {
+                            perso1 = actualisation_salle(lab, perso1, renderer, fenetre, touche1, touche2);
+
+                            for(i = 0; i < lab.tab_salle[perso1.tag].nb_mob; i++)
                             {
-                                touche1 = 0;
+                                if(lab.tab_salle[perso1.tag].tab_mob[i].pv != 0)
+                                {
+                                    lab.tab_salle[perso1.tag].tab_mob[i] = colision_mob(lab.tab_salle[perso1.tag].tab_mob[i], perso1);
+                                    if(lab.tab_salle[perso1.tag].tab_mob[i].pv == 0)
+                                        lab.tab_salle[perso1.tag].nb_mob_mort++;
+                                }
                             }
-                            if(touche2 == 'Z')
+
+                            // Si on touche la porte du haut, on passe à la salle suivante et on spawn en bas
+                            if((collision_porte(perso1, lab.tab_salle[perso1.tag].porte[0], lab.tab_salle[perso1.tag].porte[0].salle_entree, lab.tab_salle[perso1.tag].porte[0].salle_dest, VITESSE) != lab.tab_salle[perso1.tag].tag_salle) && (lab.tab_salle[perso1.tag].nb_mob_mort == 5))
                             {
-                                touche2 = 0;
+                                perso1.perso.y = (lab.tab_salle[perso1.tag].salle.y + lab.tab_salle[perso1.tag].salle.h ) - (lab.tab_salle[perso1.tag].porte[0].porte.h)/2 - perso1.perso.h - 100;
+                                perso1.tag = lab.tab_salle[perso1.tag].tag_salle + 1;
                             }
-                            continue;
-
-                        default :
-                            continue;
-                    }
-                    break;
-
-                case SDL_KEYDOWN :
-
-                    switch(event.key.keysym.sym)
-                    {
-                        case SDLK_ESCAPE:
-                            program_lunched = FALSE;
+                            SDL_Delay(10);
                             break;
 
-                        case SDLK_q:
-                            if(touche1 == 0 && touche1 != 'Q')
-                            {
-                                touche1 = 'Q';
-                            }
-                            else if(touche2 == 0 && touche1 != 'Q')
-                            {
-                                touche2 = 'Q';
-                            }
-                            continue;
+                        }else if(perso1.tag < TAILLE_LAB - 1 && perso1.tag > 0)
+                        {
+                            perso1 = actualisation_salle(lab, perso1, renderer, fenetre, touche1, touche2);
 
-                        case SDLK_d:
-                            if(touche1 == 0 && touche1 != 'D')
+                            for(i = 0; i < lab.tab_salle[perso1.tag].nb_mob; i++)
                             {
-                                touche1 = 'D';
+                                if(lab.tab_salle[perso1.tag].tab_mob[i].pv != 0)
+                                {
+                                    lab.tab_salle[perso1.tag].tab_mob[i] = colision_mob(lab.tab_salle[perso1.tag].tab_mob[i], perso1);
+                                    if(lab.tab_salle[perso1.tag].tab_mob[i].pv == 0)
+                                        lab.tab_salle[perso1.tag].nb_mob_mort++;
+                                }
                             }
-                            else if(touche2 == 0 && touche1 != 'D')
-                            {
-                                touche2 = 'D';
-                            }
-                            continue;
 
-                        case SDLK_s:
-                            if(touche1 == 0 && touche1 != 'S')
+                            // Si on touche la porte du haut, on passe à la salle suivante et on spawn en bas
+                            if((collision_porte(perso1, lab.tab_salle[perso1.tag].porte[1], lab.tab_salle[perso1.tag].porte[1].salle_entree, lab.tab_salle[perso1.tag].porte[1].salle_dest, VITESSE) != lab.tab_salle[perso1.tag].tag_salle) && (lab.tab_salle[perso1.tag].nb_mob_mort == 5))
                             {
-                                touche1 = 'S';
-                            }
-                            else if(touche2 == 0 && touche1 != 'S')
-                            {
-                                touche2 = 'S';
-                            }
-                            continue;
+                                printf("Porte du haut touché !\n");
+                                perso1.perso.y = (lab.tab_salle[perso1.tag].salle.y + lab.tab_salle[perso1.tag].salle.h ) - (lab.tab_salle[perso1.tag].porte[1].porte.h)/2 - perso1.perso.h;
+                                if(perso1.tag < 6)
+                                    perso1.tag = lab.tab_salle[perso1.tag].tag_salle + 1;
 
-                        case SDLK_z:
-                            if(touche1 == 0 && touche1 != 'Z')
-                            {
-                                touche1 = 'Z';
+                            }else if((collision_porte(perso1, lab.tab_salle[perso1.tag].porte[0], lab.tab_salle[perso1.tag].porte[0].salle_entree, lab.tab_salle[perso1.tag].porte[0].salle_dest, VITESSE) != lab.tab_salle[perso1.tag].tag_salle) && (lab.tab_salle[perso1.tag].nb_mob_mort == 5))
+                            {   // Si on touche la porte du bas, on passe à la salle précédente et on spawn en haut
+                                printf("Porte du bas touché !\n");
+                                perso1.perso.y = (lab.tab_salle[perso1.tag].salle.y) + (lab.tab_salle[perso1.tag].porte[0].porte.h)/2;
+                                perso1.tag = lab.tab_salle[perso1.tag].tag_salle - 1;
                             }
-                            else if(touche2 == 0 && touche1 != 'Z')
-                            {
-                                touche2 = 'Z';
-                            }
-                            continue;
+                            SDL_Delay(10);
+                            break;
 
-                        default :
-                            continue;
+                        }else if(perso1.tag == TAILLE_LAB - 1)
+                        {
+                            perso1 = actualisation_salle(lab, perso1, renderer, fenetre, touche1, touche2);
+
+                            for(i = 0; i < lab.tab_salle[perso1.tag].nb_mob; i++)
+                            {
+                                if(lab.tab_salle[perso1.tag].tab_mob[i].pv != 0)
+                                {
+                                    lab.tab_salle[perso1.tag].tab_mob[i] = colision_mob(lab.tab_salle[perso1.tag].tab_mob[i], perso1);
+                                    if(lab.tab_salle[perso1.tag].tab_mob[i].pv == 0)
+                                        lab.tab_salle[perso1.tag].nb_mob_mort++;
+                                }
+                            }
+
+                            if(lab.tab_salle[perso1.tag].nb_mob_mort == 5)
+                                jeu_lunched = SDL_FALSE;
+
+                            // Si on touche la porte du haut, on passe à la salle suivante et on spawn en bas
+                            if((collision_porte(perso1, lab.tab_salle[perso1.tag].porte[1], lab.tab_salle[perso1.tag].porte[1].salle_entree, lab.tab_salle[perso1.tag].porte[1].salle_dest, VITESSE) != lab.tab_salle[perso1.tag].tag_salle) && (lab.tab_salle[perso1.tag].nb_mob_mort == 5))
+                            {
+                                perso1.perso.y = (lab.tab_salle[perso1.tag].salle.y) + (lab.tab_salle[perso1.tag].porte[1].porte.h)/2;
+                                perso1.tag = lab.tab_salle[perso1.tag].tag_salle - 1;
+                            }
+                            SDL_Delay(10);
+                            break;
+                        }
+
                     }
-                    break;
-
-                default:
-                    break;
-            }
-
-
-            if(perso1.tag == 0)
-            {
-                printf("Salle %d !\n", perso1.tag);
-                perso1 = actualisation_salle(lab, perso1, renderer, fenetre, touche1, touche2);
-
-                for(i = 0; i < lab.tab_salle[perso1.tag].nb_mob; i++)
-                {
-                    if(lab.tab_salle[perso1.tag].tab_mob[i].pv != 0)
-                    {
-                        lab.tab_salle[perso1.tag].tab_mob[i] = colision_mob(lab.tab_salle[perso1.tag].tab_mob[i], perso1);
-                        if(lab.tab_salle[perso1.tag].tab_mob[i].pv == 0)
-                            lab.tab_salle[perso1.tag].nb_mob_mort++;
-                    }
-                }
-
-                // Si on touche la porte du haut, on passe à la salle suivante et on spawn en bas
-                if((collision_porte(perso1, lab.tab_salle[perso1.tag].porte[0], lab.tab_salle[perso1.tag].porte[0].salle_entree, lab.tab_salle[perso1.tag].porte[0].salle_dest, VITESSE) != lab.tab_salle[perso1.tag].tag_salle) && (lab.tab_salle[perso1.tag].nb_mob_mort == 5))
-                {
-                    perso1.perso.y = (lab.tab_salle[perso1.tag].salle.y + lab.tab_salle[perso1.tag].salle.h ) - (lab.tab_salle[perso1.tag].porte[0].porte.h)/2 - perso1.perso.h - 100;
-                    perso1.tag = lab.tab_salle[perso1.tag].tag_salle + 1;
-                }
-                SDL_Delay(10);
-                break;
-
-            }else if(perso1.tag < TAILLE_LAB - 1 && perso1.tag > 0){
-                printf("Salle %d !\n", perso1.tag);
-                perso1 = actualisation_salle(lab, perso1, renderer, fenetre, touche1, touche2);
-
-                for(i = 0; i < lab.tab_salle[perso1.tag].nb_mob; i++)
-                {
-                    printf("%d mobs restants\n", lab.tab_salle[perso1.tag].nb_mob);
-                    if(lab.tab_salle[perso1.tag].tab_mob[i].pv != 0)
-                    {
-                        lab.tab_salle[perso1.tag].tab_mob[i] = colision_mob(lab.tab_salle[perso1.tag].tab_mob[i], perso1);
-                        if(lab.tab_salle[perso1.tag].tab_mob[i].pv == 0)
-                            lab.tab_salle[perso1.tag].nb_mob_mort++;
-                    }
-                }
-
-                // Si on touche la porte du haut, on passe à la salle suivante et on spawn en bas
-                if((collision_porte(perso1, lab.tab_salle[perso1.tag].porte[1], lab.tab_salle[perso1.tag].porte[1].salle_entree, lab.tab_salle[perso1.tag].porte[1].salle_dest, VITESSE) != lab.tab_salle[perso1.tag].tag_salle) && (lab.tab_salle[perso1.tag].nb_mob_mort == 5))
-                {
-                    printf("Porte du haut touché !\n");
-                    perso1.perso.y = (lab.tab_salle[perso1.tag].salle.y + lab.tab_salle[perso1.tag].salle.h ) - (lab.tab_salle[perso1.tag].porte[1].porte.h)/2 - perso1.perso.h;
-                    if(perso1.tag < 6)
-                        perso1.tag = lab.tab_salle[perso1.tag].tag_salle + 1;
-
-                }else if((collision_porte(perso1, lab.tab_salle[perso1.tag].porte[0], lab.tab_salle[perso1.tag].porte[0].salle_entree, lab.tab_salle[perso1.tag].porte[0].salle_dest, VITESSE) != lab.tab_salle[perso1.tag].tag_salle) && (lab.tab_salle[perso1.tag].nb_mob_mort == 5))
-                {   // Si on touche la porte du bas, on passe à la salle précédente et on spawn en haut
-                    printf("Porte du bas touché !\n");
-                    perso1.perso.y = (lab.tab_salle[perso1.tag].salle.y) + (lab.tab_salle[perso1.tag].porte[0].porte.h)/2;
-                    perso1.tag = lab.tab_salle[perso1.tag].tag_salle - 1;
-                }
-                SDL_Delay(10);
-                break;
-
-            }else if(perso1.tag == TAILLE_LAB - 1)
-            {
-                printf("Salle %d !\n", perso1.tag);
-                perso1 = actualisation_salle(lab, perso1, renderer, fenetre, touche1, touche2);
-
-                for(i = 0; i < lab.tab_salle[perso1.tag].nb_mob; i++)
-                {
-                    printf("%d mobs restants\n", lab.tab_salle[perso1.tag].nb_mob);
-                    if(lab.tab_salle[perso1.tag].tab_mob[i].pv != 0)
-                    {
-                        lab.tab_salle[perso1.tag].tab_mob[i] = colision_mob(lab.tab_salle[perso1.tag].tab_mob[i], perso1);
-                        if(lab.tab_salle[perso1.tag].tab_mob[i].pv == 0)
-                            lab.tab_salle[perso1.tag].nb_mob_mort++;
-                    }
-                }
-
-                if(lab.tab_salle[perso1.tag].nb_mob_mort == 5)
-                    program_lunched = FALSE;
-
-                // Si on touche la porte du haut, on passe à la salle suivante et on spawn en bas
-                if((collision_porte(perso1, lab.tab_salle[perso1.tag].porte[1], lab.tab_salle[perso1.tag].porte[1].salle_entree, lab.tab_salle[perso1.tag].porte[1].salle_dest, VITESSE) != lab.tab_salle[perso1.tag].tag_salle) && (lab.tab_salle[perso1.tag].nb_mob_mort == 5))
-                {
-                    perso1.perso.y = (lab.tab_salle[perso1.tag].salle.y) + (lab.tab_salle[perso1.tag].porte[1].porte.h)/2;
-                    perso1.tag = lab.tab_salle[perso1.tag].tag_salle - 1;
-                }
-                SDL_Delay(10);
-                break;
             }
         }
     }
     clean_ressources(fen, renderer, NULL);
     SDL_Quit();
+    return EXIT_SUCCESS;
 }

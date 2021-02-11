@@ -6,13 +6,14 @@
 #include "option.h"
 #include "fonction_admin.h"
 
-int load_option(SDL_Renderer *renderer, SDL_Window *fen, int FEN_LARGEUR, int FEN_HAUTEUR){
+int load_option(SDL_Renderer *renderer, SDL_Window *fen, int FEN_LARGEUR, int FEN_HAUTEUR)
+{
 
     SDL_Event event;
     SDL_bool att_option = SDL_TRUE;
 
-    fleche = load_img(renderer, fen, FEN_LARGEUR, FEN_HAUTEUR, "src/img/fleche.bmp", 5, 5, fleche);
-    fullscreen = load_img(renderer, fen, FEN_LARGEUR, FEN_HAUTEUR, "src/img/fullscreen.bmp", 50, 20, fullscreen);
+    fleche = load_img(renderer, fen, FEN_LARGEUR, FEN_HAUTEUR, "../src/img/fleche.bmp", 5, 5, fleche);
+    fullscreen = load_img(renderer, fen, FEN_LARGEUR, FEN_HAUTEUR, "../src/img/fullscreen.bmp", 50, 20, fullscreen);
 
     while(att_option != SDL_FALSE)
     {
@@ -45,4 +46,5 @@ int load_option(SDL_Renderer *renderer, SDL_Window *fen, int FEN_LARGEUR, int FE
 
     nettoyage_ecran(renderer);
     load_menu(renderer, fen, FEN_LARGEUR, FEN_HAUTEUR);
+    return EXIT_SUCCESS;
 }

@@ -40,6 +40,7 @@ struct perso_s              // Création d'un personnage
     int tag;                // Emplacement du personnage
     SDL_Rect perso;         // Coordonnées du personnage
     int pv;                 // Le nombre de vie restant du perosnnage
+    SDL_Rect inv;           // Affichage de l'inventaire
 };
 
 struct mob_s                // Création d'un mob

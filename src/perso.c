@@ -26,6 +26,14 @@ perso_t init_perso(perso_t perso, int FEN_LARGEUR, int FEN_HAUTEUR, int PERSO_HA
 
     perso.tag = 0;
 
+    // Création de la fenètre inv
+
+    perso.inv.x = (FEN_LARGEUR - 200) / 2;
+    perso.inv.y = (FEN_HAUTEUR - 100) / 2;
+
+    perso.inv.w = 200;
+    perso.inv.h = 100;
+
     return perso;
 }
 

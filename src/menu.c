@@ -7,16 +7,18 @@
 #include "fonction_admin.h"
 
 int load_menu(SDL_Renderer *renderer, SDL_Window *fen, int FEN_LARGEUR, int FEN_HAUTEUR){
-    
+
     SDL_Event event;
     SDL_bool program_lunched = SDL_TRUE;
     SDL_bool att_menu = SDL_TRUE;
     int opt = 0;
-    
-    logo = load_img(renderer, fen, FEN_LARGEUR, FEN_HAUTEUR, "src/img/logo.bmp", 50, 10, logo);
-    start = load_img(renderer, fen, FEN_LARGEUR, FEN_HAUTEUR, "src/img/start.bmp", 50, 50, start);
-    option = load_img(renderer, fen, FEN_LARGEUR, FEN_HAUTEUR, "src/img/option.bmp", 50, 70, option);
-    quit = load_img(renderer, fen, FEN_LARGEUR, FEN_HAUTEUR, "src/img/quit.bmp", 50, 90, quit);
+
+    nettoyage_ecran(renderer);
+
+    logo = load_img(renderer, fen, FEN_LARGEUR, FEN_HAUTEUR, "../src/img/logo.bmp", 50, 10, logo);
+    start = load_img(renderer, fen, FEN_LARGEUR, FEN_HAUTEUR, "../src/img/start.bmp", 50, 50, start);
+    option = load_img(renderer, fen, FEN_LARGEUR, FEN_HAUTEUR, "../src/img/option.bmp", 50, 70, option);
+    quit = load_img(renderer, fen, FEN_LARGEUR, FEN_HAUTEUR, "../src/img/quit.bmp", 50, 90, quit);
 
     while(att_menu != SDL_FALSE)
     {
@@ -48,7 +50,8 @@ int load_menu(SDL_Renderer *renderer, SDL_Window *fen, int FEN_LARGEUR, int FEN_
                         }
                     }
                     break;
-                default : 
+
+                default :
                     break;
             }
         }
@@ -58,8 +61,7 @@ int load_menu(SDL_Renderer *renderer, SDL_Window *fen, int FEN_LARGEUR, int FEN_
         nettoyage_ecran(renderer);
         load_option(renderer, fen, FEN_LARGEUR, FEN_HAUTEUR);
     }
-    else
-        return program_lunched;
+    return program_lunched;
 }
 
 SDL_Rect load_img(SDL_Renderer *renderer, SDL_Window *fen, int FEN_LARGEUR, int FEN_HAUTEUR, char *chemin_img, int pourcentX, int pourcentY, SDL_Rect rect){
@@ -100,4 +102,3 @@ SDL_Rect load_img(SDL_Renderer *renderer, SDL_Window *fen, int FEN_LARGEUR, int 
     SDL_DestroyTexture(texture);
     return rect;
 }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
