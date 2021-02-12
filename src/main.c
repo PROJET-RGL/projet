@@ -215,9 +215,13 @@ int main(int argc, char **argv)
             program_lunched = FALSE;
         }else
         {
+            srand(time(NULL));
+
+            lab = init_lab(lab, TAILLE_LAB, FEN_LARGEUR, FEN_HAUTEUR, SALLE_HAUTEUR, SALLE_LARGEUR);
+            perso1.tag = 0;
             while(jeu_lunched != SDL_FALSE)
             {
-                    while(SDL_PollEvent(&event))
+                    while(SDL_WaitEvent(&event))
                     {
                         switch(event.type)
                         {
@@ -335,6 +339,9 @@ int main(int argc, char **argv)
                                             continue;
                                 }
                                 break;
+
+                            case SDL_MOUSEMOTION :
+                                continue;
 
                             default:
                                 break;

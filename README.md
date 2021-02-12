@@ -8,14 +8,12 @@
   - Jules Beuvier
   - Thomas André
 
-# v0.0.03
+# v0.0.12
 
 ------- Patch Notes -------
 
-Ajout de création d'objet (sans hitbox)
-Deux salles reliées entre elles
-Porte générer entre deux salles
+Version jouable et possibilité de recommencer une partie après en avoir fini une
 
 ---------------------------
 
-# DATE : 05/02/2021
+# DATE : 12/02/2021
