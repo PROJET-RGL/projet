@@ -8,12 +8,16 @@
   - Jules Beuvier
   - Thomas André
 
-# v0.0.12
+# v0.0.13
 
 ------- Patch Notes -------
 
-Version jouable et possibilité de recommencer une partie après en avoir fini une
+Version jouable
+
+Correction de bug : 
+- si l'on allait dans les options puis on revenait au menu principale, peut importe le bouton appuyer, on lançait le jeu
+- En jeu, si l'on faisait echap, ça redemarrait le labyrinthe 
 
 ---------------------------
 
-# DATE : 12/02/2021
+# DATE : 14/02/2021
