@@ -1,14 +1,4 @@
-#include <stdio.h>
-#include <SDL.h>
-#include <stdlib.h>
-#include <SDL_image.h>
-#include <time.h>
-
-#include "perso.h"
-#include "fonction_admin.h"
-#include "salle.h"
 #include "objet.h"
-#include "structure.h"
 
 objet_t init_obj(objet_t obj)
 {

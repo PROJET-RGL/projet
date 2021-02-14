@@ -1,22 +1,6 @@
-#include <stdio.h>
-#include <SDL.h>
-#include <stdlib.h>
-#include <SDL_image.h>
-#include <time.h>
-
-
 #include "salle.h"
-#include "fonction_admin.h"
-#include "structure.h"
-#include "porte.h"
-#include "objet.h"
-#include "mob.h"
 
-#define NB_OBJET 0
-#define NB_MOB 5
-
-
-int creation_fen(SDL_Window **fen, SDL_Renderer **renderer, int FEN_LARGEUR, int FEN_HAUTEUR)
+int creation_fen(SDL_Window **fen, SDL_Renderer **renderer)
 {
     if(SDL_Init(SDL_INIT_VIDEO) != 0)
     {
@@ -31,7 +15,7 @@ int creation_fen(SDL_Window **fen, SDL_Renderer **renderer, int FEN_LARGEUR, int
     return 1;
 }
 
-salle_t init_salle(salle_t salle, int FEN_LARGEUR, int FEN_HAUTEUR, int SALLE_HAUTEUR, int SALLE_LARGEUR, int tag)
+salle_t init_salle(salle_t salle, int tag)
 {
     // Ininitalisation des couleurs
 
@@ -102,7 +86,7 @@ salle_t init_salle(salle_t salle, int FEN_LARGEUR, int FEN_HAUTEUR, int SALLE_HA
     return salle;
 }
 
-int test_colision(SDL_Rect perso, SDL_Rect salle, int touche1, int touche2, int VITESSE)
+int test_colision(SDL_Rect perso, SDL_Rect salle, int touche1, int touche2)
 {
     SDL_Rect persoGHOST;
     int sortie = 0;
@@ -152,4 +136,3 @@ int test_colision(SDL_Rect perso, SDL_Rect salle, int touche1, int touche2, int 
 
     return sortie;
 }
-

@@ -1,13 +1,4 @@
-#include <stdio.h>
-#include <SDL.h>
-#include <stdlib.h>
-#include <SDL_image.h>
-#include <time.h>
-
-#include "fonction_admin.h"
-#include "structure.h"
 #include "mob.h"
-
 
 mob_t init_mob(mob_t mob)
 {

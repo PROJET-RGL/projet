@@ -1,68 +1,30 @@
-#include <stdio.h>
-#include <SDL.h>
-#include <stdlib.h>
-#include <SDL_image.h>
-
-#include "salle.h"
-#include "fonction_admin.h"
-#include "perso.h"
-#include "objet.h"
-#include "porte.h"
+#include "super.h"
 #include "labyrinthe.h"
-#include "structure.h"
-#include "actualisation.h"
+#include "perso.h"
 #include "mob.h"
+#include "actualisation.h"
+#include "fonction_admin.h"
 #include "menu.h"
-#include "option.h"
-#include "jeu.h"
+#include "porte.h"
 
-// gcc src/main.c -o bin/main.exe -I include src/salle.c src/fonction_admin.c src/perso.c src/objet.c src/porte.c src/structure.c src/labyrinthe.c src/actualisation.c src/mob.c src/menu.c src/option.c src/jeu.c -L lib -lmingw32 -lSDL2main -lSDL2
+    int touche1 = 0, touche2 = 0, j = 0, exit_menu;
+    SDL_Window *fen = NULL;
+    SDL_Renderer *renderer = NULL;
+    SDL_Event event, event2;
+    labyrinthe_t lab;
+    perso_t perso1;
+    objet_t objet1;
+    SDL_Rect fenetre;
+    SDL_Surface *image = NULL;
+    int perso_salle = 1, passage;
 
-// Fenêtre dimension
-
-#define FEN_LARGEUR 1440
-#define FEN_HAUTEUR 900
-
-// Salle dimension
-
-#define SALLE_LARGEUR (FEN_LARGEUR/10)*8 + 45
-#define SALLE_HAUTEUR (FEN_HAUTEUR/10)*8 - 80
-
-// Personnage Dimension
-
-#define PERSO_LARGEUR 90
-#define PERSO_HAUTEUR 90
-
-// Stat globale
-
-#define DELAI 100
-#define VITESSE 5
-
-// Booleen
-
-#define TRUE 1
-#define FALSE 0
-
-SDL_Window *fen = NULL;
-SDL_Renderer *renderer = NULL;
-SDL_Event event, event2;
-labyrinthe_t lab;
-perso_t perso1;
-objet_t objet1;
-SDL_Rect fenetre;
-SDL_Surface *image = NULL;
-
-int perso_salle, passage;
 
 int main(int argc, char **argv)
 {
-    int touche1 = 0, touche2 = 0, j = 0, exit_menu;
-
+    printf("Entrez dans le prog");
     SDL_Delay(10);
 
-    perso_salle = 1;
-
-    if(creation_fen(&fen, &renderer, FEN_LARGEUR, FEN_HAUTEUR) != TRUE)
+    if(creation_fen(&fen, &renderer) != TRUE)
     {
         SDL_ExitWithError("Création du rendu raté, erreur 404 !");
     }
@@ -81,15 +43,15 @@ int main(int argc, char **argv)
 
     srand(time(NULL));
 
-    lab = init_lab(lab, TAILLE_LAB, FEN_LARGEUR, FEN_HAUTEUR, SALLE_HAUTEUR, SALLE_LARGEUR);
+    lab = init_lab(lab, TAILLE_LAB);
 
     // ------------------------------------------- Création personnage ! ------------------------------------------- //
 
-    perso1 = init_perso(perso1, FEN_LARGEUR, FEN_HAUTEUR, PERSO_HAUTEUR, PERSO_LARGEUR);
+    perso1 = init_perso(perso1);
 
     // ------------------------------------------- Initialisation de la texture des salles !!! ------------------------------------------- //
 
-    image = SDL_LoadBMP("../src/img/Salle.BMP");
+    image = SDL_LoadBMP("../src/img/Salle.bmp");
 
     if(image == NULL)
     {
@@ -119,7 +81,7 @@ int main(int argc, char **argv)
 
     // ------------------------------------------- Initialisation des textures objets ! ------------------------------------------- //
 
-    image = SDL_LoadBMP("../src/img/Poro.BMP");
+    image = SDL_LoadBMP("../src/img/Poro.bmp");
 
     if(image == NULL)
     {
@@ -160,7 +122,7 @@ int main(int argc, char **argv)
 
     // ------------------------------------------- Initialisation des textures mobs ! ------------------------------------------- //
 
-    image = SDL_LoadBMP("../src/img/Poro.BMP");
+    image = SDL_LoadBMP("../src/img/Poro.bmp");
 
     if(image == NULL)
     {
@@ -205,23 +167,27 @@ int main(int argc, char **argv)
 
     // Boucle de jeu !
 
+    srand(time(NULL));
+
     while(program_lunched != FALSE)
     {
         jeu_lunched = SDL_TRUE;
-        exit_menu = load_menu(renderer, fen, FEN_LARGEUR, FEN_HAUTEUR);
+        exit_menu = load_menu(renderer, fen);
 
         if(exit_menu == FALSE)
         {
             program_lunched = FALSE;
         }else
         {
-            srand(time(NULL));
+            if(lab.tab_salle[TAILLE_LAB-1].nb_mob_mort == 5)
+            {
+                lab = init_lab(lab, TAILLE_LAB);
+                perso1.tag = 0;
+            }
 
-            lab = init_lab(lab, TAILLE_LAB, FEN_LARGEUR, FEN_HAUTEUR, SALLE_HAUTEUR, SALLE_LARGEUR);
-            perso1.tag = 0;
             while(jeu_lunched != SDL_FALSE)
             {
-                    while(SDL_WaitEvent(&event))
+                    while(SDL_PollEvent(&event))
                     {
                         switch(event.type)
                         {
@@ -364,7 +330,7 @@ int main(int argc, char **argv)
                             }
 
                             // Si on touche la porte du haut, on passe à la salle suivante et on spawn en bas
-                            if((collision_porte(perso1, lab.tab_salle[perso1.tag].porte[0], lab.tab_salle[perso1.tag].porte[0].salle_entree, lab.tab_salle[perso1.tag].porte[0].salle_dest, VITESSE) != lab.tab_salle[perso1.tag].tag_salle) && (lab.tab_salle[perso1.tag].nb_mob_mort == 5))
+                            if((collision_porte(perso1, lab.tab_salle[perso1.tag].porte[0], lab.tab_salle[perso1.tag].porte[0].salle_entree, lab.tab_salle[perso1.tag].porte[0].salle_dest) != lab.tab_salle[perso1.tag].tag_salle) && (lab.tab_salle[perso1.tag].nb_mob_mort == 5))
                             {
                                 perso1.perso.y = (lab.tab_salle[perso1.tag].salle.y + lab.tab_salle[perso1.tag].salle.h ) - (lab.tab_salle[perso1.tag].porte[0].porte.h)/2 - perso1.perso.h - 100;
                                 perso1.tag = lab.tab_salle[perso1.tag].tag_salle + 1;
@@ -387,14 +353,14 @@ int main(int argc, char **argv)
                             }
 
                             // Si on touche la porte du haut, on passe à la salle suivante et on spawn en bas
-                            if((collision_porte(perso1, lab.tab_salle[perso1.tag].porte[1], lab.tab_salle[perso1.tag].porte[1].salle_entree, lab.tab_salle[perso1.tag].porte[1].salle_dest, VITESSE) != lab.tab_salle[perso1.tag].tag_salle) && (lab.tab_salle[perso1.tag].nb_mob_mort == 5))
+                            if((collision_porte(perso1, lab.tab_salle[perso1.tag].porte[1], lab.tab_salle[perso1.tag].porte[1].salle_entree, lab.tab_salle[perso1.tag].porte[1].salle_dest) != lab.tab_salle[perso1.tag].tag_salle) && (lab.tab_salle[perso1.tag].nb_mob_mort == 5))
                             {
                                 printf("Porte du haut touché !\n");
                                 perso1.perso.y = (lab.tab_salle[perso1.tag].salle.y + lab.tab_salle[perso1.tag].salle.h ) - (lab.tab_salle[perso1.tag].porte[1].porte.h)/2 - perso1.perso.h;
                                 if(perso1.tag < 6)
                                     perso1.tag = lab.tab_salle[perso1.tag].tag_salle + 1;
 
-                            }else if((collision_porte(perso1, lab.tab_salle[perso1.tag].porte[0], lab.tab_salle[perso1.tag].porte[0].salle_entree, lab.tab_salle[perso1.tag].porte[0].salle_dest, VITESSE) != lab.tab_salle[perso1.tag].tag_salle) && (lab.tab_salle[perso1.tag].nb_mob_mort == 5))
+                            }else if((collision_porte(perso1, lab.tab_salle[perso1.tag].porte[0], lab.tab_salle[perso1.tag].porte[0].salle_entree, lab.tab_salle[perso1.tag].porte[0].salle_dest) != lab.tab_salle[perso1.tag].tag_salle) && (lab.tab_salle[perso1.tag].nb_mob_mort == 5))
                             {   // Si on touche la porte du bas, on passe à la salle précédente et on spawn en haut
                                 printf("Porte du bas touché !\n");
                                 perso1.perso.y = (lab.tab_salle[perso1.tag].salle.y) + (lab.tab_salle[perso1.tag].porte[0].porte.h)/2;
@@ -421,7 +387,7 @@ int main(int argc, char **argv)
                                 jeu_lunched = SDL_FALSE;
 
                             // Si on touche la porte du haut, on passe à la salle suivante et on spawn en bas
-                            if((collision_porte(perso1, lab.tab_salle[perso1.tag].porte[1], lab.tab_salle[perso1.tag].porte[1].salle_entree, lab.tab_salle[perso1.tag].porte[1].salle_dest, VITESSE) != lab.tab_salle[perso1.tag].tag_salle) && (lab.tab_salle[perso1.tag].nb_mob_mort == 5))
+                            if((collision_porte(perso1, lab.tab_salle[perso1.tag].porte[1], lab.tab_salle[perso1.tag].porte[1].salle_entree, lab.tab_salle[perso1.tag].porte[1].salle_dest) != lab.tab_salle[perso1.tag].tag_salle) && (lab.tab_salle[perso1.tag].nb_mob_mort == 5))
                             {
                                 perso1.perso.y = (lab.tab_salle[perso1.tag].salle.y) + (lab.tab_salle[perso1.tag].porte[1].porte.h)/2;
                                 perso1.tag = lab.tab_salle[perso1.tag].tag_salle - 1;

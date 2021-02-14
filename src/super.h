@@ -1,10 +1,16 @@
-#ifndef structure_H
-#define structure_H
+#ifndef super_H
+#define super_H
 
-#define O 100 // Taille objet
-#define M 100 // Nbre d'objet
-#define P 100 // Nbre de porte max
-#define S 100 // Nbre salle
+#include <stdio.h>
+#include <SDL.h>
+#include <stdlib.h>
+#include <SDL_image.h>
+#include <time.h>
+
+//#include "super_s.h"
+#include "super_d.h"
+
+// ----------------------------- STRUCTURE DE DONNÉES ----------------------------- //
 
 typedef struct salle_s salle_t;
 

@@ -1,11 +1,7 @@
 #ifndef fonction_admin_H
 #define fonction_admin_H
 
-#include <stdio.h>
-#include <SDL.h>
-#include <stdlib.h>
-#include <SDL_image.h>
-
+#include "super.h"
 
 void SDL_ExitWithError(const char *message);
 

@@ -1,16 +1,4 @@
-#include <stdio.h>
-#include <SDL.h>
-#include <stdlib.h>
-#include <SDL_image.h>
-
-
 #include "fonction_admin.h"
-
-/**
- * @brief On entre un message en paramètre, puis on quitte SDL en affichant le message !
- *
- * @param message
- */
 
 void SDL_ExitWithError(const char *message)
 {
@@ -18,14 +6,6 @@ void SDL_ExitWithError(const char *message)
     SDL_Quit();
     exit(EXIT_FAILURE);
 }
-
-/**
- * @brief On entre les 3 paramètres pour la fenètre pour les frees !
- *
- * @param w
- * @param r
- * @param t
- */
 
 void clean_ressources(SDL_Window *w, SDL_Renderer *r, SDL_Texture *t)
 {
