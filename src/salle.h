@@ -11,6 +11,6 @@ int creation_fen(SDL_Window **fen, SDL_Renderer **renderer);
 
 salle_t init_salle(salle_t salle, int tag);
 
-int test_colision(SDL_Rect perso, SDL_Rect salle, int touche1, int touche2);
+perso_t test_colision(perso_t perso, SDL_Rect salle);
 
 #endif

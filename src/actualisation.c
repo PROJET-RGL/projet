@@ -1,6 +1,6 @@
 #include "actualisation.h"
 
-perso_t actualisation_salle(labyrinthe_t lab, perso_t perso, SDL_Renderer *renderer, SDL_Rect fenetre, int touche1, int touche2)
+perso_t actualisation_salle(labyrinthe_t lab, perso_t perso, SDL_Renderer *renderer, SDL_Rect fenetre)
 {
     nettoyage_ecran(renderer);
 
@@ -63,75 +63,7 @@ perso_t actualisation_salle(labyrinthe_t lab, perso_t perso, SDL_Renderer *rende
         }
     }
 
-    /*
-        G = 1                   // on se déplace vers le gauche
-        D = 5                   // on se déplace vers la droite
-        H = 10                  // on se déplace vers le haut
-        B = 20                  // on se déplace vers le bas
-        G + D = 1 + 5 = 6       // On annule le mouvement
-        G + H = 1 + 10 = 11     // On se déplace en diagonale gauche/haut
-        G + B = 1 + 20 = 21     // On se déplace en diagonale gauche/bas
-        D + H = 5 + 10 = 15     // On se déplace en diagonale droite/haut
-        D + B = 5 + 20 = 25     // on se dépalce en diagonale droite/bas
-        H + B = 10 + 20 = 30    // On annule le mouvement
-    */
-
-    switch(test_colision(perso.perso, lab.tab_salle[perso.tag].salle, touche1, touche2))
-    {
-        case 1 :    // Gauche
-            perso.perso.x = perso.perso.x - VITESSE;
-            break;
-
-        case 5 :    // Droite
-            perso.perso.x = perso.perso.x + VITESSE;
-            break;
-
-        case 10 :   // Haut
-            perso.perso.y = perso.perso.y - VITESSE;
-            break;
-
-        case 20 :   // Bas
-            perso.perso.y = perso.perso.y + VITESSE;
-            break;
-
-        case 11 :   // Gauche - haut
-            perso.perso.x = perso.perso.x - VITESSE;
-            perso.perso.y = perso.perso.y - VITESSE;
-            break;
-
-        case 21 :   // Gauche - bas
-            perso.perso.x = perso.perso.x - VITESSE;
-            perso.perso.y = perso.perso.y + VITESSE;
-            break;
-
-        case 15 :   // Haut - droite
-            perso.perso.x = perso.perso.x + VITESSE;
-            perso.perso.y = perso.perso.y - VITESSE;
-            break;
-
-        case 25 :   // Bas - droite
-            perso.perso.x = perso.perso.x + VITESSE;
-            perso.perso.y = perso.perso.y + VITESSE;
-            break;
-
-        case 50 :   // On colle à gauche
-            perso.perso.x = lab.tab_salle[perso.tag].salle.x + 1;
-            break;
-
-        case 51 :   // On colle à droite
-            perso.perso.x = (lab.tab_salle[perso.tag].salle.x + lab.tab_salle[perso.tag].salle.w) - perso.perso.w - 1;
-            break;
-
-        case 52 :   // On colle en haut
-            perso.perso.y = lab.tab_salle[perso.tag].salle.y + 1;
-            break;
-
-        case 53 :   // On colle en bas
-            perso.perso.y = (lab.tab_salle[perso.tag].salle.y + lab.tab_salle[perso.tag].salle.h) - perso.perso.h - 1;
-            break;
-
-        default : break;
-    }
+    perso = test_colision(perso, lab.tab_salle[perso.tag].salle);
 
     // Actualisation du personnage
 

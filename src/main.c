@@ -7,7 +7,7 @@
 #include "menu.h"
 #include "porte.h"
 
-    int touche1 = 0, touche2 = 0, j = 0, exit_menu;
+    int j = 0, exit_menu;
     SDL_Window *fen = NULL;
     SDL_Renderer *renderer = NULL;
     SDL_Event event, event2;
@@ -21,13 +21,16 @@
 
 int main(int argc, char **argv)
 {
-    printf("Entrez dans le prog");
+    int touche, presserQ = FALSE, presserD = FALSE, presserS = FALSE, presserZ = FALSE;
+
     SDL_Delay(10);
 
     if(creation_fen(&fen, &renderer) != TRUE)
     {
         SDL_ExitWithError("Création du rendu raté, erreur 404 !");
     }
+
+    SDL_SetWindowTitle(fen, "PROJET RGL");
 
     // ------------------------------------------- Rectangle de la fenetre ------------------------------------------- //
 
@@ -160,6 +163,11 @@ int main(int argc, char **argv)
 
     nettoyage_ecran(renderer);
 
+    // ------------------------------------------- Initialisation de l'icon ! ------------------------------------------- //
+
+    image = SDL_LoadBMP("../src/img/Icon.bmp");
+
+    SDL_SetWindowIcon(fen, image);
 
     // ------------------------------------------- BOUCLE PRINCIPALE ------------------------------------------- //
 
@@ -182,71 +190,20 @@ int main(int argc, char **argv)
             if(lab.tab_salle[TAILLE_LAB-1].nb_mob_mort == 5)
             {
                 lab = init_lab(lab, TAILLE_LAB);
+                perso1 = init_perso(perso1);
                 perso1.tag = 0;
+                presserQ = FALSE, presserD = FALSE, presserS = FALSE, presserZ = FALSE;
             }
 
             while(jeu_lunched != SDL_FALSE)
             {
-                    while(SDL_PollEvent(&event))
+                    while(SDL_PollEvent(&event) || 1)
                     {
                         switch(event.type)
                         {
                             case SDL_QUIT:
                                 program_lunched = SDL_FALSE;
                                 jeu_lunched = SDL_FALSE;
-                                break;
-
-                            case SDL_KEYUP :
-
-                                switch(event.key.keysym.sym)
-                                {
-                                    case SDLK_q:
-                                        if(touche1 == 'Q')
-                                        {
-                                            touche1 = 0;
-                                        }
-                                        if(touche2 == 'Q')
-                                        {
-                                            touche2 = 0;
-                                        }
-                                        continue;
-
-                                    case SDLK_d:
-                                        if(touche1 == 'D')
-                                        {
-                                            touche1 = 0;
-                                        }
-                                        if(touche2 == 'D')
-                                        {
-                                            touche2 = 0;
-                                        }
-                                        continue;
-
-                                    case SDLK_s:
-                                        if(touche1 == 'S')
-                                        {
-                                            touche1 = 0;
-                                        }
-                                        if(touche2 == 'S')
-                                        {
-                                            touche2 = 0;
-                                        }
-                                        continue;
-
-                                    case SDLK_z:
-                                        if(touche1 == 'Z')
-                                        {
-                                            touche1 = 0;
-                                        }
-                                        if(touche2 == 'Z')
-                                        {
-                                            touche2 = 0;
-                                        }
-                                        continue;
-
-                                    default :
-                                        continue;
-                                }
                                 break;
 
                             case SDL_KEYDOWN :
@@ -258,51 +215,113 @@ int main(int argc, char **argv)
                                         break;
 
                                     case SDLK_q:
-                                        if(touche1 == 0 && touche1 != 'Q')
+                                        if(presserQ == FALSE)
                                         {
-                                            touche1 = 'Q';
-                                        }
-                                        else if(touche2 == 0 && touche1 != 'Q')
-                                        {
-                                            touche2 = 'Q';
+                                            if(perso1.velocite.x == VITESSE)                                           // Si j'ai appuyer sur Q et D alors, ça s'annule
+                                            {
+                                                perso1.velocite.x = 0;
+                                            }else if(perso1.velocite.x == 0)
+                                                perso1.velocite.x = -VITESSE;                // Si j'ai appuyer sur D alors, le vecteur HORI = VITESSE
+                                            presserQ = TRUE;
                                         }
                                         continue;
 
-                                        case SDLK_d:
-                                            if(touche1 == 0 && touche1 != 'D')
+                                    case SDLK_d:
+                                        if(presserD == FALSE)
+                                        {
+                                            if(perso1.velocite.x == -VITESSE)                                           // Si j'ai appuyer sur Q et D alors, ça s'annule
                                             {
-                                                touche1 = 'D';
-                                            }
-                                            else if(touche2 == 0 && touche1 != 'D')
-                                            {
-                                                touche2 = 'D';
-                                            }
-                                            continue;
+                                                perso1.velocite.x = 0;
+                                            }else if(perso1.velocite.x == 0)
+                                                perso1.velocite.x = VITESSE;                // Si j'ai appuyer sur D alors, le vecteur HORI = VITESSE
+                                            presserD = TRUE;
+                                        }
+                                        continue;
 
-                                        case SDLK_s:
-                                            if(touche1 == 0 && touche1 != 'S')
+                                    case SDLK_s:
+                                        if(presserS == FALSE)
+                                        {
+                                            if(perso1.velocite.y == -VITESSE)                                           // Si j'ai appuyer sur D et Q alors, ça s'annule
                                             {
-                                                touche1 = 'S';
-                                            }
-                                            else if(touche2 == 0 && touche1 != 'S')
-                                            {
-                                                touche2 = 'S';
-                                            }
-                                            continue;
+                                                perso1.velocite.y = 0;
+                                            }else if(perso1.velocite.y == 0)
+                                                perso1.velocite.y = VITESSE;                // Si j'ai appuyer sur S alors, le vecteur VERTI = VITESSE
+                                            presserS = TRUE;
+                                        }
+                                        continue;
 
-                                        case SDLK_z:
-                                            if(touche1 == 0 && touche1 != 'Z')
+                                    case SDLK_z:
+                                        if(presserZ == FALSE)
+                                        {
+                                            if(perso1.velocite.y == VITESSE)                                           // Si j'ai appuyer sur D et Q alors, ça s'annule
                                             {
-                                                touche1 = 'Z';
-                                            }
-                                            else if(touche2 == 0 && touche1 != 'Z')
-                                            {
-                                                touche2 = 'Z';
-                                            }
-                                                continue;
+                                                perso1.velocite.y = 0;
+                                            }else if(perso1.velocite.y == 0)
+                                                perso1.velocite.y = -VITESSE;                // Si j'ai appuyer sur S alors, le vecteur VERTI = VITESSE
+                                            presserZ = TRUE;
+                                        }
+                                        continue;
 
-                                        default :
-                                            continue;
+                                    default :
+                                        break;
+                                }
+                                break;
+
+
+                            case SDL_KEYUP :
+
+                                switch(event.key.keysym.sym)
+                                {
+                                    case SDLK_q:
+                                        if(presserQ == TRUE)
+                                        {
+                                            if(perso1.velocite.x == 0)
+                                            {
+                                                perso1.velocite.x = VITESSE;
+                                            }else if(perso1.velocite.x == -VITESSE)
+                                                perso1.velocite.x = 0;
+                                            presserQ = FALSE;
+                                        }
+                                        break;
+
+                                    case SDLK_d:
+                                        if(presserD == TRUE)
+                                        {
+                                            if(perso1.velocite.x == 0)
+                                            {
+                                                perso1.velocite.x = -VITESSE;
+                                            }else if(perso1.velocite.x == VITESSE)
+                                                perso1.velocite.x = 0;
+                                            presserD = FALSE;
+                                        }
+                                        break;
+
+                                    case SDLK_s:
+                                        if(presserS == TRUE)
+                                        {
+                                            if(perso1.velocite.y == 0)
+                                            {
+                                                perso1.velocite.y = -VITESSE;
+                                            }else if(perso1.velocite.y == VITESSE)
+                                                perso1.velocite.y = 0;
+                                            presserS = FALSE;
+                                        }
+                                        break;
+
+                                    case SDLK_z:
+                                        if(presserZ == TRUE)
+                                        {
+                                            if(perso1.velocite.y == 0)
+                                            {
+                                                perso1.velocite.y = VITESSE;
+                                            }else if(perso1.velocite.y == -VITESSE)
+                                                perso1.velocite.y = 0;
+                                            presserZ = FALSE;
+                                        }
+                                        break;
+
+                                    default :
+                                        continue;
                                 }
                                 break;
 
@@ -317,7 +336,7 @@ int main(int argc, char **argv)
 
                         if(perso1.tag == 0)
                         {
-                            perso1 = actualisation_salle(lab, perso1, renderer, fenetre, touche1, touche2);
+                            perso1 = actualisation_salle(lab, perso1, renderer, fenetre);
 
                             for(i = 0; i < lab.tab_salle[perso1.tag].nb_mob; i++)
                             {
@@ -340,7 +359,7 @@ int main(int argc, char **argv)
 
                         }else if(perso1.tag < TAILLE_LAB - 1 && perso1.tag > 0)
                         {
-                            perso1 = actualisation_salle(lab, perso1, renderer, fenetre, touche1, touche2);
+                            perso1 = actualisation_salle(lab, perso1, renderer, fenetre);
 
                             for(i = 0; i < lab.tab_salle[perso1.tag].nb_mob; i++)
                             {
@@ -371,7 +390,7 @@ int main(int argc, char **argv)
 
                         }else if(perso1.tag == TAILLE_LAB - 1)
                         {
-                            perso1 = actualisation_salle(lab, perso1, renderer, fenetre, touche1, touche2);
+                            perso1 = actualisation_salle(lab, perso1, renderer, fenetre);
 
                             for(i = 0; i < lab.tab_salle[perso1.tag].nb_mob; i++)
                             {

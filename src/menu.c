@@ -69,9 +69,9 @@ int load_option(SDL_Renderer *renderer, SDL_Window *fen)
     SDL_Event event;
     SDL_bool att_option = SDL_TRUE;
 
-    fleche = load_img(renderer, fen, "../src/img/fleche.bmp", 5, 5, fleche);
+    fleche = load_img(renderer, fen, "../src/img/retour.bmp", 5, 5, fleche);
     fullscreen = load_img(renderer, fen, "../src/img/fullscreen.bmp", 50, 20, fullscreen);
-    classique = load_img(renderer, fen, "../src/img/classique.bmp", 50, 40, classique);
+    classique = load_img(renderer, fen, "../src/img/fenetre.bmp", 50, 40, classique);
 
     while(att_option != SDL_FALSE)
     {
@@ -127,6 +127,8 @@ SDL_Rect load_img(SDL_Renderer *renderer, SDL_Window *fen, char *chemin_img, int
         clean_ressources(fen, renderer, texture);
         SDL_ExitWithError("Impossible de charger l'image");
     }
+
+    SDL_SetColorKey(img, SDL_TRUE, SDL_MapRGB(img->format, 30, 6, 236));
 
     texture = SDL_CreateTextureFromSurface(renderer, img);
     SDL_FreeSurface(img);

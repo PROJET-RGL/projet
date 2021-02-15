@@ -86,53 +86,34 @@ salle_t init_salle(salle_t salle, int tag)
     return salle;
 }
 
-int test_colision(SDL_Rect perso, SDL_Rect salle, int touche1, int touche2)
+perso_t test_colision(perso_t perso, SDL_Rect salle)
 {
-    SDL_Rect persoGHOST;
-    int sortie = 0;
 
-    persoGHOST.x = perso.x;
-    persoGHOST.y = perso.y;
-
-    persoGHOST.w = perso.w;
-    persoGHOST.h = perso.h;
-
-    if(touche1 == 'Q' || touche2 == 'Q')
+    if(perso.velocite.x != 0)
     {
-        persoGHOST.x = perso.x - VITESSE;
-        if(persoGHOST.x < salle.x)
+        if(((perso.velocite.x + perso.perso.x + perso.perso.w) <= (salle.x + salle.w)) && ((perso.velocite.x + perso.perso.x) >= (salle.x)))      // Si on est entre la gauche et la droite
         {
-            // Nous sommes en dehors, donc c'est pas bon
-            sortie = 50;    // Message d'erreur lié au passage de bordure par la gauche
-        }else sortie += 1;  // on return 1 car c'est possible de ce déplacer
-    }
-    if(touche1 == 'D' || touche2 == 'D')
-    {
-        persoGHOST.x = perso.x + VITESSE;
-        if(persoGHOST.x + perso.w > salle.x + salle.w)
-        {
-            // Nous sommes en dehors, donc c'est pas bon
-            sortie = 51;    // Message d'erreur lié au passage de bordure par la droite
-        }else sortie += 5;  // on return 1 car c'est possible de ce déplacer
-    }
-    if(touche1 == 'Z' || touche2 == 'Z')
-    {
-        persoGHOST.y = perso.y - VITESSE;
-        if(persoGHOST.y < salle.y)
-        {
-            // Nous sommes en dehors, donc c'est pas bon
-            sortie = 52;    // Message d'erreur lié au passage de bordure par le haut
-        }else sortie += 10; // on return 1 car c'est possible de ce déplacer
-    }
-    if(touche1 == 'S' || touche2 == 'S')
-    {
-        persoGHOST.y = perso.y + VITESSE;
-        if(persoGHOST.y + perso.h > salle.y + salle.h)
-        {
-            // Nous sommes en dehors par le bas, donc c'est pas bon
-            sortie = 53;    // Message d'erreur lié au passage de bordure par le bas
-        }else sortie += 20; // on ajoute 20 à sortie car c'est possible de ce déplacer
+            perso.perso.x += perso.velocite.x;
+        }else{
+            if((perso.velocite.x + perso.perso.x + perso.perso.w) >= (salle.x + salle.w))            // Si on dépasse en à droite
+                perso.perso.x = (salle.x + salle.w) - perso.perso.w;
+            if((perso.velocite.x + perso.perso.x) <= (salle.x))                                      // Si on dépasse en à gauche
+                perso.perso.x = salle.x;
+        }
     }
 
-    return sortie;
+    if(perso.velocite.y != 0)
+    {
+        if(((perso.velocite.y + perso.perso.y + perso.perso.h) <= (salle.y + salle.h)) && ((perso.velocite.y + perso.perso.y) >= (salle.y)))      // Si on est entre le haut et le bas
+        {
+            perso.perso.y += perso.velocite.y;
+        }else{
+            if((perso.velocite.y + perso.perso.y + perso.perso.h) >= (salle.y + salle.h))            // Si on dépasse en bas
+                perso.perso.y = salle.y + salle.h - perso.perso.h;
+            if((perso.velocite.y + perso.perso.y) <= (salle.y))                                      // Si on dépasse en haut
+                perso.perso.y = salle.y;
+        }
+    }
+
+    return perso;
 }

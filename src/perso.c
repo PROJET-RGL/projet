@@ -26,5 +26,10 @@ perso_t init_perso(perso_t perso)
     perso.inv.w = 200;
     perso.inv.h = 100;
 
+    // Initialisation du vecteur vitesse
+
+    perso.velocite.x = 0;
+    perso.velocite.y = 0;
+
     return perso;
 }

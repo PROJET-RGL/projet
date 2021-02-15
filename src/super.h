@@ -12,6 +12,10 @@
 
 // ----------------------------- STRUCTURE DE DONNÉES ----------------------------- //
 
+typedef struct couleur_s couleur_t;
+
+typedef struct velocite_s velocite_t;
+
 typedef struct salle_s salle_t;
 
 typedef struct labyrinthe_s labyrinthe_t;
@@ -24,7 +28,11 @@ typedef struct mob_s mob_t;
 
 typedef struct objet_s objet_t;
 
-typedef struct couleur_s couleur_t;
+struct velocite_s           // Le vecteur vitesse du personnage
+{
+    int x;                  // Vitesse horizontale
+    int y;                  // Vitesse verticale
+};
 
 struct couleur_s            // Structure définissant la couleur d'un objet
 {
@@ -47,6 +55,7 @@ struct perso_s              // Création d'un personnage
     SDL_Rect perso;         // Coordonnées du personnage
     int pv;                 // Le nombre de vie restant du perosnnage
     SDL_Rect inv;           // Affichage de l'inventaire
+    velocite_t velocite;    // Vitesse relative du personnage
 };
 
 struct mob_s                // Création d'un mob
