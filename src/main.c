@@ -179,7 +179,6 @@ int main(int argc, char **argv)
 
     while(program_lunched != FALSE)
     {
-        jeu_lunched = SDL_TRUE;
         exit_menu = load_menu(renderer, fen);
 
         if(exit_menu == FALSE)
@@ -194,21 +193,22 @@ int main(int argc, char **argv)
                 perso1.tag = 0;
                 presserQ = FALSE, presserD = FALSE, presserS = FALSE, presserZ = FALSE;
             }
-
+            jeu_lunched = SDL_TRUE;
+            printf("On entre dans la boucle de jeu et %d\n", jeu_lunched);
             while(jeu_lunched != SDL_FALSE)
             {
-                    while(SDL_PollEvent(&event) || 1)
+                while(SDL_PollEvent(&event) || 1)
+                {
+                    switch(event.type)
                     {
-                        switch(event.type)
-                        {
-                            case SDL_QUIT:
-                                program_lunched = SDL_FALSE;
-                                jeu_lunched = SDL_FALSE;
-                                break;
+                        case SDL_QUIT:
+                            program_lunched = SDL_FALSE;
+                            jeu_lunched = SDL_FALSE;
+                            break;
 
-                            case SDL_KEYDOWN :
+                        case SDL_KEYDOWN :
 
-                                switch(event.key.keysym.sym)
+                            switch(event.key.keysym.sym)
                                 {
                                     case SDLK_ESCAPE:
                                         jeu_lunched = SDL_FALSE;
@@ -265,13 +265,16 @@ int main(int argc, char **argv)
                                     default :
                                         break;
                                 }
-                                break;
+                            break;
 
+                        case SDL_KEYUP :
 
-                            case SDL_KEYUP :
-
-                                switch(event.key.keysym.sym)
+                            switch(event.key.keysym.sym)
                                 {
+                                    case SDLK_ESCAPE:
+                                        jeu_lunched = SDL_TRUE;
+                                        break;
+
                                     case SDLK_q:
                                         if(presserQ == TRUE)
                                         {
@@ -323,18 +326,19 @@ int main(int argc, char **argv)
                                     default :
                                         continue;
                                 }
-                                break;
+                            break;
 
-                            case SDL_MOUSEMOTION :
-                                continue;
+                        case SDL_MOUSEMOTION :
+                            continue;
 
-                            default:
-                                break;
-                        }
+                        default:
+                            break;
+                    }
+                    printf("On est dans la boucle de jeu et %d\n", jeu_lunched);
 
-                        int i = 0;
+                    int i = 0;
 
-                        if(perso1.tag == 0)
+                    if(perso1.tag == 0)
                         {
                             perso1 = actualisation_salle(lab, perso1, renderer, fenetre);
 
@@ -415,7 +419,7 @@ int main(int argc, char **argv)
                             break;
                         }
 
-                    }
+                }
             }
         }
     }

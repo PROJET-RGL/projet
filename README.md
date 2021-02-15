@@ -8,11 +8,15 @@
   - Jules Beuvier
   - Thomas André
 
-# v0.0.12
+# v0.0.14
 
 ------- Patch Notes -------
 
-Version jouable et possibilité de recommencer une partie après en avoir fini une
+Ajout :
+	Lors du lancement d'une partie, tant que ce n'est pas fini, on continue, puis on reset à la fin
+
+Amélioration de gameplay :
+	Modification de système de mouvement, le rendant plus fluide.
 
 ---------------------------
 
