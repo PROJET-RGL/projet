@@ -1,5 +1,21 @@
 #include "salle.h"
 
+/**
+ * \brief Fichier qui influe sur les salles du programme
+ * \file 'salle.h'
+ * \author Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas
+ * \version 0.0.2
+ * \date 18 Février 2020
+ */
+
+/**
+ * @brief Initialisation de la fenêtre
+ * 
+ * @param fen Creation de la fenetre
+ * @param renderer Création du rendu
+ * @return int - Retourne 1 en cas de réussite sinon faux
+ */
+
 int creation_fen(SDL_Window **fen, SDL_Renderer **renderer)
 {
     if(SDL_Init(SDL_INIT_VIDEO) != 0)
@@ -15,7 +31,15 @@ int creation_fen(SDL_Window **fen, SDL_Renderer **renderer)
     return 1;
 }
 
-salle_t init_salle(salle_t salle, int tag)
+/**
+ * @brief Initialisation d'une salle avec ses caractéristiques
+ * 
+ * @param salle Importation de la salle à modifier
+ * @param tag Attribution de l'identifiant de la salle
+ * @return salle_t - Retourne la salle complète avec ses caractéristiques
+ */
+
+salle_t init_salle(salle_t salle, SDL_Window *fen, SDL_Renderer *renderer, int tag)
 {
     // Ininitalisation des couleurs
 
@@ -33,13 +57,15 @@ salle_t init_salle(salle_t salle, int tag)
 
     // Initialisation des objets de la salle
 
-    int nbre_objt, i, j;
+    SDL_Surface *image;
 
-    nbre_objt = NB_OBJET;
+    image = SDL_LoadBMP("../src/img/Poro.bmp");
 
-    for(i = 0; i < nbre_objt; i++)
+    int i, j;
+
+    for(i = 0; i < NB_OBJET; i++)
     {
-        salle.tab_obj[i] = init_obj(salle.tab_obj[i]);
+        salle.tab_obj[i] = init_obj(salle.tab_obj[i], fen, renderer, image);
 
         for(j = 0 ; j < i ; j++)
         {
@@ -47,18 +73,20 @@ salle_t init_salle(salle_t salle, int tag)
         }
     }
 
-    salle.nb_objt = nbre_objt;
+    salle.nb_objt = NB_OBJET;
 
     // Initialisation des mobs de la map
 
-    int nbre_mob;
-
-    nbre_mob = NB_MOB;
-
-    for(i = 0; i < nbre_mob; i++)
+    for(i = 0; i < NB_MOB; i++)
     {
-        salle.tab_mob[i] = init_mob(salle.tab_mob[i]);
+        salle.tab_mob[i] = init_mob(salle.tab_mob[i], fen, renderer, image);
+
+        for(j = 0 ; j < i ; j++)
+        {
+            salle.tab_mob[i] = compare_mob(salle.tab_mob[j], salle.tab_mob[i]);      // Si le PNJ 1 rentre dans le PNJ 2, alors on réaffecte une valeur de coords.
+        }
     }
+    SDL_FreeSurface(image);
 
     salle.nb_mob = NB_MOB;
     salle.nb_mob_mort = 0;
@@ -85,6 +113,14 @@ salle_t init_salle(salle_t salle, int tag)
 
     return salle;
 }
+
+/**
+ * @brief Test si il y a collision entre les murs de la salle et le personnage
+ * 
+ * @param perso Importation du personnage à tester
+ * @param salle Importation de la bordure de la salle à tester
+ * @return perso_t - Retourne toutes les caractéristiques du personnage
+ */
 
 perso_t test_colision(perso_t perso, SDL_Rect salle)
 {

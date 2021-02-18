@@ -1,6 +1,15 @@
 #ifndef super_d_H
 #define super_d_H
 
+
+/**
+ * \brief Header des defines du programmes
+ * \file 'super_d.h'
+ * \author Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas
+ * \version 0.0.1
+ * \date 18 Février 2020
+ */
+
 // ------------------------------------- DEFINE POUR LE MAIN ------------------------------------- //
 
 // Fenêtre dimension
@@ -21,21 +30,12 @@
 // Stat globale
 
 #define DELAI 100
-#define VITESSE 10
+#define VITESSE 7
+#define MAX_LAB 5
 
 // Booleen
 
 #define TRUE 1
 #define FALSE 0
-
-// ------------------------------------- DEFINE POUR STRUCTURE ------------------------------------- //
-
-#define O 100   // Taille objet
-#define M 100   // Nbre d'objet
-#define P 100   // Nbre de porte max
-#define S 100   // Nbre salle
-#define TAILLE_LAB 7 // Définition de la taille d'un ensemble de salle
-#define NB_OBJET 5     // Nombre d'objet dans une salle
-#define NB_MOB 5     // Nombre d'objet dans une salle
 
 #endif

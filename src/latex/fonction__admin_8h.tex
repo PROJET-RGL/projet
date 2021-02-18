@@ -1,0 +1,115 @@
+\hypertarget{fonction__admin_8h}{}\doxysection{Référence du fichier fonction\+\_\+admin.\+h}
+\label{fonction__admin_8h}\index{fonction\_admin.h@{fonction\_admin.h}}
+
+
+Gestion des fenêtres.  
+
+
+{\ttfamily \#include \char`\"{}super.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de fonction\+\_\+admin.\+h\+:
+% FIG 0
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
+% FIG 1
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{fonction__admin_8h_abed124ab111ee095d48f08e2a3ea4446}{S\+D\+L\+\_\+\+Exit\+With\+Error}} (const char $\ast$message)
+\begin{DoxyCompactList}\small\item\em Gestion du message d\textquotesingle{}erreur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fonction__admin_8h_ab5a05aef8d835e7085556a2ef01f8710}{clean\+\_\+ressources}} (S\+D\+L\+\_\+\+Window $\ast$w, S\+D\+L\+\_\+\+Renderer $\ast$r, S\+D\+L\+\_\+\+Texture $\ast$t)
+\begin{DoxyCompactList}\small\item\em On désallous la mémoire des 3 attributs qui composent la fenêtre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fonction__admin_8h_a191e77501cdccb22b12d5712bdf62018}{nettoyage\+\_\+ecran}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer)
+\begin{DoxyCompactList}\small\item\em On éfface le rendu d\textquotesingle{}une rendu d\textquotesingle{}une fenêtre active. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fonction__admin_8h_a8f18164cf9963f4c7ada8fd294367d77}{affichage}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, S\+D\+L\+\_\+\+Rect cible, int r, int v, int b)
+\begin{DoxyCompactList}\small\item\em On dessine à l\textquotesingle{}écran le rectangle ciblé avec en paramètres les couleurs voulues. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Gestion des fenêtres. 
+
+\textquotesingle{} \begin{DoxyAuthor}{Auteur}
+Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+18 Février 2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{fonction__admin_8h_a8f18164cf9963f4c7ada8fd294367d77}\label{fonction__admin_8h_a8f18164cf9963f4c7ada8fd294367d77}} 
+\index{fonction\_admin.h@{fonction\_admin.h}!affichage@{affichage}}
+\index{affichage@{affichage}!fonction\_admin.h@{fonction\_admin.h}}
+\doxysubsubsection{\texorpdfstring{affichage()}{affichage()}}
+{\footnotesize\ttfamily int affichage (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{S\+D\+L\+\_\+\+Rect}]{cible,  }\item[{int}]{r,  }\item[{int}]{v,  }\item[{int}]{b }\end{DoxyParamCaption})}
+
+
+
+On dessine à l\textquotesingle{}écran le rectangle ciblé avec en paramètres les couleurs voulues. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & Attributs pour la gestion d\textquotesingle{}une fenêtre \\
+\hline
+{\em cible} & Rectangle ciblé \\
+\hline
+{\em r} & Couleur Red \\
+\hline
+{\em v} & Couleur Green \\
+\hline
+{\em b} & Couleur Blue \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int -\/ 1 si réussi sinon faux 
+\end{DoxyReturn}
+\mbox{\Hypertarget{fonction__admin_8h_ab5a05aef8d835e7085556a2ef01f8710}\label{fonction__admin_8h_ab5a05aef8d835e7085556a2ef01f8710}} 
+\index{fonction\_admin.h@{fonction\_admin.h}!clean\_ressources@{clean\_ressources}}
+\index{clean\_ressources@{clean\_ressources}!fonction\_admin.h@{fonction\_admin.h}}
+\doxysubsubsection{\texorpdfstring{clean\_ressources()}{clean\_ressources()}}
+{\footnotesize\ttfamily void clean\+\_\+ressources (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Window $\ast$}]{w,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{r,  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{t }\end{DoxyParamCaption})}
+
+
+
+On désallous la mémoire des 3 attributs qui composent la fenêtre. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em w} & La page windows \\
+\hline
+{\em r} & L\textquotesingle{}apparence de la fenêtre \\
+\hline
+{\em t} & Textures de la fenêtre \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{fonction__admin_8h_a191e77501cdccb22b12d5712bdf62018}\label{fonction__admin_8h_a191e77501cdccb22b12d5712bdf62018}} 
+\index{fonction\_admin.h@{fonction\_admin.h}!nettoyage\_ecran@{nettoyage\_ecran}}
+\index{nettoyage\_ecran@{nettoyage\_ecran}!fonction\_admin.h@{fonction\_admin.h}}
+\doxysubsubsection{\texorpdfstring{nettoyage\_ecran()}{nettoyage\_ecran()}}
+{\footnotesize\ttfamily void nettoyage\+\_\+ecran (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})}
+
+
+
+On éfface le rendu d\textquotesingle{}une rendu d\textquotesingle{}une fenêtre active. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & Attributs pour la gestion d\textquotesingle{}une fenêtre \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{fonction__admin_8h_abed124ab111ee095d48f08e2a3ea4446}\label{fonction__admin_8h_abed124ab111ee095d48f08e2a3ea4446}} 
+\index{fonction\_admin.h@{fonction\_admin.h}!SDL\_ExitWithError@{SDL\_ExitWithError}}
+\index{SDL\_ExitWithError@{SDL\_ExitWithError}!fonction\_admin.h@{fonction\_admin.h}}
+\doxysubsubsection{\texorpdfstring{SDL\_ExitWithError()}{SDL\_ExitWithError()}}
+{\footnotesize\ttfamily void S\+D\+L\+\_\+\+Exit\+With\+Error (\begin{DoxyParamCaption}\item[{const char $\ast$}]{message }\end{DoxyParamCaption})}
+
+
+
+Gestion du message d\textquotesingle{}erreur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em message} & Définition du message d\textquotesingle{}erreur en console \\
+\hline
+\end{DoxyParams}

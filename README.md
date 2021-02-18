@@ -8,15 +8,16 @@
   - Jules Beuvier
   - Thomas André
 
-# v0.0.14
+# v0.0.16
 
 ------- Patch Notes -------
 
 Ajout :
-	Lors du lancement d'une partie, tant que ce n'est pas fini, on continue, puis on reset à la fin
+  - AUCUN
 
-Amélioration de gameplay :
-	Modification de système de mouvement, le rendant plus fluide.
+Correction de bug :
+  - Les images de PNJ qui grossissent après la première partie
+  - Les PNJ ne peuvent plus spawn au même endroit
 
 ---------------------------
 

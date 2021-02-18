@@ -1,5 +1,21 @@
 #include "menu.h"
 
+/**
+ * \brief Fichier contenant les fonctions chargeant le menu et ses images
+ * \file 'menu.h'
+ * \author Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas
+ * \version 0.0.1
+ * \date 18 Février 2020
+ */
+
+/**
+ * @brief Chargement et affichage du menu
+ * 
+ * @param renderer Attributs pour l'affiche d'une fenêtre
+ * @param fen Fenêtre sur laquelle on veut afficher les options
+ * @return int - Retourne si l'utilisateur souhaite quitter ou non le jeu
+ */
+
 int load_menu(SDL_Renderer *renderer, SDL_Window *fen){
 
     SDL_Event event;
@@ -63,6 +79,14 @@ int load_menu(SDL_Renderer *renderer, SDL_Window *fen){
     return program_lunched;
 }
 
+/**
+ * @brief Chargement et affichage des options
+ * 
+ * @param renderer Attributs pour l'affiche d'une fenêtre
+ * @param fen Fenêtre sur laquelle on veut afficher les options
+ * @return int - Retourne si l'utilisateur souhaite quitter ou non les options
+ */
+
 int load_option(SDL_Renderer *renderer, SDL_Window *fen)
 {
 
@@ -115,6 +139,18 @@ int load_option(SDL_Renderer *renderer, SDL_Window *fen)
     nettoyage_ecran(renderer);
     return EXIT_SUCCESS;
 }
+
+/**
+ * @brief Chargement et affichage des images
+ * 
+ * @param renderer Attributs pour l'affiche d'une fenêtre
+ * @param fen Fenêtre sur laquelle on veut afficher les options
+ * @param chemin_img Chemin relatif de l'image
+ * @param pourcentX Position de la fenêtre en X en pourcentage
+ * @param pourcentY Position de la fenêtre en Y en pourcentage
+ * @param rect Indique quel rectangle utiliser pour l'image
+ * @return SDL_Rect - Retourne des informations sur la position x, y des images ainsi que leurs tailles
+ */
 
 SDL_Rect load_img(SDL_Renderer *renderer, SDL_Window *fen, char *chemin_img, int pourcentX, int pourcentY, SDL_Rect rect){
     

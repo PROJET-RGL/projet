@@ -1,0 +1,100 @@
+\hypertarget{super__s_8h}{}\doxysection{Référence du fichier super\+\_\+s.\+h}
+\label{super__s_8h}\index{super\_s.h@{super\_s.h}}
+
+
+Header des structures du programmes.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$S\+D\+L.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$S\+D\+L\+\_\+image.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+Graphe des dépendances par inclusion de super\+\_\+s.\+h\+:
+% FIG 0
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
+% FIG 1
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structvelocite__s}{velocite\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em Definition de la structure vitesse d\textquotesingle{}un objet. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structcouleur__s}{couleur\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em Structure de données des couleurs, avec le code R\+GB. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structporte__s}{porte\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em Structure de données d\textquotesingle{}une porte, avec ses coordonnées, sa salle d\textquotesingle{}entrée, sa salle de sortie et son orientation. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperso__s}{perso\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em Structure de données de perosnnage, avec l\textquotesingle{}emplacement du personnage lié au tag, ses coordonnées, ses points de vies, les coordonnées de l\textquotesingle{}inventaire et sa vitesse. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structmob__s}{mob\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em Struture de données d\textquotesingle{}un P\+NJ, avec ses coordonnées, ses points de vies, et sa texture. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structobjet__s}{objet\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em Struture de données d\textquotesingle{}un objet, avec ses coordonnées, sa texture, la salle dans laquel il se situe, et sa couleur, sous code R\+GB. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structsalle__s}{salle\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em Struture de données d\textquotesingle{}une salle, avec ses coordonnées, son identifiant, son nombre d\textquotesingle{}objet, son nombre de P\+NJ, son nombre de P\+NJ morts, un tableau d\textquotesingle{}objet, un tableau de P\+NJ, un tableau de porte et sa couleur. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structlabyrinthe__s}{labyrinthe\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em Struture de données d\textquotesingle{}un labyrinthe de salle, avec sa taille (nombre de salle) et un tableau de salle et sa texture. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{super__s_8h_a396fecfabe3105afc15a61c209f910f0}\label{super__s_8h_a396fecfabe3105afc15a61c209f910f0}} 
+\#define {\bfseries O}~100
+\item 
+\mbox{\Hypertarget{super__s_8h_a52037c938e3c1b126c6277da5ca689d0}\label{super__s_8h_a52037c938e3c1b126c6277da5ca689d0}} 
+\#define {\bfseries M}~100
+\item 
+\mbox{\Hypertarget{super__s_8h_a2748566f4c443ee77aa831e63dbb5ebe}\label{super__s_8h_a2748566f4c443ee77aa831e63dbb5ebe}} 
+\#define {\bfseries P}~100
+\item 
+\mbox{\Hypertarget{super__s_8h_af933676109efed7ab34cea71d748a517}\label{super__s_8h_af933676109efed7ab34cea71d748a517}} 
+\#define {\bfseries S}~100
+\item 
+\mbox{\Hypertarget{super__s_8h_a34270e0e71ce7199d833cc0d709c6e3f}\label{super__s_8h_a34270e0e71ce7199d833cc0d709c6e3f}} 
+\#define {\bfseries T\+A\+I\+L\+L\+E\+\_\+\+L\+AB}~7
+\item 
+\mbox{\Hypertarget{super__s_8h_ad58ba2d6c28c6265844e455c07cc6a00}\label{super__s_8h_ad58ba2d6c28c6265844e455c07cc6a00}} 
+\#define {\bfseries N\+B\+\_\+\+O\+B\+J\+ET}~5
+\item 
+\mbox{\Hypertarget{super__s_8h_a27155aadcdf8ed5c0d1fa24a463063f1}\label{super__s_8h_a27155aadcdf8ed5c0d1fa24a463063f1}} 
+\#define {\bfseries N\+B\+\_\+\+M\+OB}~5
+\end{DoxyCompactItemize}
+\doxysubsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{super__s_8h_abaab611843b6de93a60ccfeab4f6dfa8}\label{super__s_8h_abaab611843b6de93a60ccfeab4f6dfa8}} 
+typedef struct \mbox{\hyperlink{structcouleur__s}{couleur\+\_\+s}} {\bfseries couleur\+\_\+t}
+\item 
+\mbox{\Hypertarget{super__s_8h_a3c45f7a91967c3a8e1ef1d5ddbc9ac59}\label{super__s_8h_a3c45f7a91967c3a8e1ef1d5ddbc9ac59}} 
+typedef struct \mbox{\hyperlink{structvelocite__s}{velocite\+\_\+s}} {\bfseries velocite\+\_\+t}
+\item 
+\mbox{\Hypertarget{super__s_8h_a496ace1950a1d2f3aed4b9288e19c05b}\label{super__s_8h_a496ace1950a1d2f3aed4b9288e19c05b}} 
+typedef struct \mbox{\hyperlink{structsalle__s}{salle\+\_\+s}} {\bfseries salle\+\_\+t}
+\item 
+\mbox{\Hypertarget{super__s_8h_a191362e3721c01a37e71325fb80d32a4}\label{super__s_8h_a191362e3721c01a37e71325fb80d32a4}} 
+typedef struct \mbox{\hyperlink{structlabyrinthe__s}{labyrinthe\+\_\+s}} {\bfseries labyrinthe\+\_\+t}
+\item 
+\mbox{\Hypertarget{super__s_8h_a3cceac2c7b4859dd4d68e5de6b7a8f70}\label{super__s_8h_a3cceac2c7b4859dd4d68e5de6b7a8f70}} 
+typedef struct \mbox{\hyperlink{structporte__s}{porte\+\_\+s}} {\bfseries porte\+\_\+t}
+\item 
+\mbox{\Hypertarget{super__s_8h_a550089442e996a6b42d393992dbc5436}\label{super__s_8h_a550089442e996a6b42d393992dbc5436}} 
+typedef struct \mbox{\hyperlink{structperso__s}{perso\+\_\+s}} {\bfseries perso\+\_\+t}
+\item 
+\mbox{\Hypertarget{super__s_8h_aeff45208d0640be854388a9e6c4db5d7}\label{super__s_8h_aeff45208d0640be854388a9e6c4db5d7}} 
+typedef struct \mbox{\hyperlink{structmob__s}{mob\+\_\+s}} {\bfseries mob\+\_\+t}
+\item 
+\mbox{\Hypertarget{super__s_8h_ad0efc27a29533dbf784e717262509caa}\label{super__s_8h_ad0efc27a29533dbf784e717262509caa}} 
+typedef struct \mbox{\hyperlink{structobjet__s}{objet\+\_\+s}} {\bfseries objet\+\_\+t}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Header des structures du programmes. 
+
+\textquotesingle{} \begin{DoxyAuthor}{Auteur}
+Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+18 Février 2020 
+\end{DoxyDate}

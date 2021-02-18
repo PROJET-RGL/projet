@@ -1,3 +1,11 @@
+/**
+ * \brief Header des fonctions agissant sur les textures du programmes
+ * \file 'texture.h'
+ * \author Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas
+ * \version 0.0.1
+ * \date 18 Février 2020
+ */
+
 /*
 SDL_Texture init_texture(SDL_Renderer **renderer, int HAUTEUR, int LARGEUR, SDL_Rect rect, char c[50])
 {

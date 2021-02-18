@@ -1,0 +1,79 @@
+\hypertarget{main_8c}{}\doxysection{Référence du fichier main.\+c}
+\label{main_8c}\index{main.c@{main.c}}
+
+
+Fonction main du programme.  
+
+
+{\ttfamily \#include \char`\"{}super.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}labyrinthe.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}perso.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mob.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}actualisation.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fonction\+\_\+admin.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}menu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}porte.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de main.\+c\+:
+% FIG 0
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{main_8c_a3c04138a5bfe5d72780bb7e82a18e627}\label{main_8c_a3c04138a5bfe5d72780bb7e82a18e627}} 
+int {\bfseries main} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{main_8c_a37d972ae0b47b9099e30983131d31916}\label{main_8c_a37d972ae0b47b9099e30983131d31916}} 
+int {\bfseries j} = 0
+\item 
+\mbox{\Hypertarget{main_8c_aa1402db6faa0a59eabb4872aa41f297e}\label{main_8c_aa1402db6faa0a59eabb4872aa41f297e}} 
+int {\bfseries exit\+\_\+menu}
+\item 
+\mbox{\Hypertarget{main_8c_a0d183252aa4d055119dab61dfcbe74eb}\label{main_8c_a0d183252aa4d055119dab61dfcbe74eb}} 
+S\+D\+L\+\_\+\+Window $\ast$ {\bfseries fen} = N\+U\+LL
+\item 
+\mbox{\Hypertarget{main_8c_a966da7a60c4ea3ba301e26ccc5efe452}\label{main_8c_a966da7a60c4ea3ba301e26ccc5efe452}} 
+S\+D\+L\+\_\+\+Renderer $\ast$ {\bfseries renderer} = N\+U\+LL
+\item 
+\mbox{\Hypertarget{main_8c_a6b57f01d3c576db5368dd0efc2f435a4}\label{main_8c_a6b57f01d3c576db5368dd0efc2f435a4}} 
+S\+D\+L\+\_\+\+Event {\bfseries event}
+\item 
+\mbox{\Hypertarget{main_8c_aac7d04d66877592f36e9b6275e4e4875}\label{main_8c_aac7d04d66877592f36e9b6275e4e4875}} 
+S\+D\+L\+\_\+\+Event {\bfseries event2}
+\item 
+\mbox{\Hypertarget{main_8c_aa018b11f48168d855c44faf0554e7195}\label{main_8c_aa018b11f48168d855c44faf0554e7195}} 
+\mbox{\hyperlink{structlabyrinthe__s}{labyrinthe\+\_\+t}} {\bfseries lab}
+\item 
+\mbox{\Hypertarget{main_8c_a0eafa0f461e6836f3e837c135f851f98}\label{main_8c_a0eafa0f461e6836f3e837c135f851f98}} 
+\mbox{\hyperlink{structperso__s}{perso\+\_\+t}} {\bfseries perso1}
+\item 
+\mbox{\Hypertarget{main_8c_a128de995ef46e15945afe24b8b1cc75c}\label{main_8c_a128de995ef46e15945afe24b8b1cc75c}} 
+\mbox{\hyperlink{structobjet__s}{objet\+\_\+t}} {\bfseries objet1}
+\item 
+\mbox{\Hypertarget{main_8c_aa5240bf9f2fbfda1dcb8c2d47dec4c28}\label{main_8c_aa5240bf9f2fbfda1dcb8c2d47dec4c28}} 
+S\+D\+L\+\_\+\+Rect {\bfseries fenetre}
+\item 
+\mbox{\Hypertarget{main_8c_aa73601f944838ffac2fa4d3e298a6ef4}\label{main_8c_aa73601f944838ffac2fa4d3e298a6ef4}} 
+S\+D\+L\+\_\+\+Surface $\ast$ {\bfseries image} = N\+U\+LL
+\item 
+\mbox{\Hypertarget{main_8c_afc7dc0dadc6c3dc61339c0abe3cb2cee}\label{main_8c_afc7dc0dadc6c3dc61339c0abe3cb2cee}} 
+int {\bfseries perso\+\_\+salle} = 1
+\item 
+\mbox{\Hypertarget{main_8c_a1a55866b511033a14a50dd1c67bda8c2}\label{main_8c_a1a55866b511033a14a50dd1c67bda8c2}} 
+int {\bfseries passage}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Fonction main du programme. 
+
+\textquotesingle{} \begin{DoxyAuthor}{Auteur}
+Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+0.\+15 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+18 Février 2020 
+\end{DoxyDate}

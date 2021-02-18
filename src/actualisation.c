@@ -1,5 +1,23 @@
 #include "actualisation.h"
 
+/**
+ * \brief Fonction d'actualisation des salles du programme
+ * \file 'actualisation.h'
+ * \author Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas
+ * \version 0.0.1
+ * \date 18 Février 2020
+ */
+
+/**
+ * @brief Gestion de l'actualisation d'une salle, de l'apparence de la texture
+ * 
+ * @param lab Positionnement du personnage en fonction de la salle actuelle
+ * @param perso Les caractéristiques du personnage (couleur,vitesse,coordonnées)
+ * @param renderer Attributs pour l'affichage d'une fenêtre
+ * @param fenetre On importe la fenêtre modifiable
+ * @return perso_t - Actualisation du personnage
+ */
+
 perso_t actualisation_salle(labyrinthe_t lab, perso_t perso, SDL_Renderer *renderer, SDL_Rect fenetre)
 {
     nettoyage_ecran(renderer);
@@ -48,11 +66,13 @@ perso_t actualisation_salle(labyrinthe_t lab, perso_t perso, SDL_Renderer *rende
 
     for(i = 0; i < lab.tab_salle[perso.tag].nb_mob; i++)
     {
-        /*          DEBUG DE LA HITBOX MOB
+        /*              DEBUG DE LA HITBOX MOB
 
         affichage(renderer, lab.tab_salle[perso.tag].tab_mob[i].mob, 255, 0, 0);
 
         */
+
+
         if(lab.tab_salle[perso.tag].tab_mob[i].pv != 0)
         {
             if(SDL_RenderCopy(renderer, lab.tab_salle[perso.tag].tab_mob[i].texture, NULL, &lab.tab_salle[perso.tag].tab_mob[i].mob) != 0)

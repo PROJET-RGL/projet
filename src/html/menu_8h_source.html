@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projet RGL:  Fichier source de menu.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Projet RGL
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">menu.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="menu_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef menu_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define menu_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="super_8h.html">super.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="fonction__admin_8h.html">fonction_admin.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//#include &quot;option.h&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;SDL_Rect logo;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;SDL_Rect start;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;SDL_Rect option;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;SDL_Rect quit;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">int</span> <a class="code" href="menu_8h.html#abc3463575d1225216b4795ba128fc239">load_menu</a>(SDL_Renderer *renderer, SDL_Window *fen);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;SDL_Rect <a class="code" href="menu_8h.html#af1cb5e5caa7d595c8c96341255bdfc52">load_img</a>(SDL_Renderer *renderer, SDL_Window *fen, <span class="keywordtype">char</span> *img, <span class="keywordtype">int</span> pourcentX, <span class="keywordtype">int</span> pourcentY, SDL_Rect rect);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;SDL_Rect fleche;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;SDL_Rect fullscreen;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;SDL_Rect classique;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">int</span> <a class="code" href="menu_8h.html#a4920935326e84091bdb45502b8755161">load_option</a>(SDL_Renderer *renderer, SDL_Window *fen);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="amenu_8h_html_a4920935326e84091bdb45502b8755161"><div class="ttname"><a href="menu_8h.html#a4920935326e84091bdb45502b8755161">load_option</a></div><div class="ttdeci">int load_option(SDL_Renderer *renderer, SDL_Window *fen)</div><div class="ttdoc">Chargement et affichage des options.</div><div class="ttdef"><b>Definition:</b> menu.c:90</div></div>
+<div class="ttc" id="afonction__admin_8h_html"><div class="ttname"><a href="fonction__admin_8h.html">fonction_admin.h</a></div><div class="ttdoc">Gestion des fenêtres.</div></div>
+<div class="ttc" id="amenu_8h_html_af1cb5e5caa7d595c8c96341255bdfc52"><div class="ttname"><a href="menu_8h.html#af1cb5e5caa7d595c8c96341255bdfc52">load_img</a></div><div class="ttdeci">SDL_Rect load_img(SDL_Renderer *renderer, SDL_Window *fen, char *img, int pourcentX, int pourcentY, SDL_Rect rect)</div><div class="ttdoc">Chargement et affichage des images.</div><div class="ttdef"><b>Definition:</b> menu.c:155</div></div>
+<div class="ttc" id="amenu_8h_html_abc3463575d1225216b4795ba128fc239"><div class="ttname"><a href="menu_8h.html#abc3463575d1225216b4795ba128fc239">load_menu</a></div><div class="ttdeci">int load_menu(SDL_Renderer *renderer, SDL_Window *fen)</div><div class="ttdoc">Chargement et affichage du menu.</div><div class="ttdef"><b>Definition:</b> menu.c:19</div></div>
+<div class="ttc" id="asuper_8h_html"><div class="ttname"><a href="super_8h.html">super.h</a></div><div class="ttdoc">Header principale du programmes.</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

@@ -14,7 +14,6 @@ int load_menu(SDL_Renderer *renderer, SDL_Window *fen);
 SDL_Rect load_img(SDL_Renderer *renderer, SDL_Window *fen, char *img, int pourcentX, int pourcentY, SDL_Rect rect);
 
 
-
 SDL_Rect fleche;
 SDL_Rect fullscreen;
 SDL_Rect classique;

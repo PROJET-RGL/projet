@@ -35,11 +35,11 @@ main.o: labyrinthe.h perso.h mob.h actualisation.h fonction_admin.h menu.h porte
 salle.o: salle.h fonction_admin.h super.h
 fonction_admin.o: fonction_admin.h super.h
 perso.o: perso.h fonction_admin.h salle.h super.h
-objet.o: objet.h super.h
+objet.o: objet.h fonction_admin.h super.h
 porte.o: porte.h super.h
 labyrinthe.o: labyrinthe.h salle.h super.h
 actualisation.o: actualisation.h fonction_admin.h salle.h super.h
-mob.o: mob.h super.h
+mob.o: mob.h fonction_admin.h super.h
 menu.o: menu.h fonction_admin.h super.h #option.h
 #option.o: option.h super.h
 

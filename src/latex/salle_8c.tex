@@ -1,0 +1,96 @@
+\hypertarget{salle_8c}{}\doxysection{Référence du fichier salle.\+c}
+\label{salle_8c}\index{salle.c@{salle.c}}
+
+
+Fichier qui influe sur les salles du programme.  
+
+
+{\ttfamily \#include \char`\"{}salle.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de salle.\+c\+:
+% FIG 0
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{salle_8c_a9bd600007d1a50196cf9cb1152e98891}{creation\+\_\+fen}} (S\+D\+L\+\_\+\+Window $\ast$$\ast$fen, S\+D\+L\+\_\+\+Renderer $\ast$$\ast$renderer)
+\begin{DoxyCompactList}\small\item\em Initialisation de la fenêtre. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structsalle__s}{salle\+\_\+t}} \mbox{\hyperlink{salle_8c_a286666b0c555b796b34825afb78e84c7}{init\+\_\+salle}} (\mbox{\hyperlink{structsalle__s}{salle\+\_\+t}} salle, int tag)
+\begin{DoxyCompactList}\small\item\em Initialisation d\textquotesingle{}une salle avec ses caractéristiques. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structperso__s}{perso\+\_\+t}} \mbox{\hyperlink{salle_8c_ad1d5f1c9b269202f5c64dc2220a6cb9a}{test\+\_\+colision}} (\mbox{\hyperlink{structperso__s}{perso\+\_\+t}} perso, S\+D\+L\+\_\+\+Rect salle)
+\begin{DoxyCompactList}\small\item\em Test si il y a collision entre les murs de la salle et le personnage. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Fichier qui influe sur les salles du programme. 
+
+\textquotesingle{} \begin{DoxyAuthor}{Auteur}
+Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+18 Février 2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{salle_8c_a9bd600007d1a50196cf9cb1152e98891}\label{salle_8c_a9bd600007d1a50196cf9cb1152e98891}} 
+\index{salle.c@{salle.c}!creation\_fen@{creation\_fen}}
+\index{creation\_fen@{creation\_fen}!salle.c@{salle.c}}
+\doxysubsubsection{\texorpdfstring{creation\_fen()}{creation\_fen()}}
+{\footnotesize\ttfamily int creation\+\_\+fen (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Window $\ast$$\ast$}]{fen,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$$\ast$}]{renderer }\end{DoxyParamCaption})}
+
+
+
+Initialisation de la fenêtre. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em fen} & Creation de la fenetre \\
+\hline
+{\em renderer} & Création du rendu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int -\/ Retourne 1 en cas de réussite sinon faux 
+\end{DoxyReturn}
+\mbox{\Hypertarget{salle_8c_a286666b0c555b796b34825afb78e84c7}\label{salle_8c_a286666b0c555b796b34825afb78e84c7}} 
+\index{salle.c@{salle.c}!init\_salle@{init\_salle}}
+\index{init\_salle@{init\_salle}!salle.c@{salle.c}}
+\doxysubsubsection{\texorpdfstring{init\_salle()}{init\_salle()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsalle__s}{salle\+\_\+t}} init\+\_\+salle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsalle__s}{salle\+\_\+t}}}]{salle,  }\item[{int}]{tag }\end{DoxyParamCaption})}
+
+
+
+Initialisation d\textquotesingle{}une salle avec ses caractéristiques. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em salle} & Importation de la salle à modifier \\
+\hline
+{\em tag} & Attribution de l\textquotesingle{}identifiant de la salle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+salle\+\_\+t -\/ Retourne la salle complète avec ses caractéristiques 
+\end{DoxyReturn}
+\mbox{\Hypertarget{salle_8c_ad1d5f1c9b269202f5c64dc2220a6cb9a}\label{salle_8c_ad1d5f1c9b269202f5c64dc2220a6cb9a}} 
+\index{salle.c@{salle.c}!test\_colision@{test\_colision}}
+\index{test\_colision@{test\_colision}!salle.c@{salle.c}}
+\doxysubsubsection{\texorpdfstring{test\_colision()}{test\_colision()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structperso__s}{perso\+\_\+t}} test\+\_\+colision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structperso__s}{perso\+\_\+t}}}]{perso,  }\item[{S\+D\+L\+\_\+\+Rect}]{salle }\end{DoxyParamCaption})}
+
+
+
+Test si il y a collision entre les murs de la salle et le personnage. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em perso} & Importation du personnage à tester \\
+\hline
+{\em salle} & Importation de la bordure de la salle à tester \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+perso\+\_\+t -\/ Retourne toutes les caractéristiques du personnage 
+\end{DoxyReturn}

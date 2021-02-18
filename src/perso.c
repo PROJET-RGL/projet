@@ -1,5 +1,20 @@
 #include "perso.h"
 
+/**
+ * \brief Fichier contenant les fonctions agissant sur le personnage du programme
+ * \file 'perso.h'
+ * \author Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas
+ * \version 0.0.1
+ * \date 18 Février 2020
+ */
+
+/**
+ * @brief Création du perso, avec ses coordonnées, sa taille, ses points de vies, son emplacement, son inventaire et sa vitesse
+ * 
+ * @param perso On importe le perso à modifier
+ * @return perso_t - Retourne le perso mis en paramètre
+ */
+
 perso_t init_perso(perso_t perso)
 {
     // Coordonnées du personnage

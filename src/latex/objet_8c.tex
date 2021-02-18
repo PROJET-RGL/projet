@@ -1,0 +1,72 @@
+\hypertarget{objet_8c}{}\doxysection{Référence du fichier objet.\+c}
+\label{objet_8c}\index{objet.c@{objet.c}}
+
+
+Fichier contenant les fonctions agissant sur les objets du programme.  
+
+
+{\ttfamily \#include \char`\"{}objet.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de objet.\+c\+:
+% FIG 0
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structobjet__s}{objet\+\_\+t}} \mbox{\hyperlink{objet_8c_afa7aa15c129d3195f5d02da4d3c2bd2e}{init\+\_\+obj}} (\mbox{\hyperlink{structobjet__s}{objet\+\_\+t}} obj)
+\begin{DoxyCompactList}\small\item\em Création d\textquotesingle{}un objet, avec ses coordonnées, sa taille et sa couleur. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structobjet__s}{objet\+\_\+t}} \mbox{\hyperlink{objet_8c_a1d193a9d0078fecbd24c6b46f974f4a3}{compare\+\_\+objet}} (\mbox{\hyperlink{structobjet__s}{objet\+\_\+t}} obj1, \mbox{\hyperlink{structobjet__s}{objet\+\_\+t}} obj2)
+\begin{DoxyCompactList}\small\item\em Comparaison entre deux objets (On vérifie si ils sont en superposé, si c\textquotesingle{}est le cas, on modifie la position du deuxième objet) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Fichier contenant les fonctions agissant sur les objets du programme. 
+
+\textquotesingle{} \begin{DoxyAuthor}{Auteur}
+Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+18 Février 2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{objet_8c_a1d193a9d0078fecbd24c6b46f974f4a3}\label{objet_8c_a1d193a9d0078fecbd24c6b46f974f4a3}} 
+\index{objet.c@{objet.c}!compare\_objet@{compare\_objet}}
+\index{compare\_objet@{compare\_objet}!objet.c@{objet.c}}
+\doxysubsubsection{\texorpdfstring{compare\_objet()}{compare\_objet()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structobjet__s}{objet\+\_\+t}} compare\+\_\+objet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structobjet__s}{objet\+\_\+t}}}]{obj1,  }\item[{\mbox{\hyperlink{structobjet__s}{objet\+\_\+t}}}]{obj2 }\end{DoxyParamCaption})}
+
+
+
+Comparaison entre deux objets (On vérifie si ils sont en superposé, si c\textquotesingle{}est le cas, on modifie la position du deuxième objet) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em obj1} & On importe l\textquotesingle{}objet de référence \\
+\hline
+{\em obj2} & On importe l\textquotesingle{}objet tester \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+objet\+\_\+t -\/ Retourne l\textquotesingle{}objet modifier/pas 
+\end{DoxyReturn}
+\mbox{\Hypertarget{objet_8c_afa7aa15c129d3195f5d02da4d3c2bd2e}\label{objet_8c_afa7aa15c129d3195f5d02da4d3c2bd2e}} 
+\index{objet.c@{objet.c}!init\_obj@{init\_obj}}
+\index{init\_obj@{init\_obj}!objet.c@{objet.c}}
+\doxysubsubsection{\texorpdfstring{init\_obj()}{init\_obj()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structobjet__s}{objet\+\_\+t}} init\+\_\+obj (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structobjet__s}{objet\+\_\+t}}}]{obj }\end{DoxyParamCaption})}
+
+
+
+Création d\textquotesingle{}un objet, avec ses coordonnées, sa taille et sa couleur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em obj} & On importe l\textquotesingle{}objet à modifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+objet\+\_\+t -\/ Retourne l\textquotesingle{}objet mis en paramètre 
+\end{DoxyReturn}

@@ -18,6 +18,21 @@
     SDL_Surface *image = NULL;
     int perso_salle = 1, passage;
 
+/**
+ * \brief Fonction main du programme
+ * \file 'main.c'
+ * \author Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas
+ * \version 0.0.15
+ * \date 18 Février 2020
+ */
+
+/**
+ * @brief C'est le main du programme
+ *
+ * @param argc nb param
+ * @param argv list param
+ * @return int - EXIT_SUCCESS
+ */
 
 int main(int argc, char **argv)
 {
@@ -46,120 +61,11 @@ int main(int argc, char **argv)
 
     srand(time(NULL));
 
-    lab = init_lab(lab, TAILLE_LAB);
+    lab = init_lab(lab, fen, renderer, fenetre, TAILLE_LAB);
 
     // ------------------------------------------- Création personnage ! ------------------------------------------- //
 
     perso1 = init_perso(perso1);
-
-    // ------------------------------------------- Initialisation de la texture des salles !!! ------------------------------------------- //
-
-    image = SDL_LoadBMP("../src/img/Salle.bmp");
-
-    if(image == NULL)
-    {
-        clean_ressources(fen, renderer, NULL);
-        SDL_ExitWithError("Erreur du chargement de l'image");
-    }
-
-    int i = 0;
-
-    lab.texture = SDL_CreateTextureFromSurface(renderer, image);
-
-    if(lab.texture == NULL)
-        {
-            clean_ressources(fen, renderer, lab.texture);
-            SDL_ExitWithError("Erreur de création de la texture");
-        }
-
-    if(SDL_QueryTexture(lab.texture, NULL, NULL, &fenetre.w, &fenetre.h) != 0)
-        {
-            clean_ressources(fen, renderer, lab.texture);
-            SDL_ExitWithError("Erreur de chargement de la texture");
-        }
-
-    SDL_FreeSurface(image);
-
-
-
-    // ------------------------------------------- Initialisation des textures objets ! ------------------------------------------- //
-
-    image = SDL_LoadBMP("../src/img/Poro.bmp");
-
-    if(image == NULL)
-    {
-        clean_ressources(fen, renderer, NULL);
-        SDL_ExitWithError("Erreur du chargement de l'image");
-    }
-
-    SDL_SetColorKey(image, SDL_TRUE, SDL_MapRGB(image->format, 30, 6, 236));
-
-    for(j = 0 ; j < lab.nb ; j++)
-    {
-        for(i = 0; i < lab.tab_salle[j].nb_objt; i++)
-        {
-            lab.tab_salle[j].tab_obj[i].text_objet = SDL_CreateTextureFromSurface(renderer, image);
-
-            if(lab.tab_salle[j].tab_obj[i].text_objet == NULL)
-            {
-                clean_ressources(fen, renderer, lab.tab_salle[j].tab_obj[i].text_objet);
-                SDL_ExitWithError("Erreur de création de la texture");
-            }
-
-            if(SDL_QueryTexture(lab.tab_salle[j].tab_obj[i].text_objet, NULL, NULL, &lab.tab_salle[j].tab_obj[i].objet.w, &lab.tab_salle[j].tab_obj[i].objet.h) != 0)
-            {
-                clean_ressources(fen, renderer, lab.tab_salle[j].tab_obj[i].text_objet);
-                SDL_ExitWithError("Erreur de chargement de la texture");
-            }
-
-            if(SDL_RenderCopy(renderer, lab.tab_salle[j].tab_obj[i].text_objet, NULL, &lab.tab_salle[j].tab_obj[i].objet) != 0)
-            {
-                clean_ressources(fen, renderer, lab.tab_salle[j].tab_obj[i].text_objet);
-                SDL_ExitWithError("Impossible d'afficher la texture !\n");
-            }
-        }
-    }
-    SDL_FreeSurface(image);
-
-
-
-    // ------------------------------------------- Initialisation des textures mobs ! ------------------------------------------- //
-
-    image = SDL_LoadBMP("../src/img/Poro.bmp");
-
-    if(image == NULL)
-    {
-        clean_ressources(fen, renderer, NULL);
-        SDL_ExitWithError("Erreur du chargement de l'image");
-    }
-
-    SDL_SetColorKey(image, SDL_TRUE, SDL_MapRGB(image->format, 30, 6, 236));
-
-    for(j = 0 ; j < lab.nb ; j++)
-    {
-        for(i = 0; i < lab.tab_salle[j].nb_mob; i++)
-        {
-            lab.tab_salle[j].tab_mob[i].texture = SDL_CreateTextureFromSurface(renderer, image);
-            if( lab.tab_salle[j].tab_mob[i].texture == NULL)
-            {
-                clean_ressources(fen, renderer, lab.tab_salle[j].tab_mob[i].texture);
-                SDL_ExitWithError("Erreur de création de la texture");
-            }
-
-            if(SDL_QueryTexture(lab.tab_salle[j].tab_mob[i].texture, NULL, NULL, &lab.tab_salle[j].tab_mob[i].mob.w, &lab.tab_salle[j].tab_mob[i].mob.h) != 0)
-            {
-                clean_ressources(fen, renderer, lab.tab_salle[j].tab_mob[i].texture);
-                SDL_ExitWithError("Erreur de chargement de la texture");
-            }
-
-            if(SDL_RenderCopy(renderer, lab.tab_salle[j].tab_mob[i].texture, NULL, &lab.tab_salle[j].tab_mob[i].mob) != 0)
-            {
-                clean_ressources(fen, renderer, lab.tab_salle[j].tab_mob[i].texture);
-                SDL_ExitWithError("Impossible d'afficher la texture !\n");
-            }
-        }
-    }
-    SDL_FreeSurface(image);
 
     nettoyage_ecran(renderer);
 
@@ -188,13 +94,12 @@ int main(int argc, char **argv)
         {
             if(lab.tab_salle[TAILLE_LAB-1].nb_mob_mort == 5)
             {
-                lab = init_lab(lab, TAILLE_LAB);
+                lab = init_lab(lab, fen, renderer, fenetre, TAILLE_LAB);
                 perso1 = init_perso(perso1);
                 perso1.tag = 0;
                 presserQ = FALSE, presserD = FALSE, presserS = FALSE, presserZ = FALSE;
             }
             jeu_lunched = SDL_TRUE;
-            printf("On entre dans la boucle de jeu et %d\n", jeu_lunched);
             while(jeu_lunched != SDL_FALSE)
             {
                 while(SDL_PollEvent(&event) || 1)
@@ -329,12 +234,11 @@ int main(int argc, char **argv)
                             break;
 
                         case SDL_MOUSEMOTION :
-                            continue;
+                            break;
 
                         default:
                             break;
                     }
-                    printf("On est dans la boucle de jeu et %d\n", jeu_lunched);
 
                     int i = 0;
 
