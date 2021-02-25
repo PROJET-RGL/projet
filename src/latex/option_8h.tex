@@ -1,0 +1,62 @@
+\hypertarget{option_8h}{}\doxysection{Référence du fichier option.\+h}
+\label{option_8h}\index{option.h@{option.h}}
+
+
+Fichier contenant les fonctions chargeant les option et ses images.  
+
+
+{\ttfamily \#include \char`\"{}super.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}menu.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de option.\+h\+:
+% FIG 0
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{option_8h_a4920935326e84091bdb45502b8755161}{load\+\_\+option}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, S\+D\+L\+\_\+\+Window $\ast$fen)
+\begin{DoxyCompactList}\small\item\em Chargement et affichage des options. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{option_8h_a8eb000e45d1f3503d8e32ded0ac854ce}\label{option_8h_a8eb000e45d1f3503d8e32ded0ac854ce}} 
+S\+D\+L\+\_\+\+Rect {\bfseries fleche}
+\item 
+\mbox{\Hypertarget{option_8h_a34b1c99906f7288a5a33da17d1e5a549}\label{option_8h_a34b1c99906f7288a5a33da17d1e5a549}} 
+S\+D\+L\+\_\+\+Rect {\bfseries fullscreen}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Fichier contenant les fonctions chargeant les option et ses images. 
+
+\textquotesingle{} \begin{DoxyAuthor}{Auteur}
+Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+18 Février 2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{option_8h_a4920935326e84091bdb45502b8755161}\label{option_8h_a4920935326e84091bdb45502b8755161}} 
+\index{option.h@{option.h}!load\_option@{load\_option}}
+\index{load\_option@{load\_option}!option.h@{option.h}}
+\doxysubsubsection{\texorpdfstring{load\_option()}{load\_option()}}
+{\footnotesize\ttfamily int load\+\_\+option (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{S\+D\+L\+\_\+\+Window $\ast$}]{fen }\end{DoxyParamCaption})}
+
+
+
+Chargement et affichage des options. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & Attributs pour l\textquotesingle{}affiche d\textquotesingle{}une fenêtre \\
+\hline
+{\em fen} & Fenêtre sur laquelle on veut afficher les options \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int -\/ Retourne si l\textquotesingle{}utilisateur souhaite quitter ou non les options 
+\end{DoxyReturn}

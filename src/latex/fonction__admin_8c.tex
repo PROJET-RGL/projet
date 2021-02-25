@@ -1,0 +1,74 @@
+\hypertarget{fonction__admin_8c}{}\doxysection{Référence du fichier fonction\+\_\+admin.\+c}
+\label{fonction__admin_8c}\index{fonction\_admin.c@{fonction\_admin.c}}
+
+
+Gestion des fenêtres.  
+
+
+{\ttfamily \#include \char`\"{}fonction\+\_\+admin.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de fonction\+\_\+admin.\+c\+:
+% FIG 0
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{fonction__admin_8c_abed124ab111ee095d48f08e2a3ea4446}{S\+D\+L\+\_\+\+Exit\+With\+Error}} (const char $\ast$message)
+\begin{DoxyCompactList}\small\item\em Gestion du message d\textquotesingle{}erreur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fonction__admin_8c_ab5a05aef8d835e7085556a2ef01f8710}{clean\+\_\+ressources}} (S\+D\+L\+\_\+\+Window $\ast$w, S\+D\+L\+\_\+\+Renderer $\ast$r, S\+D\+L\+\_\+\+Texture $\ast$t)
+\begin{DoxyCompactList}\small\item\em Fermeture de la fenêtre. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{fonction__admin_8c_a191e77501cdccb22b12d5712bdf62018}\label{fonction__admin_8c_a191e77501cdccb22b12d5712bdf62018}} 
+void {\bfseries nettoyage\+\_\+ecran} (S\+D\+L\+\_\+\+Renderer $\ast$renderer)
+\item 
+\mbox{\Hypertarget{fonction__admin_8c_a8f18164cf9963f4c7ada8fd294367d77}\label{fonction__admin_8c_a8f18164cf9963f4c7ada8fd294367d77}} 
+int {\bfseries affichage} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, S\+D\+L\+\_\+\+Rect cible, int r, int v, int b)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Gestion des fenêtres. 
+
+\textquotesingle{} \begin{DoxyAuthor}{Auteur}
+Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+18 Février 2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{fonction__admin_8c_ab5a05aef8d835e7085556a2ef01f8710}\label{fonction__admin_8c_ab5a05aef8d835e7085556a2ef01f8710}} 
+\index{fonction\_admin.c@{fonction\_admin.c}!clean\_ressources@{clean\_ressources}}
+\index{clean\_ressources@{clean\_ressources}!fonction\_admin.c@{fonction\_admin.c}}
+\doxysubsubsection{\texorpdfstring{clean\_ressources()}{clean\_ressources()}}
+{\footnotesize\ttfamily void clean\+\_\+ressources (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Window $\ast$}]{w,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{r,  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{t }\end{DoxyParamCaption})}
+
+
+
+Fermeture de la fenêtre. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em w} & Fermeture de la page windows \\
+\hline
+{\em r} & Disparition de l\textquotesingle{}apparence de la fenêtre \\
+\hline
+{\em t} & Disparition des tex \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{fonction__admin_8c_abed124ab111ee095d48f08e2a3ea4446}\label{fonction__admin_8c_abed124ab111ee095d48f08e2a3ea4446}} 
+\index{fonction\_admin.c@{fonction\_admin.c}!SDL\_ExitWithError@{SDL\_ExitWithError}}
+\index{SDL\_ExitWithError@{SDL\_ExitWithError}!fonction\_admin.c@{fonction\_admin.c}}
+\doxysubsubsection{\texorpdfstring{SDL\_ExitWithError()}{SDL\_ExitWithError()}}
+{\footnotesize\ttfamily void S\+D\+L\+\_\+\+Exit\+With\+Error (\begin{DoxyParamCaption}\item[{const char $\ast$}]{message }\end{DoxyParamCaption})}
+
+
+
+Gestion du message d\textquotesingle{}erreur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em message} & Apparition d\textquotesingle{}un message sur l\textquotesingle{}écran en cas d\textquotesingle{}erreurs \\
+\hline
+\end{DoxyParams}

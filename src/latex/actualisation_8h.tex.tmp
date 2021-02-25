@@ -1,0 +1,60 @@
+\hypertarget{actualisation_8h}{}\doxysection{Référence du fichier actualisation.\+h}
+\label{actualisation_8h}\index{actualisation.h@{actualisation.h}}
+
+
+Fonction d\textquotesingle{}actualisation des salles du programme.  
+
+
+{\ttfamily \#include \char`\"{}super.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fonction\+\_\+admin.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}salle.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de actualisation.\+h\+:
+% FIG 0
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
+% FIG 1
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structperso__s}{perso\+\_\+t}} \mbox{\hyperlink{actualisation_8h_a5abeb6b177303de92a61dce5f9d950be}{actualisation\+\_\+salle}} (\mbox{\hyperlink{structlabyrinthe__s}{labyrinthe\+\_\+t}} lab, \mbox{\hyperlink{structperso__s}{perso\+\_\+t}} perso, S\+D\+L\+\_\+\+Renderer $\ast$renderer, S\+D\+L\+\_\+\+Rect fenetre)
+\begin{DoxyCompactList}\small\item\em Gestion de l\textquotesingle{}actualisation d\textquotesingle{}une salle, de l\textquotesingle{}apparence de la texture. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Fonction d\textquotesingle{}actualisation des salles du programme. 
+
+\textquotesingle{} \begin{DoxyAuthor}{Auteur}
+Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+18 Février 2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{actualisation_8h_a5abeb6b177303de92a61dce5f9d950be}\label{actualisation_8h_a5abeb6b177303de92a61dce5f9d950be}} 
+\index{actualisation.h@{actualisation.h}!actualisation\_salle@{actualisation\_salle}}
+\index{actualisation\_salle@{actualisation\_salle}!actualisation.h@{actualisation.h}}
+\doxysubsubsection{\texorpdfstring{actualisation\_salle()}{actualisation\_salle()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structperso__s}{perso\+\_\+t}} actualisation\+\_\+salle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structlabyrinthe__s}{labyrinthe\+\_\+t}}}]{lab,  }\item[{\mbox{\hyperlink{structperso__s}{perso\+\_\+t}}}]{perso,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{S\+D\+L\+\_\+\+Rect}]{fenetre }\end{DoxyParamCaption})}
+
+
+
+Gestion de l\textquotesingle{}actualisation d\textquotesingle{}une salle, de l\textquotesingle{}apparence de la texture. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em lab} & Positionnement du personnage en fonction de la salle actuelle \\
+\hline
+{\em perso} & Les caractéristiques du personnage (couleur,vitesse,coordonnées) \\
+\hline
+{\em renderer} & Attributs pour l\textquotesingle{}affichage d\textquotesingle{}une fenêtre \\
+\hline
+{\em fenetre} & On importe la fenêtre modifiable \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+perso\+\_\+t -\/ Actualisation du personnage 
+\end{DoxyReturn}

@@ -1,0 +1,104 @@
+\hypertarget{menu_8c}{}\doxysection{Référence du fichier menu.\+c}
+\label{menu_8c}\index{menu.c@{menu.c}}
+
+
+Fichier contenant les fonctions chargeant le menu et ses images.  
+
+
+{\ttfamily \#include \char`\"{}menu.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de menu.\+c\+:
+% FIG 0
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{menu_8c_abc3463575d1225216b4795ba128fc239}{load\+\_\+menu}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, S\+D\+L\+\_\+\+Window $\ast$fen)
+\begin{DoxyCompactList}\small\item\em Chargement et affichage du menu. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{menu_8c_a4920935326e84091bdb45502b8755161}{load\+\_\+option}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, S\+D\+L\+\_\+\+Window $\ast$fen)
+\begin{DoxyCompactList}\small\item\em Chargement et affichage des options. \end{DoxyCompactList}\item 
+S\+D\+L\+\_\+\+Rect \mbox{\hyperlink{menu_8c_ad520a0f05e80ad8dc068498a6bc8a3be}{load\+\_\+img}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, S\+D\+L\+\_\+\+Window $\ast$fen, char $\ast$chemin\+\_\+img, int pourcentX, int pourcentY, S\+D\+L\+\_\+\+Rect rect)
+\begin{DoxyCompactList}\small\item\em Chargement et affichage des images. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Fichier contenant les fonctions chargeant le menu et ses images. 
+
+\textquotesingle{} \begin{DoxyAuthor}{Auteur}
+Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+18 Février 2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{menu_8c_ad520a0f05e80ad8dc068498a6bc8a3be}\label{menu_8c_ad520a0f05e80ad8dc068498a6bc8a3be}} 
+\index{menu.c@{menu.c}!load\_img@{load\_img}}
+\index{load\_img@{load\_img}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{load\_img()}{load\_img()}}
+{\footnotesize\ttfamily S\+D\+L\+\_\+\+Rect load\+\_\+img (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{S\+D\+L\+\_\+\+Window $\ast$}]{fen,  }\item[{char $\ast$}]{chemin\+\_\+img,  }\item[{int}]{pourcentX,  }\item[{int}]{pourcentY,  }\item[{S\+D\+L\+\_\+\+Rect}]{rect }\end{DoxyParamCaption})}
+
+
+
+Chargement et affichage des images. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & Attributs pour l\textquotesingle{}affiche d\textquotesingle{}une fenêtre \\
+\hline
+{\em fen} & Fenêtre sur laquelle on veut afficher les options \\
+\hline
+{\em chemin\+\_\+img} & Chemin relatif de l\textquotesingle{}image \\
+\hline
+{\em pourcentX} & Position de la fenêtre en X en pourcentage \\
+\hline
+{\em pourcentY} & Position de la fenêtre en Y en pourcentage \\
+\hline
+{\em rect} & Indique quel rectangle utiliser pour l\textquotesingle{}image \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+S\+D\+L\+\_\+\+Rect -\/ Retourne des informations sur la position x, y des images ainsi que leurs tailles 
+\end{DoxyReturn}
+\mbox{\Hypertarget{menu_8c_abc3463575d1225216b4795ba128fc239}\label{menu_8c_abc3463575d1225216b4795ba128fc239}} 
+\index{menu.c@{menu.c}!load\_menu@{load\_menu}}
+\index{load\_menu@{load\_menu}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{load\_menu()}{load\_menu()}}
+{\footnotesize\ttfamily int load\+\_\+menu (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{S\+D\+L\+\_\+\+Window $\ast$}]{fen }\end{DoxyParamCaption})}
+
+
+
+Chargement et affichage du menu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & Attributs pour l\textquotesingle{}affiche d\textquotesingle{}une fenêtre \\
+\hline
+{\em fen} & Fenêtre sur laquelle on veut afficher les options \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int -\/ Retourne si l\textquotesingle{}utilisateur souhaite quitter ou non le jeu 
+\end{DoxyReturn}
+\mbox{\Hypertarget{menu_8c_a4920935326e84091bdb45502b8755161}\label{menu_8c_a4920935326e84091bdb45502b8755161}} 
+\index{menu.c@{menu.c}!load\_option@{load\_option}}
+\index{load\_option@{load\_option}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{load\_option()}{load\_option()}}
+{\footnotesize\ttfamily int load\+\_\+option (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{S\+D\+L\+\_\+\+Window $\ast$}]{fen }\end{DoxyParamCaption})}
+
+
+
+Chargement et affichage des options. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & Attributs pour l\textquotesingle{}affiche d\textquotesingle{}une fenêtre \\
+\hline
+{\em fen} & Fenêtre sur laquelle on veut afficher les options \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int -\/ Retourne si l\textquotesingle{}utilisateur souhaite quitter ou non les options 
+\end{DoxyReturn}

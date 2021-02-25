@@ -1,0 +1,101 @@
+\hypertarget{structsalle__s}{}\doxysection{Référence de la structure salle\+\_\+s}
+\label{structsalle__s}\index{salle\_s@{salle\_s}}
+
+
+Struture de données d\textquotesingle{}une salle, avec ses coordonnées, son identifiant, son nombre d\textquotesingle{}objet, son nombre de P\+NJ, son nombre de P\+NJ morts, un tableau d\textquotesingle{}objet, un tableau de P\+NJ, un tableau de porte et sa couleur.  
+
+
+
+
+{\ttfamily \#include $<$super\+\_\+s.\+h$>$}
+
+
+
+Graphe de collaboration de salle\+\_\+s\+:
+% FIG 0
+\doxysubsection*{Attributs publics}
+\begin{DoxyCompactItemize}
+\item 
+S\+D\+L\+\_\+\+Rect \mbox{\hyperlink{structsalle__s_af575e8582a403ad081c0f1b5f5bf1474}{salle}}
+\item 
+int \mbox{\hyperlink{structsalle__s_ab9bff7418119999a644a728166e90afe}{tag\+\_\+salle}}
+\item 
+int \mbox{\hyperlink{structsalle__s_a0c0ddf485d623a4f9a58262a895629e4}{nb\+\_\+objt}}
+\item 
+int \mbox{\hyperlink{structsalle__s_af4ce06a24a46f36669474253475ed793}{nb\+\_\+mob}}
+\item 
+int \mbox{\hyperlink{structsalle__s_ad31e56959c82a1b824611dcf0ad13a8b}{nb\+\_\+mob\+\_\+mort}}
+\item 
+\mbox{\hyperlink{structobjet__s}{objet\+\_\+t}} \mbox{\hyperlink{structsalle__s_aedcbaebb6b2e6246ecae090dfaea3490}{tab\+\_\+obj}} \mbox{[}O\mbox{]}
+\item 
+\mbox{\hyperlink{structmob__s}{mob\+\_\+t}} \mbox{\hyperlink{structsalle__s_af2e60c426fce7010343bf0e492fd90da}{tab\+\_\+mob}} \mbox{[}M\mbox{]}
+\item 
+\mbox{\hyperlink{structporte__s}{porte\+\_\+t}} \mbox{\hyperlink{structsalle__s_a5ec9ec7803f3274530f5827f012fb3b0}{porte}} \mbox{[}P\mbox{]}
+\item 
+\mbox{\hyperlink{structcouleur__s}{couleur\+\_\+t}} \mbox{\hyperlink{structsalle__s_ae488016659a95115bf31aeb8561b9db0}{couleur}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Struture de données d\textquotesingle{}une salle, avec ses coordonnées, son identifiant, son nombre d\textquotesingle{}objet, son nombre de P\+NJ, son nombre de P\+NJ morts, un tableau d\textquotesingle{}objet, un tableau de P\+NJ, un tableau de porte et sa couleur. 
+
+\doxysubsection{Documentation des données membres}
+\mbox{\Hypertarget{structsalle__s_ae488016659a95115bf31aeb8561b9db0}\label{structsalle__s_ae488016659a95115bf31aeb8561b9db0}} 
+\index{salle\_s@{salle\_s}!couleur@{couleur}}
+\index{couleur@{couleur}!salle\_s@{salle\_s}}
+\doxysubsubsection{\texorpdfstring{couleur}{couleur}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcouleur__s}{couleur\+\_\+t}} salle\+\_\+s\+::couleur}
+
+Couleur des bordures de la salle \mbox{\Hypertarget{structsalle__s_af4ce06a24a46f36669474253475ed793}\label{structsalle__s_af4ce06a24a46f36669474253475ed793}} 
+\index{salle\_s@{salle\_s}!nb\_mob@{nb\_mob}}
+\index{nb\_mob@{nb\_mob}!salle\_s@{salle\_s}}
+\doxysubsubsection{\texorpdfstring{nb\_mob}{nb\_mob}}
+{\footnotesize\ttfamily int salle\+\_\+s\+::nb\+\_\+mob}
+
+Le nombre de P\+NJ dans la salle \mbox{\Hypertarget{structsalle__s_ad31e56959c82a1b824611dcf0ad13a8b}\label{structsalle__s_ad31e56959c82a1b824611dcf0ad13a8b}} 
+\index{salle\_s@{salle\_s}!nb\_mob\_mort@{nb\_mob\_mort}}
+\index{nb\_mob\_mort@{nb\_mob\_mort}!salle\_s@{salle\_s}}
+\doxysubsubsection{\texorpdfstring{nb\_mob\_mort}{nb\_mob\_mort}}
+{\footnotesize\ttfamily int salle\+\_\+s\+::nb\+\_\+mob\+\_\+mort}
+
+Le nombre de P\+NJ mort dans la salle \mbox{\Hypertarget{structsalle__s_a0c0ddf485d623a4f9a58262a895629e4}\label{structsalle__s_a0c0ddf485d623a4f9a58262a895629e4}} 
+\index{salle\_s@{salle\_s}!nb\_objt@{nb\_objt}}
+\index{nb\_objt@{nb\_objt}!salle\_s@{salle\_s}}
+\doxysubsubsection{\texorpdfstring{nb\_objt}{nb\_objt}}
+{\footnotesize\ttfamily int salle\+\_\+s\+::nb\+\_\+objt}
+
+Le nombre d\textquotesingle{}objet de la salle \mbox{\Hypertarget{structsalle__s_a5ec9ec7803f3274530f5827f012fb3b0}\label{structsalle__s_a5ec9ec7803f3274530f5827f012fb3b0}} 
+\index{salle\_s@{salle\_s}!porte@{porte}}
+\index{porte@{porte}!salle\_s@{salle\_s}}
+\doxysubsubsection{\texorpdfstring{porte}{porte}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structporte__s}{porte\+\_\+t}} salle\+\_\+s\+::porte\mbox{[}P\mbox{]}}
+
+Le tableau des portes de la salle en question \mbox{\Hypertarget{structsalle__s_af575e8582a403ad081c0f1b5f5bf1474}\label{structsalle__s_af575e8582a403ad081c0f1b5f5bf1474}} 
+\index{salle\_s@{salle\_s}!salle@{salle}}
+\index{salle@{salle}!salle\_s@{salle\_s}}
+\doxysubsubsection{\texorpdfstring{salle}{salle}}
+{\footnotesize\ttfamily S\+D\+L\+\_\+\+Rect salle\+\_\+s\+::salle}
+
+Les coordonnées de la salle \mbox{\Hypertarget{structsalle__s_af2e60c426fce7010343bf0e492fd90da}\label{structsalle__s_af2e60c426fce7010343bf0e492fd90da}} 
+\index{salle\_s@{salle\_s}!tab\_mob@{tab\_mob}}
+\index{tab\_mob@{tab\_mob}!salle\_s@{salle\_s}}
+\doxysubsubsection{\texorpdfstring{tab\_mob}{tab\_mob}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmob__s}{mob\+\_\+t}} salle\+\_\+s\+::tab\+\_\+mob\mbox{[}M\mbox{]}}
+
+Le tableau de mob de la salle en question \mbox{\Hypertarget{structsalle__s_aedcbaebb6b2e6246ecae090dfaea3490}\label{structsalle__s_aedcbaebb6b2e6246ecae090dfaea3490}} 
+\index{salle\_s@{salle\_s}!tab\_obj@{tab\_obj}}
+\index{tab\_obj@{tab\_obj}!salle\_s@{salle\_s}}
+\doxysubsubsection{\texorpdfstring{tab\_obj}{tab\_obj}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structobjet__s}{objet\+\_\+t}} salle\+\_\+s\+::tab\+\_\+obj\mbox{[}O\mbox{]}}
+
+Le tableau d\textquotesingle{}objet de la salle en question \mbox{\Hypertarget{structsalle__s_ab9bff7418119999a644a728166e90afe}\label{structsalle__s_ab9bff7418119999a644a728166e90afe}} 
+\index{salle\_s@{salle\_s}!tag\_salle@{tag\_salle}}
+\index{tag\_salle@{tag\_salle}!salle\_s@{salle\_s}}
+\doxysubsubsection{\texorpdfstring{tag\_salle}{tag\_salle}}
+{\footnotesize\ttfamily int salle\+\_\+s\+::tag\+\_\+salle}
+
+Le tag de la salle en question 
+
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{super__s_8h}{super\+\_\+s.\+h}}\end{DoxyCompactItemize}

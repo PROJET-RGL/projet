@@ -1,0 +1,131 @@
+\hypertarget{menu_8h}{}\doxysection{Référence du fichier menu.\+h}
+\label{menu_8h}\index{menu.h@{menu.h}}
+
+
+Fichier contenant les fonctions chargeant le menu et ses images.  
+
+
+{\ttfamily \#include \char`\"{}super.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fonction\+\_\+admin.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de menu.\+h\+:
+% FIG 0
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
+% FIG 1
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{menu_8h_abc3463575d1225216b4795ba128fc239}{load\+\_\+menu}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, S\+D\+L\+\_\+\+Window $\ast$fen)
+\begin{DoxyCompactList}\small\item\em Chargement et affichage du menu. \end{DoxyCompactList}\item 
+S\+D\+L\+\_\+\+Rect \mbox{\hyperlink{menu_8h_af1cb5e5caa7d595c8c96341255bdfc52}{load\+\_\+img}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, S\+D\+L\+\_\+\+Window $\ast$fen, char $\ast$img, int pourcentX, int pourcentY, S\+D\+L\+\_\+\+Rect rect)
+\begin{DoxyCompactList}\small\item\em Chargement et affichage des images. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{menu_8h_a4920935326e84091bdb45502b8755161}{load\+\_\+option}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, S\+D\+L\+\_\+\+Window $\ast$fen)
+\begin{DoxyCompactList}\small\item\em Chargement et affichage des options. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{menu_8h_a9c6347e629a7e984e7d830cc2d575be5}\label{menu_8h_a9c6347e629a7e984e7d830cc2d575be5}} 
+S\+D\+L\+\_\+\+Rect {\bfseries logo}
+\item 
+\mbox{\Hypertarget{menu_8h_a1e76259d059d47034be68f328fed2b9e}\label{menu_8h_a1e76259d059d47034be68f328fed2b9e}} 
+S\+D\+L\+\_\+\+Rect {\bfseries start}
+\item 
+\mbox{\Hypertarget{menu_8h_a34726fc08c94c9e1e1264b7cce8ec726}\label{menu_8h_a34726fc08c94c9e1e1264b7cce8ec726}} 
+S\+D\+L\+\_\+\+Rect {\bfseries option}
+\item 
+\mbox{\Hypertarget{menu_8h_abbebd1ad45dc93788dae8c3b5464d79e}\label{menu_8h_abbebd1ad45dc93788dae8c3b5464d79e}} 
+S\+D\+L\+\_\+\+Rect {\bfseries quit}
+\item 
+\mbox{\Hypertarget{menu_8h_a8eb000e45d1f3503d8e32ded0ac854ce}\label{menu_8h_a8eb000e45d1f3503d8e32ded0ac854ce}} 
+S\+D\+L\+\_\+\+Rect {\bfseries fleche}
+\item 
+\mbox{\Hypertarget{menu_8h_a34b1c99906f7288a5a33da17d1e5a549}\label{menu_8h_a34b1c99906f7288a5a33da17d1e5a549}} 
+S\+D\+L\+\_\+\+Rect {\bfseries fullscreen}
+\item 
+\mbox{\Hypertarget{menu_8h_ae7725fd915ea78ed44a5ab3310212635}\label{menu_8h_ae7725fd915ea78ed44a5ab3310212635}} 
+S\+D\+L\+\_\+\+Rect {\bfseries classique}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Fichier contenant les fonctions chargeant le menu et ses images. 
+
+\textquotesingle{} \begin{DoxyAuthor}{Auteur}
+Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+18 Février 2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{menu_8h_af1cb5e5caa7d595c8c96341255bdfc52}\label{menu_8h_af1cb5e5caa7d595c8c96341255bdfc52}} 
+\index{menu.h@{menu.h}!load\_img@{load\_img}}
+\index{load\_img@{load\_img}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{load\_img()}{load\_img()}}
+{\footnotesize\ttfamily S\+D\+L\+\_\+\+Rect load\+\_\+img (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{S\+D\+L\+\_\+\+Window $\ast$}]{fen,  }\item[{char $\ast$}]{chemin\+\_\+img,  }\item[{int}]{pourcentX,  }\item[{int}]{pourcentY,  }\item[{S\+D\+L\+\_\+\+Rect}]{rect }\end{DoxyParamCaption})}
+
+
+
+Chargement et affichage des images. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & Attributs pour l\textquotesingle{}affiche d\textquotesingle{}une fenêtre \\
+\hline
+{\em fen} & Fenêtre sur laquelle on veut afficher les options \\
+\hline
+{\em chemin\+\_\+img} & Chemin relatif de l\textquotesingle{}image \\
+\hline
+{\em pourcentX} & Position de la fenêtre en X en pourcentage \\
+\hline
+{\em pourcentY} & Position de la fenêtre en Y en pourcentage \\
+\hline
+{\em rect} & Indique quel rectangle utiliser pour l\textquotesingle{}image \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+S\+D\+L\+\_\+\+Rect -\/ Retourne des informations sur la position x, y des images ainsi que leurs tailles 
+\end{DoxyReturn}
+\mbox{\Hypertarget{menu_8h_abc3463575d1225216b4795ba128fc239}\label{menu_8h_abc3463575d1225216b4795ba128fc239}} 
+\index{menu.h@{menu.h}!load\_menu@{load\_menu}}
+\index{load\_menu@{load\_menu}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{load\_menu()}{load\_menu()}}
+{\footnotesize\ttfamily int load\+\_\+menu (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{S\+D\+L\+\_\+\+Window $\ast$}]{fen }\end{DoxyParamCaption})}
+
+
+
+Chargement et affichage du menu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & Attributs pour l\textquotesingle{}affiche d\textquotesingle{}une fenêtre \\
+\hline
+{\em fen} & Fenêtre sur laquelle on veut afficher les options \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int -\/ Retourne si l\textquotesingle{}utilisateur souhaite quitter ou non le jeu 
+\end{DoxyReturn}
+\mbox{\Hypertarget{menu_8h_a4920935326e84091bdb45502b8755161}\label{menu_8h_a4920935326e84091bdb45502b8755161}} 
+\index{menu.h@{menu.h}!load\_option@{load\_option}}
+\index{load\_option@{load\_option}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{load\_option()}{load\_option()}}
+{\footnotesize\ttfamily int load\+\_\+option (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{S\+D\+L\+\_\+\+Window $\ast$}]{fen }\end{DoxyParamCaption})}
+
+
+
+Chargement et affichage des options. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & Attributs pour l\textquotesingle{}affiche d\textquotesingle{}une fenêtre \\
+\hline
+{\em fen} & Fenêtre sur laquelle on veut afficher les options \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int -\/ Retourne si l\textquotesingle{}utilisateur souhaite quitter ou non les options 
+\end{DoxyReturn}
