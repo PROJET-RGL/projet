@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projet RGL:  Fichier source de super_s.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Projet RGL
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">super_s.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="super__s_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef super_s_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define super_s_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;SDL.h&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;SDL_image.h&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;time.h&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">// ------------------------------------- DEFINE POUR STRUCTURE ------------------------------------- //</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define O 100   // Taille objet</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#define M 100   // Nbre d&#39;objet</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#define P 100   // Nbre de porte max</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define S 100   // Nbre salle</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#define TAILLE_LAB 7 // Définition de la taille d&#39;un ensemble de salle</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#define NB_OBJET 5     // Nombre d&#39;objet dans une salle</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#define NB_MOB 5     // Nombre d&#39;objet dans une salle</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">// ----------------------------- STRUCTURE DE DONNÉES ----------------------------- //</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structcouleur__s.html">couleur_s</a> <a class="code" href="structcouleur__s.html">couleur_t</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structvelocite__s.html">velocite_s</a> <a class="code" href="structvelocite__s.html">velocite_t</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structsalle__s.html">salle_s</a> <a class="code" href="structsalle__s.html">salle_t</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structlabyrinthe__s.html">labyrinthe_s</a> <a class="code" href="structlabyrinthe__s.html">labyrinthe_t</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structporte__s.html">porte_s</a> <a class="code" href="structporte__s.html">porte_t</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structperso__s.html">perso_s</a> <a class="code" href="structperso__s.html">perso_t</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmob__s.html">mob_s</a> <a class="code" href="structmob__s.html">mob_t</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structobjet__s.html">objet_s</a> <a class="code" href="structobjet__s.html">objet_t</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="structvelocite__s.html">   50</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structvelocite__s.html">velocite_s</a>           <span class="comment">// Le vecteur vitesse du personnage</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;{</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="structvelocite__s.html#a581ffca7ce8fd6d7b00e0d27b950b8ba">   52</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structvelocite__s.html#a581ffca7ce8fd6d7b00e0d27b950b8ba">x</a>;                  </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="structvelocite__s.html#a4a5eccadce483fddb729ea6d6661e169">   53</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structvelocite__s.html#a4a5eccadce483fddb729ea6d6661e169">y</a>;                  </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;};</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="structcouleur__s.html">   61</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structcouleur__s.html">couleur_s</a>            <span class="comment">// Structure définissant la couleur d&#39;un objet</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;{</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="structcouleur__s.html#a59b272eaad306c860f383bf2cf04e9c1">   63</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structcouleur__s.html#a59b272eaad306c860f383bf2cf04e9c1">r</a>;                  </div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="structcouleur__s.html#a5aa09dde8937e16b2e2025d0750a50b6">   64</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structcouleur__s.html#a5aa09dde8937e16b2e2025d0750a50b6">v</a>;                  </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="structcouleur__s.html#a01b19f344867d235a80a8cca5979a4eb">   65</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structcouleur__s.html#a01b19f344867d235a80a8cca5979a4eb">b</a>;                  </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;};</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="structporte__s.html">   73</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structporte__s.html">porte_s</a>              <span class="comment">// Création de la porte en fonction de l&#39;emplacement et deux salles</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;{</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="structporte__s.html#a768ddf63fe9f6c5946ae55639365e291">   75</a></span>&#160;    SDL_Rect <a class="code" href="structporte__s.html#a768ddf63fe9f6c5946ae55639365e291">porte</a>;         </div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="structporte__s.html#a7840ff21ae76ed6fc5e6db7b8b44082d">   76</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structporte__s.html#a7840ff21ae76ed6fc5e6db7b8b44082d">salle_entree</a>;       </div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="structporte__s.html#a6719ff6569c9bbc4debbbb1f5884cf10">   77</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structporte__s.html#a6719ff6569c9bbc4debbbb1f5884cf10">salle_dest</a>;         </div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="structporte__s.html#a49c3a4a24557b5643bf58c05029e708e">   78</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structporte__s.html#a49c3a4a24557b5643bf58c05029e708e">position</a>;           </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;};</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="structperso__s.html">   86</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structperso__s.html">perso_s</a>              <span class="comment">// Création d&#39;un personnage</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;{</div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="structperso__s.html#a713c38e004e4d5c2036628f792f237a6">   88</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structperso__s.html#a713c38e004e4d5c2036628f792f237a6">tag</a>;                </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="structperso__s.html#a683ef181c08b85b610f129a0544b00e6">   89</a></span>&#160;    SDL_Rect <a class="code" href="structperso__s.html#a683ef181c08b85b610f129a0544b00e6">perso</a>;         </div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="structperso__s.html#ad17089bad3c048781a2add514f3f07d3">   90</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structperso__s.html#ad17089bad3c048781a2add514f3f07d3">pv</a>;                 </div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="structperso__s.html#aea78dfe60c84c42037b1945d29c6d82a">   91</a></span>&#160;    SDL_Rect <a class="code" href="structperso__s.html#aea78dfe60c84c42037b1945d29c6d82a">inv</a>;           </div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="structperso__s.html#aee2b2c9b32bbb0a9c14cabfc37857563">   92</a></span>&#160;    <a class="code" href="structvelocite__s.html">velocite_t</a> <a class="code" href="structperso__s.html#aee2b2c9b32bbb0a9c14cabfc37857563">velocite</a>;    </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;};</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="structmob__s.html">  100</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structmob__s.html">mob_s</a>                <span class="comment">// Création d&#39;un mob</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;{</div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="structmob__s.html#ae240dfcae00d3e84dd3b2afef024bedc">  102</a></span>&#160;    SDL_Rect <a class="code" href="structmob__s.html#ae240dfcae00d3e84dd3b2afef024bedc">mob</a>;           </div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="structmob__s.html#afb72581e4e4838f160500228e872ed08">  103</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structmob__s.html#afb72581e4e4838f160500228e872ed08">pv</a>;                 </div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="structmob__s.html#a515bc9b82b6ee78ba490b58ebabb0e75">  104</a></span>&#160;    SDL_Texture *<a class="code" href="structmob__s.html#a515bc9b82b6ee78ba490b58ebabb0e75">texture</a>;   </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;};</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="structobjet__s.html">  112</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structobjet__s.html">objet_s</a>              <span class="comment">// Création de l&#39;objet</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;{</div>
+<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="structobjet__s.html#aa53886cb33ab3fbb919d1622ecdad64f">  114</a></span>&#160;    SDL_Rect <a class="code" href="structobjet__s.html#aa53886cb33ab3fbb919d1622ecdad64f">objet</a>;         </div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="structobjet__s.html#a9fecd8dd8f4a22e8342acd529e203c65">  115</a></span>&#160;    SDL_Texture *<a class="code" href="structobjet__s.html#a9fecd8dd8f4a22e8342acd529e203c65">text_objet</a>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="structobjet__s.html#af0af0911546a452bc604a5753bd917cb">  116</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structobjet__s.html#af0af0911546a452bc604a5753bd917cb">salle</a>;              </div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="structobjet__s.html#a78b022c457628f42be5587f4c21e4aa4">  117</a></span>&#160;    <a class="code" href="structcouleur__s.html">couleur_t</a> <a class="code" href="structobjet__s.html#a78b022c457628f42be5587f4c21e4aa4">couleur</a>;      </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;};</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="structsalle__s.html">  125</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structsalle__s.html">salle_s</a>              <span class="comment">// Création de la salle avec ses stats</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;{</div>
+<div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="structsalle__s.html#af575e8582a403ad081c0f1b5f5bf1474">  127</a></span>&#160;    SDL_Rect <a class="code" href="structsalle__s.html#af575e8582a403ad081c0f1b5f5bf1474">salle</a>;         </div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="structsalle__s.html#ab9bff7418119999a644a728166e90afe">  128</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structsalle__s.html#ab9bff7418119999a644a728166e90afe">tag_salle</a>;          </div>
+<div class="line"><a name="l00129"></a><span class="lineno"><a class="line" href="structsalle__s.html#a0c0ddf485d623a4f9a58262a895629e4">  129</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structsalle__s.html#a0c0ddf485d623a4f9a58262a895629e4">nb_objt</a>;            </div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="structsalle__s.html#af4ce06a24a46f36669474253475ed793">  130</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structsalle__s.html#af4ce06a24a46f36669474253475ed793">nb_mob</a>;             </div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="structsalle__s.html#ad31e56959c82a1b824611dcf0ad13a8b">  131</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structsalle__s.html#ad31e56959c82a1b824611dcf0ad13a8b">nb_mob_mort</a>;        </div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="structsalle__s.html#aedcbaebb6b2e6246ecae090dfaea3490">  132</a></span>&#160;    <a class="code" href="structobjet__s.html">objet_t</a> <a class="code" href="structsalle__s.html#aedcbaebb6b2e6246ecae090dfaea3490">tab_obj</a>[O];     </div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="structsalle__s.html#af2e60c426fce7010343bf0e492fd90da">  133</a></span>&#160;    <a class="code" href="structmob__s.html">mob_t</a> <a class="code" href="structsalle__s.html#af2e60c426fce7010343bf0e492fd90da">tab_mob</a>[M];       </div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="structsalle__s.html#a5ec9ec7803f3274530f5827f012fb3b0">  134</a></span>&#160;    <a class="code" href="structporte__s.html">porte_t</a> <a class="code" href="structsalle__s.html#a5ec9ec7803f3274530f5827f012fb3b0">porte</a>[P];       </div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="structsalle__s.html#ae488016659a95115bf31aeb8561b9db0">  135</a></span>&#160;    <a class="code" href="structcouleur__s.html">couleur_t</a> <a class="code" href="structsalle__s.html#ae488016659a95115bf31aeb8561b9db0">couleur</a>;      </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;};</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno"><a class="line" href="structlabyrinthe__s.html">  143</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structlabyrinthe__s.html">labyrinthe_s</a>         <span class="comment">// Création du labyrinthe en fonction des salles</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;{</div>
+<div class="line"><a name="l00145"></a><span class="lineno"><a class="line" href="structlabyrinthe__s.html#aa1c89db2bb19204d11a3a0ed90f36d1b">  145</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structlabyrinthe__s.html#aa1c89db2bb19204d11a3a0ed90f36d1b">nb</a>;                 </div>
+<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="structlabyrinthe__s.html#acba23b7fdf5b6e2ca5bfd65ebe308c81">  146</a></span>&#160;    <a class="code" href="structsalle__s.html">salle_t</a> <a class="code" href="structlabyrinthe__s.html#acba23b7fdf5b6e2ca5bfd65ebe308c81">tab_salle</a>[S];   </div>
+<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="structlabyrinthe__s.html#a3c004b79e1d1017f0e8091d61fa4f8d4">  147</a></span>&#160;    SDL_Texture *<a class="code" href="structlabyrinthe__s.html#a3c004b79e1d1017f0e8091d61fa4f8d4">texture</a>;   </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;};</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astructmob__s_html_afb72581e4e4838f160500228e872ed08"><div class="ttname"><a href="structmob__s.html#afb72581e4e4838f160500228e872ed08">mob_s::pv</a></div><div class="ttdeci">int pv</div><div class="ttdef"><b>Definition:</b> super_s.h:103</div></div>
+<div class="ttc" id="astructobjet__s_html_a9fecd8dd8f4a22e8342acd529e203c65"><div class="ttname"><a href="structobjet__s.html#a9fecd8dd8f4a22e8342acd529e203c65">objet_s::text_objet</a></div><div class="ttdeci">SDL_Texture * text_objet</div><div class="ttdef"><b>Definition:</b> super_s.h:115</div></div>
+<div class="ttc" id="astructcouleur__s_html_a5aa09dde8937e16b2e2025d0750a50b6"><div class="ttname"><a href="structcouleur__s.html#a5aa09dde8937e16b2e2025d0750a50b6">couleur_s::v</a></div><div class="ttdeci">int v</div><div class="ttdef"><b>Definition:</b> super_s.h:64</div></div>
+<div class="ttc" id="astructsalle__s_html_af2e60c426fce7010343bf0e492fd90da"><div class="ttname"><a href="structsalle__s.html#af2e60c426fce7010343bf0e492fd90da">salle_s::tab_mob</a></div><div class="ttdeci">mob_t tab_mob[M]</div><div class="ttdef"><b>Definition:</b> super_s.h:133</div></div>
+<div class="ttc" id="astructcouleur__s_html_a01b19f344867d235a80a8cca5979a4eb"><div class="ttname"><a href="structcouleur__s.html#a01b19f344867d235a80a8cca5979a4eb">couleur_s::b</a></div><div class="ttdeci">int b</div><div class="ttdef"><b>Definition:</b> super_s.h:65</div></div>
+<div class="ttc" id="astructlabyrinthe__s_html_aa1c89db2bb19204d11a3a0ed90f36d1b"><div class="ttname"><a href="structlabyrinthe__s.html#aa1c89db2bb19204d11a3a0ed90f36d1b">labyrinthe_s::nb</a></div><div class="ttdeci">int nb</div><div class="ttdef"><b>Definition:</b> super_s.h:145</div></div>
+<div class="ttc" id="astructsalle__s_html_a5ec9ec7803f3274530f5827f012fb3b0"><div class="ttname"><a href="structsalle__s.html#a5ec9ec7803f3274530f5827f012fb3b0">salle_s::porte</a></div><div class="ttdeci">porte_t porte[P]</div><div class="ttdef"><b>Definition:</b> super_s.h:134</div></div>
+<div class="ttc" id="astructobjet__s_html_a78b022c457628f42be5587f4c21e4aa4"><div class="ttname"><a href="structobjet__s.html#a78b022c457628f42be5587f4c21e4aa4">objet_s::couleur</a></div><div class="ttdeci">couleur_t couleur</div><div class="ttdef"><b>Definition:</b> super_s.h:117</div></div>
+<div class="ttc" id="astructsalle__s_html_ae488016659a95115bf31aeb8561b9db0"><div class="ttname"><a href="structsalle__s.html#ae488016659a95115bf31aeb8561b9db0">salle_s::couleur</a></div><div class="ttdeci">couleur_t couleur</div><div class="ttdef"><b>Definition:</b> super_s.h:135</div></div>
+<div class="ttc" id="astructsalle__s_html_af4ce06a24a46f36669474253475ed793"><div class="ttname"><a href="structsalle__s.html#af4ce06a24a46f36669474253475ed793">salle_s::nb_mob</a></div><div class="ttdeci">int nb_mob</div><div class="ttdef"><b>Definition:</b> super_s.h:130</div></div>
+<div class="ttc" id="astructporte__s_html_a7840ff21ae76ed6fc5e6db7b8b44082d"><div class="ttname"><a href="structporte__s.html#a7840ff21ae76ed6fc5e6db7b8b44082d">porte_s::salle_entree</a></div><div class="ttdeci">int salle_entree</div><div class="ttdef"><b>Definition:</b> super_s.h:76</div></div>
+<div class="ttc" id="astructobjet__s_html_aa53886cb33ab3fbb919d1622ecdad64f"><div class="ttname"><a href="structobjet__s.html#aa53886cb33ab3fbb919d1622ecdad64f">objet_s::objet</a></div><div class="ttdeci">SDL_Rect objet</div><div class="ttdef"><b>Definition:</b> super_s.h:114</div></div>
+<div class="ttc" id="astructsalle__s_html"><div class="ttname"><a href="structsalle__s.html">salle_s</a></div><div class="ttdoc">Struture de données d'une salle, avec ses coordonnées, son identifiant, son nombre d'objet,...</div><div class="ttdef"><b>Definition:</b> super_s.h:125</div></div>
+<div class="ttc" id="astructperso__s_html_a713c38e004e4d5c2036628f792f237a6"><div class="ttname"><a href="structperso__s.html#a713c38e004e4d5c2036628f792f237a6">perso_s::tag</a></div><div class="ttdeci">int tag</div><div class="ttdef"><b>Definition:</b> super_s.h:88</div></div>
+<div class="ttc" id="astructperso__s_html_ad17089bad3c048781a2add514f3f07d3"><div class="ttname"><a href="structperso__s.html#ad17089bad3c048781a2add514f3f07d3">perso_s::pv</a></div><div class="ttdeci">int pv</div><div class="ttdef"><b>Definition:</b> super_s.h:90</div></div>
+<div class="ttc" id="astructporte__s_html_a6719ff6569c9bbc4debbbb1f5884cf10"><div class="ttname"><a href="structporte__s.html#a6719ff6569c9bbc4debbbb1f5884cf10">porte_s::salle_dest</a></div><div class="ttdeci">int salle_dest</div><div class="ttdef"><b>Definition:</b> super_s.h:77</div></div>
+<div class="ttc" id="astructcouleur__s_html_a59b272eaad306c860f383bf2cf04e9c1"><div class="ttname"><a href="structcouleur__s.html#a59b272eaad306c860f383bf2cf04e9c1">couleur_s::r</a></div><div class="ttdeci">int r</div><div class="ttdef"><b>Definition:</b> super_s.h:63</div></div>
+<div class="ttc" id="astructmob__s_html_ae240dfcae00d3e84dd3b2afef024bedc"><div class="ttname"><a href="structmob__s.html#ae240dfcae00d3e84dd3b2afef024bedc">mob_s::mob</a></div><div class="ttdeci">SDL_Rect mob</div><div class="ttdef"><b>Definition:</b> super_s.h:102</div></div>
+<div class="ttc" id="astructobjet__s_html"><div class="ttname"><a href="structobjet__s.html">objet_s</a></div><div class="ttdoc">Struture de données d'un objet, avec ses coordonnées, sa texture, la salle dans laquel il se situe,...</div><div class="ttdef"><b>Definition:</b> super_s.h:112</div></div>
+<div class="ttc" id="astructperso__s_html_aea78dfe60c84c42037b1945d29c6d82a"><div class="ttname"><a href="structperso__s.html#aea78dfe60c84c42037b1945d29c6d82a">perso_s::inv</a></div><div class="ttdeci">SDL_Rect inv</div><div class="ttdef"><b>Definition:</b> super_s.h:91</div></div>
+<div class="ttc" id="astructporte__s_html_a49c3a4a24557b5643bf58c05029e708e"><div class="ttname"><a href="structporte__s.html#a49c3a4a24557b5643bf58c05029e708e">porte_s::position</a></div><div class="ttdeci">int position</div><div class="ttdef"><b>Definition:</b> super_s.h:78</div></div>
+<div class="ttc" id="astructmob__s_html"><div class="ttname"><a href="structmob__s.html">mob_s</a></div><div class="ttdoc">Struture de données d'un PNJ, avec ses coordonnées, ses points de vies, et sa texture.</div><div class="ttdef"><b>Definition:</b> super_s.h:100</div></div>
+<div class="ttc" id="astructsalle__s_html_aedcbaebb6b2e6246ecae090dfaea3490"><div class="ttname"><a href="structsalle__s.html#aedcbaebb6b2e6246ecae090dfaea3490">salle_s::tab_obj</a></div><div class="ttdeci">objet_t tab_obj[O]</div><div class="ttdef"><b>Definition:</b> super_s.h:132</div></div>
+<div class="ttc" id="astructsalle__s_html_a0c0ddf485d623a4f9a58262a895629e4"><div class="ttname"><a href="structsalle__s.html#a0c0ddf485d623a4f9a58262a895629e4">salle_s::nb_objt</a></div><div class="ttdeci">int nb_objt</div><div class="ttdef"><b>Definition:</b> super_s.h:129</div></div>
+<div class="ttc" id="astructporte__s_html_a768ddf63fe9f6c5946ae55639365e291"><div class="ttname"><a href="structporte__s.html#a768ddf63fe9f6c5946ae55639365e291">porte_s::porte</a></div><div class="ttdeci">SDL_Rect porte</div><div class="ttdef"><b>Definition:</b> super_s.h:75</div></div>
+<div class="ttc" id="astructsalle__s_html_ab9bff7418119999a644a728166e90afe"><div class="ttname"><a href="structsalle__s.html#ab9bff7418119999a644a728166e90afe">salle_s::tag_salle</a></div><div class="ttdeci">int tag_salle</div><div class="ttdef"><b>Definition:</b> super_s.h:128</div></div>
+<div class="ttc" id="astructperso__s_html_a683ef181c08b85b610f129a0544b00e6"><div class="ttname"><a href="structperso__s.html#a683ef181c08b85b610f129a0544b00e6">perso_s::perso</a></div><div class="ttdeci">SDL_Rect perso</div><div class="ttdef"><b>Definition:</b> super_s.h:89</div></div>
+<div class="ttc" id="astructperso__s_html_aee2b2c9b32bbb0a9c14cabfc37857563"><div class="ttname"><a href="structperso__s.html#aee2b2c9b32bbb0a9c14cabfc37857563">perso_s::velocite</a></div><div class="ttdeci">velocite_t velocite</div><div class="ttdef"><b>Definition:</b> super_s.h:92</div></div>
+<div class="ttc" id="astructobjet__s_html_af0af0911546a452bc604a5753bd917cb"><div class="ttname"><a href="structobjet__s.html#af0af0911546a452bc604a5753bd917cb">objet_s::salle</a></div><div class="ttdeci">int salle</div><div class="ttdef"><b>Definition:</b> super_s.h:116</div></div>
+<div class="ttc" id="astructporte__s_html"><div class="ttname"><a href="structporte__s.html">porte_s</a></div><div class="ttdoc">Structure de données d'une porte, avec ses coordonnées, sa salle d'entrée, sa salle de sortie et son ...</div><div class="ttdef"><b>Definition:</b> super_s.h:73</div></div>
+<div class="ttc" id="astructlabyrinthe__s_html"><div class="ttname"><a href="structlabyrinthe__s.html">labyrinthe_s</a></div><div class="ttdoc">Struture de données d'un labyrinthe de salle, avec sa taille (nombre de salle) et un tableau de salle...</div><div class="ttdef"><b>Definition:</b> super_s.h:143</div></div>
+<div class="ttc" id="astructvelocite__s_html_a4a5eccadce483fddb729ea6d6661e169"><div class="ttname"><a href="structvelocite__s.html#a4a5eccadce483fddb729ea6d6661e169">velocite_s::y</a></div><div class="ttdeci">int y</div><div class="ttdef"><b>Definition:</b> super_s.h:53</div></div>
+<div class="ttc" id="astructsalle__s_html_af575e8582a403ad081c0f1b5f5bf1474"><div class="ttname"><a href="structsalle__s.html#af575e8582a403ad081c0f1b5f5bf1474">salle_s::salle</a></div><div class="ttdeci">SDL_Rect salle</div><div class="ttdef"><b>Definition:</b> super_s.h:127</div></div>
+<div class="ttc" id="astructperso__s_html"><div class="ttname"><a href="structperso__s.html">perso_s</a></div><div class="ttdoc">Structure de données de perosnnage, avec l'emplacement du personnage lié au tag, ses coordonnées,...</div><div class="ttdef"><b>Definition:</b> super_s.h:86</div></div>
+<div class="ttc" id="astructsalle__s_html_ad31e56959c82a1b824611dcf0ad13a8b"><div class="ttname"><a href="structsalle__s.html#ad31e56959c82a1b824611dcf0ad13a8b">salle_s::nb_mob_mort</a></div><div class="ttdeci">int nb_mob_mort</div><div class="ttdef"><b>Definition:</b> super_s.h:131</div></div>
+<div class="ttc" id="astructcouleur__s_html"><div class="ttname"><a href="structcouleur__s.html">couleur_s</a></div><div class="ttdoc">Structure de données des couleurs, avec le code RGB.</div><div class="ttdef"><b>Definition:</b> super_s.h:61</div></div>
+<div class="ttc" id="astructvelocite__s_html"><div class="ttname"><a href="structvelocite__s.html">velocite_s</a></div><div class="ttdoc">Definition de la structure vitesse d'un objet.</div><div class="ttdef"><b>Definition:</b> super_s.h:50</div></div>
+<div class="ttc" id="astructlabyrinthe__s_html_acba23b7fdf5b6e2ca5bfd65ebe308c81"><div class="ttname"><a href="structlabyrinthe__s.html#acba23b7fdf5b6e2ca5bfd65ebe308c81">labyrinthe_s::tab_salle</a></div><div class="ttdeci">salle_t tab_salle[S]</div><div class="ttdef"><b>Definition:</b> super_s.h:146</div></div>
+<div class="ttc" id="astructvelocite__s_html_a581ffca7ce8fd6d7b00e0d27b950b8ba"><div class="ttname"><a href="structvelocite__s.html#a581ffca7ce8fd6d7b00e0d27b950b8ba">velocite_s::x</a></div><div class="ttdeci">int x</div><div class="ttdef"><b>Definition:</b> super_s.h:52</div></div>
+<div class="ttc" id="astructlabyrinthe__s_html_a3c004b79e1d1017f0e8091d61fa4f8d4"><div class="ttname"><a href="structlabyrinthe__s.html#a3c004b79e1d1017f0e8091d61fa4f8d4">labyrinthe_s::texture</a></div><div class="ttdeci">SDL_Texture * texture</div><div class="ttdef"><b>Definition:</b> super_s.h:147</div></div>
+<div class="ttc" id="astructmob__s_html_a515bc9b82b6ee78ba490b58ebabb0e75"><div class="ttname"><a href="structmob__s.html#a515bc9b82b6ee78ba490b58ebabb0e75">mob_s::texture</a></div><div class="ttdeci">SDL_Texture * texture</div><div class="ttdef"><b>Definition:</b> super_s.h:104</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

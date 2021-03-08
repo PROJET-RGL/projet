@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projet RGL:  Fichier source de salle.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Projet RGL
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">salle.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="salle_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef salle_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define salle_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="super_8h.html">super.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mob_8h.html">mob.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="objet_8h.html">objet.h</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="porte_8h.html">porte.h</a>&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="fonction__admin_8h.html">fonction_admin.h</a>&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">int</span> <a class="code" href="salle_8h.html#a9bd600007d1a50196cf9cb1152e98891">creation_fen</a>(SDL_Window **fen, SDL_Renderer **renderer);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<a class="code" href="structsalle__s.html">salle_t</a> <a class="code" href="salle_8h.html#a286666b0c555b796b34825afb78e84c7">init_salle</a>(<a class="code" href="structsalle__s.html">salle_t</a> salle, <span class="keywordtype">int</span> tag);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<a class="code" href="structperso__s.html">perso_t</a> <a class="code" href="salle_8h.html#ad1d5f1c9b269202f5c64dc2220a6cb9a">test_colision</a>(<a class="code" href="structperso__s.html">perso_t</a> perso, SDL_Rect salle);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="asalle_8h_html_a9bd600007d1a50196cf9cb1152e98891"><div class="ttname"><a href="salle_8h.html#a9bd600007d1a50196cf9cb1152e98891">creation_fen</a></div><div class="ttdeci">int creation_fen(SDL_Window **fen, SDL_Renderer **renderer)</div><div class="ttdoc">Initialisation de la fenêtre.</div><div class="ttdef"><b>Definition:</b> salle.c:19</div></div>
+<div class="ttc" id="afonction__admin_8h_html"><div class="ttname"><a href="fonction__admin_8h.html">fonction_admin.h</a></div><div class="ttdoc">Gestion des fenêtres.</div></div>
+<div class="ttc" id="aporte_8h_html"><div class="ttname"><a href="porte_8h.html">porte.h</a></div><div class="ttdoc">Fichier contenant les fonctions agissant sur les portes du programme.</div></div>
+<div class="ttc" id="astructsalle__s_html"><div class="ttname"><a href="structsalle__s.html">salle_s</a></div><div class="ttdoc">Struture de données d'une salle, avec ses coordonnées, son identifiant, son nombre d'objet,...</div><div class="ttdef"><b>Definition:</b> super_s.h:125</div></div>
+<div class="ttc" id="asalle_8h_html_ad1d5f1c9b269202f5c64dc2220a6cb9a"><div class="ttname"><a href="salle_8h.html#ad1d5f1c9b269202f5c64dc2220a6cb9a">test_colision</a></div><div class="ttdeci">perso_t test_colision(perso_t perso, SDL_Rect salle)</div><div class="ttdoc">Test si il y a collision entre les murs de la salle et le personnage.</div><div class="ttdef"><b>Definition:</b> salle.c:121</div></div>
+<div class="ttc" id="astructperso__s_html"><div class="ttname"><a href="structperso__s.html">perso_s</a></div><div class="ttdoc">Structure de données de perosnnage, avec l'emplacement du personnage lié au tag, ses coordonnées,...</div><div class="ttdef"><b>Definition:</b> super_s.h:86</div></div>
+<div class="ttc" id="aobjet_8h_html"><div class="ttname"><a href="objet_8h.html">objet.h</a></div><div class="ttdoc">Fichier contenant les fonctions agissant sur les objets du programme.</div></div>
+<div class="ttc" id="amob_8h_html"><div class="ttname"><a href="mob_8h.html">mob.h</a></div><div class="ttdoc">Fichier contenant les fonctions agissant sur les mobs du programme.</div></div>
+<div class="ttc" id="asalle_8h_html_a286666b0c555b796b34825afb78e84c7"><div class="ttname"><a href="salle_8h.html#a286666b0c555b796b34825afb78e84c7">init_salle</a></div><div class="ttdeci">salle_t init_salle(salle_t salle, int tag)</div><div class="ttdoc">Initialisation d'une salle avec ses caractéristiques.</div><div class="ttdef"><b>Definition:</b> salle.c:42</div></div>
+<div class="ttc" id="asuper_8h_html"><div class="ttname"><a href="super_8h.html">super.h</a></div><div class="ttdoc">Header principale du programmes.</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

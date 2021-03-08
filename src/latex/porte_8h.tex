@@ -1,0 +1,88 @@
+\hypertarget{porte_8h}{}\doxysection{Référence du fichier porte.\+h}
+\label{porte_8h}\index{porte.h@{porte.h}}
+
+
+Fichier contenant les fonctions agissant sur les portes du programme.  
+
+
+{\ttfamily \#include \char`\"{}super.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de porte.\+h\+:
+% FIG 0
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
+% FIG 1
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{porte_8h_a369eec9f862100cddc355676d7534288}{collision\+\_\+porte}} (\mbox{\hyperlink{structperso__s}{perso\+\_\+t}} perso, \mbox{\hyperlink{structporte__s}{porte\+\_\+t}} porte, int salle\+\_\+actuel, int salle\+\_\+dest)
+\begin{DoxyCompactList}\small\item\em On test si le personnage rentre en collision avec la porte. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structporte__s}{porte\+\_\+t}} \mbox{\hyperlink{porte_8h_a632c9eb30c6700933c9bbaf5d6852b71}{init\+\_\+porte}} (\mbox{\hyperlink{structporte__s}{porte\+\_\+t}} porte, int x, int y, int salle\+\_\+actuel, int salle\+\_\+dest, int position)
+\begin{DoxyCompactList}\small\item\em Création d\textquotesingle{}une porte, avec ses coordonnées, sa taille, sa salle d\textquotesingle{}entrée et sa salle de sortie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Fichier contenant les fonctions agissant sur les portes du programme. 
+
+\textquotesingle{} \begin{DoxyAuthor}{Auteur}
+Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+18 Février 2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{porte_8h_a369eec9f862100cddc355676d7534288}\label{porte_8h_a369eec9f862100cddc355676d7534288}} 
+\index{porte.h@{porte.h}!collision\_porte@{collision\_porte}}
+\index{collision\_porte@{collision\_porte}!porte.h@{porte.h}}
+\doxysubsubsection{\texorpdfstring{collision\_porte()}{collision\_porte()}}
+{\footnotesize\ttfamily int collision\+\_\+porte (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structperso__s}{perso\+\_\+t}}}]{perso,  }\item[{\mbox{\hyperlink{structporte__s}{porte\+\_\+t}}}]{porte,  }\item[{int}]{salle\+\_\+actuel,  }\item[{int}]{salle\+\_\+dest }\end{DoxyParamCaption})}
+
+
+
+On test si le personnage rentre en collision avec la porte. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em perso} & On importe le personnage en question \\
+\hline
+{\em porte} & On importe la porte en question \\
+\hline
+{\em salle\+\_\+actuel} & Salle dans laquel le personnage se situe \\
+\hline
+{\em salle\+\_\+dest} & Salle dans lequel le personnage doit aller si il y a collision \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Salle\+\_\+(actuel / dest) -\/ Return la salle en fonction de si il y a collision ou pas 
+\end{DoxyReturn}
+\mbox{\Hypertarget{porte_8h_a632c9eb30c6700933c9bbaf5d6852b71}\label{porte_8h_a632c9eb30c6700933c9bbaf5d6852b71}} 
+\index{porte.h@{porte.h}!init\_porte@{init\_porte}}
+\index{init\_porte@{init\_porte}!porte.h@{porte.h}}
+\doxysubsubsection{\texorpdfstring{init\_porte()}{init\_porte()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structporte__s}{porte\+\_\+t}} init\+\_\+porte (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structporte__s}{porte\+\_\+t}}}]{porte,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{salle\+\_\+actuel,  }\item[{int}]{salle\+\_\+dest,  }\item[{int}]{position }\end{DoxyParamCaption})}
+
+
+
+Création d\textquotesingle{}une porte, avec ses coordonnées, sa taille, sa salle d\textquotesingle{}entrée et sa salle de sortie. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em porte} & On importe la porte à modifié \\
+\hline
+{\em x} & Coordonnées x de la porte \\
+\hline
+{\em y} & Coordonnées y de la porte \\
+\hline
+{\em salle\+\_\+actuel} & identifiant de la salle d\textquotesingle{}entrée \\
+\hline
+{\em salle\+\_\+dest} & Identifiant de la salle de sortie \\
+\hline
+{\em position} & Définit le sens de rotation de la porte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+porte\+\_\+t -\/ Retourne la porte mis en paramètre 
+\end{DoxyReturn}

@@ -1,0 +1,72 @@
+\hypertarget{mob_8c}{}\doxysection{Référence du fichier mob.\+c}
+\label{mob_8c}\index{mob.c@{mob.c}}
+
+
+Fichier contenant les fonctions agissant sur les mobs du programme.  
+
+
+{\ttfamily \#include \char`\"{}mob.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de mob.\+c\+:
+% FIG 0
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structmob__s}{mob\+\_\+t}} \mbox{\hyperlink{mob_8c_aaecf0edca4ce8a47e6ae12b66c06a618}{init\+\_\+mob}} (\mbox{\hyperlink{structmob__s}{mob\+\_\+t}} mob)
+\begin{DoxyCompactList}\small\item\em Création d\textquotesingle{}un mob, avec ses coordonnées, sa taille et ses points de vies. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structmob__s}{mob\+\_\+t}} \mbox{\hyperlink{mob_8c_ac753b7a3d2cb4c397e98d8fd358081cb}{colision\+\_\+mob}} (\mbox{\hyperlink{structmob__s}{mob\+\_\+t}} mob1, \mbox{\hyperlink{structperso__s}{perso\+\_\+t}} perso)
+\begin{DoxyCompactList}\small\item\em Vérifie si le joueur est en contact avec un mob et le tue si c\textquotesingle{}est le cas. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Fichier contenant les fonctions agissant sur les mobs du programme. 
+
+\textquotesingle{} \begin{DoxyAuthor}{Auteur}
+Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+18 Février 2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{mob_8c_ac753b7a3d2cb4c397e98d8fd358081cb}\label{mob_8c_ac753b7a3d2cb4c397e98d8fd358081cb}} 
+\index{mob.c@{mob.c}!colision\_mob@{colision\_mob}}
+\index{colision\_mob@{colision\_mob}!mob.c@{mob.c}}
+\doxysubsubsection{\texorpdfstring{colision\_mob()}{colision\_mob()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmob__s}{mob\+\_\+t}} colision\+\_\+mob (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmob__s}{mob\+\_\+t}}}]{mob1,  }\item[{\mbox{\hyperlink{structperso__s}{perso\+\_\+t}}}]{perso }\end{DoxyParamCaption})}
+
+
+
+Vérifie si le joueur est en contact avec un mob et le tue si c\textquotesingle{}est le cas. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mob1} & On importe les données du mob \\
+\hline
+{\em perso} & On importe les données du joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+mob\+\_\+t -\/ Retourne le mob modifier/pas 
+\end{DoxyReturn}
+\mbox{\Hypertarget{mob_8c_aaecf0edca4ce8a47e6ae12b66c06a618}\label{mob_8c_aaecf0edca4ce8a47e6ae12b66c06a618}} 
+\index{mob.c@{mob.c}!init\_mob@{init\_mob}}
+\index{init\_mob@{init\_mob}!mob.c@{mob.c}}
+\doxysubsubsection{\texorpdfstring{init\_mob()}{init\_mob()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmob__s}{mob\+\_\+t}} init\+\_\+mob (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmob__s}{mob\+\_\+t}}}]{mob }\end{DoxyParamCaption})}
+
+
+
+Création d\textquotesingle{}un mob, avec ses coordonnées, sa taille et ses points de vies. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mob} & On importe le mob à modifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+mob\+\_\+t -\/ Retourne le mob mis en paramètre 
+\end{DoxyReturn}
