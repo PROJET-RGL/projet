@@ -39,17 +39,17 @@ objet_t init_obj(objet_t obj, SDL_Window *fen, SDL_Renderer *renderer, SDL_Surfa
         SDL_ExitWithError("Erreur du chargement de l'image");
     }
 
-    obj.text_objet = SDL_CreateTextureFromSurface(renderer, image);
+    obj.texture = SDL_CreateTextureFromSurface(renderer, image);
 
-    if(obj.text_objet == NULL)
+    if(obj.texture == NULL)
         {
-            clean_ressources(fen, renderer, obj.text_objet);
+            clean_ressources(fen, renderer, obj.texture);
             SDL_ExitWithError("Erreur de création de la texture");
         }
 
-    if(SDL_QueryTexture(obj.text_objet, NULL, NULL, &obj.objet.w, &obj.objet.h) != 0)
+    if(SDL_QueryTexture(obj.texture, NULL, NULL, &obj.objet.w, &obj.objet.h) != 0)
         {
-            clean_ressources(fen, renderer, obj.text_objet);
+            clean_ressources(fen, renderer, obj.texture);
             SDL_ExitWithError("Erreur de chargement de la texture");
         }
 

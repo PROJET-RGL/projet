@@ -7,20 +7,18 @@ CFLAGS = -W -Wall  #windows
 #LDFLAGS = $(SDL) -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_gfx -lm -lSDL2_mixer
 #Linux-----------end
 
-
-INCLUDES = -I ../include #windows
-LIBS = -L ../lib -lmingw32 -lSDL2main -lSDL2 #Linux           #windows :  #-L ../lib -lmingw32 -lSDL2main -lSDL2
+INCLUDES = -I ../include
+LIBS = -L ../lib -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer
 EXEC = ../bin/RGL
 
 all: $(EXEC)
 
-
-../bin/RGL: main.o salle.o fonction_admin.o perso.o objet.o porte.o labyrinthe.o actualisation.o mob.o menu.o #option.o
+../bin/RGL: main.o salle.o fonction_admin.o perso.o objet.o porte.o labyrinthe.o actualisation.o mob.o menu.o sauvegarde.o
 	$(CC) -fstack-protector -o $@ $^ $(INCLUDES) $(LIBS)
 
 #version Linux_________________
 
-#../bin/RGL: main.o salle.o fonction_admin.o perso.o objet.o porte.o labyrinthe.o actualisation.o mob.o menu.o #option.o
+#../bin/RGL: main.o salle.o fonction_admin.o perso.o objet.o porte.o labyrinthe.o actualisation.o mob.o menu.o 
 #	$(CC) $(CFLAGS) $^ $(INCLUDES) $(LIBS) -o $@
 
 
@@ -29,9 +27,7 @@ all: $(EXEC)
 #	gcc obj/main.o obj/salle.o [...] obj/jeu.o $(LDFLAGS) -o bin/prog
 
 
-
-
-main.o: labyrinthe.h perso.h mob.h actualisation.h fonction_admin.h menu.h porte.h super.h
+main.o: labyrinthe.h perso.h mob.h actualisation.h fonction_admin.h menu.h porte.h sauvegarde.h super.h
 salle.o: salle.h fonction_admin.h super.h
 fonction_admin.o: fonction_admin.h super.h
 perso.o: perso.h fonction_admin.h salle.h super.h
@@ -40,8 +36,8 @@ porte.o: porte.h super.h
 labyrinthe.o: labyrinthe.h salle.h super.h
 actualisation.o: actualisation.h fonction_admin.h salle.h super.h
 mob.o: mob.h fonction_admin.h super.h
-menu.o: menu.h fonction_admin.h super.h #option.h
-#option.o: option.h super.h
+menu.o: menu.h fonction_admin.h super.h sauvegarde.h
+sauvegarde.o: sauvegarde.h super.h
 
 %.o: %.c
 	$(CC) -o $@ -c $<     $(INCLUDES) $(LIBS)
@@ -64,7 +60,6 @@ clean:
 
 
 #####
-#
 #       %.o : %.c     règle générique pour construire un .o à partir d'un .c
 #
 #       $@      Le nom de la cible

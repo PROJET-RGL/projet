@@ -6,16 +6,16 @@
 #include "fonction_admin.h"
 #include "menu.h"
 #include "porte.h"
+#include "sauvegarde.h"
 
     int j = 0, exit_menu;
     SDL_Window *fen = NULL;
     SDL_Renderer *renderer = NULL;
     SDL_Event event, event2;
-    labyrinthe_t lab;
-    perso_t perso1;
-    objet_t objet1;
+    jeu_t jeu;
     SDL_Rect fenetre;
     SDL_Surface *image = NULL;
+    Mix_Music *main_theme;
     int perso_salle = 1, passage;
 
 /**
@@ -34,12 +34,14 @@
  * @return int - EXIT_SUCCESS
  */
 
+SDL_bool plein_ecran = SDL_FALSE, ingame = SDL_FALSE, charge = SDL_FALSE;
+
 int main(int argc, char **argv)
 {
-    int touche, presserQ = FALSE, presserD = FALSE, presserS = FALSE, presserZ = FALSE;
+    int volume = 10, touche, presserQ = FALSE, presserD = FALSE, presserS = FALSE, presserZ = FALSE, i = 0, j = 0;
 
     SDL_Delay(10);
-
+ 
     if(creation_fen(&fen, &renderer) != TRUE)
     {
         SDL_ExitWithError("Création du rendu raté, erreur 404 !");
@@ -52,8 +54,8 @@ int main(int argc, char **argv)
     fenetre.x = 0;
     fenetre.y = 0;
 
-    fenetre.h = FEN_HAUTEUR;
     fenetre.w = FEN_LARGEUR;
+    fenetre.h = FEN_HAUTEUR;
 
     nettoyage_ecran(renderer);
 
@@ -61,11 +63,7 @@ int main(int argc, char **argv)
 
     srand(time(NULL));
 
-    lab = init_lab(lab, fen, renderer, fenetre, TAILLE_LAB);
-
     // ------------------------------------------- Création personnage ! ------------------------------------------- //
-
-    perso1 = init_perso(perso1);
 
     nettoyage_ecran(renderer);
 
@@ -75,31 +73,91 @@ int main(int argc, char **argv)
 
     SDL_SetWindowIcon(fen, image);
 
+    SDL_FreeSurface(image);
+
+    // ------------------------------------------ Init des texture des entités --------------------------------------------- //
+
+    // ------------------------------------------- Initialisation du son ! ------------------------------------------- //
+
+    if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) != 0)
+        printf("ERREUR : %s", Mix_GetError());
+
     // ------------------------------------------- BOUCLE PRINCIPALE ------------------------------------------- //
 
+    main_theme = Mix_LoadMUS("../src/sound/theme.mp3");
+
+    Mix_PlayMusic(main_theme, -1);
+
+    Mix_VolumeMusic(volume);
+
     int program_lunched = TRUE, jeu_lunched = SDL_TRUE;
+
+    //sauvegarde(jeu);
+
+    int premiere_partie = SDL_TRUE;
 
     // Boucle de jeu !
 
     srand(time(NULL));
-
     while(program_lunched != FALSE)
     {
-        exit_menu = load_menu(renderer, fen);
-
+        exit_menu = load_menu(renderer, fen, &volume, &plein_ecran, ingame, &charge, &jeu);
         if(exit_menu == FALSE)
         {
             program_lunched = FALSE;
         }else
         {
-            if(lab.tab_salle[TAILLE_LAB-1].nb_mob_mort == 5)
+            if((charge != 1 || (jeu.lab.tab_salle[TAILLE_LAB-1].nb_mob_mort == 5)) && (premiere_partie == SDL_TRUE))
             {
-                lab = init_lab(lab, fen, renderer, fenetre, TAILLE_LAB);
-                perso1 = init_perso(perso1);
-                perso1.tag = 0;
+                jeu.lab = init_lab(jeu.lab, fen, renderer, fenetre, TAILLE_LAB);
+                jeu.perso = init_perso(jeu.perso);
+                jeu.perso.tag = 0;
+                premiere_partie = SDL_FALSE;
                 presserQ = FALSE, presserD = FALSE, presserS = FALSE, presserZ = FALSE;
+            }else if(charge != 0)
+            {
+                chargement(&jeu);
+                image = SDL_LoadBMP("../src/img/Salle.bmp");
+
+                SDL_SetColorKey(image, SDL_TRUE, SDL_MapRGB(image->format, 30, 6, 236));
+
+                jeu.lab.texture = SDL_CreateTextureFromSurface(renderer, image);
+
+                SDL_FreeSurface(image);
+
+                image = SDL_LoadBMP("../src/img/Poro.bmp");
+
+                SDL_SetColorKey(image, SDL_TRUE, SDL_MapRGB(image->format, 30, 6, 236));
+
+                for(i = 0; i < jeu.lab.nb; i++)
+                {
+                    for(j = 0; j < jeu.lab.tab_salle[i].nb_objt; j++)
+                    {
+                        jeu.lab.tab_salle[i].tab_obj[j].texture = SDL_CreateTextureFromSurface(renderer, image);
+                    }
+                }
+                SDL_FreeSurface(image);
+
+                image = SDL_LoadBMP("../src/img/Poro.bmp");
+
+                SDL_SetColorKey(image, SDL_TRUE, SDL_MapRGB(image->format, 30, 6, 236));
+
+                for(i = 0; i < jeu.lab.nb; i++)
+                {
+                    for(j = 0; j < jeu.lab.tab_salle[i].nb_objt; j++)
+                    {
+                        jeu.lab.tab_salle[i].tab_mob[j].texture = SDL_CreateTextureFromSurface(renderer, image);
+                    }
+                }
+                SDL_FreeSurface(image);
+                nettoyage_ecran(renderer);
+                SDL_RenderPresent(renderer);
             }
             jeu_lunched = SDL_TRUE;
+
+            ingame = SDL_TRUE;
+
+            event.key.keysym.sym = 0;
             while(jeu_lunched != SDL_FALSE)
             {
                 while(SDL_PollEvent(&event) || 1)
@@ -114,62 +172,62 @@ int main(int argc, char **argv)
                         case SDL_KEYDOWN :
 
                             switch(event.key.keysym.sym)
-                                {
-                                    case SDLK_ESCAPE:
-                                        jeu_lunched = SDL_FALSE;
-                                        break;
+                            {
+                                case SDLK_ESCAPE:
+                                    jeu_lunched = SDL_FALSE;
+                                    break;
 
-                                    case SDLK_q:
-                                        if(presserQ == FALSE)
+                                case SDLK_q:
+                                    if(presserQ == FALSE)
+                                    {
+                                        if(jeu.perso.velocite.x == VITESSE)                                           // Si j'ai appuyer sur Q et D alors, ça s'annule
                                         {
-                                            if(perso1.velocite.x == VITESSE)                                           // Si j'ai appuyer sur Q et D alors, ça s'annule
-                                            {
-                                                perso1.velocite.x = 0;
-                                            }else if(perso1.velocite.x == 0)
-                                                perso1.velocite.x = -VITESSE;                // Si j'ai appuyer sur D alors, le vecteur HORI = VITESSE
-                                            presserQ = TRUE;
-                                        }
-                                        continue;
+                                            jeu.perso.velocite.x = 0;
+                                        }else if(jeu.perso.velocite.x == 0)
+                                            jeu.perso.velocite.x = -VITESSE;                // Si j'ai appuyer sur D alors, le vecteur HORI = VITESSE
+                                        presserQ = TRUE;
+                                    }
+                                    continue;
 
-                                    case SDLK_d:
-                                        if(presserD == FALSE)
+                                case SDLK_d:
+                                    if(presserD == FALSE)
+                                    {
+                                        if(jeu.perso.velocite.x == -VITESSE)                                           // Si j'ai appuyer sur Q et D alors, ça s'annule
                                         {
-                                            if(perso1.velocite.x == -VITESSE)                                           // Si j'ai appuyer sur Q et D alors, ça s'annule
-                                            {
-                                                perso1.velocite.x = 0;
-                                            }else if(perso1.velocite.x == 0)
-                                                perso1.velocite.x = VITESSE;                // Si j'ai appuyer sur D alors, le vecteur HORI = VITESSE
-                                            presserD = TRUE;
-                                        }
-                                        continue;
+                                            jeu.perso.velocite.x = 0;
+                                        }else if(jeu.perso.velocite.x == 0)
+                                            jeu.perso.velocite.x = VITESSE;                // Si j'ai appuyer sur D alors, le vecteur HORI = VITESSE
+                                        presserD = TRUE;
+                                    }
+                                    continue;
 
-                                    case SDLK_s:
-                                        if(presserS == FALSE)
+                                case SDLK_s:
+                                    if(presserS == FALSE)
+                                    {
+                                        if(jeu.perso.velocite.y == -VITESSE)                                           // Si j'ai appuyer sur D et Q alors, ça s'annule
                                         {
-                                            if(perso1.velocite.y == -VITESSE)                                           // Si j'ai appuyer sur D et Q alors, ça s'annule
-                                            {
-                                                perso1.velocite.y = 0;
-                                            }else if(perso1.velocite.y == 0)
-                                                perso1.velocite.y = VITESSE;                // Si j'ai appuyer sur S alors, le vecteur VERTI = VITESSE
-                                            presserS = TRUE;
-                                        }
-                                        continue;
+                                            jeu.perso.velocite.y = 0;
+                                        }else if(jeu.perso.velocite.y == 0)
+                                            jeu.perso.velocite.y = VITESSE;                // Si j'ai appuyer sur S alors, le vecteur VERTI = VITESSE
+                                        presserS = TRUE;
+                                    }
+                                    continue;
 
-                                    case SDLK_z:
-                                        if(presserZ == FALSE)
+                                case SDLK_z:
+                                    if(presserZ == FALSE)
+                                    {
+                                        if(jeu.perso.velocite.y == VITESSE)                                           // Si j'ai appuyer sur D et Q alors, ça s'annule
                                         {
-                                            if(perso1.velocite.y == VITESSE)                                           // Si j'ai appuyer sur D et Q alors, ça s'annule
-                                            {
-                                                perso1.velocite.y = 0;
-                                            }else if(perso1.velocite.y == 0)
-                                                perso1.velocite.y = -VITESSE;                // Si j'ai appuyer sur S alors, le vecteur VERTI = VITESSE
-                                            presserZ = TRUE;
-                                        }
-                                        continue;
+                                            jeu.perso.velocite.y = 0;
+                                        }else if(jeu.perso.velocite.y == 0)
+                                            jeu.perso.velocite.y = -VITESSE;                // Si j'ai appuyer sur S alors, le vecteur VERTI = VITESSE
+                                        presserZ = TRUE;
+                                    }
+                                    continue;
 
-                                    default :
-                                        break;
-                                }
+                                default :
+                                    break;
+                            }
                             break;
 
                         case SDL_KEYUP :
@@ -183,11 +241,11 @@ int main(int argc, char **argv)
                                     case SDLK_q:
                                         if(presserQ == TRUE)
                                         {
-                                            if(perso1.velocite.x == 0)
+                                            if(jeu.perso.velocite.x == 0)
                                             {
-                                                perso1.velocite.x = VITESSE;
-                                            }else if(perso1.velocite.x == -VITESSE)
-                                                perso1.velocite.x = 0;
+                                                jeu.perso.velocite.x = VITESSE;
+                                            }else if(jeu.perso.velocite.x == -VITESSE)
+                                                jeu.perso.velocite.x = 0;
                                             presserQ = FALSE;
                                         }
                                         break;
@@ -195,11 +253,11 @@ int main(int argc, char **argv)
                                     case SDLK_d:
                                         if(presserD == TRUE)
                                         {
-                                            if(perso1.velocite.x == 0)
+                                            if(jeu.perso.velocite.x == 0)
                                             {
-                                                perso1.velocite.x = -VITESSE;
-                                            }else if(perso1.velocite.x == VITESSE)
-                                                perso1.velocite.x = 0;
+                                                jeu.perso.velocite.x = -VITESSE;
+                                            }else if(jeu.perso.velocite.x == VITESSE)
+                                                jeu.perso.velocite.x = 0;
                                             presserD = FALSE;
                                         }
                                         break;
@@ -207,11 +265,11 @@ int main(int argc, char **argv)
                                     case SDLK_s:
                                         if(presserS == TRUE)
                                         {
-                                            if(perso1.velocite.y == 0)
+                                            if(jeu.perso.velocite.y == 0)
                                             {
-                                                perso1.velocite.y = -VITESSE;
-                                            }else if(perso1.velocite.y == VITESSE)
-                                                perso1.velocite.y = 0;
+                                                jeu.perso.velocite.y = -VITESSE;
+                                            }else if(jeu.perso.velocite.y == VITESSE)
+                                                jeu.perso.velocite.y = 0;
                                             presserS = FALSE;
                                         }
                                         break;
@@ -219,11 +277,11 @@ int main(int argc, char **argv)
                                     case SDLK_z:
                                         if(presserZ == TRUE)
                                         {
-                                            if(perso1.velocite.y == 0)
+                                            if(jeu.perso.velocite.y == 0)
                                             {
-                                                perso1.velocite.y = VITESSE;
-                                            }else if(perso1.velocite.y == -VITESSE)
-                                                perso1.velocite.y = 0;
+                                                jeu.perso.velocite.y = VITESSE;
+                                            }else if(jeu.perso.velocite.y == -VITESSE)
+                                                jeu.perso.velocite.y = 0;
                                             presserZ = FALSE;
                                         }
                                         break;
@@ -241,83 +299,82 @@ int main(int argc, char **argv)
                     }
 
                     int i = 0;
-
-                    if(perso1.tag == 0)
+                    if(jeu.perso.tag == 0)
                         {
-                            perso1 = actualisation_salle(lab, perso1, renderer, fenetre);
+                            jeu.perso = actualisation_salle(jeu.lab, jeu.perso, renderer, fenetre);
 
-                            for(i = 0; i < lab.tab_salle[perso1.tag].nb_mob; i++)
+                            for(i = 0; i < jeu.lab.tab_salle[jeu.perso.tag].nb_mob; i++)
                             {
-                                if(lab.tab_salle[perso1.tag].tab_mob[i].pv != 0)
+                                if(jeu.lab.tab_salle[jeu.perso.tag].tab_mob[i].pv != 0)
                                 {
-                                    lab.tab_salle[perso1.tag].tab_mob[i] = colision_mob(lab.tab_salle[perso1.tag].tab_mob[i], perso1);
-                                    if(lab.tab_salle[perso1.tag].tab_mob[i].pv == 0)
-                                        lab.tab_salle[perso1.tag].nb_mob_mort++;
+                                    jeu.lab.tab_salle[jeu.perso.tag].tab_mob[i] = colision_mob(jeu.lab.tab_salle[jeu.perso.tag].tab_mob[i], jeu.perso);
+                                    if(jeu.lab.tab_salle[jeu.perso.tag].tab_mob[i].pv == 0)
+                                        jeu.lab.tab_salle[jeu.perso.tag].nb_mob_mort++;
                                 }
                             }
 
                             // Si on touche la porte du haut, on passe à la salle suivante et on spawn en bas
-                            if((collision_porte(perso1, lab.tab_salle[perso1.tag].porte[0], lab.tab_salle[perso1.tag].porte[0].salle_entree, lab.tab_salle[perso1.tag].porte[0].salle_dest) != lab.tab_salle[perso1.tag].tag_salle) && (lab.tab_salle[perso1.tag].nb_mob_mort == 5))
+                            if((collision_porte(jeu.perso, jeu.lab.tab_salle[jeu.perso.tag].porte[0], jeu.lab.tab_salle[jeu.perso.tag].porte[0].salle_entree, jeu.lab.tab_salle[jeu.perso.tag].porte[0].salle_dest) != jeu.lab.tab_salle[jeu.perso.tag].tag_salle) && (jeu.lab.tab_salle[jeu.perso.tag].nb_mob_mort == 5))
                             {
-                                perso1.perso.y = (lab.tab_salle[perso1.tag].salle.y + lab.tab_salle[perso1.tag].salle.h ) - (lab.tab_salle[perso1.tag].porte[0].porte.h)/2 - perso1.perso.h - 100;
-                                perso1.tag = lab.tab_salle[perso1.tag].tag_salle + 1;
+                                jeu.perso.perso.y = (jeu.lab.tab_salle[jeu.perso.tag].salle.y + jeu.lab.tab_salle[jeu.perso.tag].salle.h ) - (jeu.lab.tab_salle[jeu.perso.tag].porte[0].porte.h)/2 - jeu.perso.perso.h - 100;
+                                jeu.perso.tag = jeu.lab.tab_salle[jeu.perso.tag].tag_salle + 1;
                             }
                             SDL_Delay(10);
                             break;
 
-                        }else if(perso1.tag < TAILLE_LAB - 1 && perso1.tag > 0)
+                        }else if(jeu.perso.tag < TAILLE_LAB - 1 && jeu.perso.tag > 0)
                         {
-                            perso1 = actualisation_salle(lab, perso1, renderer, fenetre);
+                            jeu.perso = actualisation_salle(jeu.lab, jeu.perso, renderer, fenetre);
 
-                            for(i = 0; i < lab.tab_salle[perso1.tag].nb_mob; i++)
+                            for(i = 0; i < jeu.lab.tab_salle[jeu.perso.tag].nb_mob; i++)
                             {
-                                if(lab.tab_salle[perso1.tag].tab_mob[i].pv != 0)
+                                if(jeu.lab.tab_salle[jeu.perso.tag].tab_mob[i].pv != 0)
                                 {
-                                    lab.tab_salle[perso1.tag].tab_mob[i] = colision_mob(lab.tab_salle[perso1.tag].tab_mob[i], perso1);
-                                    if(lab.tab_salle[perso1.tag].tab_mob[i].pv == 0)
-                                        lab.tab_salle[perso1.tag].nb_mob_mort++;
+                                    jeu.lab.tab_salle[jeu.perso.tag].tab_mob[i] = colision_mob(jeu.lab.tab_salle[jeu.perso.tag].tab_mob[i], jeu.perso);
+                                    if(jeu.lab.tab_salle[jeu.perso.tag].tab_mob[i].pv == 0)
+                                        jeu.lab.tab_salle[jeu.perso.tag].nb_mob_mort++;
                                 }
                             }
 
                             // Si on touche la porte du haut, on passe à la salle suivante et on spawn en bas
-                            if((collision_porte(perso1, lab.tab_salle[perso1.tag].porte[1], lab.tab_salle[perso1.tag].porte[1].salle_entree, lab.tab_salle[perso1.tag].porte[1].salle_dest) != lab.tab_salle[perso1.tag].tag_salle) && (lab.tab_salle[perso1.tag].nb_mob_mort == 5))
+                            if((collision_porte(jeu.perso, jeu.lab.tab_salle[jeu.perso.tag].porte[1], jeu.lab.tab_salle[jeu.perso.tag].porte[1].salle_entree, jeu.lab.tab_salle[jeu.perso.tag].porte[1].salle_dest) != jeu.lab.tab_salle[jeu.perso.tag].tag_salle) && (jeu.lab.tab_salle[jeu.perso.tag].nb_mob_mort == 5))
                             {
                                 printf("Porte du haut touché !\n");
-                                perso1.perso.y = (lab.tab_salle[perso1.tag].salle.y + lab.tab_salle[perso1.tag].salle.h ) - (lab.tab_salle[perso1.tag].porte[1].porte.h)/2 - perso1.perso.h;
-                                if(perso1.tag < 6)
-                                    perso1.tag = lab.tab_salle[perso1.tag].tag_salle + 1;
-
-                            }else if((collision_porte(perso1, lab.tab_salle[perso1.tag].porte[0], lab.tab_salle[perso1.tag].porte[0].salle_entree, lab.tab_salle[perso1.tag].porte[0].salle_dest) != lab.tab_salle[perso1.tag].tag_salle) && (lab.tab_salle[perso1.tag].nb_mob_mort == 5))
+                                jeu.perso.perso.y = (jeu.lab.tab_salle[jeu.perso.tag].salle.y + jeu.lab.tab_salle[jeu.perso.tag].salle.h ) - (jeu.lab.tab_salle[jeu.perso.tag].porte[1].porte.h)/2 - jeu.perso.perso.h;
+                                if(jeu.perso.tag < 6)
+                                    jeu.perso.tag = jeu.lab.tab_salle[jeu.perso.tag].tag_salle + 1;
+                            }else if((collision_porte(jeu.perso, jeu.lab.tab_salle[jeu.perso.tag].porte[0], jeu.lab.tab_salle[jeu.perso.tag].porte[0].salle_entree, jeu.lab.tab_salle[jeu.perso.tag].porte[0].salle_dest) != jeu.lab.tab_salle[jeu.perso.tag].tag_salle) && (jeu.lab.tab_salle[jeu.perso.tag].nb_mob_mort == 5))
                             {   // Si on touche la porte du bas, on passe à la salle précédente et on spawn en haut
                                 printf("Porte du bas touché !\n");
-                                perso1.perso.y = (lab.tab_salle[perso1.tag].salle.y) + (lab.tab_salle[perso1.tag].porte[0].porte.h)/2;
-                                perso1.tag = lab.tab_salle[perso1.tag].tag_salle - 1;
+                                jeu.perso.perso.y = (jeu.lab.tab_salle[jeu.perso.tag].salle.y) + (jeu.lab.tab_salle[jeu.perso.tag].porte[0].porte.h) / 2;
+                                jeu.perso.tag = jeu.lab.tab_salle[jeu.perso.tag].tag_salle - 1;
                             }
                             SDL_Delay(10);
                             break;
 
-                        }else if(perso1.tag == TAILLE_LAB - 1)
+                        }else if(jeu.perso.tag == TAILLE_LAB - 1)
                         {
-                            perso1 = actualisation_salle(lab, perso1, renderer, fenetre);
+                            jeu.perso = actualisation_salle(jeu.lab, jeu.perso, renderer, fenetre);
 
-                            for(i = 0; i < lab.tab_salle[perso1.tag].nb_mob; i++)
+                            for(i = 0; i < jeu.lab.tab_salle[jeu.perso.tag].nb_mob; i++)
                             {
-                                if(lab.tab_salle[perso1.tag].tab_mob[i].pv != 0)
+                                if(jeu.lab.tab_salle[jeu.perso.tag].tab_mob[i].pv != 0)
                                 {
-                                    lab.tab_salle[perso1.tag].tab_mob[i] = colision_mob(lab.tab_salle[perso1.tag].tab_mob[i], perso1);
-                                    if(lab.tab_salle[perso1.tag].tab_mob[i].pv == 0)
-                                        lab.tab_salle[perso1.tag].nb_mob_mort++;
+                                    jeu.lab.tab_salle[jeu.perso.tag].tab_mob[i] = colision_mob(jeu.lab.tab_salle[jeu.perso.tag].tab_mob[i], jeu.perso);
+                                    if (jeu.lab.tab_salle[jeu.perso.tag].tab_mob[i].pv == 0)
+                                        jeu.lab.tab_salle[jeu.perso.tag].nb_mob_mort++;
                                 }
                             }
 
-                            if(lab.tab_salle[perso1.tag].nb_mob_mort == 5)
+                            if(jeu.lab.tab_salle[jeu.perso.tag].nb_mob_mort == 5)
                                 jeu_lunched = SDL_FALSE;
+                                ingame = SDL_FALSE;
 
                             // Si on touche la porte du haut, on passe à la salle suivante et on spawn en bas
-                            if((collision_porte(perso1, lab.tab_salle[perso1.tag].porte[1], lab.tab_salle[perso1.tag].porte[1].salle_entree, lab.tab_salle[perso1.tag].porte[1].salle_dest) != lab.tab_salle[perso1.tag].tag_salle) && (lab.tab_salle[perso1.tag].nb_mob_mort == 5))
-                            {
-                                perso1.perso.y = (lab.tab_salle[perso1.tag].salle.y) + (lab.tab_salle[perso1.tag].porte[1].porte.h)/2;
-                                perso1.tag = lab.tab_salle[perso1.tag].tag_salle - 1;
+                                if ((collision_porte(jeu.perso, jeu.lab.tab_salle[jeu.perso.tag].porte[1], jeu.lab.tab_salle[jeu.perso.tag].porte[1].salle_entree, jeu.lab.tab_salle[jeu.perso.tag].porte[1].salle_dest) != jeu.lab.tab_salle[jeu.perso.tag].tag_salle) && (jeu.lab.tab_salle[jeu.perso.tag].nb_mob_mort == 5))
+                                {
+                                    jeu.perso.perso.y = (jeu.lab.tab_salle[jeu.perso.tag].salle.y) + (jeu.lab.tab_salle[jeu.perso.tag].porte[1].porte.h) / 2;
+                                    jeu.perso.tag = jeu.lab.tab_salle[jeu.perso.tag].tag_salle - 1;
                             }
                             SDL_Delay(10);
                             break;
@@ -327,6 +384,9 @@ int main(int argc, char **argv)
             }
         }
     }
+
+    Mix_FreeMusic(main_theme);
+    Mix_CloseAudio();
     clean_ressources(fen, renderer, NULL);
     SDL_Quit();
     return EXIT_SUCCESS;

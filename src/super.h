@@ -12,5 +12,4 @@
  * \date 18 Février 2020
  */
 
-
 #endif

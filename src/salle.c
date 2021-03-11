@@ -96,15 +96,17 @@ salle_t init_salle(salle_t salle, SDL_Window *fen, SDL_Renderer *renderer, int t
     if(tag == 0)
     {
         salle.porte[0] = init_porte(salle.porte[0], (salle.salle.x + salle.salle.w)/2 - 30, salle.salle.y, tag, tag + 1, 'H');
+        salle.nb_porte = 1;
 
     }else if(0 < tag && tag < TAILLE_LAB - 1)
     {
         salle.porte[0] = init_porte(salle.porte[0], (salle.salle.x + salle.salle.w)/2 - 30, (salle.salle.y + salle.salle.h), tag, tag - 1, 'H');
         salle.porte[1] = init_porte(salle.porte[1], (salle.salle.x + salle.salle.w)/2 - 30, (salle.salle.y), tag, tag + 1, 'H');
+        salle.nb_porte = 2;
     }else if(tag == TAILLE_LAB - 1)
     {
         salle.porte[1] = init_porte(salle.porte[1], (salle.salle.x + salle.salle.w)/2 - 30, (salle.salle.y + salle.salle.h), tag, tag - 1, 'H');
-
+        salle.nb_porte = 1;
     }
 
     // Initialisation du tag salle

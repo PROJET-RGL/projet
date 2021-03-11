@@ -8,17 +8,19 @@
   - Jules Beuvier
   - Thomas André
 
-# v0.0.16
+# v0.0.18
 
 ------- Patch Notes -------
 
 Ajout :
-  - AUCUN
+  - Gestion du son dans les options
+  - Mise a jour des images du menu et des options en cas de passage en fullscreen ou fenêtré
+  - Ajout d'un menu pour montrer les commandes
+  - Si la touche ECHAP est pressée pendant une partie, le bouton Jouer et remplacé par le bouton Continuer
 
 Correction de bug :
-  - Les images de PNJ qui grossissent après la première partie
-  - Les PNJ ne peuvent plus spawn au même endroit
+  - Impossibilité de continuer la partie après avoir fait ECHAP
 
 ---------------------------
 
-# DATE : 12/02/2021
+# DATE : 03/03/2021

@@ -2,10 +2,10 @@
 #define super_s_H
 
 #include <stdio.h>
-#include <SDL.h>
 #include <stdlib.h>
-#include <SDL_image.h>
 #include <time.h>
+#include <SDL.h>
+#include <SDL_mixer.h>
 
 /**
  * \brief Header des structures du programmes
@@ -42,6 +42,10 @@ typedef struct perso_s perso_t;
 typedef struct mob_s mob_t;
 
 typedef struct objet_s objet_t;
+
+typedef struct texture_s texture_t;
+
+typedef struct jeu_s jeu_t;
 
 /**
  * @brief Definition de la structure vitesse d'un objet
@@ -112,7 +116,7 @@ struct mob_s                // Création d'un mob
 struct objet_s              // Création de l'objet
 {
     SDL_Rect objet;         /*!< Coordonées de l'objets en question */
-    SDL_Texture *text_objet;/*!< Texture de l'objet en question */
+    SDL_Texture *texture;/*!< Texture de l'objet en question */
     int salle;              /*!< Salle dans laquel l'objet est situé */
     couleur_t couleur;      /*!< Couleur de l'objet */
 };
@@ -129,6 +133,7 @@ struct salle_s              // Création de la salle avec ses stats
     int nb_objt;            /*!< Le nombre d'objet de la salle */
     int nb_mob;             /*!< Le nombre de PNJ dans la salle */
     int nb_mob_mort;        /*!< Le nombre de PNJ mort dans la salle */
+    int nb_porte;           /*!< Nombre de porte */
     objet_t tab_obj[O];     /*!< Le tableau d'objet de la salle en question */
     mob_t tab_mob[M];       /*!< Le tableau de mob de la salle en question */
     porte_t porte[P];       /*!< Le tableau des portes de la salle en question */
@@ -146,5 +151,13 @@ struct labyrinthe_s         // Création du labyrinthe en fonction des salles
     salle_t tab_salle[S];   /*!< Tableau de salle */
     SDL_Texture *texture;   /*!< Texture du fond */
 };
+
+
+struct jeu_s                // Création d'un jeu
+{
+    perso_t perso;          /*!< Personnage */
+    labyrinthe_t lab;       /*!< Labyrinthe */
+};
+
 
 #endif
