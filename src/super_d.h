@@ -38,4 +38,9 @@
 #define TRUE 1
 #define FALSE 0
 
+// Statue de l'entité
+
+#define MORT 0
+#define VIVANT 1
+
 #endif

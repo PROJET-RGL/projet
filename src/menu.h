@@ -12,7 +12,7 @@ SDL_Rect quit;
 SDL_Rect nouvelle;
 SDL_Rect charger;
 
-int load_menu(SDL_Renderer *renderer, SDL_Window *fen, int *volume, SDL_bool *plein_ecran, SDL_bool ingame, SDL_bool *charge, jeu_t *jeu);
+SDL_bool load_menu(SDL_Renderer *renderer, SDL_Window *fen, SDL_bool ingame, int *volume, SDL_bool *plein_ecran, SDL_bool *charge, jeu_t *jeu, SDL_bool *program_launched);
 SDL_Rect load_img(SDL_Renderer *renderer, SDL_Window *fen, char *img, int pourcentX, int pourcentY, SDL_Rect rect, SDL_bool *plein_ecran);
 void reload_img(SDL_Renderer *renderer, SDL_Window *fen, int *volume, SDL_bool *plein_ecran, int choix);
 
@@ -36,6 +36,6 @@ SDL_Rect son_up;
 SDL_Rect son_barreup;
 SDL_Rect son_barredown;
 
-void load_option(SDL_Renderer *renderer, SDL_Window *fen, int *volume, SDL_bool *plein_ecran);
+SDL_bool load_option(SDL_Renderer *renderer, SDL_Window *fen, int *volume, SDL_bool *plein_ecran);
 
 #endif

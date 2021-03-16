@@ -6,9 +6,12 @@
 #include <time.h>
 #include <SDL.h>
 #include <SDL_mixer.h>
+#include <math.h>
 
 /**
- * \brief Header des structures du programmes
+ * @brief 
+ * 
+ *
  * \file 'super_s.h'
  * \author Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas
  * \version 0.0.1
@@ -37,6 +40,8 @@ typedef struct labyrinthe_s labyrinthe_t;
 
 typedef struct porte_s porte_t;
 
+typedef struct arme_s arme_t;
+
 typedef struct perso_s perso_t;
 
 typedef struct mob_s mob_t;
@@ -46,6 +51,7 @@ typedef struct objet_s objet_t;
 typedef struct texture_s texture_t;
 
 typedef struct jeu_s jeu_t;
+
 
 /**
  * @brief Definition de la structure vitesse d'un objet
@@ -83,7 +89,28 @@ struct porte_s              // Création de la porte en fonction de l'emplacemen
 };
 
 /**
- * @brief Structure de données de perosnnage, avec l'emplacement du personnage lié au tag, ses coordonnées, ses points de vies, les coordonnées de l'inventaire et sa vitesse
+ * @brief Stucture de la configuration d'une arme, possédant un tag, ainsi qu'un nom et une description. Avec son rayon de portée, les dommages, le cooldown, le stockage possible et la durabilité de l'arme. La rareté de l'arme et son type.
+ * 
+ */
+
+struct arme_s               // Création d'une arme
+{
+    int tag;                /*!<    Tag de l'arme */
+    char *nom_arme;         /*!<    Nom de l'arme */
+    char *descrip;          /*!<    Description de l'arme */
+    int rayon;              /*!<    Rayon d'attaque de l'arme */
+    int dmg;                /*!<    Dommage causées par l'arme */
+    int cooldown;           /*!<    Cooldown de l'arme */
+    int munition;           /*!<    Stockage actuel de l'arme */
+    int durabilite;         /*!<    Durabilité de l'arme */
+    int type;               /*!<    Type de l'arme soit 0 pour cac, soit 1 pour distance */
+    int rarete;             /*!<    Rareté de l'arme */
+};
+
+
+
+/**
+ * @brief Structure de données de personnage, avec l'emplacement du personnage lié au tag, ses coordonnées, ses points de vies, les coordonnées de l'inventaire, sa vitesse, le nombre d'armes et les armes actives
  * 
  */
 
@@ -94,6 +121,9 @@ struct perso_s              // Création d'un personnage
     int pv;                 /*!< Le nombre de vie restant du perosnnage */
     SDL_Rect inv;           /*!< Affichage de l'inventaire */
     velocite_t velocite;    /*!< Vitesse relative du personnage */
+    int nb_arme;            /*!< Nombre d'armes que le personnage possède */
+    arme_t tab_arme[2];     /*!< Tableau d'armes actives*/
+    int arme_actuelle;      /*!< Arme dans la main du perso */
 };
 
 /**
@@ -101,11 +131,12 @@ struct perso_s              // Création d'un personnage
  * 
  */
 
-struct mob_s                // Création d'un mob
-{
-    SDL_Rect mob;           /*!< Coordonées du mob en question */
-    int pv;                 /*!< PV du mob */
-    SDL_Texture *texture;   /*!< Texture du mob */
+    struct mob_s // Création d'un mob
+    {
+        SDL_Rect mob;         /*!< Coordonées du mob en question */
+        int pv;               /*!< PV du mob */
+        int statue;           /*!< Indique si le mob est en vie */
+        SDL_Texture *texture; /*!< Texture du mob */
 };
 
 /**
@@ -116,7 +147,7 @@ struct mob_s                // Création d'un mob
 struct objet_s              // Création de l'objet
 {
     SDL_Rect objet;         /*!< Coordonées de l'objets en question */
-    SDL_Texture *texture;/*!< Texture de l'objet en question */
+    SDL_Texture *texture;   /*!< Texture de l'objet en question */
     int salle;              /*!< Salle dans laquel l'objet est situé */
     couleur_t couleur;      /*!< Couleur de l'objet */
 };
@@ -152,12 +183,18 @@ struct labyrinthe_s         // Création du labyrinthe en fonction des salles
     SDL_Texture *texture;   /*!< Texture du fond */
 };
 
+/**
+ * @brief Structure de données de jeu, comprennant la structure personnage, et labyrinthe, cette structure sert surtout pour le système de sauvegarde
+ * 
+ */
 
 struct jeu_s                // Création d'un jeu
 {
     perso_t perso;          /*!< Personnage */
     labyrinthe_t lab;       /*!< Labyrinthe */
 };
+
+
 
 
 #endif

@@ -17,6 +17,7 @@
 
 perso_t init_perso(perso_t perso)
 {
+    arme_t arme;
     // Coordonnées du personnage
 
     perso.perso.x = (FEN_LARGEUR - PERSO_LARGEUR) / 2 - 20;
@@ -45,6 +46,19 @@ perso_t init_perso(perso_t perso)
 
     perso.velocite.x = 0;
     perso.velocite.y = 0;
+
+    // On incremente le nombre d'arme
+
+    perso.nb_arme++;
+
+    // On ajoute une arme
+
+    perso.tab_arme[0] = init_arme1(arme);
+    perso.tab_arme[1] = init_arme2(arme);
+
+    // Arme actuelle = tag arme
+
+    perso.arme_actuelle = 0;
 
     return perso;
 }

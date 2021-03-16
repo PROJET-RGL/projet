@@ -13,7 +13,7 @@ EXEC = ../bin/RGL
 
 all: $(EXEC)
 
-../bin/RGL: main.o salle.o fonction_admin.o perso.o objet.o porte.o labyrinthe.o actualisation.o mob.o menu.o sauvegarde.o
+../bin/RGL: main.o salle.o fonction_admin.o perso.o objet.o porte.o labyrinthe.o actualisation.o mob.o menu.o sauvegarde.o combat.o arme.o
 	$(CC) -fstack-protector -o $@ $^ $(INCLUDES) $(LIBS)
 
 #version Linux_________________
@@ -27,10 +27,10 @@ all: $(EXEC)
 #	gcc obj/main.o obj/salle.o [...] obj/jeu.o $(LDFLAGS) -o bin/prog
 
 
-main.o: labyrinthe.h perso.h mob.h actualisation.h fonction_admin.h menu.h porte.h sauvegarde.h super.h
+main.o: labyrinthe.h perso.h mob.h actualisation.h fonction_admin.h menu.h porte.h sauvegarde.h combat.h super.h
 salle.o: salle.h fonction_admin.h super.h
 fonction_admin.o: fonction_admin.h super.h
-perso.o: perso.h fonction_admin.h salle.h super.h
+perso.o: perso.h fonction_admin.h salle.h arme.h super.h
 objet.o: objet.h fonction_admin.h super.h
 porte.o: porte.h super.h
 labyrinthe.o: labyrinthe.h salle.h super.h
@@ -38,6 +38,8 @@ actualisation.o: actualisation.h fonction_admin.h salle.h super.h
 mob.o: mob.h fonction_admin.h super.h
 menu.o: menu.h fonction_admin.h super.h sauvegarde.h
 sauvegarde.o: sauvegarde.h super.h
+combat.o: combat.h super.h
+arme.o: arme.h super.h
 
 %.o: %.c
 	$(CC) -o $@ -c $<     $(INCLUDES) $(LIBS)

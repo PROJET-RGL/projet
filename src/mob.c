@@ -32,6 +32,8 @@ mob_t init_mob(mob_t mob, SDL_Window *fen, SDL_Renderer *renderer, SDL_Surface *
 
     mob.pv = 10;
 
+    mob.statue = VIVANT;
+
     // ------------------------------------------- Initialisation des textures mobs ! ------------------------------------------- //
 
     SDL_SetColorKey(image, SDL_TRUE, SDL_MapRGB(image->format, 30, 6, 236));
@@ -67,13 +69,11 @@ mob_t init_mob(mob_t mob, SDL_Window *fen, SDL_Renderer *renderer, SDL_Surface *
  * @return mob_t - Retourne le mob modifier/pas
  */
 
-mob_t colision_mob(mob_t mob1, perso_t perso)
+int colision_mob(mob_t mob1, perso_t perso)
 {
     if(mob1.mob.y < (perso.perso.y + perso.perso.h) && (mob1.mob.y + mob1.mob.h) > perso.perso.y && mob1.mob.x < (perso.perso.x + perso.perso.w) && (mob1.mob.x + mob1.mob.w) > perso.perso.x)
-    {
-        mob1.pv = 0;            // Si le joueur entre en contact avec le mob, alors il est mort
-    }
-    return mob1;
+        return 1;
+    else return 0;
 }
 
 /**

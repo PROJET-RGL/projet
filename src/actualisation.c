@@ -72,6 +72,11 @@ perso_t actualisation_salle(labyrinthe_t lab, perso_t perso, SDL_Renderer *rende
 
         */
 
+        if(lab.tab_salle[perso.tag].tab_mob[i].pv <= 0)
+        {
+            lab.tab_salle[perso.tag].tab_mob[i].pv = 0;
+        }
+
 
         if(lab.tab_salle[perso.tag].tab_mob[i].pv != 0)
         {

@@ -8,18 +8,18 @@
   - Jules Beuvier
   - Thomas André
 
-# v0.0.18
+# v0.0.19
 
 ------- Patch Notes -------
 
 Ajout :
-  - Gestion du son dans les options
-  - Mise a jour des images du menu et des options en cas de passage en fullscreen ou fenêtré
-  - Ajout d'un menu pour montrer les commandes
-  - Si la touche ECHAP est pressée pendant une partie, le bouton Jouer et remplacé par le bouton Continuer
+  - Combat update (possibilité de clic gauche/clic droit pour tirer ( 0.1 sec de cooldown sur le CG et 10 sec pour CD)
+  - Ajout de bruitage/son
+  - Ajout de template pour la barre de vie, WIP
+  - Ajout concept arme, une distance, une corps à corps (touche 1 et 2)
 
 Correction de bug :
-  - Impossibilité de continuer la partie après avoir fait ECHAP
+  - Impossibilité de quitter le jeu lorsque nous sommes dans le menu option
 
 ---------------------------
 

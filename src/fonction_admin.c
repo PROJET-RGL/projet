@@ -75,3 +75,4 @@ int affichage(SDL_Renderer *renderer, SDL_Rect cible, int r, int v, int b)
 
     return SDL_TRUE;
 }
+

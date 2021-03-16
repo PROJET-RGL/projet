@@ -19,15 +19,16 @@
  * @return int - Retourne si l'utilisateur souhaite quitter ou non le jeu
  */
 
-int load_menu(SDL_Renderer *renderer, SDL_Window *fen, int *volume, SDL_bool *plein_ecran, SDL_bool ingame, SDL_bool *charge, jeu_t *jeu){
-
+SDL_bool load_menu(SDL_Renderer *renderer, SDL_Window *fen, SDL_bool ingame, int *volume, SDL_bool *plein_ecran, SDL_bool *charge, jeu_t *jeu, SDL_bool *program_launched)
+{
     SDL_Event event;
-    SDL_bool program_lunched = SDL_TRUE;
+    SDL_bool quitter_jeu = SDL_TRUE;
     SDL_bool att_menu = SDL_TRUE;
     SDL_bool chargement = SDL_FALSE;
     int opt = 0;
 
     nettoyage_ecran(renderer);
+
     logo = load_img(renderer, fen, "../src/img/logo.bmp", 50, 10, logo, plein_ecran);
 
     if(!ingame)
@@ -50,7 +51,7 @@ int load_menu(SDL_Renderer *renderer, SDL_Window *fen, int *volume, SDL_bool *pl
             {
                 case SDL_QUIT :
                     att_menu = SDL_FALSE;
-                    program_lunched = SDL_FALSE;
+                    quitter_jeu = SDL_FALSE;
                     break;
                 case SDL_MOUSEBUTTONUP :
                     if(chargement == SDL_FALSE)
@@ -60,7 +61,7 @@ int load_menu(SDL_Renderer *renderer, SDL_Window *fen, int *volume, SDL_bool *pl
                             if(event.motion.y > quit.y && event.motion.y < (quit.y + quit.h))
                             {
                                     att_menu = SDL_FALSE;
-                                    program_lunched = SDL_FALSE;
+                                    quitter_jeu = SDL_FALSE;
                                     if(ingame)
                                        sauvegarde(jeu);
                             }
@@ -94,6 +95,7 @@ int load_menu(SDL_Renderer *renderer, SDL_Window *fen, int *volume, SDL_bool *pl
                         {
                             if(event.motion.y > nouvelle.y && event.motion.y < (nouvelle.y + nouvelle.h))
                             {
+                                *charge = SDL_FALSE;
                                 att_menu = SDL_FALSE;
                             }
                         }
@@ -124,24 +126,33 @@ int load_menu(SDL_Renderer *renderer, SDL_Window *fen, int *volume, SDL_bool *pl
         if(opt == 1)
         {
             nettoyage_ecran(renderer);
-            load_option(renderer, fen, volume, plein_ecran);
-            opt = 0;
-            nettoyage_ecran(renderer);
-            logo = load_img(renderer, fen, "../src/img/logo.bmp", 50, 10, logo, plein_ecran);
-
-            if(!ingame)
-                start = load_img(renderer, fen, "../src/img/jouer.bmp", 50, 50, start, plein_ecran);
+            *program_launched = load_option(renderer, fen, volume, plein_ecran);
+            if(*program_launched == SDL_FALSE)
+            {
+                att_menu = SDL_FALSE;
+                quitter_jeu = SDL_FALSE;
+            }
             else
-                start = load_img(renderer, fen, "../src/img/continuer.bmp", 50, 50, start, plein_ecran);
+            {
+                opt = 0;
+                nettoyage_ecran(renderer);
+                logo = load_img(renderer, fen, "../src/img/logo.bmp", 50, 10, logo, plein_ecran);
 
-            option = load_img(renderer, fen, "../src/img/options.bmp", 50, 70, option, plein_ecran);
-            if(!ingame)
-                quit = load_img(renderer, fen, "../src/img/quitter.bmp", 50, 90, quit, plein_ecran);
-            else
-                quit = load_img(renderer, fen, "../src/img/sauv_quitter.bmp", 50, 90, quit, plein_ecran);
+                if(!ingame)
+                    start = load_img(renderer, fen, "../src/img/jouer.bmp", 50, 50, start, plein_ecran);
+                else
+                    start = load_img(renderer, fen, "../src/img/continuer.bmp", 50, 50, start, plein_ecran);
+
+                option = load_img(renderer, fen, "../src/img/options.bmp", 50, 70, option, plein_ecran);
+                if(!ingame)
+                    quit = load_img(renderer, fen, "../src/img/quitter.bmp", 50, 90, quit, plein_ecran);
+                else
+                    quit = load_img(renderer, fen, "../src/img/sauv_quitter.bmp", 50, 90, quit, plein_ecran);
+            }
+                
         }
     }
-    return program_lunched;
+    return quitter_jeu;
 }
 
 /**
@@ -155,11 +166,12 @@ int load_menu(SDL_Renderer *renderer, SDL_Window *fen, int *volume, SDL_bool *pl
  * @return void
  */
 
-void load_option(SDL_Renderer *renderer, SDL_Window *fen, int *volume, SDL_bool *plein_ecran)
+SDL_bool load_option(SDL_Renderer *renderer, SDL_Window *fen, int *volume, SDL_bool *plein_ecran)
 {
 
     SDL_Event event;
     SDL_bool att_option = SDL_TRUE;
+    SDL_bool quitter_jeu = SDL_TRUE;
     int i, pX = 46, choix = 1;
 
     general = load_img(renderer, fen, "../src/img/general.bmp", 35, 5, general, plein_ecran);
@@ -193,7 +205,7 @@ void load_option(SDL_Renderer *renderer, SDL_Window *fen, int *volume, SDL_bool 
             {
                 case SDL_QUIT :
                     att_option = SDL_FALSE;
-                    SDL_bool program_lunched = SDL_FALSE;
+                    quitter_jeu = SDL_FALSE;
                     break;
                 case SDL_MOUSEBUTTONUP :
                     if(event.motion.x > general.x && event.motion.x < (general.x + general.w))
@@ -279,6 +291,8 @@ void load_option(SDL_Renderer *renderer, SDL_Window *fen, int *volume, SDL_bool 
     }
 
     nettoyage_ecran(renderer);
+    
+    return quitter_jeu;
 }
 
 /**
