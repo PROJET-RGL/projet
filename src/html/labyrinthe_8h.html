@@ -89,18 +89,18 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:ab1a694c7e98e155c4918614804f33a09"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structlabyrinthe__s.html">labyrinthe_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="labyrinthe_8h.html#ab1a694c7e98e155c4918614804f33a09">init_lab</a> (<a class="el" href="structlabyrinthe__s.html">labyrinthe_t</a> lab, int taille)</td></tr>
-<tr class="memdesc:ab1a694c7e98e155c4918614804f33a09"><td class="mdescLeft">&#160;</td><td class="mdescRight">On définit le labyrinthe avec sa taille, et ses salles.  <a href="labyrinthe_8h.html#ab1a694c7e98e155c4918614804f33a09">Plus de détails...</a><br /></td></tr>
-<tr class="separator:ab1a694c7e98e155c4918614804f33a09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91825c0f8cc663c2c41d05bc8ff1a021"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structlabyrinthe__s.html">labyrinthe_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="labyrinthe_8h.html#a91825c0f8cc663c2c41d05bc8ff1a021">init_lab</a> (<a class="el" href="structlabyrinthe__s.html">labyrinthe_t</a> lab, SDL_Window *fen, SDL_Renderer *renderer, SDL_Rect fenetre, int taille)</td></tr>
+<tr class="memdesc:a91825c0f8cc663c2c41d05bc8ff1a021"><td class="mdescLeft">&#160;</td><td class="mdescRight">On définit le labyrinthe avec sa taille, et ses salles.  <a href="labyrinthe_8h.html#a91825c0f8cc663c2c41d05bc8ff1a021">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a91825c0f8cc663c2c41d05bc8ff1a021"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Fonction qui agis sur le labyrinthe. </p>
 <p>' </p><dl class="section author"><dt>Auteur</dt><dd>Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>0.0.1 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>18 Février 2020 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.0.2 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>22 Mars 2021 </dd></dl>
 </div><h2 class="groupheader">Documentation des fonctions</h2>
-<a id="ab1a694c7e98e155c4918614804f33a09"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab1a694c7e98e155c4918614804f33a09">&#9670;&nbsp;</a></span>init_lab()</h2>
+<a id="a91825c0f8cc663c2c41d05bc8ff1a021"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91825c0f8cc663c2c41d05bc8ff1a021">&#9670;&nbsp;</a></span>init_lab()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -110,6 +110,24 @@ Fonctions</h2></td></tr>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structlabyrinthe__s.html">labyrinthe_t</a>&#160;</td>
           <td class="paramname"><em>lab</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Window *&#160;</td>
+          <td class="paramname"><em>fen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect&#160;</td>
+          <td class="paramname"><em>fenetre</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -130,6 +148,9 @@ Fonctions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">lab</td><td>Importation du labyrinthe à modifier </td></tr>
     <tr><td class="paramname">taille</td><td>Définition de la taille du lab </td></tr>
+    <tr><td class="paramname">fen</td><td>Fenetre d'affichage </td></tr>
+    <tr><td class="paramname">renderer</td><td>Rendu où l'on va coller la texture </td></tr>
+    <tr><td class="paramname">fenetre</td><td>Rectangle ayant les coordonnées de l'image </td></tr>
   </table>
   </dd>
 </dl>

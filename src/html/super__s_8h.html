@@ -70,13 +70,14 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Header des structures du programmes.  
+<p>Structure de données du code.  
 <a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
-<code>#include &lt;SDL.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
-<code>#include &lt;SDL_image.h&gt;</code><br />
 <code>#include &lt;time.h&gt;</code><br />
+<code>#include &lt;SDL.h&gt;</code><br />
+<code>#include &lt;SDL_mixer.h&gt;</code><br />
+<code>#include &lt;math.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de super_s.h:</div>
 <div class="dyncontent">
@@ -103,8 +104,11 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structporte__s.html">porte_s</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure de données d'une porte, avec ses coordonnées, sa salle d'entrée, sa salle de sortie et son orientation.  <a href="structporte__s.html#details">Plus de détails...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structarme__s.html">arme_s</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stucture de la configuration d'une arme, possédant un tag, ainsi qu'un nom et une description. Avec son rayon de portée, les dommages, le cooldown, le stockage possible et la durabilité de l'arme. La rareté de l'arme et son type.  <a href="structarme__s.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structperso__s.html">perso_s</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure de données de perosnnage, avec l'emplacement du personnage lié au tag, ses coordonnées, ses points de vies, les coordonnées de l'inventaire et sa vitesse.  <a href="structperso__s.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure de données de personnage, avec l'emplacement du personnage lié au tag, ses coordonnées, ses points de vies, les coordonnées de l'inventaire, sa vitesse, le nombre d'armes et les armes actives.  <a href="structperso__s.html#details">Plus de détails...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmob__s.html">mob_s</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struture de données d'un PNJ, avec ses coordonnées, ses points de vies, et sa texture.  <a href="structmob__s.html#details">Plus de détails...</a><br /></td></tr>
@@ -117,6 +121,12 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlabyrinthe__s.html">labyrinthe_s</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struture de données d'un labyrinthe de salle, avec sa taille (nombre de salle) et un tableau de salle et sa texture.  <a href="structlabyrinthe__s.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhud__s.html">hud_s</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure de données pour afficher le HUD (barre de vie, arme etc...)  <a href="structhud__s.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structjeu__s.html">jeu_s</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure de données de jeu, comprennant la structure personnage, et labyrinthe, cette structure sert surtout pour le système de sauvegarde.  <a href="structjeu__s.html#details">Plus de détails...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
@@ -160,6 +170,9 @@ typedef struct <a class="el" href="structlabyrinthe__s.html">labyrinthe_s</a>&#1
 <tr class="memitem:a3cceac2c7b4859dd4d68e5de6b7a8f70"><td class="memItemLeft" align="right" valign="top"><a id="a3cceac2c7b4859dd4d68e5de6b7a8f70"></a>
 typedef struct <a class="el" href="structporte__s.html">porte_s</a>&#160;</td><td class="memItemRight" valign="bottom"><b>porte_t</b></td></tr>
 <tr class="separator:a3cceac2c7b4859dd4d68e5de6b7a8f70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cef8ad3151bbf5cc647a1149b3209bc"><td class="memItemLeft" align="right" valign="top"><a id="a2cef8ad3151bbf5cc647a1149b3209bc"></a>
+typedef struct <a class="el" href="structarme__s.html">arme_s</a>&#160;</td><td class="memItemRight" valign="bottom"><b>arme_t</b></td></tr>
+<tr class="separator:a2cef8ad3151bbf5cc647a1149b3209bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a550089442e996a6b42d393992dbc5436"><td class="memItemLeft" align="right" valign="top"><a id="a550089442e996a6b42d393992dbc5436"></a>
 typedef struct <a class="el" href="structperso__s.html">perso_s</a>&#160;</td><td class="memItemRight" valign="bottom"><b>perso_t</b></td></tr>
 <tr class="separator:a550089442e996a6b42d393992dbc5436"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -169,12 +182,21 @@ typedef struct <a class="el" href="structmob__s.html">mob_s</a>&#160;</td><td cl
 <tr class="memitem:ad0efc27a29533dbf784e717262509caa"><td class="memItemLeft" align="right" valign="top"><a id="ad0efc27a29533dbf784e717262509caa"></a>
 typedef struct <a class="el" href="structobjet__s.html">objet_s</a>&#160;</td><td class="memItemRight" valign="bottom"><b>objet_t</b></td></tr>
 <tr class="separator:ad0efc27a29533dbf784e717262509caa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ccef78cc823a64b176eb792c4744abf"><td class="memItemLeft" align="right" valign="top"><a id="a4ccef78cc823a64b176eb792c4744abf"></a>
+typedef struct texture_s&#160;</td><td class="memItemRight" valign="bottom"><b>texture_t</b></td></tr>
+<tr class="separator:a4ccef78cc823a64b176eb792c4744abf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cdc29a8ff7160f14b641f3db55954f5"><td class="memItemLeft" align="right" valign="top"><a id="a9cdc29a8ff7160f14b641f3db55954f5"></a>
+typedef struct <a class="el" href="structhud__s.html">hud_s</a>&#160;</td><td class="memItemRight" valign="bottom"><b>hud_t</b></td></tr>
+<tr class="separator:a9cdc29a8ff7160f14b641f3db55954f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a121abcd0fb2cd8f74c779ef36fb394b9"><td class="memItemLeft" align="right" valign="top"><a id="a121abcd0fb2cd8f74c779ef36fb394b9"></a>
+typedef struct <a class="el" href="structjeu__s.html">jeu_s</a>&#160;</td><td class="memItemRight" valign="bottom"><b>jeu_t</b></td></tr>
+<tr class="separator:a121abcd0fb2cd8f74c779ef36fb394b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Header des structures du programmes. </p>
+<div class="textblock"><p>Structure de données du code. </p>
 <p>' </p><dl class="section author"><dt>Auteur</dt><dd>Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>0.0.1 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>18 Février 2020 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.0.2 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>22 Mars 2021 </dd></dl>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

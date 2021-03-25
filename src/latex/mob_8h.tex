@@ -6,6 +6,7 @@ Fichier contenant les fonctions agissant sur les mobs du programme.
 
 
 {\ttfamily \#include \char`\"{}super.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fonction\+\_\+admin.\+h\char`\"{}}\newline
 Graphe des dépendances par inclusion de mob.\+h\+:
 % FIG 0
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
@@ -13,10 +14,12 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 \doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{structmob__s}{mob\+\_\+t}} \mbox{\hyperlink{mob_8h_aaecf0edca4ce8a47e6ae12b66c06a618}{init\+\_\+mob}} (\mbox{\hyperlink{structmob__s}{mob\+\_\+t}} mob)
+\mbox{\hyperlink{structmob__s}{mob\+\_\+t}} \mbox{\hyperlink{mob_8h_a681e1876b74267c01c31486aee53e5b3}{init\+\_\+mob}} (\mbox{\hyperlink{structmob__s}{mob\+\_\+t}} mob, S\+D\+L\+\_\+\+Window $\ast$fen, S\+D\+L\+\_\+\+Renderer $\ast$renderer, S\+D\+L\+\_\+\+Surface $\ast$image, int taille)
 \begin{DoxyCompactList}\small\item\em Création d\textquotesingle{}un mob, avec ses coordonnées, sa taille et ses points de vies. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{structmob__s}{mob\+\_\+t}} \mbox{\hyperlink{mob_8h_ac753b7a3d2cb4c397e98d8fd358081cb}{colision\+\_\+mob}} (\mbox{\hyperlink{structmob__s}{mob\+\_\+t}} mob1, \mbox{\hyperlink{structperso__s}{perso\+\_\+t}} perso)
-\begin{DoxyCompactList}\small\item\em Vérifie si le joueur est en contact avec un mob et le tue si c\textquotesingle{}est le cas. \end{DoxyCompactList}\end{DoxyCompactItemize}
+int \mbox{\hyperlink{mob_8h_a202888e8902fa79e523fed0b7e827684}{colision\+\_\+mob}} (\mbox{\hyperlink{structmob__s}{mob\+\_\+t}} mob1, \mbox{\hyperlink{structperso__s}{perso\+\_\+t}} perso)
+\begin{DoxyCompactList}\small\item\em Vérifie si le joueur est en contact avec un mob et le tue si c\textquotesingle{}est le cas. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structmob__s}{mob\+\_\+t}} \mbox{\hyperlink{mob_8h_a6a5896a03213f6fde466dbad2c5eceb3}{compare\+\_\+mob}} (\mbox{\hyperlink{structmob__s}{mob\+\_\+t}} mob1, \mbox{\hyperlink{structmob__s}{mob\+\_\+t}} mob2)
+\begin{DoxyCompactList}\small\item\em Comparaison entre deux mobs (On vérifie si ils sont en superposé, si c\textquotesingle{}est le cas, on modifie la position du deuxième mob) \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Description détaillée}
@@ -26,19 +29,19 @@ Fichier contenant les fonctions agissant sur les mobs du programme.
 Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
-0.\+0.\+1 
+0.\+0.\+2 
 \end{DoxyVersion}
 \begin{DoxyDate}{Date}
-18 Février 2020 
+22 Mars 2021 
 \end{DoxyDate}
 
 
 \doxysubsection{Documentation des fonctions}
-\mbox{\Hypertarget{mob_8h_ac753b7a3d2cb4c397e98d8fd358081cb}\label{mob_8h_ac753b7a3d2cb4c397e98d8fd358081cb}} 
+\mbox{\Hypertarget{mob_8h_a202888e8902fa79e523fed0b7e827684}\label{mob_8h_a202888e8902fa79e523fed0b7e827684}} 
 \index{mob.h@{mob.h}!colision\_mob@{colision\_mob}}
 \index{colision\_mob@{colision\_mob}!mob.h@{mob.h}}
 \doxysubsubsection{\texorpdfstring{colision\_mob()}{colision\_mob()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structmob__s}{mob\+\_\+t}} colision\+\_\+mob (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmob__s}{mob\+\_\+t}}}]{mob1,  }\item[{\mbox{\hyperlink{structperso__s}{perso\+\_\+t}}}]{perso }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int colision\+\_\+mob (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmob__s}{mob\+\_\+t}}}]{mob1,  }\item[{\mbox{\hyperlink{structperso__s}{perso\+\_\+t}}}]{perso }\end{DoxyParamCaption})}
 
 
 
@@ -54,11 +57,31 @@ Vérifie si le joueur est en contact avec un mob et le tue si c\textquotesingle{
 \begin{DoxyReturn}{Renvoie}
 mob\+\_\+t -\/ Retourne le mob modifier/pas 
 \end{DoxyReturn}
-\mbox{\Hypertarget{mob_8h_aaecf0edca4ce8a47e6ae12b66c06a618}\label{mob_8h_aaecf0edca4ce8a47e6ae12b66c06a618}} 
+\mbox{\Hypertarget{mob_8h_a6a5896a03213f6fde466dbad2c5eceb3}\label{mob_8h_a6a5896a03213f6fde466dbad2c5eceb3}} 
+\index{mob.h@{mob.h}!compare\_mob@{compare\_mob}}
+\index{compare\_mob@{compare\_mob}!mob.h@{mob.h}}
+\doxysubsubsection{\texorpdfstring{compare\_mob()}{compare\_mob()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmob__s}{mob\+\_\+t}} compare\+\_\+mob (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmob__s}{mob\+\_\+t}}}]{mob1,  }\item[{\mbox{\hyperlink{structmob__s}{mob\+\_\+t}}}]{mob2 }\end{DoxyParamCaption})}
+
+
+
+Comparaison entre deux mobs (On vérifie si ils sont en superposé, si c\textquotesingle{}est le cas, on modifie la position du deuxième mob) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em obj1} & On importe l\textquotesingle{}objet de référence \\
+\hline
+{\em obj2} & On importe l\textquotesingle{}objet tester \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+objet\+\_\+t -\/ Retourne l\textquotesingle{}objet modifier/pas 
+\end{DoxyReturn}
+\mbox{\Hypertarget{mob_8h_a681e1876b74267c01c31486aee53e5b3}\label{mob_8h_a681e1876b74267c01c31486aee53e5b3}} 
 \index{mob.h@{mob.h}!init\_mob@{init\_mob}}
 \index{init\_mob@{init\_mob}!mob.h@{mob.h}}
 \doxysubsubsection{\texorpdfstring{init\_mob()}{init\_mob()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structmob__s}{mob\+\_\+t}} init\+\_\+mob (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmob__s}{mob\+\_\+t}}}]{mob }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmob__s}{mob\+\_\+t}} init\+\_\+mob (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmob__s}{mob\+\_\+t}}}]{mob,  }\item[{S\+D\+L\+\_\+\+Window $\ast$}]{fen,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{S\+D\+L\+\_\+\+Surface $\ast$}]{image,  }\item[{int}]{taille }\end{DoxyParamCaption})}
 
 
 

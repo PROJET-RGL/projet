@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['test_5fcolision_115',['test_colision',['../salle_8h.html#ad1d5f1c9b269202f5c64dc2220a6cb9a',1,'salle.c']]]
+  ['sauvegarde_175',['sauvegarde',['../sauvegarde_8h.html#aeb0dcb3e49f8fa0849ad10a0f183c302',1,'sauvegarde.c']]],
+  ['sdl_5fexitwitherror_176',['SDL_ExitWithError',['../fonction__admin_8h.html#abed124ab111ee095d48f08e2a3ea4446',1,'fonction_admin.c']]]
 ];

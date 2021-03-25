@@ -4,7 +4,7 @@
 #include "super.h"
 #include "fonction_admin.h"
 
-mob_t init_mob(mob_t mob, SDL_Window *fen, SDL_Renderer *renderer, SDL_Surface *image);
+mob_t init_mob(mob_t mob, SDL_Window *fen, SDL_Renderer *renderer, SDL_Surface *image, int taille);
 
 int colision_mob(mob_t mob1, perso_t perso);
 

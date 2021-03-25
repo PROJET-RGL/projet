@@ -5,7 +5,7 @@
  * \file 'mob.h'
  * \author Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas
  * \version 0.0.2
- * \date 18 Février 2020
+ * \date 22 Mars 2021
  */
 
 /**
@@ -15,12 +15,30 @@
  * @return mob_t - Retourne le mob mis en paramètre
  */
 
-mob_t init_mob(mob_t mob, SDL_Window *fen, SDL_Renderer *renderer, SDL_Surface *image)
+mob_t init_mob(mob_t mob, SDL_Window *fen, SDL_Renderer *renderer, SDL_Surface *image, int taille)
 {
-    // Coordonnées des mobs
+    switch(taille)
+    {
+        case 'P':
+            mob.mob.w = 50;
+            mob.mob.h = 50;
+            mob.pv = 10;
+            break;
 
-    mob.mob.w = 50;
-    mob.mob.h = 50;
+        case 'M':
+            mob.mob.w = 100;
+            mob.mob.h = 100;
+            mob.pv = 20;
+            break;
+
+        case 'G':
+            mob.mob.w = 150;
+            mob.mob.h = 150;
+            mob.pv = 30;
+            break;
+    }
+
+    // Coordonnées des mobs
 
     int x = 122 + (rand() % (1174 - mob.mob.w));
     int y = 170 + (rand() % (600 - mob.mob.h));
@@ -29,8 +47,6 @@ mob_t init_mob(mob_t mob, SDL_Window *fen, SDL_Renderer *renderer, SDL_Surface *
     mob.mob.y = y;
 
     // Génération des pv du personnage
-
-    mob.pv = 10;
 
     mob.statue = VIVANT;
 
@@ -47,16 +63,17 @@ mob_t init_mob(mob_t mob, SDL_Window *fen, SDL_Renderer *renderer, SDL_Surface *
     mob.texture = SDL_CreateTextureFromSurface(renderer, image);
 
     if(mob.texture == NULL)
-        {
-            clean_ressources(fen, renderer, mob.texture);
-            SDL_ExitWithError("Erreur de création de la texture");
-        }
+    {
+        clean_ressources(fen, renderer, mob.texture);
+        SDL_ExitWithError("Erreur de création de la texture");
+    }
 
     if(SDL_QueryTexture(mob.texture, NULL, NULL, &mob.mob.w, &mob.mob.h) != 0)
-        {
-            clean_ressources(fen, renderer, mob.texture);
-            SDL_ExitWithError("Erreur de chargement de la texture");
-        }
+    {
+        clean_ressources(fen, renderer, mob.texture);
+        SDL_ExitWithError("Erreur de chargement de la texture");
+    }
+
 
     return mob;
 }

@@ -19,7 +19,7 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 \item 
 int \mbox{\hyperlink{salle_8h_a9bd600007d1a50196cf9cb1152e98891}{creation\+\_\+fen}} (S\+D\+L\+\_\+\+Window $\ast$$\ast$fen, S\+D\+L\+\_\+\+Renderer $\ast$$\ast$renderer)
 \begin{DoxyCompactList}\small\item\em Initialisation de la fenêtre. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{structsalle__s}{salle\+\_\+t}} \mbox{\hyperlink{salle_8h_a286666b0c555b796b34825afb78e84c7}{init\+\_\+salle}} (\mbox{\hyperlink{structsalle__s}{salle\+\_\+t}} salle, int tag)
+\mbox{\hyperlink{structsalle__s}{salle\+\_\+t}} \mbox{\hyperlink{salle_8h_a2a0b92295d201fd854f6d8f8e0968526}{init\+\_\+salle}} (\mbox{\hyperlink{structsalle__s}{salle\+\_\+t}} salle, S\+D\+L\+\_\+\+Window $\ast$fen, S\+D\+L\+\_\+\+Renderer $\ast$renderer, int tag)
 \begin{DoxyCompactList}\small\item\em Initialisation d\textquotesingle{}une salle avec ses caractéristiques. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structperso__s}{perso\+\_\+t}} \mbox{\hyperlink{salle_8h_ad1d5f1c9b269202f5c64dc2220a6cb9a}{test\+\_\+colision}} (\mbox{\hyperlink{structperso__s}{perso\+\_\+t}} perso, S\+D\+L\+\_\+\+Rect salle)
 \begin{DoxyCompactList}\small\item\em Test si il y a collision entre les murs de la salle et le personnage. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -32,10 +32,10 @@ Fichier qui influe sur les salles du programme.
 Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
-0.\+0.\+1 
+0.\+0.\+2 
 \end{DoxyVersion}
 \begin{DoxyDate}{Date}
-18 Février 2020 
+22 mars 2021 
 \end{DoxyDate}
 
 
@@ -60,11 +60,11 @@ Initialisation de la fenêtre.
 \begin{DoxyReturn}{Renvoie}
 int -\/ Retourne 1 en cas de réussite sinon faux 
 \end{DoxyReturn}
-\mbox{\Hypertarget{salle_8h_a286666b0c555b796b34825afb78e84c7}\label{salle_8h_a286666b0c555b796b34825afb78e84c7}} 
+\mbox{\Hypertarget{salle_8h_a2a0b92295d201fd854f6d8f8e0968526}\label{salle_8h_a2a0b92295d201fd854f6d8f8e0968526}} 
 \index{salle.h@{salle.h}!init\_salle@{init\_salle}}
 \index{init\_salle@{init\_salle}!salle.h@{salle.h}}
 \doxysubsubsection{\texorpdfstring{init\_salle()}{init\_salle()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structsalle__s}{salle\+\_\+t}} init\+\_\+salle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsalle__s}{salle\+\_\+t}}}]{salle,  }\item[{int}]{tag }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsalle__s}{salle\+\_\+t}} init\+\_\+salle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsalle__s}{salle\+\_\+t}}}]{salle,  }\item[{S\+D\+L\+\_\+\+Window $\ast$}]{fen,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{int}]{tag }\end{DoxyParamCaption})}
 
 
 
@@ -72,6 +72,10 @@ Initialisation d\textquotesingle{}une salle avec ses caractéristiques.
 
 
 \begin{DoxyParams}{Paramètres}
+{\em fen} & Fenètre d\textquotesingle{}acquisition \\
+\hline
+{\em renderer} & Rendu d\textquotesingle{}acquisition \\
+\hline
 {\em salle} & Importation de la salle à modifier \\
 \hline
 {\em tag} & Attribution de l\textquotesingle{}identifiant de la salle \\

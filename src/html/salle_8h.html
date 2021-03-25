@@ -95,9 +95,9 @@ Fonctions</h2></td></tr>
 <tr class="memitem:a9bd600007d1a50196cf9cb1152e98891"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="salle_8h.html#a9bd600007d1a50196cf9cb1152e98891">creation_fen</a> (SDL_Window **fen, SDL_Renderer **renderer)</td></tr>
 <tr class="memdesc:a9bd600007d1a50196cf9cb1152e98891"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation de la fenêtre.  <a href="salle_8h.html#a9bd600007d1a50196cf9cb1152e98891">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a9bd600007d1a50196cf9cb1152e98891"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a286666b0c555b796b34825afb78e84c7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsalle__s.html">salle_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="salle_8h.html#a286666b0c555b796b34825afb78e84c7">init_salle</a> (<a class="el" href="structsalle__s.html">salle_t</a> salle, int tag)</td></tr>
-<tr class="memdesc:a286666b0c555b796b34825afb78e84c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation d'une salle avec ses caractéristiques.  <a href="salle_8h.html#a286666b0c555b796b34825afb78e84c7">Plus de détails...</a><br /></td></tr>
-<tr class="separator:a286666b0c555b796b34825afb78e84c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a0b92295d201fd854f6d8f8e0968526"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsalle__s.html">salle_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="salle_8h.html#a2a0b92295d201fd854f6d8f8e0968526">init_salle</a> (<a class="el" href="structsalle__s.html">salle_t</a> salle, SDL_Window *fen, SDL_Renderer *renderer, int tag)</td></tr>
+<tr class="memdesc:a2a0b92295d201fd854f6d8f8e0968526"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation d'une salle avec ses caractéristiques.  <a href="salle_8h.html#a2a0b92295d201fd854f6d8f8e0968526">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a2a0b92295d201fd854f6d8f8e0968526"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1d5f1c9b269202f5c64dc2220a6cb9a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structperso__s.html">perso_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="salle_8h.html#ad1d5f1c9b269202f5c64dc2220a6cb9a">test_colision</a> (<a class="el" href="structperso__s.html">perso_t</a> perso, SDL_Rect salle)</td></tr>
 <tr class="memdesc:ad1d5f1c9b269202f5c64dc2220a6cb9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test si il y a collision entre les murs de la salle et le personnage.  <a href="salle_8h.html#ad1d5f1c9b269202f5c64dc2220a6cb9a">Plus de détails...</a><br /></td></tr>
 <tr class="separator:ad1d5f1c9b269202f5c64dc2220a6cb9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -105,8 +105,8 @@ Fonctions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Fichier qui influe sur les salles du programme. </p>
 <p>' </p><dl class="section author"><dt>Auteur</dt><dd>Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>0.0.1 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>18 Février 2020 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.0.2 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>22 mars 2021 </dd></dl>
 </div><h2 class="groupheader">Documentation des fonctions</h2>
 <a id="a9bd600007d1a50196cf9cb1152e98891"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9bd600007d1a50196cf9cb1152e98891">&#9670;&nbsp;</a></span>creation_fen()</h2>
@@ -146,8 +146,8 @@ Fonctions</h2></td></tr>
 
 </div>
 </div>
-<a id="a286666b0c555b796b34825afb78e84c7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a286666b0c555b796b34825afb78e84c7">&#9670;&nbsp;</a></span>init_salle()</h2>
+<a id="a2a0b92295d201fd854f6d8f8e0968526"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a0b92295d201fd854f6d8f8e0968526">&#9670;&nbsp;</a></span>init_salle()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -157,6 +157,18 @@ Fonctions</h2></td></tr>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structsalle__s.html">salle_t</a>&#160;</td>
           <td class="paramname"><em>salle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Window *&#160;</td>
+          <td class="paramname"><em>fen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -175,6 +187,8 @@ Fonctions</h2></td></tr>
 <p>Initialisation d'une salle avec ses caractéristiques. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
+    <tr><td class="paramname">fen</td><td>Fenètre d'acquisition </td></tr>
+    <tr><td class="paramname">renderer</td><td>Rendu d'acquisition </td></tr>
     <tr><td class="paramname">salle</td><td>Importation de la salle à modifier </td></tr>
     <tr><td class="paramname">tag</td><td>Attribution de l'identifiant de la salle </td></tr>
   </table>

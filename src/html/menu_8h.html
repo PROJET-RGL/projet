@@ -73,6 +73,8 @@ $(function() {
 <a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="super_8h_source.html">super.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="fonction__admin_8h_source.html">fonction_admin.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sauvegarde_8h_source.html">sauvegarde.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="texture_8h_source.html">texture.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de menu.h:</div>
 <div class="dyncontent">
@@ -90,54 +92,42 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:abc3463575d1225216b4795ba128fc239"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8h.html#abc3463575d1225216b4795ba128fc239">load_menu</a> (SDL_Renderer *renderer, SDL_Window *fen)</td></tr>
-<tr class="memdesc:abc3463575d1225216b4795ba128fc239"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chargement et affichage du menu.  <a href="menu_8h.html#abc3463575d1225216b4795ba128fc239">Plus de détails...</a><br /></td></tr>
-<tr class="separator:abc3463575d1225216b4795ba128fc239"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1cb5e5caa7d595c8c96341255bdfc52"><td class="memItemLeft" align="right" valign="top">SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8h.html#af1cb5e5caa7d595c8c96341255bdfc52">load_img</a> (SDL_Renderer *renderer, SDL_Window *fen, char *img, int pourcentX, int pourcentY, SDL_Rect rect)</td></tr>
-<tr class="memdesc:af1cb5e5caa7d595c8c96341255bdfc52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chargement et affichage des images.  <a href="menu_8h.html#af1cb5e5caa7d595c8c96341255bdfc52">Plus de détails...</a><br /></td></tr>
-<tr class="separator:af1cb5e5caa7d595c8c96341255bdfc52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4920935326e84091bdb45502b8755161"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8h.html#a4920935326e84091bdb45502b8755161">load_option</a> (SDL_Renderer *renderer, SDL_Window *fen)</td></tr>
-<tr class="memdesc:a4920935326e84091bdb45502b8755161"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chargement et affichage des options.  <a href="menu_8h.html#a4920935326e84091bdb45502b8755161">Plus de détails...</a><br /></td></tr>
-<tr class="separator:a4920935326e84091bdb45502b8755161"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b20b08e593ef52af74d68efd3d474b1"><td class="memItemLeft" align="right" valign="top">SDL_bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8h.html#a9b20b08e593ef52af74d68efd3d474b1">load_menu</a> (SDL_Renderer *renderer, SDL_Window *fen, SDL_Texture *menu[7], SDL_Texture *options[10], SDL_Texture *commandes[10], int *volume, SDL_bool *charge, <a class="el" href="structjeu__s.html">jeu_t</a> *jeu, SDL_bool *plein_ecran, SDL_bool *<a class="el" href="main_8c.html#afca61ae64d5c0754713e0d62092cd8df">program_launched</a>, SDL_bool en_partie)</td></tr>
+<tr class="memdesc:a9b20b08e593ef52af74d68efd3d474b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chargement et affichage du menu.  <a href="menu_8h.html#a9b20b08e593ef52af74d68efd3d474b1">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a9b20b08e593ef52af74d68efd3d474b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9d569564d4d22e8907381e50cba61f1"><td class="memItemLeft" align="right" valign="top">SDL_bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8h.html#aa9d569564d4d22e8907381e50cba61f1">load_option</a> (SDL_Renderer *renderer, SDL_Window *fen, SDL_Texture *options[10], SDL_Texture *commandes[10], int *volume, SDL_bool *plein_ecran)</td></tr>
+<tr class="memdesc:aa9d569564d4d22e8907381e50cba61f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chargement et affichage des options.  <a href="menu_8h.html#aa9d569564d4d22e8907381e50cba61f1">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aa9d569564d4d22e8907381e50cba61f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99568f10f7fd2417bee79757051c1b6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8h.html#a99568f10f7fd2417bee79757051c1b6e">reload_img</a> (SDL_Renderer *renderer, SDL_Window *fen, SDL_Texture *menu[7], SDL_Texture *options[10], SDL_Texture *commandes[10], int *volume, SDL_bool plein_ecran, int choix)</td></tr>
+<tr class="memdesc:a99568f10f7fd2417bee79757051c1b6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rechargement des images.  <a href="menu_8h.html#a99568f10f7fd2417bee79757051c1b6e">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a99568f10f7fd2417bee79757051c1b6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a9c6347e629a7e984e7d830cc2d575be5"><td class="memItemLeft" align="right" valign="top"><a id="a9c6347e629a7e984e7d830cc2d575be5"></a>
-SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>logo</b></td></tr>
-<tr class="separator:a9c6347e629a7e984e7d830cc2d575be5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e76259d059d47034be68f328fed2b9e"><td class="memItemLeft" align="right" valign="top"><a id="a1e76259d059d47034be68f328fed2b9e"></a>
-SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>start</b></td></tr>
-<tr class="separator:a1e76259d059d47034be68f328fed2b9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34726fc08c94c9e1e1264b7cce8ec726"><td class="memItemLeft" align="right" valign="top"><a id="a34726fc08c94c9e1e1264b7cce8ec726"></a>
-SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>option</b></td></tr>
-<tr class="separator:a34726fc08c94c9e1e1264b7cce8ec726"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abbebd1ad45dc93788dae8c3b5464d79e"><td class="memItemLeft" align="right" valign="top"><a id="abbebd1ad45dc93788dae8c3b5464d79e"></a>
-SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>quit</b></td></tr>
-<tr class="separator:abbebd1ad45dc93788dae8c3b5464d79e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8eb000e45d1f3503d8e32ded0ac854ce"><td class="memItemLeft" align="right" valign="top"><a id="a8eb000e45d1f3503d8e32ded0ac854ce"></a>
-SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>fleche</b></td></tr>
-<tr class="separator:a8eb000e45d1f3503d8e32ded0ac854ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34b1c99906f7288a5a33da17d1e5a549"><td class="memItemLeft" align="right" valign="top"><a id="a34b1c99906f7288a5a33da17d1e5a549"></a>
-SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>fullscreen</b></td></tr>
-<tr class="separator:a34b1c99906f7288a5a33da17d1e5a549"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7725fd915ea78ed44a5ab3310212635"><td class="memItemLeft" align="right" valign="top"><a id="ae7725fd915ea78ed44a5ab3310212635"></a>
-SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>classique</b></td></tr>
-<tr class="separator:ae7725fd915ea78ed44a5ab3310212635"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0afb3a64f35d49dec49c14fd3d7d659f"><td class="memItemLeft" align="right" valign="top"><a id="a0afb3a64f35d49dec49c14fd3d7d659f"></a>
+SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>pos_menu</b> [7]</td></tr>
+<tr class="separator:a0afb3a64f35d49dec49c14fd3d7d659f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb781926cf3c78f857a5bcd8050500f7"><td class="memItemLeft" align="right" valign="top"><a id="abb781926cf3c78f857a5bcd8050500f7"></a>
+SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>pos_options</b> [10]</td></tr>
+<tr class="separator:abb781926cf3c78f857a5bcd8050500f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6b91573295573c498c0b8b0c15639e8"><td class="memItemLeft" align="right" valign="top"><a id="ab6b91573295573c498c0b8b0c15639e8"></a>
+SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>pos_commandes</b> [8]</td></tr>
+<tr class="separator:ab6b91573295573c498c0b8b0c15639e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Fichier contenant les fonctions chargeant le menu et ses images. </p>
 <p>' </p><dl class="section author"><dt>Auteur</dt><dd>Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>0.0.1 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>18 Février 2020 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.0.2 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>22 mars 2021 </dd></dl>
 </div><h2 class="groupheader">Documentation des fonctions</h2>
-<a id="af1cb5e5caa7d595c8c96341255bdfc52"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af1cb5e5caa7d595c8c96341255bdfc52">&#9670;&nbsp;</a></span>load_img()</h2>
+<a id="a9b20b08e593ef52af74d68efd3d474b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b20b08e593ef52af74d68efd3d474b1">&#9670;&nbsp;</a></span>load_menu()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SDL_Rect load_img </td>
+          <td class="memname">SDL_bool load_menu </td>
           <td>(</td>
           <td class="paramtype">SDL_Renderer *&#160;</td>
           <td class="paramname"><em>renderer</em>, </td>
@@ -151,68 +141,56 @@ SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>classique</b></td
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>chemin_img</em>, </td>
+          <td class="paramtype">SDL_Texture *&#160;</td>
+          <td class="paramname"><em>menu</em>[7], </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>pourcentX</em>, </td>
+          <td class="paramtype">SDL_Texture *&#160;</td>
+          <td class="paramname"><em>options</em>[10], </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>pourcentY</em>, </td>
+          <td class="paramtype">SDL_Texture *&#160;</td>
+          <td class="paramname"><em>commandes</em>[10], </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">SDL_Rect&#160;</td>
-          <td class="paramname"><em>rect</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Chargement et affichage des images. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">renderer</td><td>Attributs pour l'affiche d'une fenêtre </td></tr>
-    <tr><td class="paramname">fen</td><td>Fenêtre sur laquelle on veut afficher les options </td></tr>
-    <tr><td class="paramname">chemin_img</td><td>Chemin relatif de l'image </td></tr>
-    <tr><td class="paramname">pourcentX</td><td>Position de la fenêtre en X en pourcentage </td></tr>
-    <tr><td class="paramname">pourcentY</td><td>Position de la fenêtre en Y en pourcentage </td></tr>
-    <tr><td class="paramname">rect</td><td>Indique quel rectangle utiliser pour l'image </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>SDL_Rect - Retourne des informations sur la position x, y des images ainsi que leurs tailles </dd></dl>
-
-</div>
-</div>
-<a id="abc3463575d1225216b4795ba128fc239"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abc3463575d1225216b4795ba128fc239">&#9670;&nbsp;</a></span>load_menu()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int load_menu </td>
-          <td>(</td>
-          <td class="paramtype">SDL_Renderer *&#160;</td>
-          <td class="paramname"><em>renderer</em>, </td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>volume</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">SDL_Window *&#160;</td>
-          <td class="paramname"><em>fen</em>&#160;</td>
+          <td class="paramtype">SDL_bool *&#160;</td>
+          <td class="paramname"><em>charge</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structjeu__s.html">jeu_t</a> *&#160;</td>
+          <td class="paramname"><em>jeu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_bool *&#160;</td>
+          <td class="paramname"><em>plein_ecran</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_bool *&#160;</td>
+          <td class="paramname"><em>program_launched</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_bool&#160;</td>
+          <td class="paramname"><em>en_partie</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -227,21 +205,30 @@ SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>classique</b></td
   <table class="params">
     <tr><td class="paramname">renderer</td><td>Attributs pour l'affiche d'une fenêtre </td></tr>
     <tr><td class="paramname">fen</td><td>Fenêtre sur laquelle on veut afficher les options </td></tr>
+    <tr><td class="paramname">menu</td><td>Tableau contenant les textures du menu </td></tr>
+    <tr><td class="paramname">options</td><td>Tableau contenant les textures des options </td></tr>
+    <tr><td class="paramname">commandes</td><td>Tableau contenant les textures des commandes </td></tr>
+    <tr><td class="paramname">volume</td><td>Volume actuel de la musique </td></tr>
+    <tr><td class="paramname">charge</td><td>Indique si un partie a déjà été lancée </td></tr>
+    <tr><td class="paramname">jeu</td><td>Chargement de la partie en cours </td></tr>
+    <tr><td class="paramname">plein_ecran</td><td>Indique si le jeu est en plein écran </td></tr>
+    <tr><td class="paramname">program_launched</td><td>État actuel du jeu </td></tr>
+    <tr><td class="paramname">en_partie</td><td>Indique si une partie est déjà en cours </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>int - Retourne si l'utilisateur souhaite quitter ou non le jeu </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>SDL_bool - Retourne si l'utilisateur souhaite quitter ou non le jeu </dd></dl>
 
 </div>
 </div>
-<a id="a4920935326e84091bdb45502b8755161"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4920935326e84091bdb45502b8755161">&#9670;&nbsp;</a></span>load_option()</h2>
+<a id="aa9d569564d4d22e8907381e50cba61f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9d569564d4d22e8907381e50cba61f1">&#9670;&nbsp;</a></span>load_option()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int load_option </td>
+          <td class="memname">SDL_bool load_option </td>
           <td>(</td>
           <td class="paramtype">SDL_Renderer *&#160;</td>
           <td class="paramname"><em>renderer</em>, </td>
@@ -250,7 +237,31 @@ SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>classique</b></td
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">SDL_Window *&#160;</td>
-          <td class="paramname"><em>fen</em>&#160;</td>
+          <td class="paramname"><em>fen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Texture *&#160;</td>
+          <td class="paramname"><em>options</em>[10], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Texture *&#160;</td>
+          <td class="paramname"><em>commandes</em>[10], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>volume</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_bool *&#160;</td>
+          <td class="paramname"><em>plein_ecran</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -265,10 +276,94 @@ SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>classique</b></td
   <table class="params">
     <tr><td class="paramname">renderer</td><td>Attributs pour l'affiche d'une fenêtre </td></tr>
     <tr><td class="paramname">fen</td><td>Fenêtre sur laquelle on veut afficher les options </td></tr>
+    <tr><td class="paramname">options</td><td>Tableau contenant les textures des options </td></tr>
+    <tr><td class="paramname">commandes</td><td>Tableau contenant les textures des commandes </td></tr>
+    <tr><td class="paramname">volume</td><td>Volume actuel de la musique </td></tr>
+    <tr><td class="paramname">plein_ecran</td><td>Indique si le jeu est en plein écran </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>int - Retourne si l'utilisateur souhaite quitter ou non les options </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>SDL_bool Retourne si l'utilisateur souhaite quitter le jeu </dd></dl>
+
+</div>
+</div>
+<a id="a99568f10f7fd2417bee79757051c1b6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99568f10f7fd2417bee79757051c1b6e">&#9670;&nbsp;</a></span>reload_img()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void reload_img </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Window *&#160;</td>
+          <td class="paramname"><em>fen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Texture *&#160;</td>
+          <td class="paramname"><em>menu</em>[7], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Texture *&#160;</td>
+          <td class="paramname"><em>options</em>[10], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Texture *&#160;</td>
+          <td class="paramname"><em>commandes</em>[10], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>volume</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_bool&#160;</td>
+          <td class="paramname"><em>plein_ecran</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>choix</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Rechargement des images. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>Attributs pour l'affiche d'une fenêtre </td></tr>
+    <tr><td class="paramname">fen</td><td>Fenêtre sur laquelle on veut afficher les options </td></tr>
+    <tr><td class="paramname">menu</td><td>Tableau contenant les textures du menu </td></tr>
+    <tr><td class="paramname">options</td><td>Tableau contenant les textures des options </td></tr>
+    <tr><td class="paramname">commandes</td><td>Tableau contenant les textures des commandes </td></tr>
+    <tr><td class="paramname">volume</td><td>Volume actuel de la musique </td></tr>
+    <tr><td class="paramname">plein_ecran</td><td>Indique si le jeu est en plein écran </td></tr>
+    <tr><td class="paramname">choix</td><td>Choix des images à recharger (1 = charger les options général, 2 = charger la liste des commandes) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
 
 </div>
 </div>

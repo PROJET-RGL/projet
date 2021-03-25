@@ -6,6 +6,7 @@ Fonction main du programme.
 
 
 {\ttfamily \#include \char`\"{}super.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sound.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}labyrinthe.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}perso.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}mob.\+h\char`\"{}}\newline
@@ -13,13 +14,17 @@ Fonction main du programme.
 {\ttfamily \#include \char`\"{}fonction\+\_\+admin.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}menu.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}porte.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sauvegarde.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}combat.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}hud.\+h\char`\"{}}\newline
 Graphe des dépendances par inclusion de main.\+c\+:
 % FIG 0
 \doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-int \mbox{\hyperlink{main_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
-\begin{DoxyCompactList}\small\item\em C\textquotesingle{}est le main du programme. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\mbox{\Hypertarget{main_8c_a3c04138a5bfe5d72780bb7e82a18e627}\label{main_8c_a3c04138a5bfe5d72780bb7e82a18e627}} 
+int {\bfseries main} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -41,14 +46,8 @@ S\+D\+L\+\_\+\+Event {\bfseries event}
 \mbox{\Hypertarget{main_8c_aac7d04d66877592f36e9b6275e4e4875}\label{main_8c_aac7d04d66877592f36e9b6275e4e4875}} 
 S\+D\+L\+\_\+\+Event {\bfseries event2}
 \item 
-\mbox{\Hypertarget{main_8c_aa018b11f48168d855c44faf0554e7195}\label{main_8c_aa018b11f48168d855c44faf0554e7195}} 
-\mbox{\hyperlink{structlabyrinthe__s}{labyrinthe\+\_\+t}} {\bfseries lab}
-\item 
-\mbox{\Hypertarget{main_8c_a0eafa0f461e6836f3e837c135f851f98}\label{main_8c_a0eafa0f461e6836f3e837c135f851f98}} 
-\mbox{\hyperlink{structperso__s}{perso\+\_\+t}} {\bfseries perso1}
-\item 
-\mbox{\Hypertarget{main_8c_a128de995ef46e15945afe24b8b1cc75c}\label{main_8c_a128de995ef46e15945afe24b8b1cc75c}} 
-\mbox{\hyperlink{structobjet__s}{objet\+\_\+t}} {\bfseries objet1}
+\mbox{\Hypertarget{main_8c_afebb91fe65f28fd50b81ce0d2cfe29d6}\label{main_8c_afebb91fe65f28fd50b81ce0d2cfe29d6}} 
+\mbox{\hyperlink{structjeu__s}{jeu\+\_\+t}} {\bfseries jeu}
 \item 
 \mbox{\Hypertarget{main_8c_aa5240bf9f2fbfda1dcb8c2d47dec4c28}\label{main_8c_aa5240bf9f2fbfda1dcb8c2d47dec4c28}} 
 S\+D\+L\+\_\+\+Rect {\bfseries fenetre}
@@ -56,11 +55,43 @@ S\+D\+L\+\_\+\+Rect {\bfseries fenetre}
 \mbox{\Hypertarget{main_8c_aa73601f944838ffac2fa4d3e298a6ef4}\label{main_8c_aa73601f944838ffac2fa4d3e298a6ef4}} 
 S\+D\+L\+\_\+\+Surface $\ast$ {\bfseries image} = N\+U\+LL
 \item 
+\mbox{\Hypertarget{main_8c_af7321948c26bf773e1bbee605d15c2d7}\label{main_8c_af7321948c26bf773e1bbee605d15c2d7}} 
+Mix\+\_\+\+Music $\ast$ {\bfseries main\+\_\+theme} = N\+U\+LL
+\item 
+\mbox{\Hypertarget{main_8c_a22d727d5baa19e3441afed049412599f}\label{main_8c_a22d727d5baa19e3441afed049412599f}} 
+Mix\+\_\+\+Chunk $\ast$ {\bfseries pistolet} \mbox{[}2\mbox{]} = \{N\+U\+LL, N\+U\+LL\}
+\item 
+\mbox{\Hypertarget{main_8c_a9a5086ab5eb3c162ceecbe93911b70d1}\label{main_8c_a9a5086ab5eb3c162ceecbe93911b70d1}} 
+Mix\+\_\+\+Chunk $\ast$ {\bfseries epee} \mbox{[}4\mbox{]} = \{N\+U\+LL, N\+U\+LL, N\+U\+LL, N\+U\+LL\}
+\item 
 \mbox{\Hypertarget{main_8c_afc7dc0dadc6c3dc61339c0abe3cb2cee}\label{main_8c_afc7dc0dadc6c3dc61339c0abe3cb2cee}} 
 int {\bfseries perso\+\_\+salle} = 1
 \item 
 \mbox{\Hypertarget{main_8c_a1a55866b511033a14a50dd1c67bda8c2}\label{main_8c_a1a55866b511033a14a50dd1c67bda8c2}} 
 int {\bfseries passage}
+\item 
+\mbox{\Hypertarget{main_8c_a82ea276a7886296e2c8387165f18c5d7}\label{main_8c_a82ea276a7886296e2c8387165f18c5d7}} 
+S\+D\+L\+\_\+\+Texture $\ast$ {\bfseries textures\+\_\+menu} \mbox{[}9\mbox{]}
+\item 
+\mbox{\Hypertarget{main_8c_aa1d6b5c6d537629e5acc9a293e2528f4}\label{main_8c_aa1d6b5c6d537629e5acc9a293e2528f4}} 
+S\+D\+L\+\_\+\+Texture $\ast$ {\bfseries textures\+\_\+options} \mbox{[}10\mbox{]}
+\item 
+\mbox{\Hypertarget{main_8c_a1fad879be34a8f8e6ee77e90cf89d88c}\label{main_8c_a1fad879be34a8f8e6ee77e90cf89d88c}} 
+S\+D\+L\+\_\+\+Texture $\ast$ {\bfseries textures\+\_\+commandes} \mbox{[}8\mbox{]}
+\item 
+S\+D\+L\+\_\+bool \mbox{\hyperlink{main_8c_afca61ae64d5c0754713e0d62092cd8df}{program\+\_\+launched}}
+\begin{DoxyCompactList}\small\item\em C\textquotesingle{}est le main du programme. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8c_a10f48398512d51fdd6aca5d13398331c}\label{main_8c_a10f48398512d51fdd6aca5d13398331c}} 
+S\+D\+L\+\_\+bool {\bfseries jeu\+\_\+launched}
+\item 
+\mbox{\Hypertarget{main_8c_afe1da20d16b2afc8ee84984f0e28027c}\label{main_8c_afe1da20d16b2afc8ee84984f0e28027c}} 
+S\+D\+L\+\_\+bool {\bfseries plein\+\_\+ecran} = S\+D\+L\+\_\+\+F\+A\+L\+SE
+\item 
+\mbox{\Hypertarget{main_8c_a8a049c1c5466cbc9be04c068a08091a8}\label{main_8c_a8a049c1c5466cbc9be04c068a08091a8}} 
+S\+D\+L\+\_\+bool {\bfseries en\+\_\+partie} = S\+D\+L\+\_\+\+F\+A\+L\+SE
+\item 
+\mbox{\Hypertarget{main_8c_a2df5b9740f3ccf311e0fdac0140f3522}\label{main_8c_a2df5b9740f3ccf311e0fdac0140f3522}} 
+S\+D\+L\+\_\+bool {\bfseries charge}
 \end{DoxyCompactItemize}
 
 
@@ -71,19 +102,19 @@ Fonction main du programme.
 Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
-0.\+0.\+15 
+0.\+0.\+2 
 \end{DoxyVersion}
 \begin{DoxyDate}{Date}
-18 Février 2020 
+22 Mars 2021 
 \end{DoxyDate}
 
 
-\doxysubsection{Documentation des fonctions}
-\mbox{\Hypertarget{main_8c_a3c04138a5bfe5d72780bb7e82a18e627}\label{main_8c_a3c04138a5bfe5d72780bb7e82a18e627}} 
-\index{main.c@{main.c}!main@{main}}
-\index{main@{main}!main.c@{main.c}}
-\doxysubsubsection{\texorpdfstring{main()}{main()}}
-{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+\doxysubsection{Documentation des variables}
+\mbox{\Hypertarget{main_8c_afca61ae64d5c0754713e0d62092cd8df}\label{main_8c_afca61ae64d5c0754713e0d62092cd8df}} 
+\index{main.c@{main.c}!program\_launched@{program\_launched}}
+\index{program\_launched@{program\_launched}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{program\_launched}{program\_launched}}
+{\footnotesize\ttfamily S\+D\+L\+\_\+bool program\+\_\+launched}
 
 
 

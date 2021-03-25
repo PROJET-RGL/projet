@@ -8,7 +8,7 @@
   - Jules Beuvier
   - Thomas André
 
-# v0.0.21
+# v0.0.22
 
 ------- Patch Notes -------
 
@@ -23,4 +23,4 @@ Correction de bug :
 
 ---------------------------
 
-# DATE : 16/03/2021
+# DATE : 19/03/2021

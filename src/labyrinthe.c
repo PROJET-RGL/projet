@@ -4,8 +4,8 @@
  * \brief Fonction qui agis sur le labyrinthe
  * \file 'labyrinthe.h'
  * \author Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas
- * \version 0.0.1
- * \date 18 Février 2020
+ * \version 0.0.2
+ * \date 22 Mars 2021
  */
 
 /**

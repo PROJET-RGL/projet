@@ -4,8 +4,8 @@
  * \brief Fichier contenant les fonctions agissant sur le personnage du programme
  * \file 'perso.h'
  * \author Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas
- * \version 0.0.1
- * \date 18 Février 2020
+ * \version 0.0.2
+ * \date 22 Mars 2021
  */
 
 /**
@@ -59,6 +59,14 @@ perso_t init_perso(perso_t perso)
     // Arme actuelle = tag arme
 
     perso.arme_actuelle = 0;
+
+    // Initialisation de la quantité d'argent
+
+    perso.argent = 0;
+
+    // Initialisation du score
+
+    perso.score = 0;
 
     return perso;
 }

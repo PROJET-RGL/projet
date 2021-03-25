@@ -5,7 +5,7 @@
  * \file 'salle.h'
  * \author Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas
  * \version 0.0.2
- * \date 18 Février 2020
+ * \date 22 mars 2021
  */
 
 /**
@@ -34,6 +34,8 @@ int creation_fen(SDL_Window **fen, SDL_Renderer **renderer)
 /**
  * @brief Initialisation d'une salle avec ses caractéristiques
  * 
+ * @param fen Fenètre d'acquisition
+ * @param renderer Rendu d'acquisition
  * @param salle Importation de la salle à modifier
  * @param tag Attribution de l'identifiant de la salle
  * @return salle_t - Retourne la salle complète avec ses caractéristiques
@@ -59,7 +61,20 @@ salle_t init_salle(salle_t salle, SDL_Window *fen, SDL_Renderer *renderer, int t
 
     SDL_Surface *image;
 
-    image = SDL_LoadBMP("../src/img/Poro.bmp");
+    switch(DIFFICULTY)
+    {
+        case 'P':
+            image = SDL_LoadBMP("../src/img/mob_p.bmp");
+            break;
+
+        case 'M':
+            image = SDL_LoadBMP("../src/img/mob_m.bmp");
+            break;
+
+        case 'G':
+            image = SDL_LoadBMP("../src/img/mob_g.bmp");
+            break;
+    }
 
     int i, j;
 
@@ -79,7 +94,7 @@ salle_t init_salle(salle_t salle, SDL_Window *fen, SDL_Renderer *renderer, int t
 
     for(i = 0; i < NB_MOB; i++)
     {
-        salle.tab_mob[i] = init_mob(salle.tab_mob[i], fen, renderer, image);
+        salle.tab_mob[i] = init_mob(salle.tab_mob[i], fen, renderer, image, DIFFICULTY);
 
         for(j = 0 ; j < i ; j++)
         {
@@ -95,16 +110,20 @@ salle_t init_salle(salle_t salle, SDL_Window *fen, SDL_Renderer *renderer, int t
 
     if(tag == 0)
     {
-        salle.porte[0] = init_porte(salle.porte[0], (salle.salle.x + salle.salle.w)/2 - 30, salle.salle.y, tag, tag + 1, 'H');
+        salle.porte[0] = init_porte(salle.porte[0], (salle.salle.x + salle.salle.w)/2 - 30, (salle.salle.y), tag, tag + 1, 'H');
+        salle.porte[1] = init_porte(salle.porte[1], 0, 0, 0, 0, 0);
         salle.nb_porte = 1;
 
-    }else if(0 < tag && tag < TAILLE_LAB - 1)
+    }
+    else if(0 < tag && tag < TAILLE_LAB - 1)
     {
         salle.porte[0] = init_porte(salle.porte[0], (salle.salle.x + salle.salle.w)/2 - 30, (salle.salle.y + salle.salle.h), tag, tag - 1, 'H');
         salle.porte[1] = init_porte(salle.porte[1], (salle.salle.x + salle.salle.w)/2 - 30, (salle.salle.y), tag, tag + 1, 'H');
         salle.nb_porte = 2;
-    }else if(tag == TAILLE_LAB - 1)
+    }
+    else if(tag == TAILLE_LAB - 1)
     {
+        salle.porte[0] = init_porte(salle.porte[0], 0, 0, 0, 0, 0);
         salle.porte[1] = init_porte(salle.porte[1], (salle.salle.x + salle.salle.w)/2 - 30, (salle.salle.y + salle.salle.h), tag, tag - 1, 'H');
         salle.nb_porte = 1;
     }

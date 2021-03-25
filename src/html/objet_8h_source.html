@@ -69,17 +69,19 @@ $(function() {
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define objet_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="super_8h.html">super.h</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<a class="code" href="structobjet__s.html">objet_t</a> <a class="code" href="objet_8h.html#afa7aa15c129d3195f5d02da4d3c2bd2e">init_obj</a>(<a class="code" href="structobjet__s.html">objet_t</a> obj);</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<a class="code" href="structobjet__s.html">objet_t</a> <a class="code" href="objet_8h.html#a1d193a9d0078fecbd24c6b46f974f4a3">compare_objet</a>(<a class="code" href="structobjet__s.html">objet_t</a> obj1, <a class="code" href="structobjet__s.html">objet_t</a> obj2);</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="fonction__admin_8h.html">fonction_admin.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<a class="code" href="structobjet__s.html">objet_t</a> <a class="code" href="objet_8h.html#a1599a70e48c901e8dc54559cf942f083">init_obj</a>(<a class="code" href="structobjet__s.html">objet_t</a> obj, SDL_Window *fen, SDL_Renderer *renderer, SDL_Surface *image);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<a class="code" href="structobjet__s.html">objet_t</a> <a class="code" href="objet_8h.html#a1d193a9d0078fecbd24c6b46f974f4a3">compare_objet</a>(<a class="code" href="structobjet__s.html">objet_t</a> obj1, <a class="code" href="structobjet__s.html">objet_t</a> obj2);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructobjet__s_html"><div class="ttname"><a href="structobjet__s.html">objet_s</a></div><div class="ttdoc">Struture de données d'un objet, avec ses coordonnées, sa texture, la salle dans laquel il se situe,...</div><div class="ttdef"><b>Definition:</b> super_s.h:112</div></div>
-<div class="ttc" id="aobjet_8h_html_afa7aa15c129d3195f5d02da4d3c2bd2e"><div class="ttname"><a href="objet_8h.html#afa7aa15c129d3195f5d02da4d3c2bd2e">init_obj</a></div><div class="ttdeci">objet_t init_obj(objet_t obj)</div><div class="ttdoc">Création d'un objet, avec ses coordonnées, sa taille et sa couleur.</div><div class="ttdef"><b>Definition:</b> objet.c:18</div></div>
+<div class="ttc" id="afonction__admin_8h_html"><div class="ttname"><a href="fonction__admin_8h.html">fonction_admin.h</a></div><div class="ttdoc">Gestion des fenêtres.</div></div>
+<div class="ttc" id="astructobjet__s_html"><div class="ttname"><a href="structobjet__s.html">objet_s</a></div><div class="ttdoc">Struture de données d'un objet, avec ses coordonnées, sa texture, la salle dans laquel il se situe,...</div><div class="ttdef"><b>Definition:</b> super_s.h:149</div></div>
+<div class="ttc" id="aobjet_8h_html_a1599a70e48c901e8dc54559cf942f083"><div class="ttname"><a href="objet_8h.html#a1599a70e48c901e8dc54559cf942f083">init_obj</a></div><div class="ttdeci">objet_t init_obj(objet_t obj, SDL_Window *fen, SDL_Renderer *renderer, SDL_Surface *image)</div><div class="ttdoc">Création d'un objet, avec ses coordonnées, sa taille et sa couleur.</div><div class="ttdef"><b>Definition:</b> objet.c:21</div></div>
 <div class="ttc" id="asuper_8h_html"><div class="ttname"><a href="super_8h.html">super.h</a></div><div class="ttdoc">Header principale du programmes.</div></div>
-<div class="ttc" id="aobjet_8h_html_a1d193a9d0078fecbd24c6b46f974f4a3"><div class="ttname"><a href="objet_8h.html#a1d193a9d0078fecbd24c6b46f974f4a3">compare_objet</a></div><div class="ttdeci">objet_t compare_objet(objet_t obj1, objet_t obj2)</div><div class="ttdoc">Comparaison entre deux objets (On vérifie si ils sont en superposé, si c'est le cas,...</div><div class="ttdef"><b>Definition:</b> objet.c:45</div></div>
+<div class="ttc" id="aobjet_8h_html_a1d193a9d0078fecbd24c6b46f974f4a3"><div class="ttname"><a href="objet_8h.html#a1d193a9d0078fecbd24c6b46f974f4a3">compare_objet</a></div><div class="ttdeci">objet_t compare_objet(objet_t obj1, objet_t obj2)</div><div class="ttdoc">Comparaison entre deux objets (On vérifie si ils sont en superposé, si c'est le cas,...</div><div class="ttdef"><b>Definition:</b> objet.c:70</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Généré par &#160;<a href="http://www.doxygen.org/index.html">

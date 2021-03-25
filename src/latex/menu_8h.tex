@@ -7,6 +7,8 @@ Fichier contenant les fonctions chargeant le menu et ses images.
 
 {\ttfamily \#include \char`\"{}super.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}fonction\+\_\+admin.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sauvegarde.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}texture.\+h\char`\"{}}\newline
 Graphe des dépendances par inclusion de menu.\+h\+:
 % FIG 0
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
@@ -14,35 +16,23 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 \doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-int \mbox{\hyperlink{menu_8h_abc3463575d1225216b4795ba128fc239}{load\+\_\+menu}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, S\+D\+L\+\_\+\+Window $\ast$fen)
+S\+D\+L\+\_\+bool \mbox{\hyperlink{menu_8h_a9b20b08e593ef52af74d68efd3d474b1}{load\+\_\+menu}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, S\+D\+L\+\_\+\+Window $\ast$fen, S\+D\+L\+\_\+\+Texture $\ast$menu\mbox{[}7\mbox{]}, S\+D\+L\+\_\+\+Texture $\ast$options\mbox{[}10\mbox{]}, S\+D\+L\+\_\+\+Texture $\ast$commandes\mbox{[}10\mbox{]}, int $\ast$volume, S\+D\+L\+\_\+bool $\ast$charge, \mbox{\hyperlink{structjeu__s}{jeu\+\_\+t}} $\ast$jeu, S\+D\+L\+\_\+bool $\ast$plein\+\_\+ecran, S\+D\+L\+\_\+bool $\ast$\mbox{\hyperlink{main_8c_afca61ae64d5c0754713e0d62092cd8df}{program\+\_\+launched}}, S\+D\+L\+\_\+bool en\+\_\+partie)
 \begin{DoxyCompactList}\small\item\em Chargement et affichage du menu. \end{DoxyCompactList}\item 
-S\+D\+L\+\_\+\+Rect \mbox{\hyperlink{menu_8h_af1cb5e5caa7d595c8c96341255bdfc52}{load\+\_\+img}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, S\+D\+L\+\_\+\+Window $\ast$fen, char $\ast$img, int pourcentX, int pourcentY, S\+D\+L\+\_\+\+Rect rect)
-\begin{DoxyCompactList}\small\item\em Chargement et affichage des images. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{menu_8h_a4920935326e84091bdb45502b8755161}{load\+\_\+option}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, S\+D\+L\+\_\+\+Window $\ast$fen)
-\begin{DoxyCompactList}\small\item\em Chargement et affichage des options. \end{DoxyCompactList}\end{DoxyCompactItemize}
+S\+D\+L\+\_\+bool \mbox{\hyperlink{menu_8h_aa9d569564d4d22e8907381e50cba61f1}{load\+\_\+option}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, S\+D\+L\+\_\+\+Window $\ast$fen, S\+D\+L\+\_\+\+Texture $\ast$options\mbox{[}10\mbox{]}, S\+D\+L\+\_\+\+Texture $\ast$commandes\mbox{[}10\mbox{]}, int $\ast$volume, S\+D\+L\+\_\+bool $\ast$plein\+\_\+ecran)
+\begin{DoxyCompactList}\small\item\em Chargement et affichage des options. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{menu_8h_a99568f10f7fd2417bee79757051c1b6e}{reload\+\_\+img}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, S\+D\+L\+\_\+\+Window $\ast$fen, S\+D\+L\+\_\+\+Texture $\ast$menu\mbox{[}7\mbox{]}, S\+D\+L\+\_\+\+Texture $\ast$options\mbox{[}10\mbox{]}, S\+D\+L\+\_\+\+Texture $\ast$commandes\mbox{[}10\mbox{]}, int $\ast$volume, S\+D\+L\+\_\+bool plein\+\_\+ecran, int choix)
+\begin{DoxyCompactList}\small\item\em Rechargement des images. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{menu_8h_a9c6347e629a7e984e7d830cc2d575be5}\label{menu_8h_a9c6347e629a7e984e7d830cc2d575be5}} 
-S\+D\+L\+\_\+\+Rect {\bfseries logo}
+\mbox{\Hypertarget{menu_8h_a0afb3a64f35d49dec49c14fd3d7d659f}\label{menu_8h_a0afb3a64f35d49dec49c14fd3d7d659f}} 
+S\+D\+L\+\_\+\+Rect {\bfseries pos\+\_\+menu} \mbox{[}7\mbox{]}
 \item 
-\mbox{\Hypertarget{menu_8h_a1e76259d059d47034be68f328fed2b9e}\label{menu_8h_a1e76259d059d47034be68f328fed2b9e}} 
-S\+D\+L\+\_\+\+Rect {\bfseries start}
+\mbox{\Hypertarget{menu_8h_abb781926cf3c78f857a5bcd8050500f7}\label{menu_8h_abb781926cf3c78f857a5bcd8050500f7}} 
+S\+D\+L\+\_\+\+Rect {\bfseries pos\+\_\+options} \mbox{[}10\mbox{]}
 \item 
-\mbox{\Hypertarget{menu_8h_a34726fc08c94c9e1e1264b7cce8ec726}\label{menu_8h_a34726fc08c94c9e1e1264b7cce8ec726}} 
-S\+D\+L\+\_\+\+Rect {\bfseries option}
-\item 
-\mbox{\Hypertarget{menu_8h_abbebd1ad45dc93788dae8c3b5464d79e}\label{menu_8h_abbebd1ad45dc93788dae8c3b5464d79e}} 
-S\+D\+L\+\_\+\+Rect {\bfseries quit}
-\item 
-\mbox{\Hypertarget{menu_8h_a8eb000e45d1f3503d8e32ded0ac854ce}\label{menu_8h_a8eb000e45d1f3503d8e32ded0ac854ce}} 
-S\+D\+L\+\_\+\+Rect {\bfseries fleche}
-\item 
-\mbox{\Hypertarget{menu_8h_a34b1c99906f7288a5a33da17d1e5a549}\label{menu_8h_a34b1c99906f7288a5a33da17d1e5a549}} 
-S\+D\+L\+\_\+\+Rect {\bfseries fullscreen}
-\item 
-\mbox{\Hypertarget{menu_8h_ae7725fd915ea78ed44a5ab3310212635}\label{menu_8h_ae7725fd915ea78ed44a5ab3310212635}} 
-S\+D\+L\+\_\+\+Rect {\bfseries classique}
+\mbox{\Hypertarget{menu_8h_ab6b91573295573c498c0b8b0c15639e8}\label{menu_8h_ab6b91573295573c498c0b8b0c15639e8}} 
+S\+D\+L\+\_\+\+Rect {\bfseries pos\+\_\+commandes} \mbox{[}8\mbox{]}
 \end{DoxyCompactItemize}
 
 
@@ -53,47 +43,19 @@ Fichier contenant les fonctions chargeant le menu et ses images.
 Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
-0.\+0.\+1 
+0.\+0.\+2 
 \end{DoxyVersion}
 \begin{DoxyDate}{Date}
-18 Février 2020 
+22 mars 2021 
 \end{DoxyDate}
 
 
 \doxysubsection{Documentation des fonctions}
-\mbox{\Hypertarget{menu_8h_af1cb5e5caa7d595c8c96341255bdfc52}\label{menu_8h_af1cb5e5caa7d595c8c96341255bdfc52}} 
-\index{menu.h@{menu.h}!load\_img@{load\_img}}
-\index{load\_img@{load\_img}!menu.h@{menu.h}}
-\doxysubsubsection{\texorpdfstring{load\_img()}{load\_img()}}
-{\footnotesize\ttfamily S\+D\+L\+\_\+\+Rect load\+\_\+img (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{S\+D\+L\+\_\+\+Window $\ast$}]{fen,  }\item[{char $\ast$}]{chemin\+\_\+img,  }\item[{int}]{pourcentX,  }\item[{int}]{pourcentY,  }\item[{S\+D\+L\+\_\+\+Rect}]{rect }\end{DoxyParamCaption})}
-
-
-
-Chargement et affichage des images. 
-
-
-\begin{DoxyParams}{Paramètres}
-{\em renderer} & Attributs pour l\textquotesingle{}affiche d\textquotesingle{}une fenêtre \\
-\hline
-{\em fen} & Fenêtre sur laquelle on veut afficher les options \\
-\hline
-{\em chemin\+\_\+img} & Chemin relatif de l\textquotesingle{}image \\
-\hline
-{\em pourcentX} & Position de la fenêtre en X en pourcentage \\
-\hline
-{\em pourcentY} & Position de la fenêtre en Y en pourcentage \\
-\hline
-{\em rect} & Indique quel rectangle utiliser pour l\textquotesingle{}image \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Renvoie}
-S\+D\+L\+\_\+\+Rect -\/ Retourne des informations sur la position x, y des images ainsi que leurs tailles 
-\end{DoxyReturn}
-\mbox{\Hypertarget{menu_8h_abc3463575d1225216b4795ba128fc239}\label{menu_8h_abc3463575d1225216b4795ba128fc239}} 
+\mbox{\Hypertarget{menu_8h_a9b20b08e593ef52af74d68efd3d474b1}\label{menu_8h_a9b20b08e593ef52af74d68efd3d474b1}} 
 \index{menu.h@{menu.h}!load\_menu@{load\_menu}}
 \index{load\_menu@{load\_menu}!menu.h@{menu.h}}
 \doxysubsubsection{\texorpdfstring{load\_menu()}{load\_menu()}}
-{\footnotesize\ttfamily int load\+\_\+menu (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{S\+D\+L\+\_\+\+Window $\ast$}]{fen }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily S\+D\+L\+\_\+bool load\+\_\+menu (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{S\+D\+L\+\_\+\+Window $\ast$}]{fen,  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{menu\mbox{[}7\mbox{]},  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{options\mbox{[}10\mbox{]},  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{commandes\mbox{[}10\mbox{]},  }\item[{int $\ast$}]{volume,  }\item[{S\+D\+L\+\_\+bool $\ast$}]{charge,  }\item[{\mbox{\hyperlink{structjeu__s}{jeu\+\_\+t}} $\ast$}]{jeu,  }\item[{S\+D\+L\+\_\+bool $\ast$}]{plein\+\_\+ecran,  }\item[{S\+D\+L\+\_\+bool $\ast$}]{program\+\_\+launched,  }\item[{S\+D\+L\+\_\+bool}]{en\+\_\+partie }\end{DoxyParamCaption})}
 
 
 
@@ -105,15 +67,33 @@ Chargement et affichage du menu.
 \hline
 {\em fen} & Fenêtre sur laquelle on veut afficher les options \\
 \hline
+{\em menu} & Tableau contenant les textures du menu \\
+\hline
+{\em options} & Tableau contenant les textures des options \\
+\hline
+{\em commandes} & Tableau contenant les textures des commandes \\
+\hline
+{\em volume} & Volume actuel de la musique \\
+\hline
+{\em charge} & Indique si un partie a déjà été lancée \\
+\hline
+{\em jeu} & Chargement de la partie en cours \\
+\hline
+{\em plein\+\_\+ecran} & Indique si le jeu est en plein écran \\
+\hline
+{\em program\+\_\+launched} & État actuel du jeu \\
+\hline
+{\em en\+\_\+partie} & Indique si une partie est déjà en cours \\
+\hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Renvoie}
-int -\/ Retourne si l\textquotesingle{}utilisateur souhaite quitter ou non le jeu 
+S\+D\+L\+\_\+bool -\/ Retourne si l\textquotesingle{}utilisateur souhaite quitter ou non le jeu 
 \end{DoxyReturn}
-\mbox{\Hypertarget{menu_8h_a4920935326e84091bdb45502b8755161}\label{menu_8h_a4920935326e84091bdb45502b8755161}} 
+\mbox{\Hypertarget{menu_8h_aa9d569564d4d22e8907381e50cba61f1}\label{menu_8h_aa9d569564d4d22e8907381e50cba61f1}} 
 \index{menu.h@{menu.h}!load\_option@{load\_option}}
 \index{load\_option@{load\_option}!menu.h@{menu.h}}
 \doxysubsubsection{\texorpdfstring{load\_option()}{load\_option()}}
-{\footnotesize\ttfamily int load\+\_\+option (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{S\+D\+L\+\_\+\+Window $\ast$}]{fen }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily S\+D\+L\+\_\+bool load\+\_\+option (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{S\+D\+L\+\_\+\+Window $\ast$}]{fen,  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{options\mbox{[}10\mbox{]},  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{commandes\mbox{[}10\mbox{]},  }\item[{int $\ast$}]{volume,  }\item[{S\+D\+L\+\_\+bool $\ast$}]{plein\+\_\+ecran }\end{DoxyParamCaption})}
 
 
 
@@ -125,7 +105,47 @@ Chargement et affichage des options.
 \hline
 {\em fen} & Fenêtre sur laquelle on veut afficher les options \\
 \hline
+{\em options} & Tableau contenant les textures des options \\
+\hline
+{\em commandes} & Tableau contenant les textures des commandes \\
+\hline
+{\em volume} & Volume actuel de la musique \\
+\hline
+{\em plein\+\_\+ecran} & Indique si le jeu est en plein écran \\
+\hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Renvoie}
-int -\/ Retourne si l\textquotesingle{}utilisateur souhaite quitter ou non les options 
+S\+D\+L\+\_\+bool Retourne si l\textquotesingle{}utilisateur souhaite quitter le jeu 
+\end{DoxyReturn}
+\mbox{\Hypertarget{menu_8h_a99568f10f7fd2417bee79757051c1b6e}\label{menu_8h_a99568f10f7fd2417bee79757051c1b6e}} 
+\index{menu.h@{menu.h}!reload\_img@{reload\_img}}
+\index{reload\_img@{reload\_img}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{reload\_img()}{reload\_img()}}
+{\footnotesize\ttfamily void reload\+\_\+img (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{S\+D\+L\+\_\+\+Window $\ast$}]{fen,  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{menu\mbox{[}7\mbox{]},  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{options\mbox{[}10\mbox{]},  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{commandes\mbox{[}10\mbox{]},  }\item[{int $\ast$}]{volume,  }\item[{S\+D\+L\+\_\+bool}]{plein\+\_\+ecran,  }\item[{int}]{choix }\end{DoxyParamCaption})}
+
+
+
+Rechargement des images. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & Attributs pour l\textquotesingle{}affiche d\textquotesingle{}une fenêtre \\
+\hline
+{\em fen} & Fenêtre sur laquelle on veut afficher les options \\
+\hline
+{\em menu} & Tableau contenant les textures du menu \\
+\hline
+{\em options} & Tableau contenant les textures des options \\
+\hline
+{\em commandes} & Tableau contenant les textures des commandes \\
+\hline
+{\em volume} & Volume actuel de la musique \\
+\hline
+{\em plein\+\_\+ecran} & Indique si le jeu est en plein écran \\
+\hline
+{\em choix} & Choix des images à recharger (1 = charger les options général, 2 = charger la liste des commandes) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+void 
 \end{DoxyReturn}

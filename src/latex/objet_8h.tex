@@ -6,6 +6,7 @@ Fichier contenant les fonctions agissant sur les objets du programme.
 
 
 {\ttfamily \#include \char`\"{}super.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fonction\+\_\+admin.\+h\char`\"{}}\newline
 Graphe des dépendances par inclusion de objet.\+h\+:
 % FIG 0
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
@@ -13,7 +14,7 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 \doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{structobjet__s}{objet\+\_\+t}} \mbox{\hyperlink{objet_8h_afa7aa15c129d3195f5d02da4d3c2bd2e}{init\+\_\+obj}} (\mbox{\hyperlink{structobjet__s}{objet\+\_\+t}} obj)
+\mbox{\hyperlink{structobjet__s}{objet\+\_\+t}} \mbox{\hyperlink{objet_8h_a1599a70e48c901e8dc54559cf942f083}{init\+\_\+obj}} (\mbox{\hyperlink{structobjet__s}{objet\+\_\+t}} obj, S\+D\+L\+\_\+\+Window $\ast$fen, S\+D\+L\+\_\+\+Renderer $\ast$renderer, S\+D\+L\+\_\+\+Surface $\ast$image)
 \begin{DoxyCompactList}\small\item\em Création d\textquotesingle{}un objet, avec ses coordonnées, sa taille et sa couleur. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structobjet__s}{objet\+\_\+t}} \mbox{\hyperlink{objet_8h_a1d193a9d0078fecbd24c6b46f974f4a3}{compare\+\_\+objet}} (\mbox{\hyperlink{structobjet__s}{objet\+\_\+t}} obj1, \mbox{\hyperlink{structobjet__s}{objet\+\_\+t}} obj2)
 \begin{DoxyCompactList}\small\item\em Comparaison entre deux objets (On vérifie si ils sont en superposé, si c\textquotesingle{}est le cas, on modifie la position du deuxième objet) \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -26,10 +27,10 @@ Fichier contenant les fonctions agissant sur les objets du programme.
 Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
-0.\+0.\+1 
+0.\+0.\+2 
 \end{DoxyVersion}
 \begin{DoxyDate}{Date}
-18 Février 2020 
+22 Mars 2021 
 \end{DoxyDate}
 
 
@@ -54,11 +55,11 @@ Comparaison entre deux objets (On vérifie si ils sont en superposé, si c\textq
 \begin{DoxyReturn}{Renvoie}
 objet\+\_\+t -\/ Retourne l\textquotesingle{}objet modifier/pas 
 \end{DoxyReturn}
-\mbox{\Hypertarget{objet_8h_afa7aa15c129d3195f5d02da4d3c2bd2e}\label{objet_8h_afa7aa15c129d3195f5d02da4d3c2bd2e}} 
+\mbox{\Hypertarget{objet_8h_a1599a70e48c901e8dc54559cf942f083}\label{objet_8h_a1599a70e48c901e8dc54559cf942f083}} 
 \index{objet.h@{objet.h}!init\_obj@{init\_obj}}
 \index{init\_obj@{init\_obj}!objet.h@{objet.h}}
 \doxysubsubsection{\texorpdfstring{init\_obj()}{init\_obj()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structobjet__s}{objet\+\_\+t}} init\+\_\+obj (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structobjet__s}{objet\+\_\+t}}}]{obj }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structobjet__s}{objet\+\_\+t}} init\+\_\+obj (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structobjet__s}{objet\+\_\+t}}}]{obj,  }\item[{S\+D\+L\+\_\+\+Window $\ast$}]{fen,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{S\+D\+L\+\_\+\+Surface $\ast$}]{image }\end{DoxyParamCaption})}
 
 
 
@@ -67,6 +68,12 @@ Création d\textquotesingle{}un objet, avec ses coordonnées, sa taille et sa co
 
 \begin{DoxyParams}{Paramètres}
 {\em obj} & On importe l\textquotesingle{}objet à modifier \\
+\hline
+{\em fen} & Fenêtre d\textquotesingle{}acquisition \\
+\hline
+{\em renderer} & Rendu d\textquotesingle{}acquisition \\
+\hline
+{\em image} & Importation de la texture de l\textquotesingle{}objet \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Renvoie}

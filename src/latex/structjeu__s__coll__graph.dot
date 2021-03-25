@@ -1,0 +1,28 @@
+digraph "jeu_s"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="jeu_s",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Structure de données de jeu, comprennant la structure personnage, et labyrinthe, cette structure sert..."];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" perso" ];
+  Node2 [label="perso_s",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structperso__s.html",tooltip="Structure de données de personnage, avec l'emplacement du personnage lié au tag, ses coordonnées,..."];
+  Node3 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" velocite" ];
+  Node3 [label="velocite_s",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structvelocite__s.html",tooltip="Definition de la structure vitesse d'un objet."];
+  Node4 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" tab_arme" ];
+  Node4 [label="arme_s",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structarme__s.html",tooltip="Stucture de la configuration d'une arme, possédant un tag, ainsi qu'un nom et une description...."];
+  Node5 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" hud" ];
+  Node5 [label="hud_s",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structhud__s.html",tooltip="Structure de données pour afficher le HUD (barre de vie, arme etc...)"];
+  Node6 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" lab" ];
+  Node6 [label="labyrinthe_s",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structlabyrinthe__s.html",tooltip="Struture de données d'un labyrinthe de salle, avec sa taille (nombre de salle) et un tableau de salle..."];
+  Node7 -> Node6 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" tab_salle" ];
+  Node7 [label="salle_s",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structsalle__s.html",tooltip="Struture de données d'une salle, avec ses coordonnées, son identifiant, son nombre d'objet,..."];
+  Node8 -> Node7 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" couleur" ];
+  Node8 [label="couleur_s",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structcouleur__s.html",tooltip="Structure de données des couleurs, avec le code RGB."];
+  Node9 -> Node7 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" porte" ];
+  Node9 [label="porte_s",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structporte__s.html",tooltip="Structure de données d'une porte, avec ses coordonnées, sa salle d'entrée, sa salle de sortie et son ..."];
+  Node10 -> Node7 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" tab_obj" ];
+  Node10 [label="objet_s",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structobjet__s.html",tooltip="Struture de données d'un objet, avec ses coordonnées, sa texture, la salle dans laquel il se situe,..."];
+  Node8 -> Node10 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" couleur" ];
+  Node11 -> Node7 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" tab_mob" ];
+  Node11 [label="mob_s",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structmob__s.html",tooltip="Struture de données d'un PNJ, avec ses coordonnées, ses points de vies, et sa texture."];
+}

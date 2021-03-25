@@ -4,8 +4,8 @@
  * \brief Fichier contenant les fonctions agissant sur les portes du programme
  * \file 'porte.h'
  * \author Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas
- * \version 0.0.1
- * \date 18 Février 2020
+ * \version 0.0.2
+ * \date 22 Mars 2021
  */
 
 /**
@@ -26,10 +26,16 @@ porte_t init_porte(porte_t porte, int x, int y, int salle_actuel, int salle_dest
     {
         porte.porte.w = 20;
         porte.porte.h = 150;
-    }else if(position == 'H')
+    }
+    else if(position == 'H')
     {
         porte.porte.w = 150;
         porte.porte.h = 20;
+    }
+    else
+    {
+        porte.porte.w = 0;
+        porte.porte.h = 0;
     }
 
     porte.porte.x = x;

@@ -4,38 +4,15 @@
 #include "super.h"
 #include "fonction_admin.h"
 #include "sauvegarde.h"
+#include "texture.h"
 
-SDL_Rect logo;
-SDL_Rect start;
-SDL_Rect option;
-SDL_Rect quit;
-SDL_Rect nouvelle;
-SDL_Rect charger;
+SDL_Rect pos_menu[7];
+SDL_Rect pos_options[10];
+SDL_Rect pos_commandes[8];
 
-SDL_bool load_menu(SDL_Renderer *renderer, SDL_Window *fen, SDL_bool ingame, int *volume, SDL_bool *plein_ecran, SDL_bool *charge, jeu_t *jeu, SDL_bool *program_launched);
-SDL_Rect load_img(SDL_Renderer *renderer, SDL_Window *fen, char *img, int pourcentX, int pourcentY, SDL_Rect rect, SDL_bool *plein_ecran);
-void reload_img(SDL_Renderer *renderer, SDL_Window *fen, int *volume, SDL_bool *plein_ecran, int choix);
+SDL_bool load_menu(SDL_Renderer *renderer, SDL_Window *fen, SDL_Texture *menu[7], SDL_Texture *options[10], SDL_Texture *commandes[10], int *volume, SDL_bool *charge, jeu_t *jeu, SDL_bool *plein_ecran, SDL_bool *program_launched, SDL_bool en_partie);
+SDL_bool load_option(SDL_Renderer *renderer, SDL_Window *fen, SDL_Texture *options[10], SDL_Texture *commandes[10], int *volume, SDL_bool *plein_ecran);
 
-SDL_Rect haut;
-SDL_Rect bas;
-SDL_Rect gauche;
-SDL_Rect droite;
-SDL_Rect z;
-SDL_Rect q;
-SDL_Rect s;
-SDL_Rect d;
-
-SDL_Rect general;
-SDL_Rect commandes;
-SDL_Rect retour;
-SDL_Rect fullscreen;
-SDL_Rect classique;
-SDL_Rect son;
-SDL_Rect son_down;
-SDL_Rect son_up;
-SDL_Rect son_barreup;
-SDL_Rect son_barredown;
-
-SDL_bool load_option(SDL_Renderer *renderer, SDL_Window *fen, int *volume, SDL_bool *plein_ecran);
+void reload_img(SDL_Renderer *renderer, SDL_Window *fen, SDL_Texture *menu[7], SDL_Texture *options[10], SDL_Texture *commandes[10], int *volume, SDL_bool plein_ecran, int choix);
 
 #endif

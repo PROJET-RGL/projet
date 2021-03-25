@@ -9,13 +9,12 @@
 #include <math.h>
 
 /**
- * @brief 
- * 
+ * @brief Structure de données du code
  *
  * \file 'super_s.h'
  * \author Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas
- * \version 0.0.1
- * \date 18 Février 2020
+ * \version 0.0.2
+ * \date 22 Mars 2021
  */
 
 // ------------------------------------- DEFINE POUR STRUCTURE ------------------------------------- //
@@ -30,27 +29,29 @@
 
 // ----------------------------- STRUCTURE DE DONNÉES ----------------------------- //
 
-typedef struct couleur_s couleur_t;
+typedef struct couleur_s couleur_t;     // Structure Couleur
 
-typedef struct velocite_s velocite_t;
+typedef struct velocite_s velocite_t;   // Structure velocité
 
-typedef struct salle_s salle_t;
+typedef struct salle_s salle_t;         // Structure salles
 
-typedef struct labyrinthe_s labyrinthe_t;
+typedef struct labyrinthe_s labyrinthe_t;   // Structure Labyrinthe
 
-typedef struct porte_s porte_t;
+typedef struct porte_s porte_t;         // Structure Porte
 
-typedef struct arme_s arme_t;
+typedef struct arme_s arme_t;           // Structure qui gère les arme
 
-typedef struct perso_s perso_t;
+typedef struct perso_s perso_t;         // Structure perso
 
-typedef struct mob_s mob_t;
+typedef struct mob_s mob_t;             // Structure mob
 
-typedef struct objet_s objet_t;
+typedef struct objet_s objet_t;         // Structure Objet
 
-typedef struct texture_s texture_t;
+typedef struct texture_s texture_t;     // Structure Texture
 
-typedef struct jeu_s jeu_t;
+typedef struct hud_s hud_t;             // Structure HUD
+
+typedef struct jeu_s jeu_t;             // Structure jeu
 
 
 /**
@@ -124,6 +125,8 @@ struct perso_s              // Création d'un personnage
     int nb_arme;            /*!< Nombre d'armes que le personnage possède */
     arme_t tab_arme[2];     /*!< Tableau d'armes actives*/
     int arme_actuelle;      /*!< Arme dans la main du perso */
+    int argent;             /*!< Quantité d'argent du personnage */
+    int score;              /*!< Score du joueur */
 };
 
 /**
@@ -131,12 +134,13 @@ struct perso_s              // Création d'un personnage
  * 
  */
 
-    struct mob_s // Création d'un mob
-    {
-        SDL_Rect mob;         /*!< Coordonées du mob en question */
-        int pv;               /*!< PV du mob */
-        int statue;           /*!< Indique si le mob est en vie */
-        SDL_Texture *texture; /*!< Texture du mob */
+struct mob_s // Création d'un mob
+{
+    SDL_Rect mob;         /*!< Coordonées du mob en question */
+    int pv;               /*!< PV du mob */
+    int statue;           /*!< Indique si le mob est en vie */
+    // int taille;           /*!< Taille du mob */
+    SDL_Texture *texture; /*!< Texture du mob */
 };
 
 /**
@@ -184,6 +188,21 @@ struct labyrinthe_s         // Création du labyrinthe en fonction des salles
 };
 
 /**
+ * @brief Structure de données pour afficher le HUD (barre de vie, arme etc...)
+ * 
+ */
+
+struct hud_s                // Création du HUD
+{
+    SDL_Rect barre_pv;      /*!< Coordonnées de la barre de vie */
+    SDL_Surface *img_pv[10];   /*!< Série de 10 image pour la barre de vie */
+    SDL_Rect item_dist;     /*!< Coordonnées item Dist */
+    SDL_Surface *arme_dist; /*!< Image à charger pour l'arme à distance icone */
+    SDL_Rect item_cac;      /*!< Coordonnées item CaC  */
+    SDL_Surface *arme_cac; /*!< Image à charger pour l'arme à cac icone */
+};
+
+/**
  * @brief Structure de données de jeu, comprennant la structure personnage, et labyrinthe, cette structure sert surtout pour le système de sauvegarde
  * 
  */
@@ -192,9 +211,7 @@ struct jeu_s                // Création d'un jeu
 {
     perso_t perso;          /*!< Personnage */
     labyrinthe_t lab;       /*!< Labyrinthe */
+    hud_t hud;              /*!< HUD du joueur */
 };
-
-
-
 
 #endif

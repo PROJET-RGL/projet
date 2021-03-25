@@ -5,13 +5,16 @@
  * \file 'objet.h'
  * \author Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas
  * \version 0.0.2
- * \date 18 Février 2020
+ * \date 22 Mars 2021
  */
 
 /**
  * @brief Création d'un objet, avec ses coordonnées, sa taille et sa couleur
  * 
  * @param obj On importe l'objet à modifier
+ * @param fen Fenêtre d'acquisition
+ * @param renderer Rendu d'acquisition
+ * @param image Importation de la texture de l'objet
  * @return objet_t - Retourne l'objet mis en paramètre
  */
 

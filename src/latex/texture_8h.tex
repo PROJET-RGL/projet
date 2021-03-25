@@ -6,13 +6,24 @@ Header des fonctions agissant sur les textures du programmes.
 
 
 {\ttfamily \#include \char`\"{}super.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fonction\+\_\+admin.\+h\char`\"{}}\newline
 Graphe des dépendances par inclusion de texture.\+h\+:
 % FIG 0
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
+% FIG 1
 \doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{texture_8h_a0c02308c6f30e6edb0bb0b6198d3a50c}\label{texture_8h_a0c02308c6f30e6edb0bb0b6198d3a50c}} 
-S\+D\+L\+\_\+\+Texture {\bfseries init\+\_\+texture} (S\+D\+L\+\_\+\+Renderer $\ast$$\ast$renderer, int H\+A\+U\+T\+E\+UR, int L\+A\+R\+G\+E\+UR, S\+D\+L\+\_\+\+Rect rect, char c\mbox{[}50\mbox{]})
+S\+D\+L\+\_\+\+Texture $\ast$ \mbox{\hyperlink{texture_8h_a49d8afd96d04665511dc7cb9724976cc}{init\+\_\+texture}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, S\+D\+L\+\_\+\+Window $\ast$fen, char $\ast$chemin\+\_\+image)
+\begin{DoxyCompactList}\small\item\em Inititalisation de la texture. \end{DoxyCompactList}\item 
+S\+D\+L\+\_\+\+Rect \mbox{\hyperlink{texture_8h_af5df2e794eb9b3c740fbfe917590b929}{afficher\+\_\+texture}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, S\+D\+L\+\_\+\+Window $\ast$fen, S\+D\+L\+\_\+\+Texture $\ast$texture, S\+D\+L\+\_\+\+Rect rect, S\+D\+L\+\_\+bool plein\+\_\+ecran, int pourcentX, int pourcentY)
+\begin{DoxyCompactList}\small\item\em Affiche la texture rentrer en paramètre. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{texture_8h_aa4d6b79503420d4d066d99384f7b40a9}\label{texture_8h_aa4d6b79503420d4d066d99384f7b40a9}} 
+void {\bfseries charger\+\_\+textures\+\_\+menu} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, S\+D\+L\+\_\+\+Window $\ast$fen, S\+D\+L\+\_\+bool en\+\_\+jeu, S\+D\+L\+\_\+\+Texture $\ast$texture\mbox{[}7\mbox{]})
+\item 
+void \mbox{\hyperlink{texture_8h_a6697d12bc7f692ec83501ca7e98674c7}{charger\+\_\+textures\+\_\+options}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, S\+D\+L\+\_\+\+Window $\ast$fen, S\+D\+L\+\_\+\+Texture $\ast$texture\mbox{[}10\mbox{]})
+\begin{DoxyCompactList}\small\item\em On charge les textures de l\textquotesingle{}option. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{texture_8h_ad2c5ad8eb2b1de00689a1af590e40feb}{charger\+\_\+textures\+\_\+commandes}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, S\+D\+L\+\_\+\+Window $\ast$fen, S\+D\+L\+\_\+\+Texture $\ast$texture\mbox{[}8\mbox{]})
 \end{DoxyCompactItemize}
 
 
@@ -23,8 +34,97 @@ Header des fonctions agissant sur les textures du programmes.
 Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
-0.\+0.\+1 
+0.\+0.\+2 
 \end{DoxyVersion}
 \begin{DoxyDate}{Date}
-18 Février 2020 
+22 mars 2021 
 \end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{texture_8h_af5df2e794eb9b3c740fbfe917590b929}\label{texture_8h_af5df2e794eb9b3c740fbfe917590b929}} 
+\index{texture.h@{texture.h}!afficher\_texture@{afficher\_texture}}
+\index{afficher\_texture@{afficher\_texture}!texture.h@{texture.h}}
+\doxysubsubsection{\texorpdfstring{afficher\_texture()}{afficher\_texture()}}
+{\footnotesize\ttfamily S\+D\+L\+\_\+\+Rect afficher\+\_\+texture (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{S\+D\+L\+\_\+\+Window $\ast$}]{fen,  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{texture,  }\item[{S\+D\+L\+\_\+\+Rect}]{rect,  }\item[{S\+D\+L\+\_\+bool}]{plein\+\_\+ecran,  }\item[{int}]{pourcentX,  }\item[{int}]{pourcentY }\end{DoxyParamCaption})}
+
+
+
+Affiche la texture rentrer en paramètre. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & Attributs pour l\textquotesingle{}affiche d\textquotesingle{}une fenêtre \\
+\hline
+{\em fen} & Fenêtre sur laquelle on veut afficher les options \\
+\hline
+{\em texture} & Texture à afficher \\
+\hline
+{\em rect} & Rectangle dans lequel on affiche la texture \\
+\hline
+{\em plein\+\_\+ecran} & Indique si le jeu est en plein écran \\
+\hline
+{\em pourcentX} & Indique la position X de l\textquotesingle{}image en pourcentage \\
+\hline
+{\em pourcentX} & Indique la position Y de l\textquotesingle{}image en pourcentage \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+S\+D\+L\+\_\+\+Rect 
+\end{DoxyReturn}
+\mbox{\Hypertarget{texture_8h_ad2c5ad8eb2b1de00689a1af590e40feb}\label{texture_8h_ad2c5ad8eb2b1de00689a1af590e40feb}} 
+\index{texture.h@{texture.h}!charger\_textures\_commandes@{charger\_textures\_commandes}}
+\index{charger\_textures\_commandes@{charger\_textures\_commandes}!texture.h@{texture.h}}
+\doxysubsubsection{\texorpdfstring{charger\_textures\_commandes()}{charger\_textures\_commandes()}}
+{\footnotesize\ttfamily void charger\+\_\+textures\+\_\+commandes (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{S\+D\+L\+\_\+\+Window $\ast$}]{fen,  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{texture\mbox{[}8\mbox{]} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & \\
+\hline
+{\em fen} & \\
+\hline
+{\em texture} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{texture_8h_a6697d12bc7f692ec83501ca7e98674c7}\label{texture_8h_a6697d12bc7f692ec83501ca7e98674c7}} 
+\index{texture.h@{texture.h}!charger\_textures\_options@{charger\_textures\_options}}
+\index{charger\_textures\_options@{charger\_textures\_options}!texture.h@{texture.h}}
+\doxysubsubsection{\texorpdfstring{charger\_textures\_options()}{charger\_textures\_options()}}
+{\footnotesize\ttfamily void charger\+\_\+textures\+\_\+options (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{S\+D\+L\+\_\+\+Window $\ast$}]{fen,  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{texture\mbox{[}10\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+On charge les textures de l\textquotesingle{}option. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & Rendu d\textquotesingle{}acquisition \\
+\hline
+{\em fen} & Fenêtre d\textquotesingle{}acquisition \\
+\hline
+{\em texture} & Tableau de texture \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{texture_8h_a49d8afd96d04665511dc7cb9724976cc}\label{texture_8h_a49d8afd96d04665511dc7cb9724976cc}} 
+\index{texture.h@{texture.h}!init\_texture@{init\_texture}}
+\index{init\_texture@{init\_texture}!texture.h@{texture.h}}
+\doxysubsubsection{\texorpdfstring{init\_texture()}{init\_texture()}}
+{\footnotesize\ttfamily S\+D\+L\+\_\+\+Texture$\ast$ init\+\_\+texture (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{S\+D\+L\+\_\+\+Window $\ast$}]{fen,  }\item[{char $\ast$}]{chemin\+\_\+image }\end{DoxyParamCaption})}
+
+
+
+Inititalisation de la texture. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & Attributs pour l\textquotesingle{}affiche d\textquotesingle{}une fenêtre \\
+\hline
+{\em fen} & Fenêtre sur laquelle on veut afficher les options \\
+\hline
+{\em chemin\+\_\+image} & Chemin relatif jusqu\textquotesingle{}à l\textquotesingle{}image \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+S\+D\+L\+\_\+\+Texture$\ast$ Retourne la texture initialiser 
+\end{DoxyReturn}

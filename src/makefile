@@ -1,65 +1,67 @@
 CC = gcc
-CFLAGS = -W -Wall  #windows
-#CFLAGS = -Wall   #linux
+CFLAGS = -Wall
 
 #Linux-----------start
-#SDL = -ldl `sdl2-config --libs`
-#LDFLAGS = $(SDL) -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_gfx -lm -lSDL2_mixer
+#SDL = -lm `sdl2-config --libs`
+#LDFLAGS = $(SDL) -lSDL2 -lSDL2_mixer
 #Linux-----------end
 
+#Windows-----------start
 INCLUDES = -I ../include
 LIBS = -L ../lib -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer
+#Windows-----------end
+OBJDIR = ./objet
 EXEC = ../bin/RGL
 
 all: $(EXEC)
 
-../bin/RGL: main.o salle.o fonction_admin.o perso.o objet.o porte.o labyrinthe.o actualisation.o mob.o menu.o sauvegarde.o combat.o arme.o
-	$(CC) -fstack-protector -o $@ $^ $(INCLUDES) $(LIBS)
+#Windows-----------start
+../bin/RGL: ./objet/main.o ./objet/hud.o ./objet/sound.o ./objet/texture.o ./objet/salle.o ./objet/fonction_admin.o ./objet/perso.o ./objet/objet.o ./objet/porte.o ./objet/labyrinthe.o ./objet/actualisation.o ./objet/mob.o ./objet/menu.o ./objet/sauvegarde.o ./objet/combat.o ./objet/arme.o
+	$(CC) -fstack-protector -g -o $@ $^ $(INCLUDES) $(LIBS)
+#Windows-----------end
 
-#version Linux_________________
+#Linux-----------start
+#../bin/RGL: main.o salle.o fonction_admin.o perso.o objet.o porte.o labyrinthe.o actualisation.o mob.o menu.o sauvegarde.o combat.o arme.o
+#	$(CC) -o $@ $^ $(LDFLAGS)
+#Linux-----------end
 
-#../bin/RGL: main.o salle.o fonction_admin.o perso.o objet.o porte.o labyrinthe.o actualisation.o mob.o menu.o 
-#	$(CC) $(CFLAGS) $^ $(INCLUDES) $(LIBS) -o $@
+#Pas nécessaire
+main.o: labyrinthe.h perso.h mob.h actualisation.h fonction_admin.h menu.h porte.h sauvegarde.h combat.h hud.h sound.h super.h
+salle.o: salle.h fonction_admin.h super.h							# DOXYGEN ACTUALISER
+sound.o: sound.h fonction_admin.h super.h							# DOXYEGN FAIT
+hud.o: hud.h fonction_admin.h super.h								# DOXYGEN FAIT
+fonction_admin.o: fonction_admin.h super.h							# DOXYGEN FAIT
+texture.o: texture.h fonction_admin.h super.h						# DOXYGEN FAIT
+perso.o: perso.h fonction_admin.h salle.h arme.h super.h			# DOXYGEN FAIT
+objet.o: objet.h fonction_admin.h super.h							# DOXYGEN ACTUALISER
+porte.o: porte.h super.h											# DOXYGEN FAIT
+labyrinthe.o: labyrinthe.h salle.h super.h							# DOCYGEN FAIT
+actualisation.o: actualisation.h fonction_admin.h salle.h super.h	# DOXYGEN FAIT
+mob.o: mob.h fonction_admin.h super.h								# DOXYGEN ACTUALISER
+menu.o: menu.h fonction_admin.h sauvegarde.h texture.h super.h      # DOXYGEN ACTUALISER
+sauvegarde.o: sauvegarde.h super.h									# DOXYGEN FAIT
+combat.o: combat.h super.h											# DOXYGEN FAIT
+arme.o: arme.h super.h												# DOXYGEN FAITvalg
 
+#Windows-----------start
+$(OBJDIR)%.o: %.c
+	$(CC) -g -o $@ -c $< $(CFLAGS) $(INCLUDES) $(LIBS)
+#Windows-----------end
 
-#-------------ancienne version pour compiler le prog----------------- 
-#bin/prog: obj/main.o obj/salle.o [...] obj/jeu.o
-#	gcc obj/main.o obj/salle.o [...] obj/jeu.o $(LDFLAGS) -o bin/prog
-
-
-main.o: labyrinthe.h perso.h mob.h actualisation.h fonction_admin.h menu.h porte.h sauvegarde.h combat.h super.h
-salle.o: salle.h fonction_admin.h super.h
-fonction_admin.o: fonction_admin.h super.h
-perso.o: perso.h fonction_admin.h salle.h arme.h super.h
-objet.o: objet.h fonction_admin.h super.h
-porte.o: porte.h super.h
-labyrinthe.o: labyrinthe.h salle.h super.h
-actualisation.o: actualisation.h fonction_admin.h salle.h super.h
-mob.o: mob.h fonction_admin.h super.h
-menu.o: menu.h fonction_admin.h super.h sauvegarde.h
-sauvegarde.o: sauvegarde.h super.h
-combat.o: combat.h super.h
-arme.o: arme.h super.h
-
-%.o: %.c
-	$(CC) -o $@ -c $<     $(INCLUDES) $(LIBS)
-
-
-#Version linux_________
-
-#-------------ancienne version pour un objet----------------- 
-#obj/main.o: src/main.c
-#	gcc -Wall src/main.c -c `sdl2-config --cflags` -o obj/main.o
-
-#règle générique
+#Linux-----------start
 #%.o: %.c
-#	$(CC) $(CFLAGS) $< -c  `sdl2-config --cflags` -o $@
+#	$(CC) -o $@ -c $< $(LDFLAGS)
+#Linux-----------end
 
-
-
+#Windows-----------start
 clean:
-	del -rf *.o
+	del -rf ./objet
+#Windows-----------end
 
+#Linux-----------start
+#clean: 
+#	rm -rf *.o
+#Linux-----------end
 
 #####
 #       %.o : %.c     règle générique pour construire un .o à partir d'un .c

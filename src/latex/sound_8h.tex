@@ -1,0 +1,76 @@
+\hypertarget{sound_8h}{}\doxysection{Référence du fichier sound.\+h}
+\label{sound_8h}\index{sound.h@{sound.h}}
+
+
+Fichier qui influe sur les sound du programme.  
+
+
+{\ttfamily \#include \char`\"{}super.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fonction\+\_\+admin.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de sound.\+h\+:
+% FIG 0
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
+% FIG 1
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{sound_8h_ab0896630a4eade05b479e29145e214b5}\label{sound_8h_ab0896630a4eade05b479e29145e214b5}} 
+Mix\+\_\+\+Chunk $\ast$ {\bfseries init\+\_\+sound\+\_\+chunk} (Mix\+\_\+\+Chunk $\ast$chunk, char $\ast$src)
+\item 
+void \mbox{\hyperlink{sound_8h_a2d076a2b6781bcacf64096397c85afb1}{volume\+\_\+sound}} (Mix\+\_\+\+Chunk $\ast$chunk\mbox{[}10\mbox{]}, int volume, int nb\+\_\+sons)
+\begin{DoxyCompactList}\small\item\em Fonction qui gère le volume d\textquotesingle{}un tableau de bruitage. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sound_8h_a2b58a0f9ea08e02ab00c4fbb9379fce4}{free\+\_\+\+Tab\+Chunk}} (Mix\+\_\+\+Chunk $\ast$chunk\mbox{[}10\mbox{]}, int nb\+\_\+sons)
+\begin{DoxyCompactList}\small\item\em Sert à libérer la mémoire d\textquotesingle{}un tableau de bruitage. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Fichier qui influe sur les sound du programme. 
+
+\textquotesingle{} \begin{DoxyAuthor}{Auteur}
+Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+0.\+2 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+22 Mars 2021 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{sound_8h_a2b58a0f9ea08e02ab00c4fbb9379fce4}\label{sound_8h_a2b58a0f9ea08e02ab00c4fbb9379fce4}} 
+\index{sound.h@{sound.h}!free\_TabChunk@{free\_TabChunk}}
+\index{free\_TabChunk@{free\_TabChunk}!sound.h@{sound.h}}
+\doxysubsubsection{\texorpdfstring{free\_TabChunk()}{free\_TabChunk()}}
+{\footnotesize\ttfamily void free\+\_\+\+Tab\+Chunk (\begin{DoxyParamCaption}\item[{Mix\+\_\+\+Chunk $\ast$}]{chunk\mbox{[}10\mbox{]},  }\item[{int}]{nb\+\_\+sons }\end{DoxyParamCaption})}
+
+
+
+Sert à libérer la mémoire d\textquotesingle{}un tableau de bruitage. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em chunk} & Tableau de bruitage \\
+\hline
+{\em nb\+\_\+sons} & Nombre de bruitage dans le tableau \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sound_8h_a2d076a2b6781bcacf64096397c85afb1}\label{sound_8h_a2d076a2b6781bcacf64096397c85afb1}} 
+\index{sound.h@{sound.h}!volume\_sound@{volume\_sound}}
+\index{volume\_sound@{volume\_sound}!sound.h@{sound.h}}
+\doxysubsubsection{\texorpdfstring{volume\_sound()}{volume\_sound()}}
+{\footnotesize\ttfamily void volume\+\_\+sound (\begin{DoxyParamCaption}\item[{Mix\+\_\+\+Chunk $\ast$}]{chunk\mbox{[}10\mbox{]},  }\item[{int}]{volume,  }\item[{int}]{nb\+\_\+sons }\end{DoxyParamCaption})}
+
+
+
+Fonction qui gère le volume d\textquotesingle{}un tableau de bruitage. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em chunk} & Tableau de bruitage \\
+\hline
+{\em volume} & Volume du bruitage \\
+\hline
+{\em nb\+\_\+sons} & Nombre de bruitage dans le tableau \\
+\hline
+\end{DoxyParams}

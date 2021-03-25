@@ -69,11 +69,22 @@ $(function() {
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define texture_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="super_8h.html">super.h</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;SDL_Texture init_texture(SDL_Renderer **renderer, <span class="keywordtype">int</span> HAUTEUR, <span class="keywordtype">int</span> LARGEUR, SDL_Rect rect, <span class="keywordtype">char</span> c[50]);</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="fonction__admin_8h.html">fonction_admin.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;SDL_Texture *<a class="code" href="texture_8h.html#a49d8afd96d04665511dc7cb9724976cc">init_texture</a>(SDL_Renderer *renderer, SDL_Window *fen, <span class="keywordtype">char</span> *chemin_image);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;SDL_Rect <a class="code" href="texture_8h.html#af5df2e794eb9b3c740fbfe917590b929">afficher_texture</a>(SDL_Renderer *renderer, SDL_Window *fen, SDL_Texture *texture, SDL_Rect rect, SDL_bool plein_ecran, <span class="keywordtype">int</span> pourcentX, <span class="keywordtype">int</span> pourcentY);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">void</span> charger_textures_menu(SDL_Renderer *renderer, SDL_Window *fen, SDL_bool en_jeu, SDL_Texture *texture[7]);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">void</span> <a class="code" href="texture_8h.html#a6697d12bc7f692ec83501ca7e98674c7">charger_textures_options</a>(SDL_Renderer *renderer, SDL_Window *fen, SDL_Texture *texture[10]);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">void</span> <a class="code" href="texture_8h.html#ad2c5ad8eb2b1de00689a1af590e40feb">charger_textures_commandes</a>(SDL_Renderer *renderer, SDL_Window *fen, SDL_Texture *texture[8]);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="afonction__admin_8h_html"><div class="ttname"><a href="fonction__admin_8h.html">fonction_admin.h</a></div><div class="ttdoc">Gestion des fenêtres.</div></div>
+<div class="ttc" id="atexture_8h_html_a49d8afd96d04665511dc7cb9724976cc"><div class="ttname"><a href="texture_8h.html#a49d8afd96d04665511dc7cb9724976cc">init_texture</a></div><div class="ttdeci">SDL_Texture * init_texture(SDL_Renderer *renderer, SDL_Window *fen, char *chemin_image)</div><div class="ttdoc">Inititalisation de la texture.</div><div class="ttdef"><b>Definition:</b> texture.c:20</div></div>
+<div class="ttc" id="atexture_8h_html_a6697d12bc7f692ec83501ca7e98674c7"><div class="ttname"><a href="texture_8h.html#a6697d12bc7f692ec83501ca7e98674c7">charger_textures_options</a></div><div class="ttdeci">void charger_textures_options(SDL_Renderer *renderer, SDL_Window *fen, SDL_Texture *texture[10])</div><div class="ttdoc">On charge les textures de l'option.</div><div class="ttdef"><b>Definition:</b> texture.c:118</div></div>
+<div class="ttc" id="atexture_8h_html_af5df2e794eb9b3c740fbfe917590b929"><div class="ttname"><a href="texture_8h.html#af5df2e794eb9b3c740fbfe917590b929">afficher_texture</a></div><div class="ttdeci">SDL_Rect afficher_texture(SDL_Renderer *renderer, SDL_Window *fen, SDL_Texture *texture, SDL_Rect rect, SDL_bool plein_ecran, int pourcentX, int pourcentY)</div><div class="ttdoc">Affiche la texture rentrer en paramètre.</div><div class="ttdef"><b>Definition:</b> texture.c:58</div></div>
+<div class="ttc" id="atexture_8h_html_ad2c5ad8eb2b1de00689a1af590e40feb"><div class="ttname"><a href="texture_8h.html#ad2c5ad8eb2b1de00689a1af590e40feb">charger_textures_commandes</a></div><div class="ttdeci">void charger_textures_commandes(SDL_Renderer *renderer, SDL_Window *fen, SDL_Texture *texture[8])</div><div class="ttdef"><b>Definition:</b> texture.c:140</div></div>
 <div class="ttc" id="asuper_8h_html"><div class="ttname"><a href="super_8h.html">super.h</a></div><div class="ttdoc">Header principale du programmes.</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

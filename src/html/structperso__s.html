@@ -69,7 +69,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Structure de données de perosnnage, avec l'emplacement du personnage lié au tag, ses coordonnées, ses points de vies, les coordonnées de l'inventaire et sa vitesse.  
+<p>Structure de données de personnage, avec l'emplacement du personnage lié au tag, ses coordonnées, ses points de vies, les coordonnées de l'inventaire, sa vitesse, le nombre d'armes et les armes actives.  
  <a href="structperso__s.html#details">Plus de détails...</a></p>
 
 <p><code>#include &lt;<a class="el" href="super__s_8h_source.html">super_s.h</a>&gt;</code></p>
@@ -92,10 +92,31 @@ Attributs publics</h2></td></tr>
 <tr class="separator:aea78dfe60c84c42037b1945d29c6d82a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee2b2c9b32bbb0a9c14cabfc37857563"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvelocite__s.html">velocite_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structperso__s.html#aee2b2c9b32bbb0a9c14cabfc37857563">velocite</a></td></tr>
 <tr class="separator:aee2b2c9b32bbb0a9c14cabfc37857563"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad4f33d9c7cfcfe123fb25027f4cd9af"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structperso__s.html#aad4f33d9c7cfcfe123fb25027f4cd9af">nb_arme</a></td></tr>
+<tr class="separator:aad4f33d9c7cfcfe123fb25027f4cd9af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0d40a57b0be71dc7b281dc9d31815a8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structarme__s.html">arme_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structperso__s.html#ae0d40a57b0be71dc7b281dc9d31815a8">tab_arme</a> [2]</td></tr>
+<tr class="separator:ae0d40a57b0be71dc7b281dc9d31815a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab20f1cb4c1cd251151f15b712d7afa32"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structperso__s.html#ab20f1cb4c1cd251151f15b712d7afa32">arme_actuelle</a></td></tr>
+<tr class="separator:ab20f1cb4c1cd251151f15b712d7afa32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Structure de données de perosnnage, avec l'emplacement du personnage lié au tag, ses coordonnées, ses points de vies, les coordonnées de l'inventaire et sa vitesse. </p>
+<div class="textblock"><p>Structure de données de personnage, avec l'emplacement du personnage lié au tag, ses coordonnées, ses points de vies, les coordonnées de l'inventaire, sa vitesse, le nombre d'armes et les armes actives. </p>
 </div><h2 class="groupheader">Documentation des données membres</h2>
+<a id="ab20f1cb4c1cd251151f15b712d7afa32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab20f1cb4c1cd251151f15b712d7afa32">&#9670;&nbsp;</a></span>arme_actuelle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int perso_s::arme_actuelle</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Arme dans la main du perso </p>
+
+</div>
+</div>
 <a id="aea78dfe60c84c42037b1945d29c6d82a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aea78dfe60c84c42037b1945d29c6d82a">&#9670;&nbsp;</a></span>inv</h2>
 
@@ -108,6 +129,21 @@ Attributs publics</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Affichage de l'inventaire </p>
+
+</div>
+</div>
+<a id="aad4f33d9c7cfcfe123fb25027f4cd9af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad4f33d9c7cfcfe123fb25027f4cd9af">&#9670;&nbsp;</a></span>nb_arme</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int perso_s::nb_arme</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Nombre d'armes que le personnage possède </p>
 
 </div>
 </div>
@@ -138,6 +174,21 @@ Attributs publics</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Le nombre de vie restant du perosnnage </p>
+
+</div>
+</div>
+<a id="ae0d40a57b0be71dc7b281dc9d31815a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0d40a57b0be71dc7b281dc9d31815a8">&#9670;&nbsp;</a></span>tab_arme</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structarme__s.html">arme_t</a> perso_s::tab_arme[2]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Tableau d'armes actives </p>
 
 </div>
 </div>

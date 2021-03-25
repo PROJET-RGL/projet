@@ -5,6 +5,6 @@
 #include "fonction_admin.h"
 #include "salle.h"
 
-perso_t actualisation_salle(labyrinthe_t lab, perso_t perso, SDL_Renderer *renderer, SDL_Rect fenetre);
+perso_t actualisation_salle(jeu_t jeu, SDL_Renderer *renderer, SDL_Rect fenetre);
 
 #endif

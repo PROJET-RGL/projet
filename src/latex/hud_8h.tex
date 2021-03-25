@@ -1,0 +1,72 @@
+\hypertarget{hud_8h}{}\doxysection{Référence du fichier hud.\+h}
+\label{hud_8h}\index{hud.h@{hud.h}}
+
+
+Fichier qui influe sur les salles du programme.  
+
+
+{\ttfamily \#include \char`\"{}super.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fonction\+\_\+admin.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de hud.\+h\+:
+% FIG 0
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
+% FIG 1
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structjeu__s}{jeu\+\_\+t}} \mbox{\hyperlink{hud_8h_afde1b5d4dcf0b1059bd34d2de9480cf5}{init\+\_\+hud}} (\mbox{\hyperlink{structjeu__s}{jeu\+\_\+t}} $\ast$jeu)
+\begin{DoxyCompactList}\small\item\em Initialisation des coordonnées du H\+UD avec la barre de vie et les items selectionner. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{hud_8h_af1d403c54c2319f1e0afde912dc7eece}{affichage\+\_\+hud}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, \mbox{\hyperlink{structjeu__s}{jeu\+\_\+t}} $\ast$jeu)
+\begin{DoxyCompactList}\small\item\em Sert à afficher l\textquotesingle{}interface utilisateur, sur le rendu en paramètre. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Fichier qui influe sur les salles du programme. 
+
+\textquotesingle{} \begin{DoxyAuthor}{Auteur}
+Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+0.\+2 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+22 Mars 2021 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{hud_8h_af1d403c54c2319f1e0afde912dc7eece}\label{hud_8h_af1d403c54c2319f1e0afde912dc7eece}} 
+\index{hud.h@{hud.h}!affichage\_hud@{affichage\_hud}}
+\index{affichage\_hud@{affichage\_hud}!hud.h@{hud.h}}
+\doxysubsubsection{\texorpdfstring{affichage\_hud()}{affichage\_hud()}}
+{\footnotesize\ttfamily void affichage\+\_\+hud (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{\mbox{\hyperlink{structjeu__s}{jeu\+\_\+t}} $\ast$}]{jeu }\end{DoxyParamCaption})}
+
+
+
+Sert à afficher l\textquotesingle{}interface utilisateur, sur le rendu en paramètre. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & C\textquotesingle{}est le Rendu d\textquotesingle{}acquisition \\
+\hline
+{\em jeu} & C\textquotesingle{}est la structure contenant toute les données de la partie en question \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{hud_8h_afde1b5d4dcf0b1059bd34d2de9480cf5}\label{hud_8h_afde1b5d4dcf0b1059bd34d2de9480cf5}} 
+\index{hud.h@{hud.h}!init\_hud@{init\_hud}}
+\index{init\_hud@{init\_hud}!hud.h@{hud.h}}
+\doxysubsubsection{\texorpdfstring{init\_hud()}{init\_hud()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structjeu__s}{jeu\+\_\+t}} init\+\_\+hud (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjeu__s}{jeu\+\_\+t}} $\ast$}]{jeu }\end{DoxyParamCaption})}
+
+
+
+Initialisation des coordonnées du H\+UD avec la barre de vie et les items selectionner. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em jeu} & C\textquotesingle{}est la structure contenant toute les données de la partie en question \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+jeu\+\_\+t On return la partie en question 
+\end{DoxyReturn}

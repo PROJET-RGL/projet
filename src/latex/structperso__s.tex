@@ -2,7 +2,7 @@
 \label{structperso__s}\index{perso\_s@{perso\_s}}
 
 
-Structure de données de perosnnage, avec l\textquotesingle{}emplacement du personnage lié au tag, ses coordonnées, ses points de vies, les coordonnées de l\textquotesingle{}inventaire et sa vitesse.  
+Structure de données de personnage, avec l\textquotesingle{}emplacement du personnage lié au tag, ses coordonnées, ses points de vies, les coordonnées de l\textquotesingle{}inventaire, sa vitesse, le nombre d\textquotesingle{}armes et les armes actives.  
 
 
 
@@ -25,22 +25,40 @@ int \mbox{\hyperlink{structperso__s_ad17089bad3c048781a2add514f3f07d3}{pv}}
 S\+D\+L\+\_\+\+Rect \mbox{\hyperlink{structperso__s_aea78dfe60c84c42037b1945d29c6d82a}{inv}}
 \item 
 \mbox{\hyperlink{structvelocite__s}{velocite\+\_\+t}} \mbox{\hyperlink{structperso__s_aee2b2c9b32bbb0a9c14cabfc37857563}{velocite}}
+\item 
+int \mbox{\hyperlink{structperso__s_aad4f33d9c7cfcfe123fb25027f4cd9af}{nb\+\_\+arme}}
+\item 
+\mbox{\hyperlink{structarme__s}{arme\+\_\+t}} \mbox{\hyperlink{structperso__s_ae0d40a57b0be71dc7b281dc9d31815a8}{tab\+\_\+arme}} \mbox{[}2\mbox{]}
+\item 
+int \mbox{\hyperlink{structperso__s_ab20f1cb4c1cd251151f15b712d7afa32}{arme\+\_\+actuelle}}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Description détaillée}
-Structure de données de perosnnage, avec l\textquotesingle{}emplacement du personnage lié au tag, ses coordonnées, ses points de vies, les coordonnées de l\textquotesingle{}inventaire et sa vitesse. 
+Structure de données de personnage, avec l\textquotesingle{}emplacement du personnage lié au tag, ses coordonnées, ses points de vies, les coordonnées de l\textquotesingle{}inventaire, sa vitesse, le nombre d\textquotesingle{}armes et les armes actives. 
 
 
 
 \doxysubsection{Documentation des données membres}
-\mbox{\Hypertarget{structperso__s_aea78dfe60c84c42037b1945d29c6d82a}\label{structperso__s_aea78dfe60c84c42037b1945d29c6d82a}} 
+\mbox{\Hypertarget{structperso__s_ab20f1cb4c1cd251151f15b712d7afa32}\label{structperso__s_ab20f1cb4c1cd251151f15b712d7afa32}} 
+\index{perso\_s@{perso\_s}!arme\_actuelle@{arme\_actuelle}}
+\index{arme\_actuelle@{arme\_actuelle}!perso\_s@{perso\_s}}
+\doxysubsubsection{\texorpdfstring{arme\_actuelle}{arme\_actuelle}}
+{\footnotesize\ttfamily int perso\+\_\+s\+::arme\+\_\+actuelle}
+
+Arme dans la main du perso \mbox{\Hypertarget{structperso__s_aea78dfe60c84c42037b1945d29c6d82a}\label{structperso__s_aea78dfe60c84c42037b1945d29c6d82a}} 
 \index{perso\_s@{perso\_s}!inv@{inv}}
 \index{inv@{inv}!perso\_s@{perso\_s}}
 \doxysubsubsection{\texorpdfstring{inv}{inv}}
 {\footnotesize\ttfamily S\+D\+L\+\_\+\+Rect perso\+\_\+s\+::inv}
 
-Affichage de l\textquotesingle{}inventaire \mbox{\Hypertarget{structperso__s_a683ef181c08b85b610f129a0544b00e6}\label{structperso__s_a683ef181c08b85b610f129a0544b00e6}} 
+Affichage de l\textquotesingle{}inventaire \mbox{\Hypertarget{structperso__s_aad4f33d9c7cfcfe123fb25027f4cd9af}\label{structperso__s_aad4f33d9c7cfcfe123fb25027f4cd9af}} 
+\index{perso\_s@{perso\_s}!nb\_arme@{nb\_arme}}
+\index{nb\_arme@{nb\_arme}!perso\_s@{perso\_s}}
+\doxysubsubsection{\texorpdfstring{nb\_arme}{nb\_arme}}
+{\footnotesize\ttfamily int perso\+\_\+s\+::nb\+\_\+arme}
+
+Nombre d\textquotesingle{}armes que le personnage possède \mbox{\Hypertarget{structperso__s_a683ef181c08b85b610f129a0544b00e6}\label{structperso__s_a683ef181c08b85b610f129a0544b00e6}} 
 \index{perso\_s@{perso\_s}!perso@{perso}}
 \index{perso@{perso}!perso\_s@{perso\_s}}
 \doxysubsubsection{\texorpdfstring{perso}{perso}}
@@ -52,7 +70,13 @@ Coordonnées du personnage \mbox{\Hypertarget{structperso__s_ad17089bad3c048781a
 \doxysubsubsection{\texorpdfstring{pv}{pv}}
 {\footnotesize\ttfamily int perso\+\_\+s\+::pv}
 
-Le nombre de vie restant du perosnnage \mbox{\Hypertarget{structperso__s_a713c38e004e4d5c2036628f792f237a6}\label{structperso__s_a713c38e004e4d5c2036628f792f237a6}} 
+Le nombre de vie restant du perosnnage \mbox{\Hypertarget{structperso__s_ae0d40a57b0be71dc7b281dc9d31815a8}\label{structperso__s_ae0d40a57b0be71dc7b281dc9d31815a8}} 
+\index{perso\_s@{perso\_s}!tab\_arme@{tab\_arme}}
+\index{tab\_arme@{tab\_arme}!perso\_s@{perso\_s}}
+\doxysubsubsection{\texorpdfstring{tab\_arme}{tab\_arme}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structarme__s}{arme\+\_\+t}} perso\+\_\+s\+::tab\+\_\+arme\mbox{[}2\mbox{]}}
+
+Tableau d\textquotesingle{}armes actives \mbox{\Hypertarget{structperso__s_a713c38e004e4d5c2036628f792f237a6}\label{structperso__s_a713c38e004e4d5c2036628f792f237a6}} 
 \index{perso\_s@{perso\_s}!tag@{tag}}
 \index{tag@{tag}!perso\_s@{perso\_s}}
 \doxysubsubsection{\texorpdfstring{tag}{tag}}

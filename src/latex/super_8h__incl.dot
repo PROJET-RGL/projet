@@ -5,17 +5,19 @@ digraph "super.h"
   node [fontname="Helvetica",fontsize="10",shape=record];
   Node1 [label="super.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Header principale du programmes."];
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
-  Node2 [label="super_s.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$super__s_8h.html",tooltip="Header des structures du programmes."];
+  Node2 [label="super_s.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$super__s_8h.html",tooltip="Structure de données du code."];
   Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
   Node3 [label="stdio.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
   Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
-  Node4 [label="SDL.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node4 [label="stdlib.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
   Node2 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
-  Node5 [label="stdlib.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node5 [label="time.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
   Node2 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
-  Node6 [label="SDL_image.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node6 [label="SDL.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
   Node2 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
-  Node7 [label="time.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
-  Node1 -> Node8 [color="midnightblue",fontsize="10",style="solid"];
-  Node8 [label="super_d.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$super__d_8h.html",tooltip="Header des defines du programmes."];
+  Node7 [label="SDL_mixer.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node2 -> Node8 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="math.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node1 -> Node9 [color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="super_d.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$super__d_8h.html",tooltip="Header des defines du programmes."];
 }

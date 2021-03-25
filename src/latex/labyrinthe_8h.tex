@@ -14,7 +14,7 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 \doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{structlabyrinthe__s}{labyrinthe\+\_\+t}} \mbox{\hyperlink{labyrinthe_8h_ab1a694c7e98e155c4918614804f33a09}{init\+\_\+lab}} (\mbox{\hyperlink{structlabyrinthe__s}{labyrinthe\+\_\+t}} lab, int taille)
+\mbox{\hyperlink{structlabyrinthe__s}{labyrinthe\+\_\+t}} \mbox{\hyperlink{labyrinthe_8h_a91825c0f8cc663c2c41d05bc8ff1a021}{init\+\_\+lab}} (\mbox{\hyperlink{structlabyrinthe__s}{labyrinthe\+\_\+t}} lab, S\+D\+L\+\_\+\+Window $\ast$fen, S\+D\+L\+\_\+\+Renderer $\ast$renderer, S\+D\+L\+\_\+\+Rect fenetre, int taille)
 \begin{DoxyCompactList}\small\item\em On définit le labyrinthe avec sa taille, et ses salles. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -25,19 +25,19 @@ Fonction qui agis sur le labyrinthe.
 Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
-0.\+0.\+1 
+0.\+0.\+2 
 \end{DoxyVersion}
 \begin{DoxyDate}{Date}
-18 Février 2020 
+22 Mars 2021 
 \end{DoxyDate}
 
 
 \doxysubsection{Documentation des fonctions}
-\mbox{\Hypertarget{labyrinthe_8h_ab1a694c7e98e155c4918614804f33a09}\label{labyrinthe_8h_ab1a694c7e98e155c4918614804f33a09}} 
+\mbox{\Hypertarget{labyrinthe_8h_a91825c0f8cc663c2c41d05bc8ff1a021}\label{labyrinthe_8h_a91825c0f8cc663c2c41d05bc8ff1a021}} 
 \index{labyrinthe.h@{labyrinthe.h}!init\_lab@{init\_lab}}
 \index{init\_lab@{init\_lab}!labyrinthe.h@{labyrinthe.h}}
 \doxysubsubsection{\texorpdfstring{init\_lab()}{init\_lab()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structlabyrinthe__s}{labyrinthe\+\_\+t}} init\+\_\+lab (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structlabyrinthe__s}{labyrinthe\+\_\+t}}}]{lab,  }\item[{int}]{taille }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structlabyrinthe__s}{labyrinthe\+\_\+t}} init\+\_\+lab (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structlabyrinthe__s}{labyrinthe\+\_\+t}}}]{lab,  }\item[{S\+D\+L\+\_\+\+Window $\ast$}]{fen,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{S\+D\+L\+\_\+\+Rect}]{fenetre,  }\item[{int}]{taille }\end{DoxyParamCaption})}
 
 
 
@@ -48,6 +48,12 @@ On définit le labyrinthe avec sa taille, et ses salles.
 {\em lab} & Importation du labyrinthe à modifier \\
 \hline
 {\em taille} & Définition de la taille du lab \\
+\hline
+{\em fen} & Fenetre d\textquotesingle{}affichage \\
+\hline
+{\em renderer} & Rendu où l\textquotesingle{}on va coller la texture \\
+\hline
+{\em fenetre} & Rectangle ayant les coordonnées de l\textquotesingle{}image \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Renvoie}

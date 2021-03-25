@@ -6,8 +6,8 @@
  * \brief Header des defines du programmes
  * \file 'super_d.h'
  * \author Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas
- * \version 0.0.1
- * \date 18 Février 2020
+ * \version 0.0.2
+ * \date 22 Mars 2021
  */
 
 // ------------------------------------- DEFINE POUR LE MAIN ------------------------------------- //
@@ -42,5 +42,14 @@
 
 #define MORT 0
 #define VIVANT 1
+
+// DEBUG
+
+#define DEBUG TRUE
+#define DEBUG_MODE if(DEBUG)
+
+// Difficulty
+
+#define DIFFICULTY 'P'
 
 #endif

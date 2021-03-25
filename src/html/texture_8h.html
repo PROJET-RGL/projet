@@ -71,27 +71,250 @@ $(function() {
 <p>Header des fonctions agissant sur les textures du programmes.  
 <a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="super_8h_source.html">super.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="fonction__admin_8h_source.html">fonction_admin.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de texture.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="texture_8h__incl.png" border="0" usemap="#texture_8h" alt=""/></div>
 <!-- MAP 0 -->
 </div>
+</div><div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="texture_8h__dep__incl.png" border="0" usemap="#texture_8hdep" alt=""/></div>
+<!-- MAP 1 -->
+</div>
 </div>
 <p><a href="texture_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a0c02308c6f30e6edb0bb0b6198d3a50c"><td class="memItemLeft" align="right" valign="top"><a id="a0c02308c6f30e6edb0bb0b6198d3a50c"></a>
-SDL_Texture&#160;</td><td class="memItemRight" valign="bottom"><b>init_texture</b> (SDL_Renderer **renderer, int HAUTEUR, int LARGEUR, SDL_Rect rect, char c[50])</td></tr>
-<tr class="separator:a0c02308c6f30e6edb0bb0b6198d3a50c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49d8afd96d04665511dc7cb9724976cc"><td class="memItemLeft" align="right" valign="top">SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="texture_8h.html#a49d8afd96d04665511dc7cb9724976cc">init_texture</a> (SDL_Renderer *renderer, SDL_Window *fen, char *chemin_image)</td></tr>
+<tr class="memdesc:a49d8afd96d04665511dc7cb9724976cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inititalisation de la texture.  <a href="texture_8h.html#a49d8afd96d04665511dc7cb9724976cc">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a49d8afd96d04665511dc7cb9724976cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5df2e794eb9b3c740fbfe917590b929"><td class="memItemLeft" align="right" valign="top">SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="texture_8h.html#af5df2e794eb9b3c740fbfe917590b929">afficher_texture</a> (SDL_Renderer *renderer, SDL_Window *fen, SDL_Texture *texture, SDL_Rect rect, SDL_bool plein_ecran, int pourcentX, int pourcentY)</td></tr>
+<tr class="memdesc:af5df2e794eb9b3c740fbfe917590b929"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche la texture rentrer en paramètre.  <a href="texture_8h.html#af5df2e794eb9b3c740fbfe917590b929">Plus de détails...</a><br /></td></tr>
+<tr class="separator:af5df2e794eb9b3c740fbfe917590b929"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4d6b79503420d4d066d99384f7b40a9"><td class="memItemLeft" align="right" valign="top"><a id="aa4d6b79503420d4d066d99384f7b40a9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>charger_textures_menu</b> (SDL_Renderer *renderer, SDL_Window *fen, SDL_bool en_jeu, SDL_Texture *texture[7])</td></tr>
+<tr class="separator:aa4d6b79503420d4d066d99384f7b40a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6697d12bc7f692ec83501ca7e98674c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="texture_8h.html#a6697d12bc7f692ec83501ca7e98674c7">charger_textures_options</a> (SDL_Renderer *renderer, SDL_Window *fen, SDL_Texture *texture[10])</td></tr>
+<tr class="memdesc:a6697d12bc7f692ec83501ca7e98674c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">On charge les textures de l'option.  <a href="texture_8h.html#a6697d12bc7f692ec83501ca7e98674c7">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a6697d12bc7f692ec83501ca7e98674c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2c5ad8eb2b1de00689a1af590e40feb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="texture_8h.html#ad2c5ad8eb2b1de00689a1af590e40feb">charger_textures_commandes</a> (SDL_Renderer *renderer, SDL_Window *fen, SDL_Texture *texture[8])</td></tr>
+<tr class="separator:ad2c5ad8eb2b1de00689a1af590e40feb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Header des fonctions agissant sur les textures du programmes. </p>
 <p>' </p><dl class="section author"><dt>Auteur</dt><dd>Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>0.0.1 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>18 Février 2020 </dd></dl>
-</div></div><!-- contents -->
+<dl class="section version"><dt>Version</dt><dd>0.0.2 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>22 mars 2021 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="af5df2e794eb9b3c740fbfe917590b929"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5df2e794eb9b3c740fbfe917590b929">&#9670;&nbsp;</a></span>afficher_texture()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SDL_Rect afficher_texture </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Window *&#160;</td>
+          <td class="paramname"><em>fen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Texture *&#160;</td>
+          <td class="paramname"><em>texture</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect&#160;</td>
+          <td class="paramname"><em>rect</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_bool&#160;</td>
+          <td class="paramname"><em>plein_ecran</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pourcentX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pourcentY</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche la texture rentrer en paramètre. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>Attributs pour l'affiche d'une fenêtre </td></tr>
+    <tr><td class="paramname">fen</td><td>Fenêtre sur laquelle on veut afficher les options </td></tr>
+    <tr><td class="paramname">texture</td><td>Texture à afficher </td></tr>
+    <tr><td class="paramname">rect</td><td>Rectangle dans lequel on affiche la texture </td></tr>
+    <tr><td class="paramname">plein_ecran</td><td>Indique si le jeu est en plein écran </td></tr>
+    <tr><td class="paramname">pourcentX</td><td>Indique la position X de l'image en pourcentage </td></tr>
+    <tr><td class="paramname">pourcentX</td><td>Indique la position Y de l'image en pourcentage </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>SDL_Rect </dd></dl>
+
+</div>
+</div>
+<a id="ad2c5ad8eb2b1de00689a1af590e40feb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2c5ad8eb2b1de00689a1af590e40feb">&#9670;&nbsp;</a></span>charger_textures_commandes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void charger_textures_commandes </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Window *&#160;</td>
+          <td class="paramname"><em>fen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Texture *&#160;</td>
+          <td class="paramname"><em>texture</em>[8]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td></td></tr>
+    <tr><td class="paramname">fen</td><td></td></tr>
+    <tr><td class="paramname">texture</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6697d12bc7f692ec83501ca7e98674c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6697d12bc7f692ec83501ca7e98674c7">&#9670;&nbsp;</a></span>charger_textures_options()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void charger_textures_options </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Window *&#160;</td>
+          <td class="paramname"><em>fen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Texture *&#160;</td>
+          <td class="paramname"><em>texture</em>[10]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>On charge les textures de l'option. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>Rendu d'acquisition </td></tr>
+    <tr><td class="paramname">fen</td><td>Fenêtre d'acquisition </td></tr>
+    <tr><td class="paramname">texture</td><td>Tableau de texture </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a49d8afd96d04665511dc7cb9724976cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49d8afd96d04665511dc7cb9724976cc">&#9670;&nbsp;</a></span>init_texture()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SDL_Texture* init_texture </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Window *&#160;</td>
+          <td class="paramname"><em>fen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>chemin_image</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inititalisation de la texture. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>Attributs pour l'affiche d'une fenêtre </td></tr>
+    <tr><td class="paramname">fen</td><td>Fenêtre sur laquelle on veut afficher les options </td></tr>
+    <tr><td class="paramname">chemin_image</td><td>Chemin relatif jusqu'à l'image </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>SDL_Texture* Retourne la texture initialiser </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Généré par &#160;<a href="http://www.doxygen.org/index.html">

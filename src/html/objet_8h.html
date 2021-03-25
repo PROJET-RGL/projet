@@ -71,6 +71,7 @@ $(function() {
 <p>Fichier contenant les fonctions agissant sur les objets du programme.  
 <a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="super_8h_source.html">super.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="fonction__admin_8h_source.html">fonction_admin.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de objet.h:</div>
 <div class="dyncontent">
@@ -88,9 +89,9 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:afa7aa15c129d3195f5d02da4d3c2bd2e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structobjet__s.html">objet_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objet_8h.html#afa7aa15c129d3195f5d02da4d3c2bd2e">init_obj</a> (<a class="el" href="structobjet__s.html">objet_t</a> obj)</td></tr>
-<tr class="memdesc:afa7aa15c129d3195f5d02da4d3c2bd2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Création d'un objet, avec ses coordonnées, sa taille et sa couleur.  <a href="objet_8h.html#afa7aa15c129d3195f5d02da4d3c2bd2e">Plus de détails...</a><br /></td></tr>
-<tr class="separator:afa7aa15c129d3195f5d02da4d3c2bd2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1599a70e48c901e8dc54559cf942f083"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structobjet__s.html">objet_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objet_8h.html#a1599a70e48c901e8dc54559cf942f083">init_obj</a> (<a class="el" href="structobjet__s.html">objet_t</a> obj, SDL_Window *fen, SDL_Renderer *renderer, SDL_Surface *image)</td></tr>
+<tr class="memdesc:a1599a70e48c901e8dc54559cf942f083"><td class="mdescLeft">&#160;</td><td class="mdescRight">Création d'un objet, avec ses coordonnées, sa taille et sa couleur.  <a href="objet_8h.html#a1599a70e48c901e8dc54559cf942f083">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a1599a70e48c901e8dc54559cf942f083"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d193a9d0078fecbd24c6b46f974f4a3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structobjet__s.html">objet_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objet_8h.html#a1d193a9d0078fecbd24c6b46f974f4a3">compare_objet</a> (<a class="el" href="structobjet__s.html">objet_t</a> obj1, <a class="el" href="structobjet__s.html">objet_t</a> obj2)</td></tr>
 <tr class="memdesc:a1d193a9d0078fecbd24c6b46f974f4a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Comparaison entre deux objets (On vérifie si ils sont en superposé, si c'est le cas, on modifie la position du deuxième objet)  <a href="objet_8h.html#a1d193a9d0078fecbd24c6b46f974f4a3">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a1d193a9d0078fecbd24c6b46f974f4a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -98,8 +99,8 @@ Fonctions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Fichier contenant les fonctions agissant sur les objets du programme. </p>
 <p>' </p><dl class="section author"><dt>Auteur</dt><dd>Boitiere Dorian, Beuvier Jules, Boucharinc Billy, André Thomas </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>0.0.1 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>18 Février 2020 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.0.2 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>22 Mars 2021 </dd></dl>
 </div><h2 class="groupheader">Documentation des fonctions</h2>
 <a id="a1d193a9d0078fecbd24c6b46f974f4a3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1d193a9d0078fecbd24c6b46f974f4a3">&#9670;&nbsp;</a></span>compare_objet()</h2>
@@ -139,8 +140,8 @@ Fonctions</h2></td></tr>
 
 </div>
 </div>
-<a id="afa7aa15c129d3195f5d02da4d3c2bd2e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afa7aa15c129d3195f5d02da4d3c2bd2e">&#9670;&nbsp;</a></span>init_obj()</h2>
+<a id="a1599a70e48c901e8dc54559cf942f083"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1599a70e48c901e8dc54559cf942f083">&#9670;&nbsp;</a></span>init_obj()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -149,8 +150,30 @@ Fonctions</h2></td></tr>
           <td class="memname"><a class="el" href="structobjet__s.html">objet_t</a> init_obj </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structobjet__s.html">objet_t</a>&#160;</td>
-          <td class="paramname"><em>obj</em></td><td>)</td>
+          <td class="paramname"><em>obj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">SDL_Window *&#160;</td>
+          <td class="paramname"><em>fen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Surface *&#160;</td>
+          <td class="paramname"><em>image</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -159,6 +182,9 @@ Fonctions</h2></td></tr>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">obj</td><td>On importe l'objet à modifier </td></tr>
+    <tr><td class="paramname">fen</td><td>Fenêtre d'acquisition </td></tr>
+    <tr><td class="paramname">renderer</td><td>Rendu d'acquisition </td></tr>
+    <tr><td class="paramname">image</td><td>Importation de la texture de l'objet </td></tr>
   </table>
   </dd>
 </dl>
