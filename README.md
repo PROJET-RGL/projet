@@ -8,19 +8,14 @@
   - Jules Beuvier
   - Thomas André
 
-# v0.0.22
+# v0.0.24
 
 ------- Patch Notes -------
 
 Ajout :
-  - Combat update (possibilité de clic gauche/clic droit pour tirer ( 0.1 sec de cooldown sur le CG et 10 sec pour CD)
-  - Ajout de bruitage/son
-  - Ajout de template pour la barre de vie, WIP
-  - Ajout concept arme, une distance, une corps à corps (touche 1 et 2)
+  - Ajout du mouvement des mobs
 
-Correction de bug :
-  - Impossibilité de quitter le jeu lorsque nous sommes dans le menu option
 
 ---------------------------
 
-# DATE : 19/03/2021
+# DATE : 14/04/2021
