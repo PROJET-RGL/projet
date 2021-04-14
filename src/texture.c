@@ -55,7 +55,7 @@ SDL_Texture *init_texture(SDL_Renderer *renderer, SDL_Window *fen, char *chemin_
  * @return SDL_Rect 
  */
 
-SDL_Rect afficher_texture(SDL_Renderer *renderer, SDL_Window *fen, SDL_Texture *texture, SDL_Rect rect, SDL_bool plein_ecran, int pourcentX, int pourcentY)
+SDL_Rect afficher_texture(SDL_Renderer *renderer, SDL_Window *fen, SDL_Texture *texture, SDL_Rect rect, SDL_bool plein_ecran, int pourcentX, int pourcentY, int posX, int posY)
 {
     if(SDL_QueryTexture(texture, NULL, NULL, &rect.w, &rect.h) != 0){
         clean_ressources(fen, renderer, texture);
@@ -147,4 +147,9 @@ void charger_textures_commandes(SDL_Renderer *renderer, SDL_Window *fen, SDL_Tex
     texture[5] = init_texture(renderer, fen, "../src/img/q.bmp");
     texture[6] = init_texture(renderer, fen, "../src/img/s.bmp");   
     texture[7] = init_texture(renderer, fen, "../src/img/d.bmp");   
+}
+
+void charger_textures_items(SDL_Renderer *renderer, SDL_Window *fen, SDL_Texture *texture[10])
+{
+    texture[0] = init_texture(renderer, fen, "../src/img/potion_soin.bmp");
 }

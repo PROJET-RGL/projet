@@ -109,3 +109,162 @@ void affichage_hud(SDL_Renderer *renderer, jeu_t *jeu)
         SDL_RenderDrawRect(renderer, &(*jeu).hud.item_cac);
     }
 }
+
+void ouvrir_inventaire(SDL_Renderer *renderer, SDL_Window *fen, jeu_t *jeu, SDL_bool plein_ecran)
+{
+    SDL_Event event;
+    SDL_bool dans_inventaire = SDL_TRUE;
+    int k = 0, num_case = 0, i = 0;
+
+    (*jeu).perso.inv.cases[0].item_actuel = 10;
+
+    afficher_texture(renderer, fen, (*jeu).perso.inv.texture_inventaire, (*jeu).perso.inv.pos_inventaire, plein_ecran, 50, 20, -1, -1);
+
+    for(int i = 0, posY = 28; i < 3; i++, posY += 12)
+    {
+        for(int j = 0, posX = 43; j < 3; j++, posX += 7, k++)
+        {
+            (*jeu).perso.inv.cases[k].pos_case = afficher_texture(renderer, fen, (*jeu).perso.inv.texture_case, (*jeu).perso.inv.cases[k].pos_case, plein_ecran, posX, posY, -1, -1);
+        }
+    }
+
+    afficher_texture(renderer, fen, (*jeu).perso.inv.texture_inventaire_armes, (*jeu).perso.inv.pos_inventaire_armes, plein_ecran, 50, 95, -1, -1);
+
+    (*jeu).perso.inv.cases[10].pos_case = afficher_texture(renderer, fen, (*jeu).perso.inv.texture_case, (*jeu).perso.inv.cases[10].pos_case, plein_ecran, 45, 93, -1, -1);
+    (*jeu).perso.inv.cases[11].pos_case = afficher_texture(renderer, fen, (*jeu).perso.inv.texture_case, (*jeu).perso.inv.cases[11].pos_case, plein_ecran, 55, 93, -1, -1);
+
+    SDL_RenderPresent(renderer);
+    
+    while(dans_inventaire)
+    {
+        while(SDL_PollEvent(&event))
+        {
+            switch(event.type)
+            {
+                case SDL_KEYDOWN:
+                    switch(event.key.keysym.sym)
+                    {
+                        case SDLK_i:
+                        case SDLK_ESCAPE:
+                            dans_inventaire = SDL_FALSE;
+                            break;
+
+                        default:
+                            break;
+                    }
+                case SDL_MOUSEBUTTONDOWN:
+                    num_case = position_inventaire(jeu, event);
+                    if(event.button.button == SDL_BUTTON_LEFT)
+                    {
+                        if(num_case != -1)
+                            printf("Case n°%d\n", num_case);
+
+                    }else if(event.button.button == SDL_BUTTON_RIGHT)
+                    {
+                        for(i = 0; i<9; i++)
+                        {
+                            if(num_case == (*jeu).perso.inv.cases[i].item_actuel)
+                            {
+                                if((*jeu).perso.inv.loot.potion[0].nb_potion > 0 && (*jeu).perso.pv != 10)
+                                {
+                                    (*jeu).perso.inv.loot.potion[0].nb_potion--;
+                                    (*jeu).perso.pv = 10;
+                                }
+                            }
+                        }
+                    }
+                    break;
+
+                default:
+                    break;
+
+            }
+        }
+    }
+}
+
+
+int position_inventaire(jeu_t *jeu, SDL_Event event)
+{
+    if(event.motion.x > (*jeu).perso.inv.cases[0].pos_case.x && event.motion.x < ((*jeu).perso.inv.cases[0].pos_case.x + (*jeu).perso.inv.cases[0].pos_case.w))
+    {
+        if(event.motion.y > (*jeu).perso.inv.cases[0].pos_case.y && event.motion.y < ((*jeu).perso.inv.cases[0].pos_case.y + (*jeu).perso.inv.cases[0].pos_case.h))
+        {
+            return(1);
+        }
+    }
+
+    if(event.motion.x > (*jeu).perso.inv.cases[1].pos_case.x && event.motion.x < ((*jeu).perso.inv.cases[1].pos_case.x + (*jeu).perso.inv.cases[1].pos_case.w))
+    {
+        if(event.motion.y > (*jeu).perso.inv.cases[1].pos_case.y && event.motion.y < ((*jeu).perso.inv.cases[1].pos_case.y + (*jeu).perso.inv.cases[1].pos_case.h))
+        {
+            return(2);
+        }
+    }
+
+    if(event.motion.x > (*jeu).perso.inv.cases[2].pos_case.x && event.motion.x < ((*jeu).perso.inv.cases[2].pos_case.x + (*jeu).perso.inv.cases[2].pos_case.w))
+    {
+        if(event.motion.y > (*jeu).perso.inv.cases[2].pos_case.y && event.motion.y < ((*jeu).perso.inv.cases[2].pos_case.y + (*jeu).perso.inv.cases[2].pos_case.h))
+        {
+            return(3);
+        }
+    }
+
+    if(event.motion.x > (*jeu).perso.inv.cases[3].pos_case.x && event.motion.x < ((*jeu).perso.inv.cases[3].pos_case.x + (*jeu).perso.inv.cases[3].pos_case.w))
+    {
+        if(event.motion.y > (*jeu).perso.inv.cases[3].pos_case.y && event.motion.y < ((*jeu).perso.inv.cases[3].pos_case.y + (*jeu).perso.inv.cases[3].pos_case.h))
+        {
+            return(4);
+        }
+    }
+
+    if(event.motion.x > (*jeu).perso.inv.cases[4].pos_case.x && event.motion.x < ((*jeu).perso.inv.cases[4].pos_case.x + (*jeu).perso.inv.cases[4].pos_case.w))
+    {
+        if(event.motion.y > (*jeu).perso.inv.cases[4].pos_case.y && event.motion.y < ((*jeu).perso.inv.cases[4].pos_case.y + (*jeu).perso.inv.cases[4].pos_case.h))
+        {
+            return(5);
+        }
+    }
+
+    if(event.motion.x > (*jeu).perso.inv.cases[5].pos_case.x && event.motion.x < ((*jeu).perso.inv.cases[5].pos_case.x + (*jeu).perso.inv.cases[5].pos_case.w))
+    {
+        if(event.motion.y > (*jeu).perso.inv.cases[5].pos_case.y && event.motion.y < ((*jeu).perso.inv.cases[5].pos_case.y + (*jeu).perso.inv.cases[5].pos_case.h))
+        {
+            return(6);
+        }
+    }
+
+    if(event.motion.x > (*jeu).perso.inv.cases[6].pos_case.x && event.motion.x < ((*jeu).perso.inv.cases[6].pos_case.x + (*jeu).perso.inv.cases[6].pos_case.w))
+    {
+        if(event.motion.y > (*jeu).perso.inv.cases[6].pos_case.y && event.motion.y < ((*jeu).perso.inv.cases[6].pos_case.y + (*jeu).perso.inv.cases[6].pos_case.h))
+        {
+            return(7);
+        }
+    }
+
+    if(event.motion.x > (*jeu).perso.inv.cases[7].pos_case.x && event.motion.x < ((*jeu).perso.inv.cases[7].pos_case.x + (*jeu).perso.inv.cases[7].pos_case.w))
+    {
+        if(event.motion.y > (*jeu).perso.inv.cases[7].pos_case.y && event.motion.y < ((*jeu).perso.inv.cases[7].pos_case.y + (*jeu).perso.inv.cases[7].pos_case.h))
+        {
+            return(8);
+        }
+    }
+
+    if(event.motion.x > (*jeu).perso.inv.cases[8].pos_case.x && event.motion.x < ((*jeu).perso.inv.cases[8].pos_case.x + (*jeu).perso.inv.cases[8].pos_case.w))
+    {
+        if(event.motion.y > (*jeu).perso.inv.cases[8].pos_case.y && event.motion.y < ((*jeu).perso.inv.cases[8].pos_case.y + (*jeu).perso.inv.cases[8].pos_case.h))
+        {
+            return(9);
+        }
+    }
+    return(-1);
+}
+
+int chercher_case(jeu_t *jeu)
+{
+    int i = 0;
+    for(i = 0; i<11; i++)
+    {
+        //if((*jeu).perso.inv.cases[i].item_actuel == (*jeu).perso.inv.loot.potion[]
+    }
+}

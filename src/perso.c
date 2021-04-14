@@ -15,58 +15,52 @@
  * @return perso_t - Retourne le perso mis en paramètre
  */
 
-perso_t init_perso(perso_t perso)
+perso_t init_perso(jeu_t *jeu)
 {
     arme_t arme;
     // Coordonnées du personnage
 
-    perso.perso.x = (FEN_LARGEUR - PERSO_LARGEUR) / 2 - 20;
-    perso.perso.y = (FEN_HAUTEUR - PERSO_HAUTEUR) / 2 - 20;
+    (*jeu).perso.perso.x = (FEN_LARGEUR - PERSO_LARGEUR) / 2 - 20;
+    (*jeu).perso.perso.y = (FEN_HAUTEUR - PERSO_HAUTEUR) / 2 - 20;
 
-    perso.perso.w = PERSO_LARGEUR;
-    perso.perso.h = PERSO_HAUTEUR;
+    (*jeu).perso.perso.w = PERSO_LARGEUR;
+    (*jeu).perso.perso.h = PERSO_HAUTEUR;
 
     // Génération des pv du personnage
 
-    perso.pv = 10;
+    (*jeu).perso.pv = 10;
 
     // Emplacement du personnage dans le lab
 
-    perso.tag = 0;
-
-    // Création de la fenètre inv
-
-    perso.inv.x = (FEN_LARGEUR - 200) / 2;
-    perso.inv.y = (FEN_HAUTEUR - 100) / 2;
-
-    perso.inv.w = 200;
-    perso.inv.h = 100;
+    (*jeu).perso.tag = 0;
 
     // Initialisation du vecteur vitesse
 
-    perso.velocite.x = 0;
-    perso.velocite.y = 0;
+    (*jeu).perso.velocite.x = 0;
+    (*jeu).perso.velocite.y = 0;
 
     // On incremente le nombre d'arme
 
-    perso.nb_arme++;
+    (*jeu).perso.nb_arme++;
 
     // On ajoute une arme
 
-    perso.tab_arme[0] = init_arme1(arme);
-    perso.tab_arme[1] = init_arme2(arme);
+    (*jeu).perso.tab_arme[0] = new_arme(jeu, 0, "Pistolet", "le pistolet de base", 400, 5, 5, 10000, 0, 'D', 0, (*jeu).perso.inv.cases[9].pos_case);
+    (*jeu).perso.tab_arme[1] = new_arme(jeu, 1, "Épée", "l'épée de base", 200, 6, 1, 0, 10000, 'C', 0, (*jeu).perso.inv.cases[10].pos_case);
+    (*jeu).perso.inv.loot.potion[0] = new_potion(jeu, "Heal", 5, (*jeu).perso.inv.cases[0].pos_case, 10);
+    (*jeu).perso.inv.loot.potion[0].nb_potion = 3;
 
     // Arme actuelle = tag arme
 
-    perso.arme_actuelle = 0;
+    (*jeu).perso.arme_actuelle = 0;
 
     // Initialisation de la quantité d'argent
 
-    perso.argent = 0;
+    (*jeu).perso.argent = 0;
 
     // Initialisation du score
 
-    perso.score = 0;
+    (*jeu).perso.score = 0;
 
-    return perso;
+    return (*jeu).perso;
 }

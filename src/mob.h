@@ -10,4 +10,6 @@ int colision_mob(mob_t mob1, perso_t perso);
 
 mob_t compare_mob(mob_t mob1, mob_t mob2);
 
+SDL_Rect deplacement_mob(SDL_Rect perso, SDL_Rect mob, int i);
+
 #endif

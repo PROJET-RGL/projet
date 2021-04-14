@@ -75,7 +75,6 @@ void sauvegarde(jeu_t *jeu)
         fprintf(fichier, "%d ", (*jeu).perso.tag);
         fprintf(fichier, "%d %d %d %d ", (*jeu).perso.perso.x, (*jeu).perso.perso.y, (*jeu).perso.perso.w, (*jeu).perso.perso.h);
         fprintf(fichier, "%d ", (*jeu).perso.pv);
-        fprintf(fichier, "%d %d %d %d ", (*jeu).perso.inv.x, (*jeu).perso.inv.y, (*jeu).perso.inv.w, (*jeu).perso.inv.h);
         fprintf(fichier, "%d %d ", (*jeu).perso.velocite.x, (*jeu).perso.velocite.y);
         fprintf(fichier, "%d ", (*jeu).perso.nb_arme);
         fprintf(fichier, "%d ", (*jeu).perso.arme_actuelle);
@@ -177,7 +176,6 @@ jeu_t chargement(jeu_t *jeu)
         fscanf(fichier, "%d ", &(*jeu).perso.tag);
         fscanf(fichier, "%d %d %d %d ", &(*jeu).perso.perso.x, &(*jeu).perso.perso.y, &(*jeu).perso.perso.w, &(*jeu).perso.perso.h);
         fscanf(fichier, "%d ", &(*jeu).perso.pv);
-        fscanf(fichier, "%d %d %d %d ", &(*jeu).perso.inv.x, &(*jeu).perso.inv.y, &(*jeu).perso.inv.w, &(*jeu).perso.inv.h);
         fscanf(fichier, "%d %d ", &(*jeu).perso.velocite.x, &(*jeu).perso.velocite.y);
         fscanf(fichier, "%d ", &(*jeu).perso.nb_arme);
         fscanf(fichier, "%d ", &(*jeu).perso.arme_actuelle);

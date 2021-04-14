@@ -110,3 +110,53 @@ mob_t compare_mob(mob_t mob1, mob_t mob2)
     }
     return mob2;
 }
+
+SDL_Rect deplacement_mob(SDL_Rect perso, SDL_Rect mob, int i)
+{
+    int pointpersox = (perso.x + (perso.w/2));
+    int pointpersoy = (perso.y + (perso.h/2));
+
+    int pointmobx = (mob.x + (mob.w/2));
+    int pointmoby = (mob.y + (mob.h/2));
+
+    int signeX = pointpersox - pointmobx;
+    int signeY = pointpersoy - pointmoby;
+
+    if(signeX > 0)                                  // Si mob.x > 
+    {
+        if(signeX < VITESSE_MOB)
+        {
+            mob.x += (pointpersox - pointmobx);
+        }
+        mob.x += VITESSE_MOB;
+
+    }else
+    if(signeX < 0)
+    {
+        if(signeX > -VITESSE_MOB)
+        {
+            mob.x -= (pointmobx - pointpersox);
+        }
+        mob.x -= VITESSE_MOB;
+    }
+
+    if(signeY > 0)
+    {
+        if(signeY < VITESSE_MOB)
+        {
+            mob.y += (pointpersoy - pointmoby);
+        }
+        mob.y += VITESSE_MOB;
+
+    }else
+    if(signeY < 0)
+    {
+        if(signeY > -VITESSE_MOB)
+        {
+            mob.y -= (pointmoby - pointpersoy);
+        }
+        mob.y -= VITESSE_MOB;
+    }
+
+    return mob;
+}

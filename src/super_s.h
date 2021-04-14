@@ -29,29 +29,71 @@
 
 // ----------------------------- STRUCTURE DE DONNÉES ----------------------------- //
 
-typedef struct couleur_s couleur_t;     // Structure Couleur
+typedef struct arme_s arme_t;               // Structure qui gère les arme
 
-typedef struct velocite_s velocite_t;   // Structure velocité
+typedef struct potion_s potion_t;
 
-typedef struct salle_s salle_t;         // Structure salles
+typedef struct consommable_s consommable_t;
+
+typedef struct couleur_s couleur_t;         // Structure Couleur
+
+typedef struct velocite_s velocite_t;       // Structure velocité
+
+typedef struct salle_s salle_t;             // Structure salles
 
 typedef struct labyrinthe_s labyrinthe_t;   // Structure Labyrinthe
 
-typedef struct porte_s porte_t;         // Structure Porte
+typedef struct porte_s porte_t;             // Structure Porte
 
-typedef struct arme_s arme_t;           // Structure qui gère les arme
+typedef struct perso_s perso_t;             // Structure perso
 
-typedef struct perso_s perso_t;         // Structure perso
+typedef struct mob_s mob_t;                 // Structure mob
 
-typedef struct mob_s mob_t;             // Structure mob
+typedef struct objet_s objet_t;             // Structure Objet
 
-typedef struct objet_s objet_t;         // Structure Objet
+typedef struct texture_s texture_t;         // Structure Texture
 
-typedef struct texture_s texture_t;     // Structure Texture
+typedef struct hud_s hud_t;                 // Structure HUD
 
-typedef struct hud_s hud_t;             // Structure HUD
+typedef struct cases_s cases_t;             // Structure cases inventaire
 
-typedef struct jeu_s jeu_t;             // Structure jeu
+typedef struct inventaire_s inventaire_t;   // Structure Inventaire
+
+typedef struct jeu_s jeu_t;                 // Structure jeu
+
+
+/**
+ * @brief Stucture de la configuration d'une arme, possédant un tag, ainsi qu'un nom et une description. Avec son rayon de portée, les dommages, le cooldown, le stockage possible et la durabilité de l'arme. La rareté de l'arme et son type.
+ * 
+ */
+
+struct arme_s               // Création d'une arme
+{
+    int tag;                /*!<    Tag de l'arme */
+    char *nom_arme;         /*!<    Nom de l'arme */
+    char *descrip;          /*!<    Description de l'arme */
+    int rayon;              /*!<    Rayon d'attaque de l'arme */
+    int dmg;                /*!<    Dommage causées par l'arme */
+    int cooldown;           /*!<    Cooldown de l'arme */
+    int munition;           /*!<    Stockage actuel de l'arme */
+    int durabilite;         /*!<    Durabilité de l'arme */
+    int type;               /*!<    Type de l'arme soit 0 pour cac, soit 1 pour distance */
+    int rarete;             /*!<    Rareté de l'arme */
+};
+
+struct potion_s
+{
+    char *nom;
+    int cooldown;
+    SDL_Rect potion;
+    int nb_potion;
+};
+
+struct consommable_s
+{
+    potion_t potion[50];
+    arme_t arme[50];
+};
 
 
 /**
@@ -89,26 +131,23 @@ struct porte_s              // Création de la porte en fonction de l'emplacemen
     int position;           /*!< Vertical ou Horizontal */
 };
 
-/**
- * @brief Stucture de la configuration d'une arme, possédant un tag, ainsi qu'un nom et une description. Avec son rayon de portée, les dommages, le cooldown, le stockage possible et la durabilité de l'arme. La rareté de l'arme et son type.
- * 
- */
-
-struct arme_s               // Création d'une arme
+struct cases_s
 {
-    int tag;                /*!<    Tag de l'arme */
-    char *nom_arme;         /*!<    Nom de l'arme */
-    char *descrip;          /*!<    Description de l'arme */
-    int rayon;              /*!<    Rayon d'attaque de l'arme */
-    int dmg;                /*!<    Dommage causées par l'arme */
-    int cooldown;           /*!<    Cooldown de l'arme */
-    int munition;           /*!<    Stockage actuel de l'arme */
-    int durabilite;         /*!<    Durabilité de l'arme */
-    int type;               /*!<    Type de l'arme soit 0 pour cac, soit 1 pour distance */
-    int rarete;             /*!<    Rareté de l'arme */
+    SDL_Rect pos_case;    /*!< Coordonnées de la case dans l'inventaire */
+    SDL_bool est_vide;    /*!< Indique si la case est vide */
+    int item_actuel;
 };
 
-
+struct inventaire_s
+{
+    SDL_Rect pos_inventaire;                    /*!< Coordonnées de l'inventaire */
+    SDL_Texture *texture_inventaire;            /*!< Texture des cases */
+    SDL_Rect pos_inventaire_armes;              /*!< Coordonnées de l'inventaire */
+    SDL_Texture *texture_inventaire_armes;      /*!< Texture des cases */
+    SDL_Texture *texture_case;                  /*!< Texture des cases */
+    consommable_t loot;                         /*!< Loot dans l'inventaire */
+    cases_t cases[11];                          /*!< Information sur chaque case de l'inventaire */
+};
 
 /**
  * @brief Structure de données de personnage, avec l'emplacement du personnage lié au tag, ses coordonnées, ses points de vies, les coordonnées de l'inventaire, sa vitesse, le nombre d'armes et les armes actives
@@ -120,10 +159,10 @@ struct perso_s              // Création d'un personnage
     int tag;                /*!< Emplacement du personnage */
     SDL_Rect perso;         /*!< Coordonnées du personnage */
     int pv;                 /*!< Le nombre de vie restant du perosnnage */
-    SDL_Rect inv;           /*!< Affichage de l'inventaire */
     velocite_t velocite;    /*!< Vitesse relative du personnage */
-    int nb_arme;            /*!< Nombre d'armes que le personnage possède */
+    inventaire_t inv;       /*!< Inventaire */
     arme_t tab_arme[2];     /*!< Tableau d'armes actives*/
+    int nb_arme;            /*!< Nombre d'armes que le personnage possède */
     int arme_actuelle;      /*!< Arme dans la main du perso */
     int argent;             /*!< Quantité d'argent du personnage */
     int score;              /*!< Score du joueur */
@@ -209,9 +248,9 @@ struct hud_s                // Création du HUD
 
 struct jeu_s                // Création d'un jeu
 {
-    perso_t perso;          /*!< Personnage */
-    labyrinthe_t lab;       /*!< Labyrinthe */
-    hud_t hud;              /*!< HUD du joueur */
+    perso_t perso;              /*!< Personnage */
+    labyrinthe_t lab;           /*!< Labyrinthe */
+    hud_t hud;                  /*!< HUD du joueur */         
 };
 
 #endif

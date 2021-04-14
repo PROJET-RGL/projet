@@ -33,19 +33,19 @@ SDL_bool load_menu(SDL_Renderer *renderer, SDL_Window *fen, SDL_Texture *menu[7]
 
     nettoyage_ecran(renderer);
 
-    pos_menu[0] = afficher_texture(renderer, fen, menu[0], pos_menu[0], *plein_ecran, 50, 10);
+    pos_menu[0] = afficher_texture(renderer, fen, menu[0], pos_menu[0], *plein_ecran, 50, 10, -1, -1);
 
     if(!en_partie)
-        pos_menu[1] = afficher_texture(renderer, fen, menu[1], pos_menu[1], *plein_ecran, 50, 50);
+        pos_menu[1] = afficher_texture(renderer, fen, menu[1], pos_menu[1], *plein_ecran, 50, 50, -1, -1);
     else
-        pos_menu[1] = afficher_texture(renderer, fen, menu[2], pos_menu[1], *plein_ecran, 50, 50);
+        pos_menu[1] = afficher_texture(renderer, fen, menu[2], pos_menu[1], *plein_ecran, 50, 50, -1, -1);
 
-    pos_menu[3] = afficher_texture(renderer, fen, menu[3], pos_menu[3], *plein_ecran, 50, 70);
+    pos_menu[3] = afficher_texture(renderer, fen, menu[3], pos_menu[3], *plein_ecran, 50, 70, -1, -1);
 
     if(!en_partie)
-        pos_menu[4] = afficher_texture(renderer, fen, menu[4], pos_menu[4], *plein_ecran, 50, 90);
+        pos_menu[4] = afficher_texture(renderer, fen, menu[4], pos_menu[4], *plein_ecran, 50, 90, -1, -1);
     else
-        pos_menu[4] = afficher_texture(renderer, fen, menu[5], pos_menu[4], *plein_ecran, 50, 90);
+        pos_menu[4] = afficher_texture(renderer, fen, menu[5], pos_menu[4], *plein_ecran, 50, 90, -1, -1);
 
     SDL_RenderPresent(renderer);
 
@@ -77,10 +77,10 @@ SDL_bool load_menu(SDL_Renderer *renderer, SDL_Window *fen, SDL_Texture *menu[7]
                                 {
                                     chargement = SDL_TRUE;
                                     nettoyage_ecran(renderer);
-                                    pos_menu[0] = afficher_texture(renderer, fen, menu[0], pos_menu[0], *plein_ecran, 50, 10);
-                                    pos_menu[6] = afficher_texture(renderer, fen, menu[6], pos_menu[6], *plein_ecran, 50, 50);
-                                    pos_menu[7] = afficher_texture(renderer, fen, menu[7], pos_menu[7], *plein_ecran, 50, 70);
-                                    pos_menu[8] = afficher_texture(renderer, fen, menu[8], pos_menu[8], *plein_ecran, 50, 90);
+                                    pos_menu[0] = afficher_texture(renderer, fen, menu[0], pos_menu[0], *plein_ecran, 50, 10, -1, -1);
+                                    pos_menu[6] = afficher_texture(renderer, fen, menu[6], pos_menu[6], *plein_ecran, 50, 50, -1, -1);
+                                    pos_menu[7] = afficher_texture(renderer, fen, menu[7], pos_menu[7], *plein_ecran, 50, 70, -1, -1);
+                                    pos_menu[8] = afficher_texture(renderer, fen, menu[8], pos_menu[8], *plein_ecran, 50, 90, -1, -1);
 
                                     SDL_RenderPresent(renderer);
                                 }
@@ -147,19 +147,19 @@ SDL_bool load_menu(SDL_Renderer *renderer, SDL_Window *fen, SDL_Texture *menu[7]
                 opt = 0;
                 nettoyage_ecran(renderer);
 
-                pos_menu[0] = afficher_texture(renderer, fen, menu[0], pos_menu[0], *plein_ecran, 50, 10);
+                pos_menu[0] = afficher_texture(renderer, fen, menu[0], pos_menu[0], *plein_ecran, 50, 10, -1, -1);
 
                 if(!en_partie)
-                    pos_menu[1] = afficher_texture(renderer, fen, menu[1], pos_menu[1], *plein_ecran, 50, 50);
+                    pos_menu[1] = afficher_texture(renderer, fen, menu[1], pos_menu[1], *plein_ecran, 50, 50, -1, -1);
                 else
-                    pos_menu[1] = afficher_texture(renderer, fen, menu[2], pos_menu[1], *plein_ecran, 50, 50);
+                    pos_menu[1] = afficher_texture(renderer, fen, menu[2], pos_menu[1], *plein_ecran, 50, 50, -1, -1);
 
-                pos_menu[3] = afficher_texture(renderer, fen, menu[3], pos_menu[3], *plein_ecran, 50, 70);
+                pos_menu[3] = afficher_texture(renderer, fen, menu[3], pos_menu[3], *plein_ecran, 50, 70, -1, -1);
 
                 if(!en_partie)
-                    pos_menu[4] = afficher_texture(renderer, fen, menu[4], pos_menu[4], *plein_ecran, 50, 90);
+                    pos_menu[4] = afficher_texture(renderer, fen, menu[4], pos_menu[4], *plein_ecran, 50, 90, -1, -1);
                 else
-                    pos_menu[4] = afficher_texture(renderer, fen, menu[5], pos_menu[4], *plein_ecran, 50, 90);
+                    pos_menu[4] = afficher_texture(renderer, fen, menu[5], pos_menu[4], *plein_ecran, 50, 90, -1, -1);
 
                 SDL_RenderPresent(renderer);
             }
@@ -190,21 +190,21 @@ SDL_bool load_option(SDL_Renderer *renderer, SDL_Window *fen, SDL_Texture *optio
     SDL_bool quitter_jeu = SDL_TRUE;
     int i, pX, choix = 1;
 
-    pos_options[0] = afficher_texture(renderer, fen, options[0], pos_options[0], *plein_ecran, 35, 5);
-    pos_options[1] = afficher_texture(renderer, fen, options[1], pos_options[1], *plein_ecran, 75, 5);
-    pos_options[2] = afficher_texture(renderer, fen, options[2], pos_options[2], *plein_ecran, 5, 5);
-    pos_options[3] = afficher_texture(renderer, fen, options[3], pos_options[3], *plein_ecran, 35, 35);
-    pos_options[4] = afficher_texture(renderer, fen, options[4], pos_options[4], *plein_ecran, 65, 35);
-    pos_options[5] = afficher_texture(renderer, fen, options[5], pos_options[5], *plein_ecran, 33, 55);
-    pos_options[6] = afficher_texture(renderer, fen, options[6], pos_options[6], *plein_ecran, 43, 55);
-    pos_options[7] = afficher_texture(renderer, fen, options[7], pos_options[7], *plein_ecran, 67, 55);
+    pos_options[0] = afficher_texture(renderer, fen, options[0], pos_options[0], *plein_ecran, 35, 5, -1, -1);
+    pos_options[1] = afficher_texture(renderer, fen, options[1], pos_options[1], *plein_ecran, 75, 5, -1, -1);
+    pos_options[2] = afficher_texture(renderer, fen, options[2], pos_options[2], *plein_ecran, 5, 5, -1, -1);
+    pos_options[3] = afficher_texture(renderer, fen, options[3], pos_options[3], *plein_ecran, 35, 35, -1, -1);
+    pos_options[4] = afficher_texture(renderer, fen, options[4], pos_options[4], *plein_ecran, 65, 35, -1, -1);
+    pos_options[5] = afficher_texture(renderer, fen, options[5], pos_options[5], *plein_ecran, 33, 55, -1, -1);
+    pos_options[6] = afficher_texture(renderer, fen, options[6], pos_options[6], *plein_ecran, 43, 55, -1, -1);
+    pos_options[7] = afficher_texture(renderer, fen, options[7], pos_options[7], *plein_ecran, 67, 55, -1, -1);
 
     for(i = 0, pX = 46; i < 100; i += 10, pX += 2)
     {
         if(i < *volume)
-            pos_options[8] = afficher_texture(renderer, fen, options[8], pos_options[8], *plein_ecran, pX, 55); 
+            pos_options[8] = afficher_texture(renderer, fen, options[8], pos_options[8], *plein_ecran, pX, 55, -1, -1); 
         else
-            pos_options[9] = afficher_texture(renderer, fen, options[9], pos_options[9], *plein_ecran, pX, 55);
+            pos_options[9] = afficher_texture(renderer, fen, options[9], pos_options[9], *plein_ecran, pX, 55, -1, -1);
     }
 
     SDL_RenderPresent(renderer);
@@ -327,45 +327,45 @@ void reload_img(SDL_Renderer *renderer, SDL_Window *fen, SDL_Texture *menu[7], S
 
     if(choix != -1)
     {
-        pos_options[0] = afficher_texture(renderer, fen, options[0], pos_options[0], plein_ecran, 35, 5);
-        pos_options[1] = afficher_texture(renderer, fen, options[1], pos_options[1], plein_ecran, 75, 5);
-        pos_options[2] = afficher_texture(renderer, fen, options[2], pos_options[2], plein_ecran, 5, 5);
+        pos_options[0] = afficher_texture(renderer, fen, options[0], pos_options[0], plein_ecran, 35, 5, -1, -1);
+        pos_options[1] = afficher_texture(renderer, fen, options[1], pos_options[1], plein_ecran, 75, 5, -1, -1);
+        pos_options[2] = afficher_texture(renderer, fen, options[2], pos_options[2], plein_ecran, 5, 5, -1, -1);
 
         if(choix == 1)
         {
-            pos_options[3] = afficher_texture(renderer, fen, options[3], pos_options[3], plein_ecran, 35, 35);
-            pos_options[4] = afficher_texture(renderer, fen, options[4], pos_options[4], plein_ecran, 65, 35);
-            pos_options[5] = afficher_texture(renderer, fen, options[5], pos_options[5], plein_ecran, 33, 55);
-            pos_options[6] = afficher_texture(renderer, fen, options[6], pos_options[6], plein_ecran, 43, 55);
-            pos_options[7] = afficher_texture(renderer, fen, options[7], pos_options[7], plein_ecran, 67, 55);
+            pos_options[3] = afficher_texture(renderer, fen, options[3], pos_options[3], plein_ecran, 35, 35, -1, -1);
+            pos_options[4] = afficher_texture(renderer, fen, options[4], pos_options[4], plein_ecran, 65, 35, -1, -1);
+            pos_options[5] = afficher_texture(renderer, fen, options[5], pos_options[5], plein_ecran, 33, 55, -1, -1);
+            pos_options[6] = afficher_texture(renderer, fen, options[6], pos_options[6], plein_ecran, 43, 55, -1, -1);
+            pos_options[7] = afficher_texture(renderer, fen, options[7], pos_options[7], plein_ecran, 67, 55, -1, -1);
 
             for(i = 0, pX = 46; i < 100; i += 10, pX += 2)
             {
                 if(i < *volume)
-                    pos_options[8] = afficher_texture(renderer, fen, options[8], pos_options[8], plein_ecran, pX, 55); 
+                    pos_options[8] = afficher_texture(renderer, fen, options[8], pos_options[8], plein_ecran, pX, 55, -1, -1); 
                 else
-                    pos_options[9] = afficher_texture(renderer, fen, options[9], pos_options[9], plein_ecran, pX, 55);
+                    pos_options[9] = afficher_texture(renderer, fen, options[9], pos_options[9], plein_ecran, pX, 55, -1, -1);
             }
         }
 
         if(choix == 2)
         {
-            afficher_texture(renderer, fen, commandes[0], pos_commandes[0], plein_ecran, 35, 30);
-            afficher_texture(renderer, fen, commandes[1], pos_commandes[1], plein_ecran, 35, 40);
-            afficher_texture(renderer, fen, commandes[2], pos_commandes[2], plein_ecran, 35, 50);
-            afficher_texture(renderer, fen, commandes[3], pos_commandes[3], plein_ecran, 35, 60);
-            afficher_texture(renderer, fen, commandes[4], pos_commandes[4], plein_ecran, 65, 30);
-            afficher_texture(renderer, fen, commandes[5], pos_commandes[5], plein_ecran, 65, 40);
-            afficher_texture(renderer, fen, commandes[6], pos_commandes[6], plein_ecran, 65, 50);
-            afficher_texture(renderer, fen, commandes[7], pos_commandes[7], plein_ecran, 65, 60);
+            afficher_texture(renderer, fen, commandes[0], pos_commandes[0], plein_ecran, 35, 30, -1, -1);
+            afficher_texture(renderer, fen, commandes[1], pos_commandes[1], plein_ecran, 35, 40, -1, -1);
+            afficher_texture(renderer, fen, commandes[2], pos_commandes[2], plein_ecran, 35, 50, -1, -1);
+            afficher_texture(renderer, fen, commandes[3], pos_commandes[3], plein_ecran, 35, 60, -1, -1);
+            afficher_texture(renderer, fen, commandes[4], pos_commandes[4], plein_ecran, 65, 30, -1, -1);
+            afficher_texture(renderer, fen, commandes[5], pos_commandes[5], plein_ecran, 65, 40, -1, -1);
+            afficher_texture(renderer, fen, commandes[6], pos_commandes[6], plein_ecran, 65, 50, -1, -1);
+            afficher_texture(renderer, fen, commandes[7], pos_commandes[7], plein_ecran, 65, 60, -1, -1);
         }
     }
     else
     {
-        pos_menu[0] = afficher_texture(renderer, fen, menu[0], pos_menu[0], plein_ecran, 50, 10);
-        pos_menu[1] = afficher_texture(renderer, fen, menu[1], pos_menu[1], plein_ecran, 50, 50);
-        pos_menu[3] = afficher_texture(renderer, fen, menu[3], pos_menu[3], plein_ecran, 50, 70);
-        pos_menu[4] = afficher_texture(renderer, fen, menu[4], pos_menu[4], plein_ecran, 50, 90);
+        pos_menu[0] = afficher_texture(renderer, fen, menu[0], pos_menu[0], plein_ecran, 50, 10, -1, -1);
+        pos_menu[1] = afficher_texture(renderer, fen, menu[1], pos_menu[1], plein_ecran, 50, 50, -1, -1);
+        pos_menu[3] = afficher_texture(renderer, fen, menu[3], pos_menu[3], plein_ecran, 50, 70, -1, -1);
+        pos_menu[4] = afficher_texture(renderer, fen, menu[4], pos_menu[4], plein_ecran, 50, 90, -1, -1);
     }
 
     SDL_RenderPresent(renderer);

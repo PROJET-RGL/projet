@@ -25,7 +25,7 @@
 
     int perso_salle = 1, passage;
 
-    SDL_Texture *textures_menu[9], *textures_options[10], *textures_commandes[8], *pause, *mort, *gagner;
+    SDL_Texture *textures_menu[9], *textures_options[10], *textures_commandes[8], *textures_items[10], *pause, *mort, *gagner;
 
 /**
  * \brief Fonction main du programme
@@ -47,6 +47,7 @@ SDL_bool program_launched, jeu_launched, plein_ecran = SDL_FALSE, en_partie = SD
 
 int main(int argc, char **argv)
 {
+    
     int volume = 30, bruitage = volume/4, presserQ = SDL_FALSE, presserD = SDL_FALSE, presserS = SDL_FALSE, presserZ = SDL_FALSE;
     int i = 0, j = 0;
 
@@ -82,6 +83,10 @@ int main(int argc, char **argv)
     charger_textures_menu(renderer, fen, en_partie, textures_menu);
     charger_textures_options(renderer, fen, textures_options);
     charger_textures_commandes(renderer, fen, textures_commandes);
+    charger_textures_items(renderer, fen, textures_items);
+    jeu.perso.inv.texture_case = init_texture(renderer, fen, "../src/img/case_inventaire.bmp");
+    jeu.perso.inv.texture_inventaire = init_texture(renderer, fen, "../src/img/inventaire.bmp");
+    jeu.perso.inv.texture_inventaire_armes = init_texture(renderer, fen, "../src/img/inventaire_armes.bmp");
     pause = init_texture(renderer, fen, "../src/img/pause.bmp");
     mort = init_texture(renderer, fen, "../src/img/mort.bmp");
     gagner = init_texture(renderer, fen, "../src/img/gagner.bmp");
@@ -153,7 +158,7 @@ int main(int argc, char **argv)
             if((charge != 1 || (jeu.lab.tab_salle[TAILLE_LAB-1].nb_mob_mort == 5)) && (premiere_partie == SDL_TRUE))
             {
                 jeu.lab = init_lab(jeu.lab, fen, renderer, fenetre, TAILLE_LAB);
-                jeu.perso = init_perso(jeu.perso);
+                jeu.perso = init_perso(&jeu);
                 jeu.perso.tag = 0;
                 premiere_partie = SDL_FALSE;
                 presserQ = SDL_FALSE, presserD = SDL_FALSE, presserS = SDL_FALSE, presserZ = SDL_FALSE;
@@ -324,7 +329,7 @@ int main(int argc, char **argv)
                                     break;
 
                                 case SDLK_p:
-                                    afficher_texture(renderer, fen, pause, pos_pause, plein_ecran, 50, 50);
+                                    afficher_texture(renderer, fen, pause, pos_pause, plein_ecran, 50, 50, -1, -1);
                                     SDL_RenderPresent(renderer);
                                     Mix_PauseMusic();
                                     est_pause = SDL_TRUE;
@@ -341,7 +346,12 @@ int main(int argc, char **argv)
                                                         case SDLK_ESCAPE:
                                                             est_pause = SDL_FALSE;
                                                             break;
+                                                        default:
+                                                            break;
                                                     }
+
+                                                default:
+                                                    break;
 
                                             }
                                         }
@@ -357,11 +367,25 @@ int main(int argc, char **argv)
 
                                     Mix_ResumeMusic();
 
-                                    actualisation_salle(jeu, renderer, fenetre);
+                                    actualisation_salle(&jeu, renderer, fenetre);
                                     break;
 
+                                case SDLK_i:
+                                    ouvrir_inventaire(renderer, fen, &jeu, plein_ecran);
+
+                                    event.key.keysym.sym = 0;
+                                    jeu.perso.velocite.x = 0;
+                                    jeu.perso.velocite.y = 0;
+
+                                    presserZ = SDL_FALSE;
+                                    presserQ = SDL_FALSE;
+                                    presserS = SDL_FALSE;
+                                    presserD = SDL_FALSE;
+                                    break;
+                                
                                 default :
                                     break;
+                                
                             }
                             break;
 
@@ -492,7 +516,6 @@ int main(int argc, char **argv)
                         default:
                             break;
                     }
-
                     if(SDL_GetTicks() - cliqueGauche[0] > (jeu.perso.tab_arme[0].cooldown*100))
                     {
                         cooldown_gauche[0] = SDL_FALSE;
@@ -515,7 +538,7 @@ int main(int argc, char **argv)
 
                     int i = 0;
 
-                    jeu.perso = actualisation_salle(jeu, renderer, fenetre);
+                    jeu = actualisation_salle(&jeu, renderer, fenetre);
                     affichage_hud(renderer, &jeu);
                     SDL_RenderPresent(renderer);
 
@@ -576,7 +599,7 @@ int main(int argc, char **argv)
                     if(jeu.lab.tab_salle[TAILLE_LAB - 1].nb_mob_mort == 5)
                     {
                         nettoyage_ecran(renderer);
-                        afficher_texture(renderer, fen, gagner, pos_gagner, plein_ecran, 50, 50);
+                        afficher_texture(renderer, fen, gagner, pos_gagner, plein_ecran, 50, 50, -1, -1);
                         SDL_RenderPresent(renderer);
                         temps_gagner = SDL_GetTicks();
                         while(SDL_GetTicks() - temps_gagner <= 3000);
@@ -587,7 +610,7 @@ int main(int argc, char **argv)
                     if(jeu.perso.pv <= 0)
                     {
                         nettoyage_ecran(renderer);
-                        afficher_texture(renderer, fen, mort, pos_mort, plein_ecran, 50, 50);
+                        afficher_texture(renderer, fen, mort, pos_mort, plein_ecran, 50, 50, -1, -1);
                         SDL_RenderPresent(renderer);
                         temps_mort = SDL_GetTicks();
                         while(SDL_GetTicks() - temps_mort <= 3000);

@@ -1,67 +1,48 @@
+LINUX = no
 CC = gcc
 CFLAGS = -Wall
+EXEC = ../bin/RGL
+#SRC = $(wildcard *.c)
+#OBJ = $(SRC:.c=.o)
+OBJDIR = objet/
 
-#Linux-----------start
-#SDL = -lm `sdl2-config --libs`
-#LDFLAGS = $(SDL) -lSDL2 -lSDL2_mixer
-#Linux-----------end
+ifeq ($(LINUX), no)
 
-#Windows-----------start
 INCLUDES = -I ../include
 LIBS = -L ../lib -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer
-#Windows-----------end
-OBJDIR = ./objet
-EXEC = ../bin/RGL
+
+else
+
+SDL = -lm `sdl2-config --libs`
+LDFLAGS = $(SDL) -lSDL2 -lSDL2_mixer
+
+endif
 
 all: $(EXEC)
 
-#Windows-----------start
-../bin/RGL: ./objet/main.o ./objet/hud.o ./objet/sound.o ./objet/texture.o ./objet/salle.o ./objet/fonction_admin.o ./objet/perso.o ./objet/objet.o ./objet/porte.o ./objet/labyrinthe.o ./objet/actualisation.o ./objet/mob.o ./objet/menu.o ./objet/sauvegarde.o ./objet/combat.o ./objet/arme.o
+ifeq ($(LINUX), no)
+
+../bin/RGL: $(OBJDIR)main.o $(OBJDIR)hud.o $(OBJDIR)sound.o $(OBJDIR)texture.o $(OBJDIR)salle.o $(OBJDIR)fonction_admin.o $(OBJDIR)perso.o $(OBJDIR)objet.o $(OBJDIR)porte.o $(OBJDIR)labyrinthe.o $(OBJDIR)actualisation.o $(OBJDIR)mob.o $(OBJDIR)menu.o $(OBJDIR)sauvegarde.o $(OBJDIR)combat.o $(OBJDIR)item.o
 	$(CC) -fstack-protector -g -o $@ $^ $(INCLUDES) $(LIBS)
-#Windows-----------end
 
-#Linux-----------start
-#../bin/RGL: main.o salle.o fonction_admin.o perso.o objet.o porte.o labyrinthe.o actualisation.o mob.o menu.o sauvegarde.o combat.o arme.o
-#	$(CC) -o $@ $^ $(LDFLAGS)
-#Linux-----------end
-
-#Pas nécessaire
-main.o: labyrinthe.h perso.h mob.h actualisation.h fonction_admin.h menu.h porte.h sauvegarde.h combat.h hud.h sound.h super.h
-salle.o: salle.h fonction_admin.h super.h							# DOXYGEN ACTUALISER
-sound.o: sound.h fonction_admin.h super.h							# DOXYEGN FAIT
-hud.o: hud.h fonction_admin.h super.h								# DOXYGEN FAIT
-fonction_admin.o: fonction_admin.h super.h							# DOXYGEN FAIT
-texture.o: texture.h fonction_admin.h super.h						# DOXYGEN FAIT
-perso.o: perso.h fonction_admin.h salle.h arme.h super.h			# DOXYGEN FAIT
-objet.o: objet.h fonction_admin.h super.h							# DOXYGEN ACTUALISER
-porte.o: porte.h super.h											# DOXYGEN FAIT
-labyrinthe.o: labyrinthe.h salle.h super.h							# DOCYGEN FAIT
-actualisation.o: actualisation.h fonction_admin.h salle.h super.h	# DOXYGEN FAIT
-mob.o: mob.h fonction_admin.h super.h								# DOXYGEN ACTUALISER
-menu.o: menu.h fonction_admin.h sauvegarde.h texture.h super.h      # DOXYGEN ACTUALISER
-sauvegarde.o: sauvegarde.h super.h									# DOXYGEN FAIT
-combat.o: combat.h super.h											# DOXYGEN FAIT
-arme.o: arme.h super.h												# DOXYGEN FAITvalg
-
-#Windows-----------start
 $(OBJDIR)%.o: %.c
 	$(CC) -g -o $@ -c $< $(CFLAGS) $(INCLUDES) $(LIBS)
-#Windows-----------end
 
-#Linux-----------start
-#%.o: %.c
-#	$(CC) -o $@ -c $< $(LDFLAGS)
-#Linux-----------end
-
-#Windows-----------start
 clean:
-	del -rf ./objet
-#Windows-----------end
+	del .\objet\*.o
 
-#Linux-----------start
-#clean: 
-#	rm -rf *.o
-#Linux-----------end
+else
+
+../bin/RGL: $(OBJDIR)main.o $(OBJDIR)hud.o $(OBJDIR)sound.o $(OBJDIR)texture.o $(OBJDIR)salle.o $(OBJDIR)fonction_admin.o $(OBJDIR)perso.o $(OBJDIR)objet.o $(OBJDIR)porte.o $(OBJDIR)labyrinthe.o $(OBJDIR)actualisation.o $(OBJDIR)mob.o $(OBJDIR)menu.o $(OBJDIR)sauvegarde.o $(OBJDIR)combat.o $(OBJDIR)arme.o
+	$(CC) -o $@ $^ $(LDFLAGS)
+
+%.o: %.c
+	$(CC) -o $@ -c $< $(LDFLAGS)
+
+clean:
+	@rm -rf *.o
+
+endif
 
 #####
 #       %.o : %.c     règle générique pour construire un .o à partir d'un .c
@@ -76,8 +57,6 @@ clean:
 #
 #       $*      Le nom du fichier sans suffixe
 #####
-
-	
 
 
 

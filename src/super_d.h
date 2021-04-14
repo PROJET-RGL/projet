@@ -45,11 +45,12 @@
 
 // DEBUG
 
-#define DEBUG TRUE
+#define DEBUG FALSE
 #define DEBUG_MODE if(DEBUG)
 
 // Difficulty
 
 #define DIFFICULTY 'P'
+#define VITESSE_MOB 2
 
 #endif
