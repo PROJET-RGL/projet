@@ -65,7 +65,7 @@ jeu_t init_texture_hud(jeu_t *jeu)
  * @param jeu       C'est la structure contenant toute les données de la partie en question
  */
 
-void affichage_hud(SDL_Renderer *renderer, jeu_t *jeu)
+void affichage_hud(SDL_Renderer *renderer, jeu_t *jeu, SDL_Window *fen)
 {
     SDL_Texture *texture = NULL;
 
@@ -99,6 +99,10 @@ void affichage_hud(SDL_Renderer *renderer, jeu_t *jeu)
     }
     SDL_DestroyTexture(texture);
 
+    afficher_texture(renderer, fen, jeu->hud.arme_dist, jeu->hud.item_dist, 0, -1, -1, jeu->hud.item_dist.x, jeu->hud.item_dist.y);
+
+    afficher_texture(renderer, fen, jeu->hud.arme_cac, jeu->hud.item_cac, 0, -1, -1, jeu->hud.item_cac.x, jeu->hud.item_cac.y);
+
     if((*jeu).perso.arme_actuelle == 0)
     {
         SDL_SetRenderDrawColor(renderer, 255, 0, 0, SDL_ALPHA_OPAQUE);
@@ -116,7 +120,18 @@ void ouvrir_inventaire(SDL_Renderer *renderer, SDL_Window *fen, jeu_t *jeu, SDL_
     SDL_bool dans_inventaire = SDL_TRUE;
     int k = 0, num_case = 0, i = 0;
 
-    (*jeu).perso.inv.cases[0].item_actuel = 10;
+    // (*jeu).perso.inv.cases[0].item_actuel = 10;
+
+    /*for(i = 0; i<9; i++)
+    {
+        if((*jeu).perso.inv.cases[i].est_vide == SDL_FAUX)
+        {
+            if((*jeu).perso.inv.cases[i].tag == (*jeu).perso.inv.loot.potion[10].tag)
+            {
+                // AFFICHAGE TEXTURE DE LA POTION
+            }
+        }
+    }*/
 
     afficher_texture(renderer, fen, (*jeu).perso.inv.texture_inventaire, (*jeu).perso.inv.pos_inventaire, plein_ecran, 50, 20, -1, -1);
 
@@ -163,14 +178,14 @@ void ouvrir_inventaire(SDL_Renderer *renderer, SDL_Window *fen, jeu_t *jeu, SDL_
                     {
                         for(i = 0; i<9; i++)
                         {
-                            if(num_case == (*jeu).perso.inv.cases[i].item_actuel)
+                            /*if(num_case == (*jeu).perso.inv.cases[i].item_actuel)
                             {
                                 if((*jeu).perso.inv.loot.potion[0].nb_potion > 0 && (*jeu).perso.pv != 10)
                                 {
                                     (*jeu).perso.inv.loot.potion[0].nb_potion--;
                                     (*jeu).perso.pv = 10;
                                 }
-                            }
+                            }*/
                         }
                     }
                     break;

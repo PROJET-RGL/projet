@@ -62,15 +62,21 @@ SDL_Rect afficher_texture(SDL_Renderer *renderer, SDL_Window *fen, SDL_Texture *
         SDL_ExitWithError("Impossible d'afficher la texture");
     }
 
-    if(!plein_ecran)
+    if(!plein_ecran && pourcentX != -1)
     {
         rect.x = ((FEN_LARGEUR - rect.w)*pourcentX)/100;
         rect.y = ((FEN_HAUTEUR - rect.h)*pourcentY)/100;
     }
-    else
+    if(plein_ecran && pourcentX != -1)
     {
         rect.x = ((1920 - rect.w)*pourcentX)/100;
         rect.y = ((1080 - rect.h)*pourcentY)/100;
+    }
+
+    if(!plein_ecran && pourcentX == -1)
+    {
+        rect.x = posX;
+        rect.y = posY;
     }
     
     if(SDL_RenderCopy(renderer, texture, NULL, &rect) != 0){

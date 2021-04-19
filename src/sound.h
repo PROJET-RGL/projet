@@ -1,7 +1,6 @@
 #ifndef sound_H
 #define sound_H
 
-#include "super.h"
 #include "fonction_admin.h"
 
 Mix_Chunk *init_sound_chunk(Mix_Chunk *chunk, char *src);

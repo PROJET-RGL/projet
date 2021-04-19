@@ -24,8 +24,8 @@
 
 // Personnage Dimension
 
-#define PERSO_LARGEUR 90
-#define PERSO_HAUTEUR 90
+#define PERSO_LARGEUR 55
+#define PERSO_HAUTEUR 79
 
 // Stat globale
 
@@ -50,7 +50,7 @@
 
 // Difficulty
 
-#define DIFFICULTY 'P'
+#define DIFFICULTY 'G'
 #define VITESSE_MOB 2
 
 #endif

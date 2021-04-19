@@ -48,6 +48,7 @@ perso_t init_perso(jeu_t *jeu)
     (*jeu).perso.tab_arme[0] = new_arme(jeu, 0, "Pistolet", "le pistolet de base", 400, 5, 5, 10000, 0, 'D', 0, (*jeu).perso.inv.cases[9].pos_case);
     (*jeu).perso.tab_arme[1] = new_arme(jeu, 1, "Épée", "l'épée de base", 200, 6, 1, 0, 10000, 'C', 0, (*jeu).perso.inv.cases[10].pos_case);
     (*jeu).perso.inv.loot.potion[0] = new_potion(jeu, "Heal", 5, (*jeu).perso.inv.cases[0].pos_case, 10);
+    // (*jeu).perso.inv.cases[0].est_vide = SDL_FAUX;
     (*jeu).perso.inv.loot.potion[0].nb_potion = 3;
 
     // Arme actuelle = tag arme

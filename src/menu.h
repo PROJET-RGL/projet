@@ -1,7 +1,6 @@
 #ifndef menu_H
 #define menu_H
 
-#include "super.h"
 #include "fonction_admin.h"
 #include "sauvegarde.h"
 #include "texture.h"

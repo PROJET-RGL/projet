@@ -17,7 +17,7 @@
  * @return perso_t - Actualisation du personnage
  */
 
-jeu_t actualisation_salle(jeu_t *jeu, SDL_Renderer *renderer, SDL_Rect fenetre)
+jeu_t actualisation_salle(jeu_t *jeu, SDL_Renderer *renderer, SDL_Rect fenetre, SDL_Window *fen)
 {
     nettoyage_ecran(renderer);
 
@@ -91,23 +91,33 @@ jeu_t actualisation_salle(jeu_t *jeu, SDL_Renderer *renderer, SDL_Rect fenetre)
 
     // Actualisation du personnage
 
-    if(affichage(renderer, (*jeu).perso.perso, 255, 20, 20) != 1)
+    if(jeu->perso.arme_actuelle == 0)
     {
-        SDL_ExitWithError("Affichage perso raté");
+        afficher_texture(renderer, fen, jeu->perso.textures_perso[0], jeu->perso.perso, 0, -1, -1, jeu->perso.perso.x, jeu->perso.perso.y);
     }
+
+
+    if(jeu->perso.arme_actuelle == 1)
+    {
+        afficher_texture(renderer, fen, jeu->perso.textures_perso[1], jeu->perso.perso, 0, -1, -1, jeu->perso.perso.x, jeu->perso.perso.y);
+    }
+
 
     // Affichage des portes
 
-    if(affichage(renderer, (*jeu).lab.tab_salle[(*jeu).perso.tag].porte[0].porte, 67, 79, 226) != 1)
+    DEBUG_MODE
     {
-        SDL_ExitWithError("Affichage porte raté");
-    }
-
-    if((*jeu).perso.tag != 0)
-    {
-        if(affichage(renderer, (*jeu).lab.tab_salle[(*jeu).perso.tag].porte[1].porte, 67, 79, 226) != 1)
+        if(affichage(renderer, (*jeu).lab.tab_salle[(*jeu).perso.tag].porte[0].porte, 67, 79, 226) != 1)
         {
             SDL_ExitWithError("Affichage porte raté");
+        }
+
+        if((*jeu).perso.tag != 0)
+        {
+            if(affichage(renderer, (*jeu).lab.tab_salle[(*jeu).perso.tag].porte[1].porte, 67, 79, 226) != 1)
+            {
+                SDL_ExitWithError("Affichage porte raté");
+            }
         }
     }
 

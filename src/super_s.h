@@ -87,6 +87,7 @@ struct potion_s
     int cooldown;
     SDL_Rect potion;
     int nb_potion;
+    int tag;
 };
 
 struct consommable_s
@@ -135,7 +136,7 @@ struct cases_s
 {
     SDL_Rect pos_case;    /*!< Coordonnées de la case dans l'inventaire */
     SDL_bool est_vide;    /*!< Indique si la case est vide */
-    int item_actuel;
+    int tag;
 };
 
 struct inventaire_s
@@ -154,18 +155,19 @@ struct inventaire_s
  * 
  */
 
-struct perso_s              // Création d'un personnage
+struct perso_s                      // Création d'un personnage
 {
-    int tag;                /*!< Emplacement du personnage */
-    SDL_Rect perso;         /*!< Coordonnées du personnage */
-    int pv;                 /*!< Le nombre de vie restant du perosnnage */
-    velocite_t velocite;    /*!< Vitesse relative du personnage */
-    inventaire_t inv;       /*!< Inventaire */
-    arme_t tab_arme[2];     /*!< Tableau d'armes actives*/
-    int nb_arme;            /*!< Nombre d'armes que le personnage possède */
-    int arme_actuelle;      /*!< Arme dans la main du perso */
-    int argent;             /*!< Quantité d'argent du personnage */
-    int score;              /*!< Score du joueur */
+    int tag;                        /*!< Emplacement du personnage */
+    SDL_Texture *textures_perso[2];
+    SDL_Rect perso;                 /*!< Coordonnées du personnage */
+    int pv;                         /*!< Le nombre de vie restant du perosnnage */
+    velocite_t velocite;            /*!< Vitesse relative du personnage */
+    inventaire_t inv;               /*!< Inventaire */
+    arme_t tab_arme[2];             /*!< Tableau d'armes actives*/
+    int nb_arme;                    /*!< Nombre d'armes que le personnage possède */
+    int arme_actuelle;              /*!< Arme dans la main du perso */
+    int argent;                     /*!< Quantité d'argent du personnage */
+    int score;                      /*!< Score du joueur */
 };
 
 /**
@@ -236,9 +238,9 @@ struct hud_s                // Création du HUD
     SDL_Rect barre_pv;      /*!< Coordonnées de la barre de vie */
     SDL_Surface *img_pv[10];   /*!< Série de 10 image pour la barre de vie */
     SDL_Rect item_dist;     /*!< Coordonnées item Dist */
-    SDL_Surface *arme_dist; /*!< Image à charger pour l'arme à distance icone */
+    SDL_Texture *arme_dist; /*!< Image à charger pour l'arme à distance icone */
     SDL_Rect item_cac;      /*!< Coordonnées item CaC  */
-    SDL_Surface *arme_cac; /*!< Image à charger pour l'arme à cac icone */
+    SDL_Texture *arme_cac; /*!< Image à charger pour l'arme à cac icone */
 };
 
 /**

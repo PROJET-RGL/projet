@@ -1,4 +1,3 @@
-#include "super.h"
 #include "sound.h"
 #include "labyrinthe.h"
 #include "perso.h"
@@ -25,7 +24,7 @@
 
     int perso_salle = 1, passage;
 
-    SDL_Texture *textures_menu[9], *textures_options[10], *textures_commandes[8], *textures_items[10], *pause, *mort, *gagner;
+    SDL_Texture *textures_menu[9], *textures_options[10], *textures_commandes[8], *textures_items[10], *textures_perso[2], *pause, *mort, *gagner;
 
 /**
  * \brief Fonction main du programme
@@ -90,6 +89,10 @@ int main(int argc, char **argv)
     pause = init_texture(renderer, fen, "../src/img/pause.bmp");
     mort = init_texture(renderer, fen, "../src/img/mort.bmp");
     gagner = init_texture(renderer, fen, "../src/img/gagner.bmp");
+    jeu.perso.textures_perso[0] = init_texture(renderer, fen, "../src/img/perso_arme.bmp");
+    jeu.perso.textures_perso[1] = init_texture(renderer, fen, "../src/img/perso_sabre.bmp");
+    jeu.hud.arme_dist = init_texture(renderer, fen, "../src/img/arme.bmp");
+    jeu.hud.arme_cac = init_texture(renderer, fen, "../src/img/sabre.bmp");
 
 
     // ------------------------------------------- Rectangle de la fenetre ------------------------------------------- //
@@ -224,7 +227,7 @@ int main(int argc, char **argv)
 
                 // HUD
 
-                affichage_hud(renderer, &jeu);
+                affichage_hud(renderer, &jeu, fen);
 
                 // Destruction variable
 
@@ -367,7 +370,7 @@ int main(int argc, char **argv)
 
                                     Mix_ResumeMusic();
 
-                                    actualisation_salle(&jeu, renderer, fenetre);
+                                    actualisation_salle(&jeu, renderer, fenetre, fen);
                                     break;
 
                                 case SDLK_i:
@@ -538,8 +541,8 @@ int main(int argc, char **argv)
 
                     int i = 0;
 
-                    jeu = actualisation_salle(&jeu, renderer, fenetre);
-                    affichage_hud(renderer, &jeu);
+                    jeu = actualisation_salle(&jeu, renderer, fenetre, fen);
+                    affichage_hud(renderer, &jeu, fen);
                     SDL_RenderPresent(renderer);
 
                     if(SDL_GetTicks() - mob_cooldown >= 1000)
