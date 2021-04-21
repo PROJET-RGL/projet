@@ -70,17 +70,25 @@ $(function() {
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="super_8h.html">super.h</a>&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="fonction__admin_8h.html">fonction_admin.h</a>&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<a class="code" href="structjeu__s.html">jeu_t</a> <a class="code" href="hud_8h.html#afde1b5d4dcf0b1059bd34d2de9480cf5">init_hud</a>(<a class="code" href="structjeu__s.html">jeu_t</a> *jeu);</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">void</span> <a class="code" href="hud_8h.html#af1d403c54c2319f1e0afde912dc7eece">affichage_hud</a>(SDL_Renderer *renderer, <a class="code" href="structjeu__s.html">jeu_t</a> *jeu);</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="texture_8h.html">texture.h</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<a class="code" href="structjeu__s.html">jeu_t</a> <a class="code" href="hud_8h.html#afde1b5d4dcf0b1059bd34d2de9480cf5">init_hud</a>(<a class="code" href="structjeu__s.html">jeu_t</a> *jeu);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<a class="code" href="structjeu__s.html">jeu_t</a> init_texture_hud(<a class="code" href="structjeu__s.html">jeu_t</a> *jeu);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">void</span> <a class="code" href="hud_8h.html#a44968c76633f495b82d34771db8229e2">affichage_hud</a>(SDL_Renderer *renderer, <a class="code" href="structjeu__s.html">jeu_t</a> *jeu, SDL_Window *fen);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">void</span> ouvrir_inventaire(SDL_Renderer *renderer, SDL_Window *fen, <a class="code" href="structjeu__s.html">jeu_t</a> *jeu, SDL_bool plein_ecran);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">int</span> position_inventaire(<a class="code" href="structjeu__s.html">jeu_t</a> *jeu, SDL_Event event);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="afonction__admin_8h_html"><div class="ttname"><a href="fonction__admin_8h.html">fonction_admin.h</a></div><div class="ttdoc">Gestion des fenêtres.</div></div>
+<div class="ttc" id="ahud_8h_html_a44968c76633f495b82d34771db8229e2"><div class="ttname"><a href="hud_8h.html#a44968c76633f495b82d34771db8229e2">affichage_hud</a></div><div class="ttdeci">void affichage_hud(SDL_Renderer *renderer, jeu_t *jeu, SDL_Window *fen)</div><div class="ttdoc">Sert à afficher l'interface utilisateur, sur le rendu en paramètre.</div><div class="ttdef"><b>Definition:</b> hud.c:68</div></div>
 <div class="ttc" id="ahud_8h_html_afde1b5d4dcf0b1059bd34d2de9480cf5"><div class="ttname"><a href="hud_8h.html#afde1b5d4dcf0b1059bd34d2de9480cf5">init_hud</a></div><div class="ttdeci">jeu_t init_hud(jeu_t *jeu)</div><div class="ttdoc">Initialisation des coordonnées du HUD avec la barre de vie et les items selectionner.</div><div class="ttdef"><b>Definition:</b> hud.c:18</div></div>
-<div class="ttc" id="ahud_8h_html_af1d403c54c2319f1e0afde912dc7eece"><div class="ttname"><a href="hud_8h.html#af1d403c54c2319f1e0afde912dc7eece">affichage_hud</a></div><div class="ttdeci">void affichage_hud(SDL_Renderer *renderer, jeu_t *jeu)</div><div class="ttdoc">Sert à afficher l'interface utilisateur, sur le rendu en paramètre.</div><div class="ttdef"><b>Definition:</b> hud.c:53</div></div>
-<div class="ttc" id="astructjeu__s_html"><div class="ttname"><a href="structjeu__s.html">jeu_s</a></div><div class="ttdoc">Structure de données de jeu, comprennant la structure personnage, et labyrinthe, cette structure sert...</div><div class="ttdef"><b>Definition:</b> super_s.h:205</div></div>
+<div class="ttc" id="atexture_8h_html"><div class="ttname"><a href="texture_8h.html">texture.h</a></div><div class="ttdoc">Header des fonctions agissant sur les textures du programmes.</div></div>
+<div class="ttc" id="astructjeu__s_html"><div class="ttname"><a href="structjeu__s.html">jeu_s</a></div><div class="ttdoc">Structure de données de jeu, comprennant la structure personnage, et labyrinthe, cette structure sert...</div><div class="ttdef"><b>Definition:</b> super_s.h:251</div></div>
 <div class="ttc" id="asuper_8h_html"><div class="ttname"><a href="super_8h.html">super.h</a></div><div class="ttdoc">Header principale du programmes.</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

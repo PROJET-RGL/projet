@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Projet RGL:  Fichier source de actualisation.h</title>
+<title>Projet RGL:  Fichier source de item.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,29 +62,26 @@ $(function() {
 
 <div class="header">
   <div class="headertitle">
-<div class="title">actualisation.h</div>  </div>
+<div class="title">item.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="actualisation_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef actualisation_H</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define actualisation_H</span></div>
+<a href="item_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef item_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define item_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="super_8h.html">super.h</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="fonction__admin_8h.html">fonction_admin.h</a>&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="salle_8h.html">salle.h</a>&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mob_8h.html">mob.h</a>&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="texture_8h.html">texture.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<a class="code" href="structpotion__s.html">potion_t</a> <a class="code" href="item_8h.html#a5aa5a2a90f1aa26259021a338203df73">new_potion</a>(<a class="code" href="structjeu__s.html">jeu_t</a> *jeu, <span class="keywordtype">char</span> *nom, <span class="keywordtype">int</span> cooldown, SDL_Rect potion, <span class="keywordtype">int</span> i);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<a class="code" href="structarme__s.html">arme_t</a> <a class="code" href="item_8h.html#a62c0546443d3dad6a4d6df112e5f483c">new_arme</a>(<a class="code" href="structjeu__s.html">jeu_t</a> *jeu, <span class="keywordtype">int</span> tag, <span class="keywordtype">char</span> *nom, <span class="keywordtype">char</span> *desc, <span class="keywordtype">int</span> rayon, <span class="keywordtype">int</span> dmg, <span class="keywordtype">int</span> cooldown, <span class="keywordtype">int</span> munition, <span class="keywordtype">int</span> durabilite, <span class="keywordtype">int</span> type, <span class="keywordtype">int</span> rarete, SDL_Rect potion);</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<a class="code" href="structjeu__s.html">jeu_t</a> <a class="code" href="actualisation_8h.html#a80e20ab17d76b2e292ee58ef4448cca3">actualisation_salle</a>(<a class="code" href="structjeu__s.html">jeu_t</a> *jeu, SDL_Renderer *renderer, SDL_Rect fenetre, SDL_Window *fen);</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="afonction__admin_8h_html"><div class="ttname"><a href="fonction__admin_8h.html">fonction_admin.h</a></div><div class="ttdoc">Gestion des fenêtres.</div></div>
-<div class="ttc" id="asalle_8h_html"><div class="ttname"><a href="salle_8h.html">salle.h</a></div><div class="ttdoc">Fichier qui influe sur les salles du programme.</div></div>
-<div class="ttc" id="aactualisation_8h_html_a80e20ab17d76b2e292ee58ef4448cca3"><div class="ttname"><a href="actualisation_8h.html#a80e20ab17d76b2e292ee58ef4448cca3">actualisation_salle</a></div><div class="ttdeci">jeu_t actualisation_salle(jeu_t *jeu, SDL_Renderer *renderer, SDL_Rect fenetre, SDL_Window *fen)</div><div class="ttdoc">Gestion de l'actualisation d'une salle, de l'apparence de la texture.</div><div class="ttdef"><b>Definition:</b> actualisation.c:20</div></div>
-<div class="ttc" id="atexture_8h_html"><div class="ttname"><a href="texture_8h.html">texture.h</a></div><div class="ttdoc">Header des fonctions agissant sur les textures du programmes.</div></div>
-<div class="ttc" id="amob_8h_html"><div class="ttname"><a href="mob_8h.html">mob.h</a></div><div class="ttdoc">Fichier contenant les fonctions agissant sur les mobs du programme.</div></div>
+<div class="ttc" id="astructarme__s_html"><div class="ttname"><a href="structarme__s.html">arme_s</a></div><div class="ttdoc">Stucture de la configuration d'une arme, possédant un tag, ainsi qu'un nom et une description....</div><div class="ttdef"><b>Definition:</b> super_s.h:70</div></div>
+<div class="ttc" id="astructpotion__s_html"><div class="ttname"><a href="structpotion__s.html">potion_s</a></div><div class="ttdef"><b>Definition:</b> super_s.h:84</div></div>
 <div class="ttc" id="astructjeu__s_html"><div class="ttname"><a href="structjeu__s.html">jeu_s</a></div><div class="ttdoc">Structure de données de jeu, comprennant la structure personnage, et labyrinthe, cette structure sert...</div><div class="ttdef"><b>Definition:</b> super_s.h:251</div></div>
 <div class="ttc" id="asuper_8h_html"><div class="ttname"><a href="super_8h.html">super.h</a></div><div class="ttdoc">Header principale du programmes.</div></div>
+<div class="ttc" id="aitem_8h_html_a5aa5a2a90f1aa26259021a338203df73"><div class="ttname"><a href="item_8h.html#a5aa5a2a90f1aa26259021a338203df73">new_potion</a></div><div class="ttdeci">potion_t new_potion(jeu_t *jeu, char *nom, int cooldown, SDL_Rect potion, int i)</div><div class="ttdoc">Sert à la création de potions, avec son nom, son cooldown et son emplacement dans l'inventaire.</div><div class="ttdef"><b>Definition:</b> item.c:22</div></div>
+<div class="ttc" id="aitem_8h_html_a62c0546443d3dad6a4d6df112e5f483c"><div class="ttname"><a href="item_8h.html#a62c0546443d3dad6a4d6df112e5f483c">new_arme</a></div><div class="ttdeci">arme_t new_arme(jeu_t *jeu, int tag, char *nom, char *desc, int rayon, int dmg, int cooldown, int munition, int durabilite, int type, int rarete, SDL_Rect potion)</div><div class="ttdoc">Sert à la création d'armes, avec son nom, son tag, son nom, sa description, son rayon,...</div><div class="ttdef"><b>Definition:</b> item.c:50</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Généré par &#160;<a href="http://www.doxygen.org/index.html">

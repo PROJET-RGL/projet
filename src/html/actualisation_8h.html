@@ -73,6 +73,8 @@ $(function() {
 <div class="textblock"><code>#include &quot;<a class="el" href="super_8h_source.html">super.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="fonction__admin_8h_source.html">fonction_admin.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="salle_8h_source.html">salle.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mob_8h_source.html">mob.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="texture_8h_source.html">texture.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de actualisation.h:</div>
 <div class="dyncontent">
@@ -88,9 +90,9 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a6e8592a3aabde1d926f361a2094581c9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structperso__s.html">perso_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="actualisation_8h.html#a6e8592a3aabde1d926f361a2094581c9">actualisation_salle</a> (<a class="el" href="structjeu__s.html">jeu_t</a> jeu, SDL_Renderer *renderer, SDL_Rect fenetre)</td></tr>
-<tr class="memdesc:a6e8592a3aabde1d926f361a2094581c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gestion de l'actualisation d'une salle, de l'apparence de la texture.  <a href="actualisation_8h.html#a6e8592a3aabde1d926f361a2094581c9">Plus de détails...</a><br /></td></tr>
-<tr class="separator:a6e8592a3aabde1d926f361a2094581c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80e20ab17d76b2e292ee58ef4448cca3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structjeu__s.html">jeu_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="actualisation_8h.html#a80e20ab17d76b2e292ee58ef4448cca3">actualisation_salle</a> (<a class="el" href="structjeu__s.html">jeu_t</a> *jeu, SDL_Renderer *renderer, SDL_Rect fenetre, SDL_Window *fen)</td></tr>
+<tr class="memdesc:a80e20ab17d76b2e292ee58ef4448cca3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gestion de l'actualisation d'une salle, de l'apparence de la texture.  <a href="actualisation_8h.html#a80e20ab17d76b2e292ee58ef4448cca3">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a80e20ab17d76b2e292ee58ef4448cca3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Fonction d'actualisation des salles du programme. </p>
@@ -98,16 +100,16 @@ Fonctions</h2></td></tr>
 <dl class="section version"><dt>Version</dt><dd>0.0.2 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>22 Mars 2021 </dd></dl>
 </div><h2 class="groupheader">Documentation des fonctions</h2>
-<a id="a6e8592a3aabde1d926f361a2094581c9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6e8592a3aabde1d926f361a2094581c9">&#9670;&nbsp;</a></span>actualisation_salle()</h2>
+<a id="a80e20ab17d76b2e292ee58ef4448cca3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80e20ab17d76b2e292ee58ef4448cca3">&#9670;&nbsp;</a></span>actualisation_salle()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structperso__s.html">perso_t</a> actualisation_salle </td>
+          <td class="memname"><a class="el" href="structjeu__s.html">jeu_t</a> actualisation_salle </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structjeu__s.html">jeu_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="structjeu__s.html">jeu_t</a> *&#160;</td>
           <td class="paramname"><em>jeu</em>, </td>
         </tr>
         <tr>
@@ -120,7 +122,13 @@ Fonctions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">SDL_Rect&#160;</td>
-          <td class="paramname"><em>fenetre</em>&#160;</td>
+          <td class="paramname"><em>fenetre</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Window *&#160;</td>
+          <td class="paramname"><em>fen</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -133,7 +141,7 @@ Fonctions</h2></td></tr>
 <p>Gestion de l'actualisation d'une salle, de l'apparence de la texture. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">jeu</td><td>Importation de la partie actuel et Positionnement du personnage en fonction de la salle actuelle </td></tr>
+    <tr><td class="paramname">(*jeu)</td><td>Importation de la partie actuel et Positionnement du personnage en fonction de la salle actuelle </td></tr>
     <tr><td class="paramname">renderer</td><td>Attributs pour l'affichage d'une fenêtre </td></tr>
     <tr><td class="paramname">fenetre</td><td>On importe la fenêtre modifiable </td></tr>
   </table>
