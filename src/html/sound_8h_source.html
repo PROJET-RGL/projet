@@ -68,21 +68,19 @@ $(function() {
 <a href="sound_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef sound_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define sound_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="super_8h.html">super.h</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="fonction__admin_8h.html">fonction_admin.h</a>&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;Mix_Chunk *init_sound_chunk(Mix_Chunk *chunk, <span class="keywordtype">char</span> *src);</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">void</span> <a class="code" href="sound_8h.html#a2d076a2b6781bcacf64096397c85afb1">volume_sound</a>(Mix_Chunk *chunk[10], <span class="keywordtype">int</span> volume, <span class="keywordtype">int</span> nb_sons);</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">void</span> <a class="code" href="sound_8h.html#a2b58a0f9ea08e02ab00c4fbb9379fce4">free_TabChunk</a>(Mix_Chunk *chunk[10], <span class="keywordtype">int</span> nb_sons);</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="fonction__admin_8h.html">fonction_admin.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;Mix_Chunk *init_sound_chunk(Mix_Chunk *chunk, <span class="keywordtype">char</span> *src);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">void</span> <a class="code" href="sound_8h.html#a2d076a2b6781bcacf64096397c85afb1">volume_sound</a>(Mix_Chunk *chunk[10], <span class="keywordtype">int</span> volume, <span class="keywordtype">int</span> nb_sons);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">void</span> <a class="code" href="sound_8h.html#a2b58a0f9ea08e02ab00c4fbb9379fce4">free_TabChunk</a>(Mix_Chunk *chunk[10], <span class="keywordtype">int</span> nb_sons);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="afonction__admin_8h_html"><div class="ttname"><a href="fonction__admin_8h.html">fonction_admin.h</a></div><div class="ttdoc">Gestion des fenêtres.</div></div>
 <div class="ttc" id="asound_8h_html_a2d076a2b6781bcacf64096397c85afb1"><div class="ttname"><a href="sound_8h.html#a2d076a2b6781bcacf64096397c85afb1">volume_sound</a></div><div class="ttdeci">void volume_sound(Mix_Chunk *chunk[10], int volume, int nb_sons)</div><div class="ttdoc">Fonction qui gère le volume d'un tableau de bruitage.</div><div class="ttdef"><b>Definition:</b> sound.c:28</div></div>
 <div class="ttc" id="asound_8h_html_a2b58a0f9ea08e02ab00c4fbb9379fce4"><div class="ttname"><a href="sound_8h.html#a2b58a0f9ea08e02ab00c4fbb9379fce4">free_TabChunk</a></div><div class="ttdeci">void free_TabChunk(Mix_Chunk *chunk[10], int nb_sons)</div><div class="ttdoc">Sert à libérer la mémoire d'un tableau de bruitage.</div><div class="ttdef"><b>Definition:</b> sound.c:44</div></div>
-<div class="ttc" id="asuper_8h_html"><div class="ttname"><a href="super_8h.html">super.h</a></div><div class="ttdoc">Header principale du programmes.</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Généré par &#160;<a href="http://www.doxygen.org/index.html">

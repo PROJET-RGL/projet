@@ -68,24 +68,24 @@ $(function() {
 <a href="mob_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef mob_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define mob_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="super_8h.html">super.h</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="fonction__admin_8h.html">fonction_admin.h</a>&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<a class="code" href="structmob__s.html">mob_t</a> <a class="code" href="mob_8h.html#a681e1876b74267c01c31486aee53e5b3">init_mob</a>(<a class="code" href="structmob__s.html">mob_t</a> mob, SDL_Window *fen, SDL_Renderer *renderer, SDL_Surface *image, <span class="keywordtype">int</span> taille);</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">int</span> <a class="code" href="mob_8h.html#a202888e8902fa79e523fed0b7e827684">colision_mob</a>(<a class="code" href="structmob__s.html">mob_t</a> mob1, <a class="code" href="structperso__s.html">perso_t</a> perso);</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<a class="code" href="structmob__s.html">mob_t</a> <a class="code" href="mob_8h.html#a6a5896a03213f6fde466dbad2c5eceb3">compare_mob</a>(<a class="code" href="structmob__s.html">mob_t</a> mob1, <a class="code" href="structmob__s.html">mob_t</a> mob2);</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="fonction__admin_8h.html">fonction_admin.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<a class="code" href="structmob__s.html">mob_t</a> <a class="code" href="mob_8h.html#a681e1876b74267c01c31486aee53e5b3">init_mob</a>(<a class="code" href="structmob__s.html">mob_t</a> mob, SDL_Window *fen, SDL_Renderer *renderer, SDL_Surface *image, <span class="keywordtype">int</span> taille);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">int</span> <a class="code" href="mob_8h.html#a202888e8902fa79e523fed0b7e827684">colision_mob</a>(<a class="code" href="structmob__s.html">mob_t</a> mob1, <a class="code" href="structperso__s.html">perso_t</a> perso);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<a class="code" href="structmob__s.html">mob_t</a> <a class="code" href="mob_8h.html#a6a5896a03213f6fde466dbad2c5eceb3">compare_mob</a>(<a class="code" href="structmob__s.html">mob_t</a> mob1, <a class="code" href="structmob__s.html">mob_t</a> mob2);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;SDL_Rect deplacement_mob(SDL_Rect perso, SDL_Rect mob, <span class="keywordtype">int</span> i);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="amob_8h_html_a681e1876b74267c01c31486aee53e5b3"><div class="ttname"><a href="mob_8h.html#a681e1876b74267c01c31486aee53e5b3">init_mob</a></div><div class="ttdeci">mob_t init_mob(mob_t mob, SDL_Window *fen, SDL_Renderer *renderer, SDL_Surface *image, int taille)</div><div class="ttdoc">Création d'un mob, avec ses coordonnées, sa taille et ses points de vies.</div><div class="ttdef"><b>Definition:</b> mob.c:18</div></div>
 <div class="ttc" id="afonction__admin_8h_html"><div class="ttname"><a href="fonction__admin_8h.html">fonction_admin.h</a></div><div class="ttdoc">Gestion des fenêtres.</div></div>
 <div class="ttc" id="amob_8h_html_a202888e8902fa79e523fed0b7e827684"><div class="ttname"><a href="mob_8h.html#a202888e8902fa79e523fed0b7e827684">colision_mob</a></div><div class="ttdeci">int colision_mob(mob_t mob1, perso_t perso)</div><div class="ttdoc">Vérifie si le joueur est en contact avec un mob et le tue si c'est le cas.</div><div class="ttdef"><b>Definition:</b> mob.c:89</div></div>
-<div class="ttc" id="astructmob__s_html"><div class="ttname"><a href="structmob__s.html">mob_s</a></div><div class="ttdoc">Struture de données d'un PNJ, avec ses coordonnées, ses points de vies, et sa texture.</div><div class="ttdef"><b>Definition:</b> super_s.h:135</div></div>
+<div class="ttc" id="astructmob__s_html"><div class="ttname"><a href="structmob__s.html">mob_s</a></div><div class="ttdoc">Struture de données d'un PNJ, avec ses coordonnées, ses points de vies, et sa texture.</div><div class="ttdef"><b>Definition:</b> super_s.h:178</div></div>
 <div class="ttc" id="amob_8h_html_a6a5896a03213f6fde466dbad2c5eceb3"><div class="ttname"><a href="mob_8h.html#a6a5896a03213f6fde466dbad2c5eceb3">compare_mob</a></div><div class="ttdeci">mob_t compare_mob(mob_t mob1, mob_t mob2)</div><div class="ttdoc">Comparaison entre deux mobs (On vérifie si ils sont en superposé, si c'est le cas,...</div><div class="ttdef"><b>Definition:</b> mob.c:104</div></div>
-<div class="ttc" id="astructperso__s_html"><div class="ttname"><a href="structperso__s.html">perso_s</a></div><div class="ttdoc">Structure de données de personnage, avec l'emplacement du personnage lié au tag, ses coordonnées,...</div><div class="ttdef"><b>Definition:</b> super_s.h:118</div></div>
-<div class="ttc" id="asuper_8h_html"><div class="ttname"><a href="super_8h.html">super.h</a></div><div class="ttdoc">Header principale du programmes.</div></div>
+<div class="ttc" id="astructperso__s_html"><div class="ttname"><a href="structperso__s.html">perso_s</a></div><div class="ttdoc">Structure de données de personnage, avec l'emplacement du personnage lié au tag, ses coordonnées,...</div><div class="ttdef"><b>Definition:</b> super_s.h:158</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Généré par &#160;<a href="http://www.doxygen.org/index.html">

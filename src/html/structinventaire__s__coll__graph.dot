@@ -1,0 +1,15 @@
+digraph "inventaire_s"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="inventaire_s",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" cases" ,fontname="Helvetica"];
+  Node2 [label="cases_s",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structcases__s.html",tooltip=" "];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" loot" ,fontname="Helvetica"];
+  Node3 [label="consommable_s",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structconsommable__s.html",tooltip=" "];
+  Node4 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" arme" ,fontname="Helvetica"];
+  Node4 [label="arme_s",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structarme__s.html",tooltip="Stucture de la configuration d'une arme, possédant un tag, ainsi qu'un nom et une description...."];
+  Node5 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" potion" ,fontname="Helvetica"];
+  Node5 [label="potion_s",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structpotion__s.html",tooltip=" "];
+}
