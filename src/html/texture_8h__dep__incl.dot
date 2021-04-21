@@ -5,9 +5,15 @@ digraph "texture.h"
   node [fontname="Helvetica",fontsize="10",shape=record];
   Node1 [label="texture.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Header des fonctions agissant sur les textures du programmes."];
   Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="menu.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$menu_8h.html",tooltip="Fichier contenant les fonctions chargeant le menu et ses images."];
+  Node2 [label="actualisation.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$actualisation_8h.html",tooltip="Fonction d'actualisation des salles du programme."];
   Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node3 [label="main.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8c.html",tooltip="Fonction main du programme."];
-  Node2 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node4 [label="option.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$option_8h.html",tooltip="Fichier contenant les fonctions chargeant les option et ses images."];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="hud.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$hud_8h.html",tooltip="Fichier qui influe sur les salles du programme."];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="menu.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$menu_8h.html",tooltip="Fichier contenant les fonctions chargeant le menu et ses images."];
+  Node5 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="option.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$option_8h.html",tooltip="Fichier contenant les fonctions chargeant les option et ses images."];
 }
