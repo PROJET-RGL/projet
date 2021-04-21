@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['hud_28',['hud',['../structjeu__s.html#ad0692af9c91dcda36ac7363541c132d4',1,'jeu_s']]],
-  ['hud_2eh_29',['hud.h',['../hud_8h.html',1,'']]],
-  ['hud_5fs_30',['hud_s',['../structhud__s.html',1,'']]]
+  ['fonction_5fadmin_2eh_32',['fonction_admin.h',['../fonction__admin_8h.html',1,'']]],
+  ['free_5ftabchunk_33',['free_TabChunk',['../sound_8h.html#a2b58a0f9ea08e02ab00c4fbb9379fce4',1,'sound.c']]]
 ];

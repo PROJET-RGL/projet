@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['mob_194',['mob',['../structmob__s.html#ae240dfcae00d3e84dd3b2afef024bedc',1,'mob_s']]],
-  ['munition_195',['munition',['../structarme__s.html#a71f10793d6335e8fc67109cec1fd668f',1,'arme_s']]]
+  ['lab_219',['lab',['../structjeu__s.html#ade79114d5f2bbe0f124e5bf179ad5150',1,'jeu_s']]],
+  ['loot_220',['loot',['../structinventaire__s.html#a6524ee1e8227b1370754cf6187ed50a1',1,'inventaire_s']]]
 ];
